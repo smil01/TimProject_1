@@ -32,6 +32,14 @@ package test패키지;
  * @content	: 
  *
  */
+/**
+ * 
+ * @author	: 강명성
+ * @date	: 2019. 5. 10.
+ * @time	: 오후 3:00:26
+ * @content	: 
+ *
+ */
 public class 템플릿테스트 {
 
 }
