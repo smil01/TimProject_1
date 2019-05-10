@@ -7,6 +7,14 @@ package test패키지;
  * @content	: 첫커밋
  *
  */
+/**
+ * 
+ * @author	: 김치현
+ * @date	: 2019. 5. 10.
+ * @time	: 오후 1:32:34
+ * @content	: 첫커밋
+ *
+ */
 public class 템플릿테스트 {
 
 }
