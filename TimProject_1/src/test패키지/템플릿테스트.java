@@ -24,6 +24,14 @@ package test패키지;
  * @content	: 
  *
  */
+/**
+ * 
+ * @author	: 권솔빈
+ * @date	: 2019. 5. 10.
+ * @time	: 오후 2:53:50
+ * @content	: 
+ *
+ */
 public class 템플릿테스트 {
 
 }
