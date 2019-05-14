@@ -6,5 +6,6 @@
 	<classpathentry kind="lib" path="src/LIB/jxbrowser-win64-6.23.1.jar"/>
 	<classpathentry kind="lib" path="src/LIB/license.jar"/>
 	<classpathentry kind="lib" path="src/LIB/ojdbc6.jar"/>
+	<classpathentry kind="lib" path="src/LIB/player.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
