@@ -47,7 +47,6 @@ public class DefaultFrame {
 		frame.setBounds(100, 100, 1600, 900);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(new CardLayout(0, 0));
-		
 		frame.addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent e) {
                 point.x = e.getX();
