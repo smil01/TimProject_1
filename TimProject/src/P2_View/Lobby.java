@@ -272,8 +272,8 @@ public class Lobby extends JPanel {
 		table.getTableHeader().setBackground(new Color(120, 168, 252)); //컬럼이름 색깔
 		table.getTableHeader().setForeground(new Color(255,255,255)); // 컬럼이름 폰트색깔
 		table.setSelectionBackground(new Color(232,57,95)); //JTable 선택시 색깔
+		table.setRowHeight(50);
 		table.setBounds(35, 10, 1189, 738);
-		table.setRowHeight(100);
 		
 		JScrollPane scrollPane = new JScrollPane(table);
 		scrollPane.setBounds(12, 10, 1296, 738);
