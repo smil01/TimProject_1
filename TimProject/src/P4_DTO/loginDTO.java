@@ -115,13 +115,21 @@ public class loginDTO {
 	}
 
 	public BufferedImage getMember_Img_bytes() { // DB에서 byte로 저장된 이미지를 불러와서 레이블에 사용할 수 있게 변환
-		BufferedImage img = ByteToImg.getImg(Member_Img_bytes);
-		return img;
+		if (Member_Img_bytes != null) {
+			BufferedImage img = ByteToImg.getImg(Member_Img_bytes);
+			return img;
+		}
+		return null;
+
 	}
 
 	public BufferedImage getMember_ResizeImg(int height, int width) { // getMember_Img_bytes와 동일하지만 사이즈를 조정하는 기능이 있음
-		BufferedImage img = ImgToResizeImg.getResizeImg(ByteToImg.getImg(Member_Img_bytes), height, width);
-		return img;
+		if (Member_Img_bytes != null) {
+			BufferedImage img = ImgToResizeImg.getResizeImg(ByteToImg.getImg(Member_Img_bytes), height, width);
+			return img;
+		}
+		return null;
+
 	}
 
 	public void setMember_Img_bytes(byte[] member_Img_bytes) { // DB에서 이미지 데이터를 받을때는 꼭 이 메소드를 사용해야함

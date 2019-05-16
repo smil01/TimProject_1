@@ -55,23 +55,32 @@ public class GroupsDTO {
 	}
 
 	public byte[] getGroup_Img() {
-		Group_Img_bytes = ImgToByte.getByte(Group_Img);
+		if (Group_Img != null) {
+			Group_Img_bytes = ImgToByte.getByte(Group_Img);
+		}
 		return Group_Img_bytes;
 	}
 
 	public void setGroup_Img(String group_Img) {
 		Group_Img = group_Img;
 	}
-	
-	public BufferedImage getGroup_Img_Bytes(){
-		BufferedImage img = ByteToImg.getImg(Group_Img_bytes);
-		return img;	
+
+	public BufferedImage getGroup_Img_Bytes() {
+		if (Group_Img_bytes != null) {
+			BufferedImage img = ByteToImg.getImg(Group_Img_bytes);
+			return img;
+		}
+		return null;
 	}
+
 	public BufferedImage getGroup_ResizeImg(int height, int width) {
-		BufferedImage img = ImgToResizeImg.getResizeImg(ByteToImg.getImg(Group_Img_bytes), height, width);
-		return img;
+		if (Group_Img_bytes != null) {
+			BufferedImage img = ImgToResizeImg.getResizeImg(ByteToImg.getImg(Group_Img_bytes), height, width);
+			return img;
+		}
+		return null;
 	}
-	
+
 	public void setGroup_Img_Bytes(byte[] Group_Img_Bytes) {
 		this.Group_Img_bytes = Group_Img_Bytes;
 	}
@@ -106,6 +115,5 @@ public class GroupsDTO {
 				+ ", Group_Img=" + Group_Img + ", Group_LocalCode=" + Group_LocalCode + ", Group_Address="
 				+ Group_Address + ", Group_HomePage=" + Group_HomePage + "]";
 	}
-	
 
 }
