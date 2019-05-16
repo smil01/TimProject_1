@@ -62,7 +62,7 @@ public class test_window {
             }
         });
 		
-		JPanel panel = new JoinWindow();
+		JPanel panel = new SignUpWindow();
 		frame.getContentPane().add(panel, "name_846404528803000");
 		
 		JLabel lblNewLabel = new JLabel("New label");
