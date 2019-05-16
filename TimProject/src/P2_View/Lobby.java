@@ -43,9 +43,9 @@ public class Lobby extends JPanel {
 		ProgramNamePanel.setLayout(new CardLayout(0, 0));
 
 		JLabel lbl_program_name = new JLabel(
-				"유소년축구 성장 관리 프로그램 BETA");
+				"\uC720\uC18C\uB144\uCD95\uAD6C \uC131\uC7A5\uAD00\uB9AC \uD504\uB85C\uADF8\uB7A8");
 		lbl_program_name.setHorizontalAlignment(SwingConstants.CENTER);
-		lbl_program_name.setFont(new Font("나눔스퀘어라운드 Bold", Font.PLAIN, 15));
+		lbl_program_name.setFont(new Font("", Font.PLAIN, 15));
 		lbl_program_name.setForeground(new Color(255, 255, 255));
 		ProgramNamePanel.add(lbl_program_name, "name_53851796879200");
 		
@@ -61,7 +61,7 @@ public class Lobby extends JPanel {
 		ProfilePanel.add(Profile_ImagePanel);
 		Profile_ImagePanel.setLayout(new CardLayout(0, 0));
 		
-		JLabel lbl_profileImg = new JLabel("사진");
+		JLabel lbl_profileImg = new JLabel("\uD504\uB85C\uD544\uC0AC\uC9C4");
 		lbl_profileImg.setHorizontalAlignment(SwingConstants.CENTER);
 		Profile_ImagePanel.add(lbl_profileImg, "name_54594167799700");
 		
@@ -71,9 +71,9 @@ public class Lobby extends JPanel {
 		ProfilePanel.add(Profile_Nickname);
 		Profile_Nickname.setLayout(null);
 		
-		JLabel label_1 = new JLabel("김치현");
+		JLabel label_1 = new JLabel("\uB2C9\uB124\uC784");
 		label_1.setForeground(Color.WHITE);
-		label_1.setFont(new Font("맑은 고딕", Font.PLAIN, 16));
+		label_1.setFont(new Font("", Font.PLAIN, 16));
 		label_1.setBounds(12, 39, 100, 25);
 		Profile_Nickname.add(label_1);
 		
@@ -83,9 +83,9 @@ public class Lobby extends JPanel {
 		LeftLobbyPanel.add(btn_1);
 		btn_1.setLayout(null);
 		
-		JLabel lbl_btn1 = new JLabel("선수 관리");
+		JLabel lbl_btn1 = new JLabel("\uC120\uC218\uAD00\uB9AC");
 		lbl_btn1.setBounds(87, 30, 87, 24);
-		lbl_btn1.setFont(new Font("맑은 고딕", Font.BOLD, 20));
+		lbl_btn1.setFont(new Font("", Font.BOLD, 20));
 		lbl_btn1.setForeground(new Color(255, 255, 255));
 		btn_1.add(lbl_btn1);
 		
@@ -123,9 +123,9 @@ public class Lobby extends JPanel {
 		ExitPanel.add(panel_1);
 		panel_1.setLayout(null);
 		
-		JLabel lblNewLabel_2 = new JLabel("나가기");
+		JLabel lblNewLabel_2 = new JLabel("\uB098\uAC00\uAE30");
 		lblNewLabel_2.setBounds(0, 10, 111, 60);
-		lblNewLabel_2.setFont(new Font("맑은 고딕", Font.BOLD, 20));
+		lblNewLabel_2.setFont(new Font("", Font.BOLD, 20));
 		lblNewLabel_2.setForeground(new Color(255, 255, 255));
 		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
 		panel_1.add(lblNewLabel_2);
@@ -156,7 +156,7 @@ public class Lobby extends JPanel {
 		SearchTxtPanel.setLayout(null);
 		
 		textField = new JTextField();
-		textField.setFont(new Font("맑은 고딕", Font.PLAIN, 14));
+		textField.setFont(new Font("", Font.PLAIN, 14));
 		textField.setForeground(new Color(255, 255, 255));
 		textField.setBorder(null);
 		textField.setBackground(new Color(41, 57, 80));
@@ -175,9 +175,9 @@ public class Lobby extends JPanel {
 		btn_2.setBounds(0, 439, 300, 80);
 		LeftLobbyPanel.add(btn_2);
 		
-		JLabel lbl_btn2 = new JLabel("구단 관리");
+		JLabel lbl_btn2 = new JLabel("\uAD6C\uB2E8\uAD00\uB9AC");
 		lbl_btn2.setForeground(Color.WHITE);
-		lbl_btn2.setFont(new Font("맑은 고딕", Font.BOLD, 20));
+		lbl_btn2.setFont(new Font("", Font.BOLD, 20));
 		lbl_btn2.setBounds(87, 30, 87, 24);
 		btn_2.add(lbl_btn2);
 		
@@ -192,9 +192,9 @@ public class Lobby extends JPanel {
 		btn_3.setBounds(0, 517, 300, 80);
 		LeftLobbyPanel.add(btn_3);
 		
-		JLabel lbl_btn3 = new JLabel("이적 관리");
+		JLabel lbl_btn3 = new JLabel("\uC774\uC801\uAD00\uB9AC");
 		lbl_btn3.setForeground(Color.WHITE);
-		lbl_btn3.setFont(new Font("맑은 고딕", Font.BOLD, 20));
+		lbl_btn3.setFont(new Font("", Font.BOLD, 20));
 		lbl_btn3.setBounds(87, 30, 87, 24);
 		btn_3.add(lbl_btn3);
 		
@@ -209,9 +209,9 @@ public class Lobby extends JPanel {
 		btn4.setBounds(0, 595, 300, 80);
 		LeftLobbyPanel.add(btn4);
 		
-		JLabel lbl_btn4 = new JLabel("개인 설정");
+		JLabel lbl_btn4 = new JLabel("\uAC1C\uC778\uC124\uC815");
 		lbl_btn4.setForeground(Color.WHITE);
-		lbl_btn4.setFont(new Font("맑은 고딕", Font.BOLD, 20));
+		lbl_btn4.setFont(new Font("", Font.BOLD, 20));
 		lbl_btn4.setBounds(87, 30, 87, 24);
 		btn4.add(lbl_btn4);
 		
@@ -243,10 +243,10 @@ public class Lobby extends JPanel {
 		GudanPanel.add(GudanName);
 		GudanName.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("오형제");
-		lblNewLabel.setBounds(32, 30, 75, 34);
+		JLabel lblNewLabel = new JLabel("\uC6CC\uB9AC\uC5B4\uC988");
+		lblNewLabel.setBounds(32, 30, 146, 34);
 		lblNewLabel.setForeground(new Color(255, 255, 255));
-		lblNewLabel.setFont(new Font("맑은 고딕", Font.PLAIN, 25));
+		lblNewLabel.setFont(new Font("", Font.PLAIN, 25));
 		GudanName.add(lblNewLabel);
 		
 		JPanel panel = new JPanel();
@@ -269,9 +269,9 @@ public class Lobby extends JPanel {
 				"New column", "New column", "New column", "New column", "New column", "New column"
 			}
 		));
-		table.getTableHeader().setBackground(new Color(120, 168, 252)); //컬럼이름 색깔
-		table.getTableHeader().setForeground(new Color(255,255,255)); // 컬럼이름 폰트색깔
-		table.setSelectionBackground(new Color(232,57,95)); //JTable 선택시 색깔
+		table.getTableHeader().setBackground(new Color(120, 168, 252));
+		table.getTableHeader().setForeground(new Color(255,255,255)); 
+		table.setSelectionBackground(new Color(232,57,95)); 
 		table.setRowHeight(50);
 		table.setBounds(35, 10, 1189, 738);
 		

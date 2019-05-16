@@ -23,7 +23,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.JScrollPane;
 import java.awt.Button;
 
-public class GudanSearch extends JDialog implements FocusListener{
+public class Gudan_SearchModify extends JDialog implements FocusListener{
 
 	private final JPanel contentPanel = new JPanel();
 	private static JDialog dialog;
@@ -37,7 +37,7 @@ public class GudanSearch extends JDialog implements FocusListener{
 	 */
 	public static void main(String[] args) {
 		try {
-			dialog = new GudanSearch();
+			dialog = new Gudan_SearchModify();
 			dialog.addMouseListener(new MouseAdapter() {
 	            public void mousePressed(MouseEvent e) {
 	                point.x = e.getX();
@@ -60,7 +60,7 @@ public class GudanSearch extends JDialog implements FocusListener{
 	/**
 	 * Create the dialog.
 	 */
-	public GudanSearch() {
+	public Gudan_SearchModify() {
 		setBounds(100, 100, 678, 466);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBackground(new Color(23, 35, 51));
@@ -69,9 +69,9 @@ public class GudanSearch extends JDialog implements FocusListener{
 		contentPanel.setLayout(null);
 		{
 			txt_gudan = new JTextField();
-			txt_gudan.setText("구단이름검색");
+			txt_gudan.setText("\uAD6C\uB2E8 \uC774\uB984\uC73C\uB85C \uCC3E\uAE30");
 			txt_gudan.setForeground(Color.WHITE);
-			txt_gudan.setFont(new Font("맑은 고딕", Font.PLAIN, 14));
+			txt_gudan.setFont(new Font("���� ����", Font.PLAIN, 14));
 			txt_gudan.setColumns(10);
 			txt_gudan.setBorder(null);
 			txt_gudan.setBackground(new Color(23, 35, 51));
@@ -114,26 +114,26 @@ public class GudanSearch extends JDialog implements FocusListener{
 			}
 		));
 		table.setBounds(42, 117, 576, 214);
-		table.getTableHeader().setBackground(new Color(120, 168, 252)); //컬럼이름 색깔
-		table.getTableHeader().setForeground(new Color(255,255,255)); // 컬럼이름 폰트색깔
-		table.setSelectionBackground(new Color(232,57,95)); //JTable 선택시 색깔
+		table.getTableHeader().setBackground(new Color(120, 168, 252));
+		table.getTableHeader().setForeground(new Color(255,255,255));
+		table.setSelectionBackground(new Color(232,57,95)); 
 		table.setRowHeight(20);
 		
 		JScrollPane scrollPane = new JScrollPane(table);
 		scrollPane.setBounds(81, 123, 500, 180);
 		contentPanel.add(scrollPane);
 		
-		JButton btn_accept = new JButton("확인");
+		JButton btn_accept = new JButton("Ȯ��");
 		btn_accept.setForeground(Color.WHITE);
 		btn_accept.setBackground(new Color(71, 120, 197));
-		btn_accept.setFont(new Font("맑은 고딕", Font.BOLD, 12));
+		btn_accept.setFont(new Font("BM_DOHYEON", Font.BOLD, 12));
 		btn_accept.setBounds(200, 360, 70, 30);
 		contentPanel.add(btn_accept);
 		
-		JButton btn_cancel = new JButton("취소");
+		JButton btn_cancel = new JButton("���");
 		btn_cancel.setForeground(Color.WHITE);
 		btn_cancel.setBackground(new Color(71, 120, 197));
-		btn_cancel.setFont(new Font("맑은 고딕", Font.BOLD, 12));
+		btn_cancel.setFont(new Font("���� ����", Font.BOLD, 12));
 		btn_cancel.setBounds(350, 360, 70, 30);
 		contentPanel.add(btn_cancel);
 		
