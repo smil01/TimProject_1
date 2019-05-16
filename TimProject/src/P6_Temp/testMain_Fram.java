@@ -19,7 +19,7 @@ public class testMain_Fram {
 
 	private JFrame frame;
 	private JTextField text_id;
-	private JTextField test_pw;
+	private JTextField text_pw;
 
 	/**
 	 * Launch the application.
@@ -69,10 +69,10 @@ public class testMain_Fram {
 		lblId.setBounds(29, 42, 57, 15);
 		frame.getContentPane().add(lblId);
 
-		test_pw = new JTextField();
-		test_pw.setBounds(52, 70, 155, 21);
-		frame.getContentPane().add(test_pw);
-		test_pw.setColumns(10);
+		text_pw = new JTextField();
+		text_pw.setBounds(52, 70, 155, 21);
+		frame.getContentPane().add(text_pw);
+		text_pw.setColumns(10);
 
 		JLabel lblNewLabel = new JLabel("PW");
 		lblNewLabel.setBounds(29, 73, 57, 15);
@@ -82,7 +82,7 @@ public class testMain_Fram {
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				testDAO dao = new testDAO();
-				testDTO dto = dao.Login(new testDTO("odd03@naver.com", 0, null, "1234", null, null, null, null, 0));
+				testDTO dto = dao.Login(new testDTO(text_id.getText(), 0, null, text_pw.getText(), null, null, null, null, 0));
 
 				if (dto == null) {
 					System.out.println("로그인실패");
