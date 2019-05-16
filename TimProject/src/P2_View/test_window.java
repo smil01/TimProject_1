@@ -62,7 +62,7 @@ public class test_window {
             }
         });
 		
-		JPanel panel = new Btn2_Button1();
+		JPanel panel = new Btn1_Button1();
 		frame.getContentPane().add(panel, "name_846404528803000");
 		
 		JLabel lblNewLabel = new JLabel("New label");
