@@ -113,7 +113,7 @@ public class LoginWindow extends JPanel {
 					if (mp3.isPlaying()) {
 						mp3.stop();
 					}
-					JOptionPane.showMessageDialog(null, "로그인에 성공했습니다..", "로그인 성공", JOptionPane.CLOSED_OPTION);
+					JPanel lobby = new Lobby(frame, dto);
 				}
 
 			}
