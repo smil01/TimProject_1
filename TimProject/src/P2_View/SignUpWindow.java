@@ -54,7 +54,7 @@ public class SignUpWindow extends JPanel implements FocusListener {
 		textField.setColumns(10);
 		textField.setBorder(null);
 		textField.setBackground(new Color(23, 35, 51));
-		textField.setBounds(128, 26, 1, 2);
+		textField.setBounds(0, 0, 0, 0);
 		panel_back_left.add(textField);
 
 		JLabel lbl_X = new JLabel("X");
@@ -74,25 +74,25 @@ public class SignUpWindow extends JPanel implements FocusListener {
 		txt_id.setFont(new Font("맑은 고딕", Font.PLAIN, 14));
 		txt_id.setForeground(new Color(255, 255, 255));
 		txt_id.setBackground(new Color(23, 35, 51));
-		txt_id.setBounds(116, 38, 316, 21);
+		txt_id.setBounds(110, 193, 316, 21);
 		txt_id.addFocusListener(this);
 		panel_back_left.add(txt_id);
 		txt_id.setColumns(10);
 
 		JSeparator id_separator = new JSeparator();
-		id_separator.setBounds(116, 69, 316, 2);
+		id_separator.setBounds(110, 224, 316, 2);
 		panel_back_left.add(id_separator);
 
 		JLabel lbl_id_check = new JLabel("이미 사용중인 아이디입니다.");
 		lbl_id_check.setForeground(new Color(255, 0, 0));
 		lbl_id_check.setFont(new Font("맑은 고딕", Font.PLAIN, 14));
-		lbl_id_check.setBounds(116, 81, 265, 15);
+		lbl_id_check.setBounds(110, 236, 265, 15);
 		panel_back_left.add(lbl_id_check);
 
 		lbl_pw = new JLabel("비밀번호");
 		lbl_pw.setForeground(Color.WHITE);
 		lbl_pw.setFont(new Font("맑은 고딕", Font.PLAIN, 16));
-		lbl_pw.setBounds(116, 118, 75, 15);
+		lbl_pw.setBounds(110, 273, 75, 15);
 		panel_back_left.add(lbl_pw);
 		
 
@@ -101,24 +101,24 @@ public class SignUpWindow extends JPanel implements FocusListener {
 		pwField.setBorder(null);
 		pwField.setForeground(Color.WHITE);
 		pwField.setBackground(new Color(23, 35, 51));
-		pwField.setBounds(116, 114, 316, 21);
+		pwField.setBounds(110, 269, 316, 21);
 		pwField.addFocusListener(this);
 		panel_back_left.add(pwField);
 
 		JSeparator pw_separator = new JSeparator();
-		pw_separator.setBounds(116, 145, 316, 2);
+		pw_separator.setBounds(110, 300, 316, 2);
 		panel_back_left.add(pw_separator);
 
 		JLabel lbl_pw_check = new JLabel("비밀번호는 8자리 이상이어야 합니다.");
 		lbl_pw_check.setForeground(Color.RED);
 		lbl_pw_check.setFont(new Font("맑은 고딕", Font.PLAIN, 14));
-		lbl_pw_check.setBounds(116, 157, 265, 15);
+		lbl_pw_check.setBounds(110, 312, 265, 15);
 		panel_back_left.add(lbl_pw_check);
 
 		lbl_pw_re = new JLabel("비밀번호 확인");
 		lbl_pw_re.setForeground(Color.WHITE);
 		lbl_pw_re.setFont(new Font("맑은 고딕", Font.PLAIN, 16));
-		lbl_pw_re.setBounds(116, 196, 102, 15);
+		lbl_pw_re.setBounds(110, 351, 102, 15);
 		panel_back_left.add(lbl_pw_re);
 
 		pwField_re = new JPasswordField();
@@ -126,18 +126,18 @@ public class SignUpWindow extends JPanel implements FocusListener {
 		pwField_re.setFont(new Font("맑은 고딕", Font.PLAIN, 16));
 		pwField_re.setBorder(null);
 		pwField_re.setBackground(new Color(23, 35, 51));
-		pwField_re.setBounds(116, 192, 316, 21);
+		pwField_re.setBounds(110, 347, 316, 21);
 		pwField_re.addFocusListener(this);
 		panel_back_left.add(pwField_re);
 
 		JSeparator pw_re_separator = new JSeparator();
-		pw_re_separator.setBounds(116, 223, 316, 2);
+		pw_re_separator.setBounds(110, 378, 316, 2);
 		panel_back_left.add(pw_re_separator);
 
 		JLabel lbl_pw_re_check = new JLabel("비밀번호가 동일하지 않습니다.");
 		lbl_pw_re_check.setForeground(Color.RED);
 		lbl_pw_re_check.setFont(new Font("맑은 고딕", Font.PLAIN, 14));
-		lbl_pw_re_check.setBounds(116, 235, 265, 15);
+		lbl_pw_re_check.setBounds(110, 390, 265, 15);
 		panel_back_left.add(lbl_pw_re_check);
 
 		txt_nickname = new JTextField();
@@ -147,18 +147,18 @@ public class SignUpWindow extends JPanel implements FocusListener {
 		txt_nickname.setColumns(10);
 		txt_nickname.setBorder(null);
 		txt_nickname.setBackground(new Color(23, 35, 51));
-		txt_nickname.setBounds(116, 276, 316, 21);
+		txt_nickname.setBounds(110, 431, 316, 21);
 		txt_nickname.addFocusListener(this);
 		panel_back_left.add(txt_nickname);
 
 		JSeparator nickname_separator = new JSeparator();
-		nickname_separator.setBounds(116, 307, 316, 2);
+		nickname_separator.setBounds(110, 462, 316, 2);
 		panel_back_left.add(nickname_separator);
 
 		JLabel lbl_nickname_check = new JLabel("이미 사용중인 닉네임입니다.");
 		lbl_nickname_check.setForeground(Color.RED);
 		lbl_nickname_check.setFont(new Font("맑은 고딕", Font.PLAIN, 14));
-		lbl_nickname_check.setBounds(116, 319, 265, 15);
+		lbl_nickname_check.setBounds(110, 474, 265, 15);
 		panel_back_left.add(lbl_nickname_check);
 		
 		IntegerDocument  id = new IntegerDocument ();
@@ -169,13 +169,13 @@ public class SignUpWindow extends JPanel implements FocusListener {
 		txt_address.setColumns(10);
 		txt_address.setBorder(null);
 		txt_address.setBackground(new Color(23, 35, 51));
-		txt_address.setBounds(116, 356, 316, 21);
+		txt_address.setBounds(110, 511, 316, 21);
 		txt_address.addFocusListener(this);
 		panel_back_left.add(txt_address);
 		
 		
 		JSeparator address_separator = new JSeparator();
-		address_separator.setBounds(116, 387, 316, 2);
+		address_separator.setBounds(110, 542, 316, 2);
 		panel_back_left.add(address_separator);
 		
 		JPanel panel_back_right = new JPanel();
@@ -190,7 +190,7 @@ public class SignUpWindow extends JPanel implements FocusListener {
 		lbl_tel = new JLabel("연락처");
 		lbl_tel.setForeground(Color.WHITE);
 		lbl_tel.setFont(new Font("맑은 고딕", Font.PLAIN, 16));
-		lbl_tel.setBounds(116, 416, 75, 15);
+		lbl_tel.setBounds(110, 571, 75, 15);
 		panel_back_left.add(lbl_tel);
 	
 		
@@ -200,13 +200,13 @@ public class SignUpWindow extends JPanel implements FocusListener {
 		txt_tel.setColumns(10);
 		txt_tel.setBorder(null);
 		txt_tel.setBackground(new Color(23, 35, 51));
-		txt_tel.setBounds(116, 412, 316, 21);
+		txt_tel.setBounds(110, 567, 316, 21);
 		txt_tel.setDocument(id); // 숫자만 입력받을수있게 하기
 		txt_tel.addFocusListener(this);
 		panel_back_left.add(txt_tel);
 		
 		JSeparator tel_separator = new JSeparator();
-		tel_separator.setBounds(116, 443, 316, 2);
+		tel_separator.setBounds(110, 598, 316, 2);
 		panel_back_left.add(tel_separator);
 		
 		textField_1 = new JTextField();
@@ -216,16 +216,24 @@ public class SignUpWindow extends JPanel implements FocusListener {
 		textField_1.setColumns(10);
 		textField_1.setBorder(null);
 		textField_1.setBackground(new Color(23, 35, 51));
-		textField_1.setBounds(116, 485, 316, 21);
+		textField_1.setBounds(110, 640, 316, 21);
 		panel_back_left.add(textField_1);
 		
 		JSeparator separator = new JSeparator();
-		separator.setBounds(116, 516, 316, 2);
+		separator.setBounds(110, 671, 316, 2);
 		panel_back_left.add(separator);
 		
 		JButton btnNewButton = new JButton("구단 찾기");
-		btnNewButton.setBounds(434, 485, 89, 23);
+		btnNewButton.setBounds(428, 640, 89, 23);
 		panel_back_left.add(btnNewButton);
+		
+		JPanel panel_1 = new JPanel();
+		panel_1.setBounds(110, 57, 100, 100);
+		panel_back_left.add(panel_1);
+		
+		JButton button = new JButton("찾아보기");
+		button.setBounds(428, 94, 89, 23);
+		panel_back_left.add(button);
 	}
 
 	@Override
