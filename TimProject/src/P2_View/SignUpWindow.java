@@ -7,15 +7,31 @@ import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.File;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JSeparator;
 import javax.swing.JTextField;
+import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.filechooser.FileSystemView;
+
+import P3_DAO.SignUpDAO;
+import P3_DAO.testDAO;
+import P4_DTO.SignUpDTO;
+import P7_Util.AddressToLocalCode;
+import P7_Util.fileExtension;
+import oracle.core.lmx.LmxRepConversion;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JFileChooser;
+
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.SpringLayout;
 
 public class SignUpWindow extends JPanel implements FocusListener {
 	private JTextField txt_id;
@@ -23,12 +39,17 @@ public class SignUpWindow extends JPanel implements FocusListener {
 	private JPasswordField pwField_re;
 	private JTextField txt_nickname;
 	private JTextField textField;
+	public JPanel picture_panel;
 	JLabel lbl_pw;
 	JLabel lbl_pw_re;
 	private JTextField txt_address;
 	private JTextField txt_tel;
+	public String jPath;
 	JLabel lbl_tel;
+	private JLabel lbl_icon;
 	private JTextField textField_1;
+	public SignUpDAO dao = new SignUpDAO();
+	public JLabel lbl_id_check;
 
 	/**
 	 * Create the panel.
@@ -72,7 +93,7 @@ public class SignUpWindow extends JPanel implements FocusListener {
 		id_separator.setBounds(77, 262, 316, 2);
 		panel_back_left.add(id_separator);
 
-		JLabel lbl_id_check = new JLabel("\uC774\uBBF8 \uC874\uC7AC\uD558\uB294 \uC774\uBA54\uC77C \uC8FC\uC18C\uC785\uB2C8\uB2E4.");
+		lbl_id_check = new JLabel("\uD544\uC218 \uC785\uB825 \uC694\uC18C \uC785\uB2C8\uB2E4.");
 		lbl_id_check.setForeground(new Color(255, 0, 0));
 		lbl_id_check.setFont(new Font("나눔고딕", Font.PLAIN, 14));
 		lbl_id_check.setBounds(77, 274, 265, 15);
@@ -83,7 +104,6 @@ public class SignUpWindow extends JPanel implements FocusListener {
 		lbl_pw.setFont(new Font("나눔고딕", Font.PLAIN, 14));
 		lbl_pw.setBounds(77, 311, 75, 15);
 		panel_back_left.add(lbl_pw);
-		
 
 		pwField = new JPasswordField();
 		pwField.setFont(new Font("나눔고딕", Font.PLAIN, 14));
@@ -98,7 +118,8 @@ public class SignUpWindow extends JPanel implements FocusListener {
 		pw_separator.setBounds(77, 338, 316, 2);
 		panel_back_left.add(pw_separator);
 
-		JLabel lbl_pw_check = new JLabel("\uBE44\uBC00\uBC88\uD638\uB294 8\uC790\uB9AC \uC774\uC0C1\uC774\uC5B4\uC57C\uD569\uB2C8\uB2E4.");
+		JLabel lbl_pw_check = new JLabel(
+				"\uBE44\uBC00\uBC88\uD638\uB294 8\uC790\uB9AC \uC774\uC0C1\uC774\uC5B4\uC57C\uD569\uB2C8\uB2E4.");
 		lbl_pw_check.setForeground(Color.RED);
 		lbl_pw_check.setFont(new Font("나눔고딕", Font.PLAIN, 14));
 		lbl_pw_check.setBounds(77, 350, 265, 15);
@@ -123,7 +144,8 @@ public class SignUpWindow extends JPanel implements FocusListener {
 		pw_re_separator.setBounds(77, 416, 316, 2);
 		panel_back_left.add(pw_re_separator);
 
-		JLabel lbl_pw_re_check = new JLabel("\uBE44\uBC00\uBC88\uD638\uAC00 \uC77C\uCE58\uD558\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4");
+		JLabel lbl_pw_re_check = new JLabel(
+				"\uBE44\uBC00\uBC88\uD638\uAC00 \uC77C\uCE58\uD558\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4");
 		lbl_pw_re_check.setForeground(Color.RED);
 		lbl_pw_re_check.setFont(new Font("나눔고딕", Font.PLAIN, 14));
 		lbl_pw_re_check.setBounds(77, 428, 265, 15);
@@ -144,13 +166,14 @@ public class SignUpWindow extends JPanel implements FocusListener {
 		nickname_separator.setBounds(77, 500, 316, 2);
 		panel_back_left.add(nickname_separator);
 
-		JLabel lbl_nickname_check = new JLabel("\uC774\uBBF8 \uC874\uC7AC\uD558\uB294 \uB2C9\uB124\uC784\uC785\uB2C8\uB2E4");
+		JLabel lbl_nickname_check = new JLabel(
+				"\uC774\uBBF8 \uC874\uC7AC\uD558\uB294 \uB2C9\uB124\uC784\uC785\uB2C8\uB2E4");
 		lbl_nickname_check.setForeground(Color.RED);
 		lbl_nickname_check.setFont(new Font("나눔고딕", Font.PLAIN, 14));
 		lbl_nickname_check.setBounds(77, 512, 265, 15);
 		panel_back_left.add(lbl_nickname_check);
-		
-		IntegerDocument  id = new IntegerDocument ();
+
+		IntegerDocument id = new IntegerDocument();
 		txt_address = new JTextField();
 		txt_address.setText("\uC8FC\uC18C");
 		txt_address.setForeground(Color.WHITE);
@@ -161,41 +184,39 @@ public class SignUpWindow extends JPanel implements FocusListener {
 		txt_address.setBounds(77, 549, 316, 21);
 		txt_address.addFocusListener(this);
 		panel_back_left.add(txt_address);
-		
-		
+
 		JSeparator address_separator = new JSeparator();
 		address_separator.setBounds(77, 580, 316, 2);
 		panel_back_left.add(address_separator);
-		
+
 		JPanel panel_back_right = new JPanel();
 		panel_back_right.setBackground(new Color(23, 35, 51));
 		panel_back_right.setBounds(548, 0, 1052, 900);
 		panel.add(panel_back_right);
 		panel_back_right.setLayout(null);
-		
+
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setBounds(0, 0, 1052, 900);
 		lblNewLabel.setIcon(new ImageIcon(SignUpWindow.class.getResource("/P5_Img/sample.jpg")));
 		panel_back_right.add(lblNewLabel);
-		
-				JLabel lbl_X = new JLabel("X");
-				lbl_X.setBounds(1024, 10, 16, 27);
-				panel_back_right.add(lbl_X);
-				lbl_X.addMouseListener(new MouseAdapter() {
-					public void mouseClicked(MouseEvent e) {
-						System.exit(0);
-					}
-				});
-				lbl_X.setForeground(Color.WHITE);
-				lbl_X.setFont(new Font("나눔고딕", Font.PLAIN, 14));
-		
+
+		JLabel lbl_X = new JLabel("X");
+		lbl_X.setBounds(1024, 10, 16, 27);
+		panel_back_right.add(lbl_X);
+		lbl_X.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent e) {
+				System.exit(0);
+			}
+		});
+		lbl_X.setForeground(Color.WHITE);
+		lbl_X.setFont(new Font("나눔고딕", Font.PLAIN, 14));
+
 		lbl_tel = new JLabel("\uC5F0\uB77D\uCC98");
 		lbl_tel.setForeground(Color.WHITE);
 		lbl_tel.setFont(new Font("나눔고딕", Font.PLAIN, 14));
 		lbl_tel.setBounds(77, 609, 75, 15);
 		panel_back_left.add(lbl_tel);
-	
-		
+
 		txt_tel = new JTextField();
 		txt_tel.setForeground(Color.WHITE);
 		txt_tel.setFont(new Font("나눔고딕", Font.PLAIN, 14));
@@ -206,11 +227,11 @@ public class SignUpWindow extends JPanel implements FocusListener {
 		txt_tel.setDocument(id);
 		txt_tel.addFocusListener(this);
 		panel_back_left.add(txt_tel);
-		
+
 		JSeparator tel_separator = new JSeparator();
 		tel_separator.setBounds(77, 636, 316, 2);
 		panel_back_left.add(tel_separator);
-		
+
 		textField_1 = new JTextField();
 		textField_1.setText("\uAD6C\uB2E8");
 		textField_1.setForeground(Color.WHITE);
@@ -220,38 +241,106 @@ public class SignUpWindow extends JPanel implements FocusListener {
 		textField_1.setBackground(new Color(23, 35, 51));
 		textField_1.setBounds(77, 678, 316, 21);
 		panel_back_left.add(textField_1);
-		
+
 		JSeparator separator = new JSeparator();
 		separator.setBounds(77, 709, 316, 2);
 		panel_back_left.add(separator);
-		
+
 		JButton btnNewButton = new JButton("\uAD6C\uB2E8\uCC3E\uAE30");
 		btnNewButton.setBounds(405, 676, 89, 23);
 		btnNewButton.setFont(new Font("맑은 고딕", Font.PLAIN, 12));
 		btnNewButton.setForeground(new Color(255, 255, 255));
 		btnNewButton.setBackground(new Color(71, 120, 197));
 		panel_back_left.add(btnNewButton);
-		
-		JPanel picture_panel = new JPanel();
+
+		picture_panel = new JPanel();
 		picture_panel.setBackground(new Color(255, 255, 255));
 		picture_panel.setBounds(77, 95, 100, 100);
-		
+
 		panel_back_left.add(picture_panel);
-		
+		SpringLayout sl_picture_panel = new SpringLayout();
+		picture_panel.setLayout(sl_picture_panel);
+
+		lbl_icon = new JLabel("");
+		sl_picture_panel.putConstraint(SpringLayout.NORTH, lbl_icon, 0, SpringLayout.NORTH, picture_panel);
+		sl_picture_panel.putConstraint(SpringLayout.WEST, lbl_icon, 0, SpringLayout.WEST, picture_panel);
+		sl_picture_panel.putConstraint(SpringLayout.SOUTH, lbl_icon, 100, SpringLayout.NORTH, picture_panel);
+		sl_picture_panel.putConstraint(SpringLayout.EAST, lbl_icon, 100, SpringLayout.WEST, picture_panel);
+		picture_panel.add(lbl_icon);
+
 		JButton btn_picutre = new JButton("\uC0AC\uC9C4\uCC3E\uAE30");
+		btn_picutre.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+
+				JFileChooser jfc = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
+				FileNameExtensionFilter ExtenseFilter = new FileNameExtensionFilter("이미지파일 ", "jpg", "gif", "png");
+
+				jfc.setFileFilter(ExtenseFilter);
+				int returnValue = jfc.showOpenDialog(null);
+				// int returnValue = jfc.showSaveDialog(null);
+
+				if (returnValue == JFileChooser.APPROVE_OPTION) {
+					File selectedFile = jfc.getSelectedFile();
+					System.out.println(selectedFile.getAbsolutePath());
+
+					boolean ExtensionOfFile = fileExtension.getfileExtension(selectedFile.getAbsolutePath());
+					System.out.println(ExtensionOfFile);
+					if (ExtensionOfFile) {
+
+						JOptionPane.showMessageDialog(null, "업로드완료");
+						jPath = selectedFile.getAbsolutePath();
+
+						SignUpDTO dto = new SignUpDTO();
+
+						dto.setMember_Img(jPath);
+						dto.getMember_Img();
+
+						lbl_icon.setIcon(new ImageIcon(dto.getMember_ResizeImg(100, 100)));
+
+					} else {
+						JOptionPane.showMessageDialog(null, "이미지 확장자를 넣어주세요 ");
+
+					}
+
+				} else {
+					JOptionPane.showMessageDialog(null, "파일을 선택하지 않았습니다", "경고", JOptionPane.WARNING_MESSAGE);
+				}
+			}
+
+		});
 		btn_picutre.setBounds(206, 172, 89, 23);
 		btn_picutre.setFont(new Font("맑은 고딕", Font.PLAIN, 12));
 		btn_picutre.setForeground(new Color(255, 255, 255));
 		btn_picutre.setBackground(new Color(71, 120, 197));
 		panel_back_left.add(btn_picutre);
-		
+
 		JButton button = new JButton("\uD655\uC778");
+
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				AddressToLocalCode L_Code = new AddressToLocalCode();
+				int member_LocalCode = L_Code.getLocalCode(txt_address.getText());
+				String textpassword = String.valueOf(pwField.getPassword());
+				System.out.println(textpassword);
+
+				SignUpDTO dto = new SignUpDTO(txt_id.getText(), 9999, txt_nickname.getText(), textpassword,
+						txt_tel.getText(), member_LocalCode, txt_address.getText(), jPath, 9999);
+				dao = new SignUpDAO();
+				int cnt = dao.join(dto);
+				if (cnt > 0) {
+					System.out.println("가입 성공");
+				} else {
+					System.out.println("가입 실패");
+				}
+			}
+		});
+
 		button.setForeground(Color.WHITE);
 		button.setFont(new Font("맑은 고딕", Font.PLAIN, 12));
 		button.setBackground(new Color(71, 120, 197));
 		button.setBounds(77, 761, 80, 35);
 		panel_back_left.add(button);
-		
+
 		JButton button_1 = new JButton("\uCDE8\uC18C");
 		button_1.setForeground(Color.WHITE);
 		button_1.setFont(new Font("맑은 고딕", Font.PLAIN, 12));
@@ -281,6 +370,25 @@ public class SignUpWindow extends JPanel implements FocusListener {
 	@Override
 	public void focusLost(FocusEvent e) {
 		// TODO Auto-generated method stub
+		if (e.getSource() == txt_id) {
+			System.out.println(txt_id.getText());
+			System.out.println(dao.isEmailJoin(txt_id.getText()));
+			System.out.println("중복값 확인할 아이디 : odd03@naver.com");
+
+			if (dao.isEmailJoin(txt_id.getText())) {
+				lbl_id_check.setForeground(Color.RED);
+
+				lbl_id_check.setText("이미 사용중인 아이디입니다. ");
+
+			} else if (!dao.isEmailJoin(txt_id.getText())) {
+				lbl_id_check.setForeground(Color.green);
+
+				lbl_id_check.setText("멋진아이디네요!!");
+			}
+		}
+		if (e.getSource() == pwField) {
+
+		}
 
 	}
 }

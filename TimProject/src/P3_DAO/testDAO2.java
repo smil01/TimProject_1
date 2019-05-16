@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 
 import P4_DTO.testDTO;
 
@@ -17,7 +16,7 @@ import P4_DTO.testDTO;
  *          메서드의 시작과 끝은 꼭 con()과 closs()를 넣을것
  * 
  */
-public class testDAO {
+public class testDAO2 {
 	private String sql;
 	private int cnt;
 	private Connection conn;
@@ -159,6 +158,5 @@ public class testDAO {
 
 		return result_dto;
 	}
-	
 
 }
