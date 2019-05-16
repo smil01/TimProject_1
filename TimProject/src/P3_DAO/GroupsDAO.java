@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import P4_DTO.GroupsDTO;
 
@@ -89,28 +90,45 @@ public class GroupsDAO {
 	}
 
 //	GroupsDTO gdto = new GroupsDTO(group_Code, group_Name, group_Tel, group_Img, group_LocalCode, group_Address, group_HomePage)
-	public void deleteGroups(GroupsDTO GroupsDTO) {
+	public void deleteGroups(GroupsDTO gdto) {
 		con();
-		
-		
+		sql = "delete from Groups where group_code = ? ";
+		try {
+			pst = conn.prepareStatement(sql);
+			pst.setInt(1, gdto.getGroup_Code());
+			int cnt = pst.executeUpdate();
+			if (cnt > 0) {
+				System.out.println("delete 성공");
+			} else {
+				System.out.println("delete 실패");
+			}
+
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		}
+
 	}
-	public int joinGroups(String tel, byte[] img, int localCode, String address, String homePage) { // DTO로 받으면 값을 넣지
-																									// 않으면 null이기때문에 db에
-																									// 자동으로 null이 들어감
+
+	public int joinGroups(GroupsDTO gdto) { // DTO로 받으면 값을 넣지
+											// 않으면 null이기때문에 db에
+											// 자동으로 null이 들어감
 		con();
 		// 정말 끔직하지만 꼭 insert문을 할때는 원래는 생략하였던 컬럼며을 다 기업하여 줄것, 반드시 전체 컬럼의 값을 insert하는 경우는
 		// 드물기 때문이다.
-		sql = "INSERT INTO Groups(Group_tel, Groups_Img, Groups_LocalCode, Group_Address, Group_Homepage)"
-				+ " VALUES(?,?,?,?,?)";
+		sql = "INSERT INTO Groups(group_code, group_name, group_tel, group_img, group_localcode, group_address, group_homepage)"
+				+ " VALUES(?, ?, ?, ?, ?, ?, ?)";
 
 		try {
 			pst = conn.prepareStatement(sql);
 
-			pst.setString(1, tel);
-			pst.setBytes(2, img);
-			pst.setInt(3, localCode);
-			pst.setString(4, address);
-			pst.setString(5, homePage);
+			pst.setInt(1, gdto.getGroup_Code());
+			pst.setString(2, gdto.getGroup_Name());
+			pst.setString(3, gdto.getGroup_Tel());
+			pst.setBytes(4, gdto.getGroup_Img());
+			pst.setInt(5, gdto.getGroup_LocalCode());
+			pst.setString(6, gdto.getGroup_Address());
+			pst.setString(7, gdto.getGroup_HomePage());
 
 			cnt = pst.executeUpdate();
 
@@ -123,5 +141,10 @@ public class GroupsDAO {
 		return cnt;
 	}
 
+	public void updateGroups(GroupsDTO gdto) {
+		deleteGroups(gdto);
+		joinGroups(gdto);
+
+	}
 
 }
