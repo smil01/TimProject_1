@@ -32,6 +32,20 @@ public class PlayerDTO {
 		Player_LocalCode = player_LocalCode;
 		Player_Address = player_Address;
 	}
+	
+	public PlayerDTO(int player_Code, int group_Code, String player_Name, String player_Tel, byte[] player_Img_bytes,
+			String player_Email, int player_LocalCode, String player_Address) {
+		super();
+		Player_Code = player_Code;
+		Group_Code = group_Code;
+		Player_Name = player_Name;
+		Player_Tel = player_Tel;
+		Player_Img_bytes = player_Img_bytes;
+		Player_Email = player_Email;
+		Player_LocalCode = player_LocalCode;
+		Player_Address = player_Address;
+	}
+	
 	public int getPlayer_Code() {
 		return Player_Code;
 	}
@@ -70,6 +84,9 @@ public class PlayerDTO {
 	public BufferedImage getPlayer_ResizeImg(int height, int width) {
 		BufferedImage img = ImgToResizeImg.getResizeImg(ByteToImg.getImg(Player_Img_bytes), height, width);
 		return img;
+	}
+	public void setPlayer_Img_Bytes(byte[] Player_Img_bytes) {
+		this.Player_Img_bytes =Player_Img_bytes;
 	}
 	public String getPlayer_Email() {
 		return Player_Email;

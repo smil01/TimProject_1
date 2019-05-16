@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 import P4_DTO.PlayerDTO;
 
@@ -54,7 +55,7 @@ public class PlayerDAO {
 		}
 	}
 
-	public int insertPlayer(PlayerDTO PlayerDTO) { // DTO로 받으면 값을 넣지 않으면 null이기때문에 db에 자동으로 null이 들어감
+	public int joinPlayer(PlayerDTO PlayerDTO) { // DTO로 받으면 값을 넣지 않으면 null이기때문에 db에 자동으로 null이 들어감
 		con();
 		// 정말 끔직하지만 꼭 insert문을 할때는 원래는 생략하였던 컬럼며을 다 기업하여 줄것, 반드시 전체 컬럼의 값을 insert하는 경우는
 		// 드물기 때문이다.
@@ -81,6 +82,85 @@ public class PlayerDAO {
 		close();
 
 		return cnt;
+	}
+
+	// 라이크~ 키워드 조회
+	public ArrayList<PlayerDTO> SearchPlayer(String player_name) {
+		con();
+
+		sql = "select * from player where player_name like  '%' || ? || '%'";
+		ArrayList<PlayerDTO> lplist = new ArrayList<PlayerDTO>();
+
+		try {
+			pst = conn.prepareStatement(sql);
+
+			pst.setString(1, player_name);
+
+			rs = pst.executeQuery();
+
+			while (rs.next()) {
+				lplist.add(new PlayerDTO(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getBytes(5),
+						rs.getString(6), rs.getInt(7), rs.getString(8)));
+
+			}
+			return lplist;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		close();
+		return null;
+	}
+
+	// 이름 조회
+	public ArrayList<PlayerDTO> SelectPlayer(int player_code) {
+		con();
+
+		sql = "select * from Player where Player_Code= ?";
+		ArrayList<PlayerDTO> plist = new ArrayList<PlayerDTO>();
+
+		try {
+			pst = conn.prepareStatement(sql);
+
+			pst.setInt(1, player_code);
+
+			rs = pst.executeQuery();
+
+			while (rs.next()) {
+				plist.add(new PlayerDTO(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getBytes(5),
+						rs.getString(6), rs.getInt(7), rs.getString(8)));
+
+			}
+			return plist;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		close();
+		return null;
+	}
+
+	// 전체 조회
+	public ArrayList<PlayerDTO> selectallPlayer() {
+		con();
+
+		sql = "select * from Player";
+		ArrayList<PlayerDTO> aplist = new ArrayList<PlayerDTO>();
+
+		try {
+			pst = conn.prepareStatement(sql);
+			rs = pst.executeQuery();
+			while (rs.next()) {
+				aplist.add(new PlayerDTO(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getBytes(5),
+						rs.getString(6), rs.getInt(7), rs.getString(8)));
+			}
+			return aplist;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		close();
+		return null;
 	}
 
 }

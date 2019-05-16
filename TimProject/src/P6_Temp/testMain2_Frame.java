@@ -7,6 +7,8 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.filechooser.FileSystemView;
 
+import P3_DAO.PlayerDAO;
+import P4_DTO.PlayerDTO;
 import P7_Util.AddressToLocalCode;
 
 import javax.swing.JButton;
@@ -16,6 +18,8 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.awt.event.ActionEvent;
 import javax.swing.JComboBox;
+import javax.swing.JPanel;
+import java.awt.CardLayout;
 
 public class testMain2_Frame {
 
@@ -26,6 +30,8 @@ public class testMain2_Frame {
 	private JTextField txt_Player_Address;
 	private JLabel lblNewLabel_4;
 	private JLabel label_1;
+	private JTextField txt_Player_Img;
+	private PlayerDAO pdao = new PlayerDAO();
 
 	/**
 	 * Launch the application.
@@ -55,7 +61,7 @@ public class testMain2_Frame {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 300);
+		frame.setBounds(100, 100, 636, 270);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 
@@ -90,23 +96,21 @@ public class testMain2_Frame {
 		lblNewLabel_3.setBounds(12, 84, 57, 15);
 		frame.getContentPane().add(lblNewLabel_3);
 
-		JButton btnNewButton = new JButton("New button");
-		btnNewButton.addActionListener(new ActionListener() {
+		JButton butt_FileSearch = new JButton("\uD30C\uC77C \uCC3E\uAE30");
+		butt_FileSearch.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JFileChooser jfc = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
 
 				int returnValue = jfc.showOpenDialog(null);
-				// int returnValue = jfc.showSaveDialog(null);
 
 				if (returnValue == JFileChooser.APPROVE_OPTION) {
 					File selectedFile = jfc.getSelectedFile();
-					System.out.println(selectedFile.getAbsolutePath());// 경로 스캐너 하기
-
+					txt_Player_Img.setText(selectedFile.getAbsolutePath());
 				}
 			}
 		});
-		btnNewButton.setBounds(87, 112, 97, 23);
-		frame.getContentPane().add(btnNewButton);
+		butt_FileSearch.setBounds(194, 116, 102, 15);
+		frame.getContentPane().add(butt_FileSearch);
 
 		txt_Player_Address = new JTextField();
 		txt_Player_Address.setBounds(77, 138, 116, 21);
@@ -114,7 +118,7 @@ public class testMain2_Frame {
 		txt_Player_Address.setColumns(10);
 
 		lblNewLabel_4 = new JLabel("\uC120\uC218\uC774\uBBF8\uC9C0");
-		lblNewLabel_4.setBounds(12, 116, 57, 15);
+		lblNewLabel_4.setBounds(12, 116, 76, 15);
 		frame.getContentPane().add(lblNewLabel_4);
 
 		label_1 = new JLabel("\uC8FC\uC18C");
@@ -124,10 +128,26 @@ public class testMain2_Frame {
 		JButton button = new JButton("\uC120\uC218\uB4F1\uB85D");
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				System.out.println(AddressToLocalCode.getLocalCode(txt_Player_Address.getText()));
+				int cnt = pdao.joinPlayer(new PlayerDTO(1, 1, txt_Player_Name.getText(), txt_Player_Tel.getText(),
+						txt_Player_Img.getText(), txt_Player_Email.getText(),
+						AddressToLocalCode.getLocalCode(txt_Player_Address.getText()), txt_Player_Address.getText()));
 			}
 		});
-		button.setBounds(63, 180, 97, 23);
+		button.setBounds(87, 169, 97, 23);
 		frame.getContentPane().add(button);
+
+		txt_Player_Img = new JTextField();
+		txt_Player_Img.setEditable(false);
+		txt_Player_Img.setBounds(77, 113, 116, 21);
+		frame.getContentPane().add(txt_Player_Img);
+		txt_Player_Img.setColumns(10);
+
+		JPanel panel = new JPanel();
+		panel.setBounds(306, 10, 302, 211);
+		frame.getContentPane().add(panel);
+		panel.setLayout(new CardLayout(0, 0));
+
+		JLabel image_Label = new JLabel("");
+		panel.add(image_Label, "name_59568161012900");
 	}
 }
