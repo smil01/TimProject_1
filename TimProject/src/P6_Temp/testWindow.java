@@ -1,35 +1,38 @@
-package P2_View;
+package P6_Temp;
 
 import java.awt.Button;
-import java.awt.CardLayout;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Font;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.awt.Graphics;
+import java.awt.GridLayout;
 
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JSeparator;
 import javax.swing.JTextField;
 
-import P3_DAO.loginDAO;
-import P4_DTO.loginDTO;
 import javazoom.jl.player.MP3Player;
 
-public class LoginWindow extends JPanel {
+import java.awt.CardLayout;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
+public class testWindow extends JPanel {
 	private JTextField txt_id;
 	private JPasswordField pwField;
 	private MP3Player mp3 = new MP3Player();
-	private loginDAO dao = new loginDAO();
 
 	/**
 	 * Create the panel.
 	 */
 
-	public LoginWindow() {
+	public testWindow() {
 		mp3.play("src/P7_Util/Champions_league.mp3");
 
 		setLayout(new CardLayout(0, 0));
@@ -46,7 +49,7 @@ public class LoginWindow extends JPanel {
 		JLabel lbl_img = new JLabel("");
 		lbl_img.setBounds(-368, -151, 1730, 1051);
 		panel_back_left.add(lbl_img);
-		lbl_img.setIcon(new ImageIcon(LoginWindow.class.getResource("/P5_Img/uefa.jpg")));
+		lbl_img.setIcon(new ImageIcon(testWindow.class.getResource("/P5_Img/uefa.jpg")));
 
 		JPanel panel_back_right = new JPanel();
 		panel_back_right.setBounds(1052, 0, 548, 900);
@@ -99,18 +102,11 @@ public class LoginWindow extends JPanel {
 		btn_sign_in.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				loginDTO dto = dao.Login(new loginDTO(txt_id.getText(), 1, null, String.valueOf(pwField.getPassword()),
-						null, null, null, null, 1));
-
-				if (dto == null) {
-					JOptionPane.showMessageDialog(null, "아이디 또는 비밀번호가 존재하지 않습니다.", "로그인 실패", JOptionPane.ERROR_MESSAGE);
-				} else {
-					if (mp3.isPlaying()) {
-						mp3.stop();
-					}
-					JOptionPane.showMessageDialog(null, "로그인에 성공했습니다..", "로그인 성공", JOptionPane.ERROR_MESSAGE);
+				if (mp3.isPlaying()) {
+					mp3.stop();
 				}
-
+				
+				
 			}
 		});
 

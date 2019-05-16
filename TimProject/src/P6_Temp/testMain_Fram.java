@@ -8,7 +8,9 @@ import java.awt.CardLayout;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
+import P3_DAO.loginDAO;
 import P3_DAO.testDAO;
+import P4_DTO.loginDTO;
 import P4_DTO.testDTO;
 import javax.swing.JTextField;
 import javax.swing.JButton;
@@ -18,8 +20,8 @@ import java.awt.event.ActionEvent;
 public class testMain_Fram {
 
 	private JFrame frame;
-	private JTextField text_id;
-	private JTextField text_pw;
+	private JTextField txt_id;
+	private JTextField txt_pw;
 
 	/**
 	 * Launch the application.
@@ -60,19 +62,19 @@ public class testMain_Fram {
 		label.setHorizontalAlignment(SwingConstants.CENTER);
 		frame.getContentPane().add(label);
 
-		text_id = new JTextField();
-		text_id.setBounds(52, 39, 155, 21);
-		frame.getContentPane().add(text_id);
-		text_id.setColumns(10);
+		txt_id = new JTextField();
+		txt_id.setBounds(52, 39, 155, 21);
+		frame.getContentPane().add(txt_id);
+		txt_id.setColumns(10);
 
 		JLabel lblId = new JLabel("ID");
 		lblId.setBounds(29, 42, 57, 15);
 		frame.getContentPane().add(lblId);
 
-		text_pw = new JTextField();
-		text_pw.setBounds(52, 70, 155, 21);
-		frame.getContentPane().add(text_pw);
-		text_pw.setColumns(10);
+		txt_pw = new JTextField();
+		txt_pw.setBounds(52, 70, 155, 21);
+		frame.getContentPane().add(txt_pw);
+		txt_pw.setColumns(10);
 
 		JLabel lblNewLabel = new JLabel("PW");
 		lblNewLabel.setBounds(29, 73, 57, 15);
@@ -80,9 +82,12 @@ public class testMain_Fram {
 
 		JButton button = new JButton("\uB85C\uADF8\uC778");
 		button.addActionListener(new ActionListener() {
+
 			public void actionPerformed(ActionEvent arg0) {
-				testDAO dao = new testDAO();
-				testDTO dto = dao.Login(new testDTO(text_id.getText(), 0, null, text_pw.getText(), null, null, null, null, 0));
+				loginDAO dao = new loginDAO();
+
+				loginDTO dto = dao
+						.Login(new loginDTO(txt_id.getText(), 0, null, txt_pw.getText(), null, null, null, null, 0));
 
 				if (dto == null) {
 					System.out.println("로그인실패");
