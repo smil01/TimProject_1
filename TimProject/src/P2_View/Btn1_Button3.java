@@ -17,13 +17,13 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.JScrollPane;
 import java.awt.Cursor;
 
-public class Btn1_Button2 extends JPanel {
+public class Btn1_Button3 extends JPanel {
 	private JTextField textField;
 
 	/**
 	 * Create the panel.
 	 */
-	public Btn1_Button2() {
+	public Btn1_Button3() {
 		setLayout(new CardLayout(0, 0));
 
 		JPanel Lobby_Panel = new JPanel();
@@ -116,7 +116,7 @@ public class Btn1_Button2 extends JPanel {
 
 		JLabel lblNewLabel_1 = new JLabel("");
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_1.setIcon(new ImageIcon(Btn1_Button2.class.getResource("/P5_Img/icons8_exit_32px.png")));
+		lblNewLabel_1.setIcon(new ImageIcon(Btn1_Button3.class.getResource("/P5_Img/icons8_exit_32px.png")));
 		ExitIconPanel.add(lblNewLabel_1, "name_58332631504300");
 
 		JPanel panel_1 = new JPanel();
@@ -147,7 +147,7 @@ public class Btn1_Button2 extends JPanel {
 		JLabel label = new JLabel("");
 		label.setBounds(0, 0, 32, 32);
 		label.setHorizontalAlignment(SwingConstants.CENTER);
-		label.setIcon(new ImageIcon(Btn1_Button2.class.getResource("/P5_Img/icons8_search_32px.png")));
+		label.setIcon(new ImageIcon(Btn1_Button3.class.getResource("/P5_Img/icons8_search_32px.png")));
 
 		SearchIconPanel.add(label);
 
@@ -233,7 +233,7 @@ public class Btn1_Button2 extends JPanel {
 		
 		JPanel PlayerStatButton = new JPanel();
 		PlayerStatButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		PlayerStatButton.setBackground(new Color(255, 255, 255,60));
+		PlayerStatButton.setBackground(new Color(71, 120, 197));
 		PlayerStatButton.setBounds(350, 0, 220, 105);
 		PlayerButtonPanel.add(PlayerStatButton);
 		PlayerStatButton.setLayout(null);
@@ -246,23 +246,24 @@ public class Btn1_Button2 extends JPanel {
 		lbl_PlayerStatButton.setBackground(Color.WHITE);
 		PlayerStatButton.add(lbl_PlayerStatButton);
 		
-		JPanel panel = new JPanel();
-		panel.setBounds(0, 98, 220, 7);
-		PlayerStatButton.add(panel);
-		
 		JPanel PlayerChart = new JPanel();
 		PlayerChart.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		PlayerChart.setBackground(new Color(71, 120, 197));
+		PlayerChart.setBackground(new Color(255, 255, 255,60));
 		PlayerChart.setBounds(570, 0, 220, 105);
 		PlayerButtonPanel.add(PlayerChart);
-		PlayerChart.setLayout(new CardLayout(0, 0));
+		PlayerChart.setLayout(null);
 		
 		JLabel lbl_PlayerChart = new JLabel("\uCC28\uD2B8\uBCF4\uAE30");
+		lbl_PlayerChart.setBounds(0, 0, 220, 105);
 		lbl_PlayerChart.setHorizontalAlignment(SwingConstants.CENTER);
 		lbl_PlayerChart.setForeground(Color.WHITE);
 		lbl_PlayerChart.setFont(new Font("KBIZÇÑ¸¶À½°íµñ H", Font.PLAIN, 20));
 		lbl_PlayerChart.setBackground(Color.WHITE);
-		PlayerChart.add(lbl_PlayerChart, "name_3777310714400");
+		PlayerChart.add(lbl_PlayerChart);
+		
+		JPanel panel = new JPanel();
+		panel.setBounds(0, 98, 220, 7);
+		PlayerChart.add(panel);
 		
 		JPanel PlayerMemoPanel = new JPanel();
 		PlayerMemoPanel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
