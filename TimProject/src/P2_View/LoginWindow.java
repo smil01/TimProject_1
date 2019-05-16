@@ -8,6 +8,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -24,12 +25,16 @@ public class LoginWindow extends JPanel {
 	private JPasswordField pwField;
 	private MP3Player mp3 = new MP3Player();
 	private loginDAO dao = new loginDAO();
+	private JFrame frame;
 
 	/**
 	 * Create the panel.
+	 * @param frame 
 	 */
 
-	public LoginWindow() {
+	public LoginWindow(JFrame frame) {
+		this.frame = frame;
+		
 		mp3.play("src/P7_Util/Champions_league.mp3");
 
 		setLayout(new CardLayout(0, 0));
@@ -108,7 +113,7 @@ public class LoginWindow extends JPanel {
 					if (mp3.isPlaying()) {
 						mp3.stop();
 					}
-					JOptionPane.showMessageDialog(null, "로그인에 성공했습니다..", "로그인 성공", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "로그인에 성공했습니다..", "로그인 성공", JOptionPane.CLOSED_OPTION);
 				}
 
 			}

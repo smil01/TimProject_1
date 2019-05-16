@@ -60,7 +60,7 @@ public class DefaultFrame {
             }
         });
 		
-		JPanel panel = new LoginWindow();
+		JPanel panel = new LoginWindow(frame);
 		frame.getContentPane().add(panel, "name_846404528803000");
 	}
 
