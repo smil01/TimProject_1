@@ -4,7 +4,9 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
+import P4_DTO.PlayerDTO;
 import P4_DTO.Player_TransferDTO;
 
 public class Player_TransferDAO {
@@ -78,27 +80,85 @@ public class Player_TransferDAO {
 	}
 
 	// 수락
-	public int transferOk(Player_TransferDTO dto) {
+	public int transferOk(int Player_Transfer_Code) {
 		con();
 
-		sql = "insert into PLAYER_TRANSFER(Player_Transfer_Code, Player_Code, Now_Group_Code, Transfer_Group_Code, Player_Transfer_State) VALUES (PLAYER_TRANSFER_SEQUENCE.nextval, ?, ?, ?, 0)";
-
 		try {
+			sql = "UPDATE PLAYER_TRANSFER SET Player_Transfer_State = 1 WHERE Player_Transfer_Code = ?";
 			pst = conn.prepareStatement(sql);
+			pst.setInt(1, Player_Transfer_Code);
+			cnt = pst.executeUpdate();
 
-			pst.setInt(1, dto.getPlayer_Code());
-			pst.setInt(2, dto.getNow_Group_Code());
-			pst.setInt(3, dto.getTransfer_Group_Code());
+			if (cnt == 0) {
+				return cnt;
+			} else {
+				close();
+				con();
+			}
 
+			sql = "UPDATE PLAYER SET GROUP_CODE = (select TRANSFER_GROUP_CODE from PLAYER_TRANSFER where PLAYER_TRANSFER_CODE = ?) WHERE PLAYER_CODE = (select PLAYER_CODE from PLAYER_TRANSFER where PLAYER_TRANSFER_CODE = ?)";
+			pst = conn.prepareStatement(sql);
+			pst.setInt(1, Player_Transfer_Code);
+			pst.setInt(2, Player_Transfer_Code);
 			cnt = pst.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
 		close();
-
 		return cnt;
 	}
-	
-	
+
+	// 이적 신청 대기중 선수목록
+	public ArrayList<PlayerDTO> transferTo(int GROUP_CODE) {
+		con();
+
+		ArrayList<PlayerDTO> list = new ArrayList<PlayerDTO>();
+
+		try {
+			sql = "select * from PLAYER where PLAYER_CODE = (select PLAYER_CODE from PLAYER_TRANSFER where NOW_GROUP_CODE = ? and PLAYER_TRANSFER_STATE = 0)";
+
+			pst = conn.prepareStatement(sql);
+			pst.setInt(1, GROUP_CODE);
+
+			rs = pst.executeQuery();
+
+			while (rs.next()) {
+				list.add(new PlayerDTO(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getBytes(5),
+						rs.getString(6), rs.getInt(7), rs.getString(8)));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		close();
+		return list;
+	}
+
+	// 이적 수락 대기중 선수목록
+	public ArrayList<PlayerDTO> transferFrome(int GROUP_CODE) {
+		con();
+
+		ArrayList<PlayerDTO> list = new ArrayList<PlayerDTO>();
+
+		try {
+			sql = "select * from PLAYER where PLAYER_CODE = (select PLAYER_CODE from PLAYER_TRANSFER where TRANSFER_GROUP_CODE = ? and PLAYER_TRANSFER_STATE = 0)";
+
+			pst = conn.prepareStatement(sql);
+			pst.setInt(1, GROUP_CODE);
+
+			rs = pst.executeQuery();
+
+			while (rs.next()) {
+				list.add(new PlayerDTO(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getBytes(5),
+						rs.getString(6), rs.getInt(7), rs.getString(8)));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		close();
+		return list;
+	}
+
 }
