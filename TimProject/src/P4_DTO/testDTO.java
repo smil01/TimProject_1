@@ -23,7 +23,7 @@ public class testDTO {
 	private String Member_Pw; // 원래 비밀번호
 	private String Member_Pw_SHA256; // 암호화된 비밀번호 , getMember_Pw와 setMember_Pw 꼭 잘봐둘것
 	private String Member_Tel;
-	private String Member_LocalCode;
+	private int Member_LocalCode;
 	private String Member_Address;
 	private String Member_Img; // dto에 넣는건 이미지 경로로
 	private byte[] Member_Img_bytes; // 빼는건 이미즈를 byte화 이유는 db에 넣으려면 바이트화함 getMember_Img()과 setMember_Img을 자세히 볼것
@@ -34,7 +34,7 @@ public class testDTO {
 	}
 
 	public testDTO(String member_Email, int group_Code, String member_Nickname, String member_Pw, String member_Tel,
-			String member_LocalCode, String member_Address, String member_Img, int view_Power) {
+			int member_LocalCode, String member_Address, String member_Img, int view_Power) {
 		Member_Email = member_Email;
 		Group_Code = group_Code;
 		Member_Nickname = member_Nickname;
@@ -87,11 +87,11 @@ public class testDTO {
 		Member_Tel = member_Tel;
 	}
 
-	public String getMember_LocalCode() {
+	public int getMember_LocalCode() {
 		return Member_LocalCode;
 	}
 
-	public void setMember_LocalCode(String member_LocalCode) {
+	public void setMember_LocalCode(int member_LocalCode) {
 		Member_LocalCode = member_LocalCode;
 	}
 
@@ -104,7 +104,9 @@ public class testDTO {
 	}
 
 	public byte[] getMember_Img() { // DB로 저장하기 위해 이미지 경로를 받아서 경로에 이미지 파일을 byte배열로 변환
-		Member_Img_bytes = ImgToByte.getByte(Member_Img); // 클래스 생성없이 사용할 수 있는 해당 메서드가 static이여서, P7_Util에 있음
+		if (Member_Img != null) {
+			Member_Img_bytes = ImgToByte.getByte(Member_Img); // 클래스 생성없이 사용할 수 있는 해당 메서드가 static이여서, P7_Util에 있음
+		}
 		return Member_Img_bytes;
 	}
 

@@ -106,7 +106,7 @@ public class LoginWindow extends JPanel {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				loginDTO dto = dao.Login(new loginDTO(txt_id.getText(), 1, null, String.valueOf(pwField.getPassword()),
-						null, null, null, null, 1));
+						null, 1, null, null, 1));
 
 				if (dto == null) {
 					JOptionPane.showMessageDialog(null, "아이디 또는 비밀번호가 존재하지 않습니다.", "로그인 실패", JOptionPane.ERROR_MESSAGE);

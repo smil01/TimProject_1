@@ -87,7 +87,7 @@ public class testMain_Fram {
 				loginDAO dao = new loginDAO();
 
 				loginDTO dto = dao
-						.Login(new loginDTO(txt_id.getText(), 0, null, txt_pw.getText(), null, null, null, null, 0));
+						.Login(new loginDTO(txt_id.getText(), 0, null, txt_pw.getText(), null, 1, null, null, 0));
 
 				if (dto == null) {
 					System.out.println("로그인실패");

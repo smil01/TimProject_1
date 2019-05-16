@@ -109,7 +109,7 @@ public class testDAO {
 			pst.setString(3, testDTO.getMember_Nickname());
 			pst.setString(4, testDTO.getMember_Pw());
 			pst.setString(5, testDTO.getMember_Tel());
-			pst.setString(6, testDTO.getMember_LocalCode());
+			pst.setInt(6, testDTO.getMember_LocalCode());
 			pst.setString(7, testDTO.getMember_Address());
 			pst.setBytes(8, testDTO.getMember_Img()); // 이미지는 byte배열이기 때문에 Bytes
 			pst.setInt(9, testDTO.getView_Power());
@@ -146,7 +146,7 @@ public class testDAO {
 				result_dto.setMember_Nickname(rs.getString(3));
 				result_dto.setMember_Pw(rs.getString(4));
 				result_dto.setMember_Tel(rs.getString(5));
-				result_dto.setMember_LocalCode(rs.getString(6));
+				result_dto.setMember_LocalCode(rs.getInt(6));
 				result_dto.setMember_Address(rs.getString(7));
 				result_dto.setMember_Img_bytes(rs.getBytes(8));
 				result_dto.setView_Power(rs.getInt(9));

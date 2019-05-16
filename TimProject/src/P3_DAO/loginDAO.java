@@ -85,7 +85,7 @@ public class loginDAO {
 				result_dto.setMember_Nickname(rs.getString(3));
 				result_dto.setMember_Pw(rs.getString(4));
 				result_dto.setMember_Tel(rs.getString(5));
-				result_dto.setMember_LocalCode(rs.getString(6));
+				result_dto.setMember_LocalCode(rs.getInt(6));
 				result_dto.setMember_Address(rs.getString(7));
 				result_dto.setMember_Img_bytes(rs.getBytes(8));
 				result_dto.setView_Power(rs.getInt(9));
