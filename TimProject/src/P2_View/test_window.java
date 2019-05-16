@@ -9,6 +9,7 @@ import java.awt.event.MouseMotionAdapter;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JLabel;
 
 public class test_window {
 
@@ -61,8 +62,11 @@ public class test_window {
             }
         });
 		
-		JPanel panel = new Lobby();
+		JPanel panel = new JoinWindow();
 		frame.getContentPane().add(panel, "name_846404528803000");
+		
+		JLabel lblNewLabel = new JLabel("New label");
+		panel.add(lblNewLabel, "name_1120751880100");
 	}
 
 }
