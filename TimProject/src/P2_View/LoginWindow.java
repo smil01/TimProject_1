@@ -29,12 +29,13 @@ public class LoginWindow extends JPanel {
 
 	/**
 	 * Create the panel.
-	 * @param frame 
+	 * 
+	 * @param frame
 	 */
 
 	public LoginWindow(JFrame frame) {
 		this.frame = frame;
-		
+
 		mp3.play("src/P7_Util/Champions_league.mp3");
 
 		setLayout(new CardLayout(0, 0));
@@ -113,7 +114,16 @@ public class LoginWindow extends JPanel {
 					if (mp3.isPlaying()) {
 						mp3.stop();
 					}
+					// 이동할 판넬 생성과 판넬에게 전달해 줄 frame과 데이터
 					JPanel lobby = new Lobby(frame, dto);
+
+					// 프레임속 기존의 판넬을 삭제
+					frame.getContentPane().removeAll();
+					// 새로운 로비 판넬 삽입
+					frame.add(lobby);
+					// 그뒤 필요한 먼가의 과정
+					frame.revalidate();
+					frame.repaint();
 				}
 
 			}
