@@ -2,6 +2,7 @@ package P2_View;
 
 import java.awt.CardLayout;
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -10,12 +11,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
-import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.JScrollPane;
-import java.awt.Cursor;
 
 public class Btn1_Button2 extends JPanel {
 	private JTextField textField;
@@ -306,6 +303,11 @@ public class Btn1_Button2 extends JPanel {
 		JPanel panel_4 = new JPanel();
 		panel_4.setBounds(1048, 10, 250, 250);
 		StatViewPanel.add(panel_4);
+		
+		JLabel lblNewLabel_4 = new JLabel("Player Statics");
+		lblNewLabel_4.setFont(new Font("Dusha V5", Font.PLAIN, 20));
+		lblNewLabel_4.setBounds(52, 215, 196, 56);
+		StatViewPanel.add(lblNewLabel_4);
 
 	}
 }

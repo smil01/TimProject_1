@@ -285,6 +285,10 @@ public class Btn1_Button1 extends JPanel {
 		panel.setLayout(null);
 
 		table = new JTable();
+		table.setShowVerticalLines(false);
+		table.setBorder(null);
+		table.setRowHeight(40);
+		table.setGridColor(Color.BLACK);
 		table.setModel(new DefaultTableModel(
 				new Object[][] { { null, null, null, null, null, null }, { null, null, null, null, null, null },
 						{ null, null, null, null, null, null }, { null, null, null, null, null, null },
@@ -308,8 +312,8 @@ public class Btn1_Button1 extends JPanel {
 		table.getTableHeader().setBackground(new Color(120, 168, 252));
 		table.getTableHeader().setForeground(new Color(255, 255, 255));
 		table.setSelectionBackground(new Color(232, 57, 95));
-		table.setRowHeight(50);
 		table.setBounds(35, 10, 1189, 738);
+
 
 		JScrollPane scrollPane = new JScrollPane(table);
 		scrollPane.setBounds(12, 10, 1296, 738);
