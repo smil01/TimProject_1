@@ -305,7 +305,7 @@ public class Btn1_Button3 extends JPanel {
 		lbl_PlayerStatButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				JPanel Stn1_Button2 = new Btn1_Button2(frame, dto);
+				JPanel Stn1_Button2 = new Btn1_Button2(frame, dto, 0);
 				frame.getContentPane().removeAll();
 				frame.getContentPane().add(Stn1_Button2);
 				frame.revalidate();
@@ -461,7 +461,7 @@ public class Btn1_Button3 extends JPanel {
 
 		ArrayList<Player_FootballDTO> array = new ArrayList<>();
 		Player_FootballDAO fdao = new Player_FootballDAO();
-		array = fdao.Player_Football(9999); // 풋볼코드를 안에 값으로 수정해야함!!!
+		array = fdao.SelectPlayer_Football(9999); // 풋볼코드를 안에 값으로 수정해야함!!!
 		PolylineBarChart demo = new PolylineBarChart();
 		ChartDAO cdao = new ChartDAO();
 		JFreeChart chart = cdao.getChart_Football(array);
