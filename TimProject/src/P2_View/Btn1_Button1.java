@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -16,6 +17,9 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableModel;
 
+import P3_DAO.PlayerDAO;
+import P4_DTO.PlayerDTO;
+import P4_DTO.listAllDTO;
 import P4_DTO.loginDTO;
 
 import javax.swing.JScrollPane;
@@ -26,6 +30,7 @@ public class Btn1_Button1 extends JPanel {
 	private JTable table;
 	private loginDTO dto;
 	private JFrame frame;
+	private PlayerDAO dao = new PlayerDAO();
 
 	/**
 	 * Create the panel.
@@ -371,13 +376,13 @@ public class Btn1_Button1 extends JPanel {
 		lbl_PlayerMemo.setForeground(Color.WHITE);
 		lbl_PlayerMemo.setFont(new Font("KBIZ한마음고딕 H", Font.PLAIN, 20));
 		lbl_PlayerMemo.setBackground(Color.WHITE);
-		
+
 		JPanel SetStatPanel = new JPanel();
 		SetStatPanel.setBackground(new Color(71, 120, 197));
 		SetStatPanel.setBounds(1010, 0, 220, 105);
 		PlayerButtonPanel.add(SetStatPanel);
 		SetStatPanel.setLayout(new CardLayout(0, 0));
-		
+
 		JLabel lbl_SetStat = new JLabel("\uC2A4\uD0EF\uB4F1\uB85D");
 		lbl_SetStat.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		lbl_SetStat.addMouseListener(new MouseAdapter() {
@@ -403,31 +408,33 @@ public class Btn1_Button1 extends JPanel {
 		Lobby_Panel.add(panel);
 		panel.setLayout(null);
 
+		ArrayList<listAllDTO> list = dao.selectGudanPlayerAbility(dto.getGroup_Code());
+
+		String column[] = { "선수번호", "이름", "스피드", "슛", "패스", "드리볼", "수비", "성별", "나이", "키", "몸무게", "왼발", "오른발" };
+		Object[][] content = new Object[list.size()][column.length];
+
+		for (int i = 0; i < content.length; i++) {
+			content[i][0] = list.get(i).getPlayer_Code();
+			content[i][1] = list.get(i).getPlayer_Name();
+			content[i][2] = list.get(i).getPlayer_Football_Speed();
+			content[i][3] = list.get(i).getPlayer_Football_Shoot();
+			content[i][4] = list.get(i).getPlayer_Football_Pass();
+			content[i][5] = list.get(i).getPlayer_Football_Dribol();
+			content[i][6] = list.get(i).getPlayer_Football_Defense();
+			content[i][7] = list.get(i).getPlayer_Physical_Sex();
+			content[i][8] = list.get(i).getPlayer_Physical_Age();
+			content[i][9] = list.get(i).getPlayer_Physical_Height();
+			content[i][10] = list.get(i).getPlayer_Physical_Weight();
+			content[i][11] = list.get(i).getPlayer_Physical_LeftFoot();
+			content[i][12] = list.get(i).getPlayer_Physical_RightFoot();
+		}
+
 		table = new JTable();
 		table.setShowVerticalLines(false);
 		table.setBorder(null);
 		table.setRowHeight(40);
 		table.setGridColor(Color.BLACK);
-		table.setModel(new DefaultTableModel(
-				new Object[][] { { null, null, null, null, null, null }, { null, null, null, null, null, null },
-						{ null, null, null, null, null, null }, { null, null, null, null, null, null },
-						{ null, null, null, null, null, null }, { null, null, null, null, null, null },
-						{ null, null, null, null, null, null }, { null, null, null, null, null, null },
-						{ null, null, null, null, null, null }, { null, null, null, null, null, null },
-						{ null, null, null, null, null, null }, { null, null, null, null, null, null },
-						{ null, null, null, null, null, null }, { null, null, null, null, null, null },
-						{ null, null, null, null, null, null }, { null, null, null, null, null, null },
-						{ null, null, null, null, null, null }, { null, null, null, null, null, null },
-						{ null, null, null, null, null, null }, { null, null, null, null, null, null },
-						{ null, null, null, null, null, null }, { null, null, null, null, null, null },
-						{ null, null, null, null, null, null }, { null, null, null, null, null, null },
-						{ null, null, null, null, null, null }, { null, null, null, null, null, null },
-						{ null, null, null, null, null, null }, { null, null, null, null, null, null },
-						{ null, null, null, null, null, null }, { null, null, null, null, null, null },
-						{ null, null, null, null, null, null }, { null, null, null, null, null, null },
-						{ null, null, null, null, null, null }, { null, null, null, null, null, null },
-						{ null, null, null, null, null, null }, },
-				new String[] { "New column", "New column", "New column", "New column", "New column", "New column" }));
+		table.setModel(new DefaultTableModel(content, column));
 		table.getTableHeader().setBackground(new Color(120, 168, 252));
 		table.getTableHeader().setForeground(new Color(255, 255, 255));
 		table.setSelectionBackground(new Color(232, 57, 95));

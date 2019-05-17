@@ -11,14 +11,9 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
-import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
-import javax.swing.table.DefaultTableModel;
-
 import P4_DTO.loginDTO;
-
-import javax.swing.JScrollPane;
 import java.awt.Cursor;
 
 public class Btn1_Button3 extends JPanel {
@@ -29,9 +24,9 @@ public class Btn1_Button3 extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public Btn1_Button3(JFrame frame,loginDTO dto) {
+	public Btn1_Button3(JFrame frame, loginDTO dto) {
 		this.frame = frame;
-		this.dto=dto;
+		this.dto = dto;
 		setLayout(new CardLayout(0, 0));
 
 		JPanel Lobby_Panel = new JPanel();
@@ -52,7 +47,7 @@ public class Btn1_Button3 extends JPanel {
 
 		JLabel lbl_program_name = new JLabel(
 				"\uC720\uC18C\uB144\uCD95\uAD6C \uC131\uC7A5\uAD00\uB9AC \uD504\uB85C\uADF8\uB7A8");
-		
+
 		lbl_program_name.setHorizontalAlignment(SwingConstants.CENTER);
 		lbl_program_name.setFont(new Font("고양체", Font.PLAIN, 20));
 		lbl_program_name.setForeground(new Color(255, 255, 255));
@@ -90,15 +85,15 @@ public class Btn1_Button3 extends JPanel {
 		btn_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				JPanel Stn1_Button1 = new Btn1_Button1(frame,dto);	
-				frame.getContentPane().removeAll();	
+				JPanel Stn1_Button1 = new Btn1_Button1(frame, dto);
+				frame.getContentPane().removeAll();
 				frame.getContentPane().add(Stn1_Button1);
 				frame.revalidate();
 				frame.repaint();
 			}
 		});
 		btn_1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		btn_1.setBackground(new Color(255, 255, 255,20));
+		btn_1.setBackground(new Color(255, 255, 255, 20));
 		btn_1.setBounds(0, 361, 300, 80);
 		LeftLobbyPanel.add(btn_1);
 		btn_1.setLayout(null);
@@ -201,8 +196,8 @@ public class Btn1_Button3 extends JPanel {
 		lbl_btn2.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				JPanel Stn2_Button1 = new Btn2_Button1(frame,dto);	
-				frame.getContentPane().removeAll();	
+				JPanel Stn2_Button1 = new Btn2_Button1(frame, dto);
+				frame.getContentPane().removeAll();
 				frame.getContentPane().add(Stn2_Button1);
 				frame.revalidate();
 				frame.repaint();
@@ -217,8 +212,8 @@ public class Btn1_Button3 extends JPanel {
 		btn_3.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				JPanel Stn3_Button1 = new Btn3_Button1(frame,dto);	
-				frame.getContentPane().removeAll();	
+				JPanel Stn3_Button1 = new Btn3_Button1(frame, dto);
+				frame.getContentPane().removeAll();
 				frame.getContentPane().add(Stn3_Button1);
 				frame.revalidate();
 				frame.repaint();
@@ -229,8 +224,6 @@ public class Btn1_Button3 extends JPanel {
 		btn_3.setBackground(new Color(41, 57, 80));
 		btn_3.setBounds(0, 517, 300, 80);
 		LeftLobbyPanel.add(btn_3);
-		
-		
 
 		JLabel lbl_btn3 = new JLabel("\uAD6C\uB2E8\uBAA9\uB85D");
 		lbl_btn3.setForeground(Color.WHITE);
@@ -249,8 +242,8 @@ public class Btn1_Button3 extends JPanel {
 		lbl_btn4.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				JPanel Stn4_Button1 = new Btn4_Button1(frame,dto);	
-				frame.getContentPane().removeAll();	
+				JPanel Stn4_Button1 = new Btn4_Button1(frame, dto);
+				frame.getContentPane().removeAll();
 				frame.getContentPane().add(Stn4_Button1);
 				frame.revalidate();
 				frame.repaint();
@@ -273,13 +266,13 @@ public class Btn1_Button3 extends JPanel {
 		AllPlayerButton.setBounds(130, 0, 220, 105);
 		PlayerButtonPanel.add(AllPlayerButton);
 		AllPlayerButton.setLayout(null);
-		
+
 		JLabel lbl_AllPlayerButton = new JLabel("\uC804\uCCB4\uBCF4\uAE30");
 		lbl_AllPlayerButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				JPanel Stn1_Button1 = new Btn1_Button1(frame,dto);	
-				frame.getContentPane().removeAll();	
+				JPanel Stn1_Button1 = new Btn1_Button1(frame, dto);
+				frame.getContentPane().removeAll();
 				frame.getContentPane().add(Stn1_Button1);
 				frame.revalidate();
 				frame.repaint();
@@ -291,20 +284,20 @@ public class Btn1_Button3 extends JPanel {
 		lbl_AllPlayerButton.setFont(new Font("KBIZ한마음고딕 H", Font.PLAIN, 20));
 		lbl_AllPlayerButton.setBackground(new Color(255, 255, 255));
 		AllPlayerButton.add(lbl_AllPlayerButton);
-		
+
 		JPanel PlayerStatButton = new JPanel();
 		PlayerStatButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		PlayerStatButton.setBackground(new Color(71, 120, 197));
 		PlayerStatButton.setBounds(350, 0, 220, 105);
 		PlayerButtonPanel.add(PlayerStatButton);
 		PlayerStatButton.setLayout(null);
-		
+
 		JLabel lbl_PlayerStatButton = new JLabel("\uC120\uC218\uC2A4\uD0EF");
 		lbl_PlayerStatButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				JPanel Stn1_Button2 = new Btn1_Button2(frame,dto);	
-				frame.getContentPane().removeAll();	
+				JPanel Stn1_Button2 = new Btn1_Button2(frame, dto);
+				frame.getContentPane().removeAll();
 				frame.getContentPane().add(Stn1_Button2);
 				frame.revalidate();
 				frame.repaint();
@@ -316,32 +309,32 @@ public class Btn1_Button3 extends JPanel {
 		lbl_PlayerStatButton.setFont(new Font("KBIZ한마음고딕 H", Font.PLAIN, 20));
 		lbl_PlayerStatButton.setBackground(Color.WHITE);
 		PlayerStatButton.add(lbl_PlayerStatButton);
-		
+
 		JPanel PlayerChart = new JPanel();
 		PlayerChart.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		PlayerChart.setBackground(new Color(255, 255, 255,60));
+		PlayerChart.setBackground(new Color(255, 255, 255, 60));
 		PlayerChart.setBounds(570, 0, 220, 105);
 		PlayerButtonPanel.add(PlayerChart);
 		PlayerChart.setLayout(null);
-		
+
 		JLabel lbl_PlayerChart = new JLabel("\uCC28\uD2B8\uBCF4\uAE30");
 		lbl_PlayerChart.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				JPanel Stn1_Button3 = new Btn1_Button3(frame,dto);	
-				frame.getContentPane().removeAll();	
+				JPanel Stn1_Button3 = new Btn1_Button3(frame, dto);
+				frame.getContentPane().removeAll();
 				frame.getContentPane().add(Stn1_Button3);
 				frame.revalidate();
 				frame.repaint();
 			}
 		});
-		
+
 		JPanel SetStatPanel = new JPanel();
 		SetStatPanel.setBackground(new Color(71, 120, 197));
 		SetStatPanel.setBounds(1010, 0, 220, 105);
 		PlayerButtonPanel.add(SetStatPanel);
 		SetStatPanel.setLayout(new CardLayout(0, 0));
-		
+
 		JLabel lbl_SetStat = new JLabel("\uC2A4\uD0EF\uB4F1\uB85D");
 		lbl_SetStat.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		lbl_SetStat.addMouseListener(new MouseAdapter() {
@@ -360,31 +353,31 @@ public class Btn1_Button3 extends JPanel {
 		lbl_SetStat.setFont(new Font("KBIZ한마음고딕 H", Font.PLAIN, 20));
 		lbl_SetStat.setBackground(Color.WHITE);
 		SetStatPanel.add(lbl_SetStat, "name_10588236113000");
-		
+
 		lbl_PlayerChart.setBounds(0, 0, 220, 105);
 		lbl_PlayerChart.setHorizontalAlignment(SwingConstants.CENTER);
 		lbl_PlayerChart.setForeground(Color.WHITE);
 		lbl_PlayerChart.setFont(new Font("KBIZ한마음고딕 H", Font.PLAIN, 20));
 		lbl_PlayerChart.setBackground(Color.WHITE);
 		PlayerChart.add(lbl_PlayerChart);
-		
+
 		JPanel panel = new JPanel();
 		panel.setBounds(0, 98, 220, 7);
 		PlayerChart.add(panel);
-		
+
 		JPanel PlayerMemoPanel = new JPanel();
 		PlayerMemoPanel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		PlayerMemoPanel.setBackground(new Color(71, 120, 197));
 		PlayerMemoPanel.setBounds(790, 0, 220, 105);
 		PlayerButtonPanel.add(PlayerMemoPanel);
 		PlayerMemoPanel.setLayout(new CardLayout(0, 0));
-		
+
 		JLabel lbl_PlayerMemo = new JLabel("\uD3C9\uAC00\uBA54\uBAA8");
 		lbl_PlayerMemo.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				JPanel Stn1_Button4 = new Btn1_Button4(frame,dto);	
-				frame.getContentPane().removeAll();	
+				JPanel Stn1_Button4 = new Btn1_Button4(frame, dto);
+				frame.getContentPane().removeAll();
 				frame.getContentPane().add(Stn1_Button4);
 				frame.revalidate();
 				frame.repaint();
@@ -395,99 +388,99 @@ public class Btn1_Button3 extends JPanel {
 		lbl_PlayerMemo.setForeground(Color.WHITE);
 		lbl_PlayerMemo.setFont(new Font("KBIZ한마음고딕 H", Font.PLAIN, 20));
 		lbl_PlayerMemo.setBackground(Color.WHITE);
-		
+
 		JPanel panel_2 = new JPanel();
 		panel_2.setLayout(null);
 		panel_2.setBackground(Color.WHITE);
 		panel_2.setBounds(280, 104, 1320, 796);
 		Lobby_Panel.add(panel_2);
-		
+
 		JPanel panel_3 = new JPanel();
 		panel_3.setBounds(90, 50, 180, 180);
 		panel_2.add(panel_3);
 		panel_3.setLayout(new CardLayout(0, 0));
-		
+
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setIcon(new ImageIcon(Btn1_Button3.class.getResource("/P5_Img/uefa.jpg")));
 		panel_3.add(lblNewLabel, "name_4633110137300");
-		
+
 		JPanel panel_4 = new JPanel();
 		panel_4.setBackground(Color.WHITE);
 		panel_4.setBounds(886, 50, 230, 230);
 		panel_2.add(panel_4);
 		panel_4.setLayout(new CardLayout(0, 0));
-		
+
 		JLabel lblNewLabel_3 = new JLabel("");
 		lblNewLabel_3.setIcon(new ImageIcon(Btn1_Button3.class.getResource("/P5_Img/sample.jpg")));
 		panel_4.add(lblNewLabel_3, "name_4636462341300");
-		
+
 		JPanel panel_5 = new JPanel();
 		panel_5.setBackground(Color.WHITE);
 		panel_5.setBounds(346, 50, 468, 230);
 		panel_2.add(panel_5);
 		panel_5.setLayout(null);
-		
+
 		JLabel lblNewLabel_4 = new JLabel("");
 		lblNewLabel_4.setBounds(0, 0, 468, 230);
 		lblNewLabel_4.setIcon(new ImageIcon(Btn1_Button3.class.getResource("/P5_Img/1-Line-Chart.png")));
 		lblNewLabel_4.setHorizontalAlignment(SwingConstants.LEFT);
 		panel_5.add(lblNewLabel_4);
-		
+
 		JLabel label_15 = new JLabel("\uC774\uAC15\uC778");
 		label_15.setForeground(Color.BLACK);
 		label_15.setFont(new Font("만화진흥원체", Font.PLAIN, 25));
 		label_15.setBounds(134, 240, 82, 45);
 		panel_2.add(label_15);
-		
+
 		JLabel label_16 = new JLabel("\uACF5\uACA9\uC218");
 		label_16.setForeground(Color.BLACK);
 		label_16.setFont(new Font("만화진흥원체", Font.PLAIN, 16));
 		label_16.setBounds(144, 287, 41, 19);
 		panel_2.add(label_16);
-		
+
 		JLabel label_18 = new JLabel("\uCD95\uAD6C \uB2A5\uB825");
 		label_18.setForeground(Color.BLACK);
 		label_18.setFont(new Font("만화진흥원체", Font.PLAIN, 25));
 		label_18.setBounds(90, 327, 139, 45);
 		panel_2.add(label_18);
-		
+
 		JPanel panel_6 = new JPanel();
 		panel_6.setBackground(new Color(255, 255, 255));
 		panel_6.setBounds(90, 382, 486, 334);
 		panel_2.add(panel_6);
 		panel_6.setLayout(null);
-		
+
 		JLabel lblNewLabel_5 = new JLabel("");
 		lblNewLabel_5.setIcon(new ImageIcon(Btn1_Button3.class.getResource("/P5_Img/piechart1.png")));
 		lblNewLabel_5.setBounds(28, 47, 100, 100);
 		panel_6.add(lblNewLabel_5);
-		
+
 		JLabel label_2 = new JLabel("");
 		label_2.setIcon(new ImageIcon(Btn1_Button3.class.getResource("/P5_Img/piechart1.png")));
 		label_2.setBounds(174, 47, 100, 100);
 		panel_6.add(label_2);
-		
+
 		JLabel label_3 = new JLabel("");
 		label_3.setIcon(new ImageIcon(Btn1_Button3.class.getResource("/P5_Img/piechart1.png")));
 		label_3.setBounds(325, 47, 100, 100);
 		panel_6.add(label_3);
-		
+
 		JLabel label_4 = new JLabel("");
 		label_4.setIcon(new ImageIcon(Btn1_Button3.class.getResource("/P5_Img/piechart1.png")));
 		label_4.setBounds(89, 182, 100, 100);
 		panel_6.add(label_4);
-		
+
 		JLabel label_5 = new JLabel("");
 		label_5.setIcon(new ImageIcon(Btn1_Button3.class.getResource("/P5_Img/piechart1.png")));
 		label_5.setBounds(253, 182, 100, 100);
 		panel_6.add(label_5);
-		
+
 		JPanel panel_7 = new JPanel();
 		panel_7.setBackground(new Color(255, 255, 255));
 		panel_7.setBounds(655, 382, 486, 334);
 		panel_2.add(panel_7);
 		panel_7.setLayout(new CardLayout(0, 0));
-		
+
 		JLabel lblL = new JLabel("l");
 		lblL.setIcon(new ImageIcon(Btn1_Button3.class.getResource("/P5_Img/1-Line-Chart.png")));
 		panel_7.add(lblL, "name_5162401964500");

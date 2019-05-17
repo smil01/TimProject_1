@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 
 import P4_DTO.PlayerDTO;
+import P4_DTO.listAllDTO;
 
 public class PlayerDAO {
 	private String sql;
@@ -161,6 +162,66 @@ public class PlayerDAO {
 		}
 
 		return null;
+	}
+
+	public ArrayList<PlayerDTO> selectGudanPlayera(int Group_Code) {
+		con();
+		sql = "select * from Player where Group_Code = ? ORDER BY PLAYER_CODE DESC";
+		ArrayList<PlayerDTO> aplist = new ArrayList<PlayerDTO>();
+
+		try {
+			pst = conn.prepareStatement(sql);
+			pst.setInt(1, Group_Code);
+
+			rs = pst.executeQuery();
+			while (rs.next()) {
+				aplist.add(new PlayerDTO(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getBytes(5),
+						rs.getString(6), rs.getInt(7), rs.getString(8)));
+			}
+			close();
+			return aplist;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return null;
+	}
+
+	public ArrayList<listAllDTO> selectGudanPlayerAbility(int Group_Code) {
+		ArrayList<PlayerDTO> list = selectGudanPlayera(Group_Code);
+
+		ArrayList<listAllDTO> result = new ArrayList<listAllDTO>();
+
+		for (int i = 0; i < list.size(); i++) {
+			con();
+
+			try {
+				sql = "select a.Player_Code, c.PLAYER_NAME, a.Player_Football_Speed, a.Player_Football_Shoot, a.Player_Football_Pass, a.Player_Football_Dribol, a.Player_Football_Defense, b.Player_Physical_Sex, b.Player_Physical_Age, b.Player_Physical_Height, b.Player_Physical_Weight, b.Player_Physical_LeftFoot, b.Player_Physical_RightFoot from "
+						+ "(select * from Player_Football where PLAYER_CODE = ? and 1 = ROWNUM ORDER BY PLAYER_FOOTBALL_CODE desc) a, "
+						+ "(select * from Player_Physical where PLAYER_CODE = ? and 1 = ROWNUM ORDER BY PLAYER_PHYSICAL_CODE desc) b, "
+						+ "(select * from PLAYER where PLAYER_CODE = ?) c";
+
+				pst = conn.prepareStatement(sql);
+
+				pst.setInt(1, list.get(i).getPlayer_Code());
+				pst.setInt(2, list.get(i).getPlayer_Code());
+				pst.setInt(3, list.get(i).getPlayer_Code());
+
+				rs = pst.executeQuery();
+
+				while (rs.next()) {
+					result.add(new listAllDTO(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getInt(4), rs.getInt(5),
+							rs.getInt(6), rs.getInt(7), rs.getInt(8), rs.getInt(9), rs.getInt(10), rs.getInt(11),
+							rs.getInt(12), rs.getInt(13)));
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+
+			close();
+		}
+
+		return result;
 	}
 
 }
