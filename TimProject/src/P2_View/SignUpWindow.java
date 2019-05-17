@@ -351,6 +351,17 @@ public class SignUpWindow extends JPanel implements FocusListener {
 		panel_back_left.add(button);
 
 		JButton button_1 = new JButton("\uCDE8\uC18C");
+		button_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JPanel LoginWindow = new LoginWindow(frame);
+				frame.getContentPane().removeAll();
+				frame.getContentPane().add(LoginWindow);
+				frame.revalidate();
+				frame.repaint();
+				
+				
+			}
+		});
 		
 		button_1.setForeground(Color.WHITE);
 		button_1.setFont(new Font("KBIZÇÑ¸¶À½°íµñ M", Font.PLAIN, 12));
