@@ -20,6 +20,7 @@ import javax.swing.filechooser.FileSystemView;
 
 import P3_DAO.SignUpDAO;
 import P3_DAO.testDAO;
+import P4_DTO.GroupsDTO;
 import P4_DTO.SignUpDTO;
 import P7_Util.AddressToLocalCode;
 import P7_Util.Emailcheck;
@@ -60,7 +61,7 @@ public class SignUpWindow extends JPanel implements FocusListener {
 	public JLabel lbl_pw_re_check ;
 	public int MembershipType_index;
 	public JLabel lbl_nickname_check ;
-	
+	public GroupsDTO result = new GroupsDTO();
 
 	/**
 	 * Create the panel.
@@ -260,6 +261,12 @@ public class SignUpWindow extends JPanel implements FocusListener {
 		panel_back_left.add(separator);
 
 		JButton btnNewButton = new JButton("\uAD6C\uB2E8\uCC3E\uAE30");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				Gudan_SearchModify gudan = new Gudan_SearchModify(textField_1, result);
+				gudan.setVisible(true);
+			}
+		});
 		
 		btnNewButton.setBounds(402, 661, 90, 25);
 		btnNewButton.setFont(new Font("KBIZ한마음고딕 M", Font.PLAIN, 12));
@@ -336,14 +343,14 @@ public class SignUpWindow extends JPanel implements FocusListener {
 				String textpassword = String.valueOf(pwField.getPassword());
 				System.out.println(textpassword);
 
-				SignUpDTO dto = new SignUpDTO(txt_id.getText(), 9999, txt_nickname.getText(), textpassword,
+				SignUpDTO dto = new SignUpDTO(txt_id.getText(), result.getGroup_Code(), txt_nickname.getText(), textpassword,
 						txt_tel.getText(), member_LocalCode, txt_address.getText(), jPath, MembershipType_index);
 				dao = new SignUpDAO();
 				int cnt = dao.join(dto);
 				if (cnt > 0) {
-					System.out.println("가입 성공");
+					System.out.println("가입 성공"); // 명성씨 작업 포인트
 				} else {
-					System.out.println("가입 실패");
+					JOptionPane.showMessageDialog(null, "입력된 정보를 확인해 주세요", "회원가입 실패", JOptionPane.ERROR_MESSAGE);
 				}
 			}
 		});
@@ -361,9 +368,7 @@ public class SignUpWindow extends JPanel implements FocusListener {
 				frame.getContentPane().removeAll();
 				frame.getContentPane().add(LoginWindow);
 				frame.revalidate();
-				frame.repaint();
-				
-				
+				frame.repaint();			
 			}
 		});
 		

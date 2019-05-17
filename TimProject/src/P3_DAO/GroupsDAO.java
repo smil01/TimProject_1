@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import P4_DTO.GroupsDTO;
 
@@ -57,11 +58,12 @@ public class GroupsDAO {
 		}
 	}
 
-	public GroupsDTO SelectGroups(String Group_Name) {
+	public ArrayList<GroupsDTO> SearchGroups(String Group_Name) {
 		con();
 
-		sql = "select * from Groups where Group_Name = ? ";
-		GroupsDTO result_dto = new GroupsDTO();
+		sql = "select * from Groups where Group_Name like '%'||?||'%' ";
+
+		ArrayList<GroupsDTO> list = new ArrayList<GroupsDTO>();
 
 		try {
 			pst = conn.prepareStatement(sql);
@@ -71,6 +73,7 @@ public class GroupsDAO {
 			rs = pst.executeQuery();
 
 			while (rs.next()) {
+				GroupsDTO result_dto = new GroupsDTO();
 				result_dto.setGroup_Code(rs.getInt(1));
 				result_dto.setGroup_Name(rs.getString(2));
 				result_dto.setGroup_Tel(rs.getString(3));
@@ -79,14 +82,45 @@ public class GroupsDAO {
 				result_dto.setGroup_Address(rs.getString(6));
 				result_dto.setGroup_HomePage(rs.getString(7));
 
+				list.add(result_dto);
 			}
-			return result_dto;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
 		close();
-		return null;
+		return list;
+	}
+
+	public ArrayList<GroupsDTO> selectAllGroups() {
+		con();
+
+		sql = "select * from Groups";
+
+		ArrayList<GroupsDTO> list = new ArrayList<GroupsDTO>();
+
+		try {
+			pst = conn.prepareStatement(sql);
+			rs = pst.executeQuery();
+
+			while (rs.next()) {
+				GroupsDTO result_dto = new GroupsDTO();
+				result_dto.setGroup_Code(rs.getInt(1));
+				result_dto.setGroup_Name(rs.getString(2));
+				result_dto.setGroup_Tel(rs.getString(3));
+				result_dto.setGroup_Img_Bytes(rs.getBytes(4));
+				result_dto.setGroup_LocalCode(rs.getInt(5));
+				result_dto.setGroup_Address(rs.getString(6));
+				result_dto.setGroup_HomePage(rs.getString(7));
+
+				list.add(result_dto);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		close();
+		return list;
 	}
 
 //	GroupsDTO gdto = new GroupsDTO(group_Code, group_Name, group_Tel, group_Img, group_LocalCode, group_Address, group_HomePage)
