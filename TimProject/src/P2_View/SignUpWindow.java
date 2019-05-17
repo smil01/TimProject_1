@@ -345,10 +345,18 @@ public class SignUpWindow extends JPanel implements FocusListener {
 
 				SignUpDTO dto = new SignUpDTO(txt_id.getText(), result.getGroup_Code(), txt_nickname.getText(), textpassword,
 						txt_tel.getText(), member_LocalCode, txt_address.getText(), jPath, MembershipType_index);
+				System.out.println(dto);
 				dao = new SignUpDAO();
 				int cnt = dao.join(dto);
 				if (cnt > 0) {
-					System.out.println("가입 성공"); // 명성씨 작업 포인트
+					JOptionPane.showMessageDialog(null, "회원가입에 성공하셨습니다.\n 로그인창으로 돌아갑니다.", "회원가입 성공", JOptionPane.PLAIN_MESSAGE);
+					JPanel LoginWindow = new LoginWindow(frame);
+					frame.getContentPane().removeAll();
+					frame.getContentPane().add(LoginWindow);
+					frame.revalidate();
+					frame.repaint();
+					
+					
 				} else {
 					JOptionPane.showMessageDialog(null, "입력된 정보를 확인해 주세요", "회원가입 실패", JOptionPane.ERROR_MESSAGE);
 				}
