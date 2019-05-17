@@ -65,6 +65,7 @@ public class Btn3_Button1 extends JPanel implements FocusListener {
 
 		JLabel lbl_program_name = new JLabel(
 				"\uC720\uC18C\uB144\uCD95\uAD6C \uC131\uC7A5\uAD00\uB9AC \uD504\uB85C\uADF8\uB7A8");
+		
 		lbl_program_name.setHorizontalAlignment(SwingConstants.CENTER);
 		lbl_program_name.setFont(new Font("°í¾çÃ¼", Font.PLAIN, 20));
 		lbl_program_name.setForeground(new Color(255, 255, 255));
@@ -237,7 +238,7 @@ public class Btn3_Button1 extends JPanel implements FocusListener {
 		btn_3.setBounds(0, 517, 300, 80);
 		LeftLobbyPanel.add(btn_3);
 		
-		JLabel lbl_btn3 = new JLabel("\uC774\uC801\uAD00\uB9AC");
+		JLabel lbl_btn3 = new JLabel("\uAD6C\uB2E8\uBAA9\uB85D");
 		lbl_btn3.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {

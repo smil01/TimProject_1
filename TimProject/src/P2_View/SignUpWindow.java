@@ -218,6 +218,11 @@ public class SignUpWindow extends JPanel implements FocusListener {
 		});
 		lbl_X.setForeground(Color.WHITE);
 		lbl_X.setFont(new Font("KBIZÇÑ¸¶À½°íµñ M", Font.PLAIN, 14));
+		
+		JLabel lblNewLabel = new JLabel("New label");
+		lblNewLabel.setIcon(new ImageIcon(SignUpWindow.class.getResource("/P5_Img/SignImg.jpg")));
+		lblNewLabel.setBounds(0, 0, 1052, 900);
+		panel_back_right.add(lblNewLabel);
 
 		lbl_tel = new JLabel("\uC5F0\uB77D\uCC98");
 		lbl_tel.setForeground(Color.WHITE);
@@ -290,7 +295,6 @@ public class SignUpWindow extends JPanel implements FocusListener {
 
 				if (returnValue == JFileChooser.APPROVE_OPTION) {
 					File selectedFile = jfc.getSelectedFile();
-					System.out.println(selectedFile.getAbsolutePath());
 
 					boolean ExtensionOfFile = fileExtension.getfileExtension(selectedFile.getAbsolutePath());
 					System.out.println(ExtensionOfFile);
@@ -379,7 +383,6 @@ public class SignUpWindow extends JPanel implements FocusListener {
 		comboBox.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				 MembershipType_index=comboBox.getSelectedIndex();
-				System.out.println(MembershipType_index);
 				
 			}
 		});
