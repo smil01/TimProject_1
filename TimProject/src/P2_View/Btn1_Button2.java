@@ -282,32 +282,269 @@ public class Btn1_Button2 extends JPanel {
 		StatViewPanel.setLayout(null);
 		
 		JPanel panel_2 = new JPanel();
-		panel_2.setBounds(52, 47, 100, 100);
+		panel_2.setBounds(90, 50, 180, 180);
 		StatViewPanel.add(panel_2);
 		panel_2.setLayout(new CardLayout(0, 0));
 		
 		JLabel lblNewLabel = new JLabel("\uC0AC\uC9C4");
+		lblNewLabel.setIcon(new ImageIcon(Btn1_Button2.class.getResource("/P5_Img/uefa.jpg")));
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		panel_2.add(lblNewLabel, "name_5083844218100");
 		
+		JPanel panel_4 = new JPanel();
+		panel_4.setBackground(new Color(255, 255, 255));
+		panel_4.setBounds(886, 50, 230, 230);
+		StatViewPanel.add(panel_4);
+		panel_4.setLayout(new CardLayout(0, 0));
+		
+		JLabel lblNewLabel_4 = new JLabel("\uC721\uAC01\uD615\uADF8\uB798\uD504");
+		lblNewLabel_4.setIcon(new ImageIcon(Btn1_Button2.class.getResource("/P5_Img/sample.jpg")));
+		lblNewLabel_4.setHorizontalAlignment(SwingConstants.CENTER);
+		panel_4.add(lblNewLabel_4, "name_2066955652100");
+		
 		JPanel panel_3 = new JPanel();
-		panel_3.setBounds(164, 47, 302, 100);
+		panel_3.setBackground(new Color(255, 255, 255));
+		panel_3.setBounds(345, 50, 468, 230);
 		StatViewPanel.add(panel_3);
 		panel_3.setLayout(null);
 		
-		JLabel lblNewLabel_3 = new JLabel("\uAE40\uCE58\uD604");
-		lblNewLabel_3.setFont(new Font("서울남산체 M", Font.PLAIN, 18));
-		lblNewLabel_3.setBounds(28, 20, 60, 33);
+		JLabel lblNewLabel_3 = new JLabel("\uB098\uC774");
+		lblNewLabel_3.setForeground(new Color(153, 153, 153));
+		lblNewLabel_3.setFont(new Font("만화진흥원체", Font.PLAIN, 16));
+		lblNewLabel_3.setBounds(12, 10, 48, 32);
 		panel_3.add(lblNewLabel_3);
 		
-		JPanel panel_4 = new JPanel();
-		panel_4.setBounds(1048, 10, 250, 250);
-		StatViewPanel.add(panel_4);
+		JLabel label_2 = new JLabel("25");
+		label_2.setForeground(new Color(189, 178, 137));
+		label_2.setFont(new Font("만화진흥원체", Font.PLAIN, 35));
+		label_2.setBounds(12, 52, 48, 32);
+		panel_3.add(label_2);
 		
-		JLabel lblNewLabel_4 = new JLabel("Player Statics");
-		lblNewLabel_4.setFont(new Font("Dusha V5", Font.PLAIN, 20));
-		lblNewLabel_4.setBounds(52, 215, 196, 56);
-		StatViewPanel.add(lblNewLabel_4);
+		JLabel label_3 = new JLabel("\uD0A4");
+		label_3.setForeground(new Color(153, 153, 153));
+		label_3.setFont(new Font("만화진흥원체", Font.PLAIN, 16));
+		label_3.setBounds(84, 10, 48, 32);
+		panel_3.add(label_3);
+		
+		JLabel lblCm = new JLabel("188.0CM");
+		lblCm.setForeground(new Color(189, 178, 137));
+		lblCm.setFont(new Font("만화진흥원체", Font.PLAIN, 35));
+		lblCm.setBounds(84, 52, 139, 32);
+		panel_3.add(lblCm);
+		
+		JLabel label_4 = new JLabel("\uBAB8\uBB34\uAC8C");
+		label_4.setForeground(new Color(153, 153, 153));
+		label_4.setFont(new Font("만화진흥원체", Font.PLAIN, 16));
+		label_4.setBounds(250, 10, 48, 32);
+		panel_3.add(label_4);
+		
+		JLabel lblkg = new JLabel("80KG");
+		lblkg.setForeground(new Color(189, 178, 137));
+		lblkg.setFont(new Font("만화진흥원체", Font.PLAIN, 35));
+		lblkg.setBounds(250, 52, 97, 32);
+		panel_3.add(lblkg);
+		
+		JLabel label_5 = new JLabel("\uC67C\uBC1C");
+		label_5.setForeground(new Color(153, 153, 153));
+		label_5.setFont(new Font("만화진흥원체", Font.PLAIN, 16));
+		label_5.setBounds(359, 10, 48, 32);
+		panel_3.add(label_5);
+		
+		JLabel label_6 = new JLabel("\uC624\uB978\uBC1C");
+		label_6.setForeground(new Color(153, 153, 153));
+		label_6.setFont(new Font("만화진흥원체", Font.PLAIN, 16));
+		label_6.setBounds(419, 10, 48, 32);
+		panel_3.add(label_6);
+		
+		JLabel label_7 = new JLabel("3");
+		label_7.setForeground(new Color(189, 178, 137));
+		label_7.setFont(new Font("만화진흥원체", Font.PLAIN, 35));
+		label_7.setBounds(359, 52, 48, 32);
+		panel_3.add(label_7);
+		
+		JLabel label_8 = new JLabel("5");
+		label_8.setForeground(new Color(189, 178, 137));
+		label_8.setFont(new Font("만화진흥원체", Font.PLAIN, 35));
+		label_8.setBounds(419, 52, 48, 32);
+		panel_3.add(label_8);
+		
+		JLabel label_34 = new JLabel("\uBD80\uC0C1\uAE30\uAC04");
+		label_34.setForeground(new Color(153, 153, 153));
+		label_34.setFont(new Font("만화진흥원체", Font.PLAIN, 16));
+		label_34.setBounds(12, 112, 60, 32);
+		panel_3.add(label_34);
+		
+		JLabel label_35 = new JLabel("20\uC77C");
+		label_35.setForeground(Color.BLACK);
+		label_35.setFont(new Font("만화진흥원체", Font.PLAIN, 16));
+		label_35.setBounds(12, 154, 48, 19);
+		panel_3.add(label_35);
+		
+		JLabel label_36 = new JLabel("\uBC1C\uBAA9 \uACE8\uC808");
+		label_36.setForeground(Color.BLACK);
+		label_36.setFont(new Font("만화진흥원체", Font.PLAIN, 16));
+		label_36.setBounds(87, 154, 367, 19);
+		panel_3.add(label_36);
+		
+		JLabel label_9 = new JLabel("\uC774\uAC15\uC778");
+		label_9.setForeground(new Color(0, 0, 0));
+		label_9.setFont(new Font("만화진흥원체", Font.PLAIN, 25));
+		label_9.setBounds(134, 240, 82, 45);
+		StatViewPanel.add(label_9);
+		
+		JLabel label_11 = new JLabel("\uACF5\uACA9\uC218");
+		label_11.setForeground(Color.BLACK);
+		label_11.setFont(new Font("만화진흥원체", Font.PLAIN, 16));
+		label_11.setBounds(144, 287, 41, 19);
+		StatViewPanel.add(label_11);
+		
+		JLabel label_10 = new JLabel("\uC120\uC218 \uC2A4\uD0EF");
+		label_10.setForeground(new Color(0, 0, 0));
+		label_10.setFont(new Font("만화진흥원체", Font.PLAIN, 35));
+		label_10.setBounds(90, 337, 139, 45);
+		StatViewPanel.add(label_10);
+		
+		JSeparator separator_1 = new JSeparator();
+		separator_1.setForeground(new Color(229, 229, 229));
+		separator_1.setBounds(90, 460, 994, 10);
+		StatViewPanel.add(separator_1);
+		
+		JLabel label_12 = new JLabel("\uCD95\uAD6C \uB2A5\uB825");
+		label_12.setForeground(Color.BLACK);
+		label_12.setFont(new Font("만화진흥원체", Font.PLAIN, 25));
+		label_12.setBounds(90, 405, 139, 45);
+		StatViewPanel.add(label_12);
+		
+		JLabel label_13 = new JLabel("\uC2A4\uD53C\uB4DC");
+		label_13.setForeground(new Color(153, 153, 153));
+		label_13.setFont(new Font("만화진흥원체", Font.PLAIN, 16));
+		label_13.setBounds(125, 522, 48, 32);
+		StatViewPanel.add(label_13);
+		
+		JLabel label_14 = new JLabel("25");
+		label_14.setForeground(new Color(189, 178, 137));
+		label_14.setFont(new Font("만화진흥원체", Font.PLAIN, 35));
+		label_14.setBounds(125, 480, 48, 32);
+		StatViewPanel.add(label_14);
+		
+		JLabel label_15 = new JLabel("25");
+		label_15.setForeground(new Color(189, 178, 137));
+		label_15.setFont(new Font("만화진흥원체", Font.PLAIN, 35));
+		label_15.setBounds(288, 480, 48, 32);
+		StatViewPanel.add(label_15);
+		
+		JLabel label_16 = new JLabel("\uC29B");
+		label_16.setForeground(new Color(153, 153, 153));
+		label_16.setFont(new Font("만화진흥원체", Font.PLAIN, 16));
+		label_16.setBounds(288, 522, 48, 32);
+		StatViewPanel.add(label_16);
+		
+		JLabel label_17 = new JLabel("25");
+		label_17.setForeground(new Color(189, 178, 137));
+		label_17.setFont(new Font("만화진흥원체", Font.PLAIN, 35));
+		label_17.setBounds(471, 480, 48, 32);
+		StatViewPanel.add(label_17);
+		
+		JLabel label_18 = new JLabel("\uD328\uC2A4");
+		label_18.setForeground(new Color(153, 153, 153));
+		label_18.setFont(new Font("만화진흥원체", Font.PLAIN, 16));
+		label_18.setBounds(471, 522, 48, 32);
+		StatViewPanel.add(label_18);
+		
+		JLabel label_19 = new JLabel("25");
+		label_19.setForeground(new Color(189, 178, 137));
+		label_19.setFont(new Font("만화진흥원체", Font.PLAIN, 35));
+		label_19.setBounds(677, 480, 48, 32);
+		StatViewPanel.add(label_19);
+		
+		JLabel label_20 = new JLabel("\uB4DC\uB9AC\uBE14");
+		label_20.setForeground(new Color(153, 153, 153));
+		label_20.setFont(new Font("만화진흥원체", Font.PLAIN, 16));
+		label_20.setBounds(677, 522, 48, 32);
+		StatViewPanel.add(label_20);
+		
+		JLabel label_21 = new JLabel("25");
+		label_21.setForeground(new Color(189, 178, 137));
+		label_21.setFont(new Font("만화진흥원체", Font.PLAIN, 35));
+		label_21.setBounds(879, 480, 48, 32);
+		StatViewPanel.add(label_21);
+		
+		JLabel label_22 = new JLabel("\uC218\uBE44");
+		label_22.setForeground(new Color(153, 153, 153));
+		label_22.setFont(new Font("만화진흥원체", Font.PLAIN, 16));
+		label_22.setBounds(879, 522, 48, 32);
+		StatViewPanel.add(label_22);
+		
+		JLabel label_23 = new JLabel("\uB300\uD68C \uC131\uC801");
+		label_23.setForeground(Color.BLACK);
+		label_23.setFont(new Font("만화진흥원체", Font.PLAIN, 25));
+		label_23.setBounds(90, 581, 139, 45);
+		StatViewPanel.add(label_23);
+		
+		JSeparator separator_2 = new JSeparator();
+		separator_2.setForeground(new Color(229, 229, 229));
+		separator_2.setBounds(90, 636, 994, 10);
+		StatViewPanel.add(separator_2);
+		
+		JLabel label_24 = new JLabel("25");
+		label_24.setForeground(new Color(189, 178, 137));
+		label_24.setFont(new Font("만화진흥원체", Font.PLAIN, 35));
+		label_24.setBounds(125, 656, 48, 32);
+		StatViewPanel.add(label_24);
+		
+		JLabel label_25 = new JLabel("\uACE8");
+		label_25.setForeground(new Color(153, 153, 153));
+		label_25.setFont(new Font("만화진흥원체", Font.PLAIN, 16));
+		label_25.setBounds(125, 698, 48, 32);
+		StatViewPanel.add(label_25);
+		
+		JLabel label_26 = new JLabel("25");
+		label_26.setForeground(new Color(189, 178, 137));
+		label_26.setFont(new Font("만화진흥원체", Font.PLAIN, 35));
+		label_26.setBounds(288, 656, 48, 32);
+		StatViewPanel.add(label_26);
+		
+		JLabel label_27 = new JLabel("\uC5B4\uC2DC\uC2A4\uD2B8");
+		label_27.setForeground(new Color(153, 153, 153));
+		label_27.setFont(new Font("만화진흥원체", Font.PLAIN, 16));
+		label_27.setBounds(288, 698, 60, 32);
+		StatViewPanel.add(label_27);
+		
+		JLabel label_28 = new JLabel("25");
+		label_28.setForeground(new Color(189, 178, 137));
+		label_28.setFont(new Font("만화진흥원체", Font.PLAIN, 35));
+		label_28.setBounds(471, 656, 48, 32);
+		StatViewPanel.add(label_28);
+		
+		JLabel label_29 = new JLabel("\uC720\uD6A8\uC29B");
+		label_29.setForeground(new Color(153, 153, 153));
+		label_29.setFont(new Font("만화진흥원체", Font.PLAIN, 16));
+		label_29.setBounds(471, 698, 48, 32);
+		StatViewPanel.add(label_29);
+		
+		JLabel label_30 = new JLabel("25");
+		label_30.setForeground(new Color(189, 178, 137));
+		label_30.setFont(new Font("만화진흥원체", Font.PLAIN, 35));
+		label_30.setBounds(677, 656, 48, 32);
+		StatViewPanel.add(label_30);
+		
+		JLabel label_31 = new JLabel("\uC29B");
+		label_31.setForeground(new Color(153, 153, 153));
+		label_31.setFont(new Font("만화진흥원체", Font.PLAIN, 16));
+		label_31.setBounds(677, 698, 48, 32);
+		StatViewPanel.add(label_31);
+		
+		JLabel label_32 = new JLabel("25");
+		label_32.setForeground(new Color(189, 178, 137));
+		label_32.setFont(new Font("만화진흥원체", Font.PLAIN, 35));
+		label_32.setBounds(879, 656, 48, 32);
+		StatViewPanel.add(label_32);
+		
+		JLabel label_33 = new JLabel("\uD65C\uB3D9\uB7C9");
+		label_33.setForeground(new Color(153, 153, 153));
+		label_33.setFont(new Font("만화진흥원체", Font.PLAIN, 16));
+		label_33.setBounds(879, 698, 48, 32);
+		StatViewPanel.add(label_33);
 
 	}
 }
