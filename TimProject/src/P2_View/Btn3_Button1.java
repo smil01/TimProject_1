@@ -16,10 +16,14 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableModel;
+
+import P4_DTO.loginDTO;
+
 import javax.swing.JScrollPane;
 import java.awt.Cursor;
 import javax.swing.JPasswordField;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 
 public class Btn3_Button1 extends JPanel implements FocusListener {
 	private JTextField textField;
@@ -31,11 +35,16 @@ public class Btn3_Button1 extends JPanel implements FocusListener {
 	private JTextField textField_4;
 	private JTextField textField_5;
 	private JTextField textField_6;
+	private JFrame frame;
+	private loginDTO dto;
+	
 
 	/**
 	 * Create the panel.
 	 */
-	public Btn3_Button1() {
+	public Btn3_Button1(JFrame frame, loginDTO dto) {
+		this.frame = frame;
+		this.dto = dto;
 		setLayout(new CardLayout(0, 0));
 
 		JPanel Lobby_Panel = new JPanel();
@@ -97,6 +106,16 @@ public class Btn3_Button1 extends JPanel implements FocusListener {
 		btn_1.setLayout(null);
 		
 		JLabel lbl_btn1 = new JLabel("\uC120\uC218\uAD00\uB9AC");
+		lbl_btn1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				JPanel Stn1_Button1 = new Btn1_Button1(frame,dto);	
+				frame.getContentPane().removeAll();	
+				frame.getContentPane().add(Stn1_Button1);
+				frame.revalidate();
+				frame.repaint();	
+			}
+		});
 		lbl_btn1.setBounds(87, 30, 87, 24);
 		lbl_btn1.setFont(new Font("KBIZÇÑ¸¶À½°íµñ H", Font.PLAIN, 20));
 		lbl_btn1.setForeground(new Color(255, 255, 255));
@@ -179,6 +198,16 @@ public class Btn3_Button1 extends JPanel implements FocusListener {
 		SearchTxtPanel.add(separator);
 		
 		JPanel btn_2 = new JPanel();
+		btn_2.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				JPanel Stn2_Button1 = new Btn2_Button1(frame,dto);
+				frame.getContentPane().removeAll();
+				frame.getContentPane().add(Stn2_Button1);
+				frame.revalidate();
+				frame.repaint();
+			}
+		});
 		btn_2.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btn_2.setLayout(null);
 		btn_2.setBackground(new Color(41, 57, 80));
@@ -186,6 +215,16 @@ public class Btn3_Button1 extends JPanel implements FocusListener {
 		LeftLobbyPanel.add(btn_2);
 		
 		JLabel lbl_btn2 = new JLabel("\uAD6C\uB2E8\uAD00\uB9AC");
+		lbl_btn2.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				JPanel Stn2_Button1 = new Btn2_Button1(frame,dto);	
+				frame.getContentPane().removeAll();	
+				frame.getContentPane().add(Stn2_Button1);
+				frame.revalidate();
+				frame.repaint();	
+			}
+		});
 		lbl_btn2.setForeground(Color.WHITE);
 		lbl_btn2.setFont(new Font("KBIZÇÑ¸¶À½°íµñ H", Font.PLAIN, 20));
 		lbl_btn2.setBounds(87, 30, 87, 24);
@@ -199,6 +238,16 @@ public class Btn3_Button1 extends JPanel implements FocusListener {
 		LeftLobbyPanel.add(btn_3);
 		
 		JLabel lbl_btn3 = new JLabel("\uC774\uC801\uAD00\uB9AC");
+		lbl_btn3.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				JPanel Stn3_Button1 = new Btn3_Button1(frame,dto);	
+				frame.getContentPane().removeAll();	
+				frame.getContentPane().add(Stn3_Button1);
+				frame.revalidate();
+				frame.repaint();	
+			}
+		});
 		lbl_btn3.setForeground(Color.WHITE);
 		lbl_btn3.setFont(new Font("KBIZÇÑ¸¶À½°íµñ H", Font.PLAIN, 20));
 		lbl_btn3.setBounds(87, 30, 87, 24);
@@ -210,6 +259,16 @@ public class Btn3_Button1 extends JPanel implements FocusListener {
 		panel_2.setBackground(Color.WHITE);
 		
 		JPanel btn4 = new JPanel();
+		btn4.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				JPanel Stn4_Button1 = new Btn4_Button1(frame,dto);	
+				frame.getContentPane().removeAll();	
+				frame.getContentPane().add(Stn4_Button1);
+				frame.revalidate();
+				frame.repaint();	
+			}
+		});
 		btn4.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btn4.setLayout(null);
 		btn4.setBackground(new Color(41, 57, 80));

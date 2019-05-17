@@ -92,6 +92,17 @@ public class Lobby extends JPanel {
 		btn_1.setLayout(null);
 
 		JLabel lbl_btn1 = new JLabel("\uC120\uC218\uAD00\uB9AC");
+		lbl_btn1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				JPanel Stn1_Button1 = new Btn1_Button1(frame,dto);
+				frame.getContentPane().removeAll();
+				frame.getContentPane().add(Stn1_Button1);
+				frame.revalidate();
+				frame.repaint();
+
+			}
+		});
 		lbl_btn1.setBounds(87, 30, 87, 24);
 		lbl_btn1.setFont(new Font("KBIZÇÑ¸¶À½°íµñ H", Font.PLAIN, 20));
 		lbl_btn1.setForeground(new Color(255, 255, 255));
@@ -181,6 +192,16 @@ public class Lobby extends JPanel {
 		LeftLobbyPanel.add(btn_2);
 
 		JLabel lbl_btn2 = new JLabel("\uAD6C\uB2E8\uAD00\uB9AC");
+		lbl_btn2.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				JPanel Stn2_Button1 = new Btn2_Button1(frame,dto);
+				frame.getContentPane().removeAll();
+				frame.getContentPane().add(Stn2_Button1);
+				frame.revalidate();
+				frame.repaint();
+			}
+		});
 		lbl_btn2.setForeground(Color.WHITE);
 		lbl_btn2.setFont(new Font("KBIZÇÑ¸¶À½°íµñ H", Font.PLAIN, 20));
 		lbl_btn2.setBounds(87, 30, 87, 24);
@@ -194,6 +215,16 @@ public class Lobby extends JPanel {
 		LeftLobbyPanel.add(btn_3);
 
 		JLabel lbl_btn3 = new JLabel("\uC774\uC801\uAD00\uB9AC");
+		lbl_btn3.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				JPanel Stn3_Button1 = new Btn3_Button1(frame,dto);
+				frame.getContentPane().removeAll();
+				frame.getContentPane().add(Stn3_Button1);
+				frame.revalidate();
+				frame.repaint();
+			}
+		});
 		lbl_btn3.setForeground(Color.WHITE);
 		lbl_btn3.setFont(new Font("KBIZÇÑ¸¶À½°íµñ H", Font.PLAIN, 20));
 		lbl_btn3.setBounds(87, 30, 87, 24);
@@ -207,6 +238,17 @@ public class Lobby extends JPanel {
 		LeftLobbyPanel.add(btn4);
 
 		JLabel lbl_btn4 = new JLabel("\uAC1C\uC778\uC124\uC815");
+		lbl_btn4.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				JPanel Stn4_Button1 = new Btn4_Button1(frame,dto);
+				frame.getContentPane().removeAll();
+				frame.getContentPane().add(Stn4_Button1);
+				frame.revalidate();
+				frame.repaint();
+
+			}
+		});
 		lbl_btn4.setForeground(Color.WHITE);
 		lbl_btn4.setFont(new Font("KBIZÇÑ¸¶À½°íµñ H", Font.PLAIN, 20));
 		lbl_btn4.setBounds(87, 30, 87, 24);

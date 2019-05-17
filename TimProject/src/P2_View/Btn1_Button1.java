@@ -7,6 +7,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
@@ -14,17 +15,24 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableModel;
+
+import P4_DTO.loginDTO;
+
 import javax.swing.JScrollPane;
 import java.awt.Cursor;
 
 public class Btn1_Button1 extends JPanel {
 	private JTextField textField;
 	private JTable table;
+	private loginDTO dto;
+	private JFrame frame;
 
 	/**
 	 * Create the panel.
 	 */
-	public Btn1_Button1() {
+	public Btn1_Button1(JFrame frame, loginDTO dto) {
+		this.frame = frame;
+		this.dto = dto;
 		setLayout(new CardLayout(0, 0));
 
 		JPanel Lobby_Panel = new JPanel();
@@ -80,12 +88,22 @@ public class Btn1_Button1 extends JPanel {
 
 		JPanel btn_1 = new JPanel();
 		btn_1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		btn_1.setBackground(new Color(255, 255, 255,20));
+		btn_1.setBackground(new Color(255, 255, 255, 20));
 		btn_1.setBounds(0, 361, 300, 80);
 		LeftLobbyPanel.add(btn_1);
 		btn_1.setLayout(null);
 
 		JLabel lbl_btn1 = new JLabel("\uC120\uC218\uAD00\uB9AC");
+		lbl_btn1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				JPanel Stn1_Button1 = new Btn1_Button1(frame, dto);
+				frame.getContentPane().removeAll();
+				frame.getContentPane().add(Stn1_Button1);
+				frame.revalidate();
+				frame.repaint();
+			}
+		});
 		lbl_btn1.setBounds(87, 30, 87, 24);
 		lbl_btn1.setFont(new Font("KBIZÇÑ¸¶À½°íµñ H", Font.PLAIN, 20));
 		lbl_btn1.setForeground(new Color(255, 255, 255));
@@ -180,6 +198,16 @@ public class Btn1_Button1 extends JPanel {
 		LeftLobbyPanel.add(btn_2);
 
 		JLabel lbl_btn2 = new JLabel("\uAD6C\uB2E8\uAD00\uB9AC");
+		lbl_btn2.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				JPanel Stn1_Button2 = new Btn1_Button2(frame, dto);
+				frame.getContentPane().removeAll();
+				frame.getContentPane().add(Stn1_Button2);
+				frame.revalidate();
+				frame.repaint();
+			}
+		});
 		lbl_btn2.setForeground(Color.WHITE);
 		lbl_btn2.setFont(new Font("KBIZÇÑ¸¶À½°íµñ H", Font.PLAIN, 20));
 		lbl_btn2.setBounds(87, 30, 87, 24);
@@ -193,6 +221,17 @@ public class Btn1_Button1 extends JPanel {
 		LeftLobbyPanel.add(btn_3);
 
 		JLabel lbl_btn3 = new JLabel("\uC774\uC801\uAD00\uB9AC");
+		lbl_btn3.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				JPanel Stn1_Button3 = new Btn1_Button3(frame, dto);
+				frame.getContentPane().removeAll();
+				frame.getContentPane().add(Stn1_Button3);
+				frame.revalidate();
+				frame.repaint();
+
+			}
+		});
 		lbl_btn3.setForeground(Color.WHITE);
 		lbl_btn3.setFont(new Font("KBIZÇÑ¸¶À½°íµñ H", Font.PLAIN, 20));
 		lbl_btn3.setBounds(87, 30, 87, 24);
@@ -206,6 +245,16 @@ public class Btn1_Button1 extends JPanel {
 		LeftLobbyPanel.add(btn4);
 
 		JLabel lbl_btn4 = new JLabel("\uAC1C\uC778\uC124\uC815");
+		lbl_btn4.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				JPanel Stn1_Button4 = new Btn1_Button4(frame, dto);
+				frame.getContentPane().removeAll();
+				frame.getContentPane().add(Stn1_Button4);
+				frame.revalidate();
+				frame.repaint();
+			}
+		});
 		lbl_btn4.setForeground(Color.WHITE);
 		lbl_btn4.setFont(new Font("KBIZÇÑ¸¶À½°íµñ H", Font.PLAIN, 20));
 		lbl_btn4.setBounds(87, 30, 87, 24);
@@ -219,59 +268,103 @@ public class Btn1_Button1 extends JPanel {
 
 		JPanel AllPlayerButton = new JPanel();
 		AllPlayerButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		AllPlayerButton.setBackground(new Color(255, 255, 255,60));
+		AllPlayerButton.setBackground(new Color(255, 255, 255, 60));
 		AllPlayerButton.setBounds(130, 0, 220, 105);
 		PlayerButtonPanel.add(AllPlayerButton);
 		AllPlayerButton.setLayout(null);
-		
+
 		JLabel lbl_AllPlayerButton = new JLabel("\uC804\uCCB4\uBCF4\uAE30");
+		lbl_AllPlayerButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				JPanel Stn1_Button1 = new Btn1_Button1(frame, dto);
+				frame.getContentPane().removeAll();
+				frame.getContentPane().add(Stn1_Button1);
+				frame.revalidate();
+				frame.repaint();
+
+			}
+		});
 		lbl_AllPlayerButton.setBounds(0, 0, 220, 105);
 		lbl_AllPlayerButton.setHorizontalAlignment(SwingConstants.CENTER);
 		lbl_AllPlayerButton.setForeground(new Color(255, 255, 255));
 		lbl_AllPlayerButton.setFont(new Font("KBIZÇÑ¸¶À½°íµñ H", Font.PLAIN, 20));
 		lbl_AllPlayerButton.setBackground(new Color(255, 255, 255));
 		AllPlayerButton.add(lbl_AllPlayerButton);
-		
+
 		JPanel panel_2 = new JPanel();
 		panel_2.setBounds(0, 98, 220, 7);
 		AllPlayerButton.add(panel_2);
-		
+
 		JPanel PlayerStatButton = new JPanel();
 		PlayerStatButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		PlayerStatButton.setBackground(new Color(71, 120, 197));
 		PlayerStatButton.setBounds(350, 0, 220, 105);
 		PlayerButtonPanel.add(PlayerStatButton);
 		PlayerStatButton.setLayout(new CardLayout(0, 0));
-		
+
 		JLabel lbl_PlayerStatButton = new JLabel("\uC120\uC218\uC2A4\uD0EF");
+		lbl_PlayerStatButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				JPanel Stn1_Button2 = new Btn1_Button2(frame, dto);
+				frame.getContentPane().removeAll();
+				frame.getContentPane().add(Stn1_Button2);
+				frame.revalidate();
+				frame.repaint();
+
+			}
+		});
 		lbl_PlayerStatButton.setHorizontalAlignment(SwingConstants.CENTER);
 		lbl_PlayerStatButton.setForeground(Color.WHITE);
 		lbl_PlayerStatButton.setFont(new Font("KBIZÇÑ¸¶À½°íµñ H", Font.PLAIN, 20));
 		lbl_PlayerStatButton.setBackground(Color.WHITE);
 		PlayerStatButton.add(lbl_PlayerStatButton, "name_3773337336300");
-		
+
 		JPanel PlayerChart = new JPanel();
 		PlayerChart.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		PlayerChart.setBackground(new Color(71, 120, 197));
 		PlayerChart.setBounds(570, 0, 220, 105);
 		PlayerButtonPanel.add(PlayerChart);
 		PlayerChart.setLayout(new CardLayout(0, 0));
-		
+
 		JLabel lbl_PlayerChart = new JLabel("\uCC28\uD2B8\uBCF4\uAE30");
+		lbl_PlayerChart.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				JPanel Stn1_Button3 = new Btn1_Button3(frame, dto);
+				frame.getContentPane().removeAll();
+				frame.getContentPane().add(Stn1_Button3);
+				frame.revalidate();
+				frame.repaint();
+
+			}
+		});
 		lbl_PlayerChart.setHorizontalAlignment(SwingConstants.CENTER);
 		lbl_PlayerChart.setForeground(Color.WHITE);
 		lbl_PlayerChart.setFont(new Font("KBIZÇÑ¸¶À½°íµñ H", Font.PLAIN, 20));
 		lbl_PlayerChart.setBackground(Color.WHITE);
 		PlayerChart.add(lbl_PlayerChart, "name_3777310714400");
-		
+
 		JPanel PlayerMemoPanel = new JPanel();
 		PlayerMemoPanel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		PlayerMemoPanel.setBackground(new Color(71, 120, 197));
 		PlayerMemoPanel.setBounds(790, 0, 220, 105);
 		PlayerButtonPanel.add(PlayerMemoPanel);
 		PlayerMemoPanel.setLayout(new CardLayout(0, 0));
-		
+
 		JLabel lbl_PlayerMemo = new JLabel("\uD3C9\uAC00\uBA54\uBAA8");
+		lbl_PlayerMemo.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				JPanel Stn1_Button4 = new Btn1_Button4(frame, dto);
+				frame.getContentPane().removeAll();
+				frame.getContentPane().add(Stn1_Button4);
+				frame.revalidate();
+				frame.repaint();
+
+			}
+		});
 		PlayerMemoPanel.add(lbl_PlayerMemo, "name_3775184187700");
 		lbl_PlayerMemo.setHorizontalAlignment(SwingConstants.CENTER);
 		lbl_PlayerMemo.setForeground(Color.WHITE);
@@ -313,7 +406,6 @@ public class Btn1_Button1 extends JPanel {
 		table.getTableHeader().setForeground(new Color(255, 255, 255));
 		table.setSelectionBackground(new Color(232, 57, 95));
 		table.setBounds(35, 10, 1189, 738);
-
 
 		JScrollPane scrollPane = new JScrollPane(table);
 		scrollPane.setBounds(12, 10, 1296, 738);

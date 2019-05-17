@@ -7,6 +7,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
@@ -14,16 +15,23 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableModel;
+
+import P4_DTO.loginDTO;
+
 import javax.swing.JScrollPane;
 import java.awt.Cursor;
 
 public class Btn1_Button4 extends JPanel {
 	private JTextField textField;
+	private JFrame frame;
+	private loginDTO dto;
 
 	/**
 	 * Create the panel.
 	 */
-	public Btn1_Button4() {
+	public Btn1_Button4(JFrame frame, loginDTO dto) {
+		this.frame = frame;
+		this.dto = dto;
 		setLayout(new CardLayout(0, 0));
 
 		JPanel Lobby_Panel = new JPanel();
@@ -79,12 +87,22 @@ public class Btn1_Button4 extends JPanel {
 
 		JPanel btn_1 = new JPanel();
 		btn_1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		btn_1.setBackground(new Color(255, 255, 255,20));
+		btn_1.setBackground(new Color(255, 255, 255, 20));
 		btn_1.setBounds(0, 361, 300, 80);
 		LeftLobbyPanel.add(btn_1);
 		btn_1.setLayout(null);
 
 		JLabel lbl_btn1 = new JLabel("\uC120\uC218\uAD00\uB9AC");
+		lbl_btn1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				JPanel Stn1_Button1 = new Btn1_Button1(frame,dto);
+				frame.getContentPane().removeAll();
+				frame.getContentPane().add(Stn1_Button1);
+				frame.revalidate();
+				frame.repaint();
+			}
+		});
 		lbl_btn1.setBounds(87, 30, 87, 24);
 		lbl_btn1.setFont(new Font("KBIZ한마음고딕 H", Font.PLAIN, 20));
 		lbl_btn1.setForeground(new Color(255, 255, 255));
@@ -179,6 +197,16 @@ public class Btn1_Button4 extends JPanel {
 		LeftLobbyPanel.add(btn_2);
 
 		JLabel lbl_btn2 = new JLabel("\uAD6C\uB2E8\uAD00\uB9AC");
+		lbl_btn2.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				JPanel Stn2_Button1 = new Btn2_Button1(frame,dto);
+				frame.getContentPane().removeAll();
+				frame.getContentPane().add(Stn2_Button1);
+				frame.revalidate();
+				frame.repaint();
+			}
+		});
 		lbl_btn2.setForeground(Color.WHITE);
 		lbl_btn2.setFont(new Font("KBIZ한마음고딕 H", Font.PLAIN, 20));
 		lbl_btn2.setBounds(87, 30, 87, 24);
@@ -192,6 +220,16 @@ public class Btn1_Button4 extends JPanel {
 		LeftLobbyPanel.add(btn_3);
 
 		JLabel lbl_btn3 = new JLabel("\uC774\uC801\uAD00\uB9AC");
+		lbl_btn3.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				JPanel Stn3_Button1 = new Btn3_Button1(frame,dto);
+				frame.getContentPane().removeAll();
+				frame.getContentPane().add(Stn3_Button1);
+				frame.revalidate();
+				frame.repaint();
+			}
+		});
 		lbl_btn3.setForeground(Color.WHITE);
 		lbl_btn3.setFont(new Font("KBIZ한마음고딕 H", Font.PLAIN, 20));
 		lbl_btn3.setBounds(87, 30, 87, 24);
@@ -205,6 +243,16 @@ public class Btn1_Button4 extends JPanel {
 		LeftLobbyPanel.add(btn4);
 
 		JLabel lbl_btn4 = new JLabel("\uAC1C\uC778\uC124\uC815");
+		lbl_btn4.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				JPanel Stn4_Button1 = new Btn4_Button1(frame,dto);
+				frame.getContentPane().removeAll();
+				frame.getContentPane().add(Stn4_Button1);
+				frame.revalidate();
+				frame.repaint();
+			}
+		});
 		lbl_btn4.setForeground(Color.WHITE);
 		lbl_btn4.setFont(new Font("KBIZ한마음고딕 H", Font.PLAIN, 20));
 		lbl_btn4.setBounds(87, 30, 87, 24);
@@ -222,60 +270,100 @@ public class Btn1_Button4 extends JPanel {
 		AllPlayerButton.setBounds(130, 0, 220, 105);
 		PlayerButtonPanel.add(AllPlayerButton);
 		AllPlayerButton.setLayout(null);
-		
+
 		JLabel lbl_AllPlayerButton = new JLabel("\uC804\uCCB4\uBCF4\uAE30");
+		lbl_AllPlayerButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				JPanel Stn1_Button1 = new Btn1_Button1(frame,dto);
+				frame.getContentPane().removeAll();
+				frame.getContentPane().add(Stn1_Button1);
+				frame.revalidate();
+				frame.repaint();
+			}
+		});
 		lbl_AllPlayerButton.setBounds(0, 0, 220, 105);
 		lbl_AllPlayerButton.setHorizontalAlignment(SwingConstants.CENTER);
 		lbl_AllPlayerButton.setForeground(new Color(255, 255, 255));
 		lbl_AllPlayerButton.setFont(new Font("KBIZ한마음고딕 H", Font.PLAIN, 20));
 		lbl_AllPlayerButton.setBackground(new Color(255, 255, 255));
 		AllPlayerButton.add(lbl_AllPlayerButton);
-		
+
 		JPanel PlayerStatButton = new JPanel();
 		PlayerStatButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		PlayerStatButton.setBackground(new Color(71, 120, 197));
 		PlayerStatButton.setBounds(350, 0, 220, 105);
 		PlayerButtonPanel.add(PlayerStatButton);
 		PlayerStatButton.setLayout(null);
-		
+
 		JLabel lbl_PlayerStatButton = new JLabel("\uC120\uC218\uC2A4\uD0EF");
+		lbl_PlayerStatButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				JPanel Stn1_Button2 = new Btn1_Button2(frame,dto);
+				frame.getContentPane().removeAll();
+				frame.getContentPane().add(Stn1_Button2);
+				frame.revalidate();
+				frame.repaint();
+			}
+		});
 		lbl_PlayerStatButton.setBounds(0, 0, 220, 105);
 		lbl_PlayerStatButton.setHorizontalAlignment(SwingConstants.CENTER);
 		lbl_PlayerStatButton.setForeground(Color.WHITE);
 		lbl_PlayerStatButton.setFont(new Font("KBIZ한마음고딕 H", Font.PLAIN, 20));
 		lbl_PlayerStatButton.setBackground(Color.WHITE);
 		PlayerStatButton.add(lbl_PlayerStatButton);
-		
+
 		JPanel PlayerChart = new JPanel();
 		PlayerChart.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		PlayerChart.setBackground(new Color(71, 120, 197));
 		PlayerChart.setBounds(570, 0, 220, 105);
 		PlayerButtonPanel.add(PlayerChart);
 		PlayerChart.setLayout(null);
-		
+
 		JLabel lbl_PlayerChart = new JLabel("\uCC28\uD2B8\uBCF4\uAE30");
+		lbl_PlayerChart.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				JPanel Stn1_Button3 = new Btn1_Button3(frame,dto);
+				frame.getContentPane().removeAll();
+				frame.getContentPane().add(Stn1_Button3);
+				frame.revalidate();
+				frame.repaint();
+			}
+		});
 		lbl_PlayerChart.setBounds(0, 0, 220, 105);
 		lbl_PlayerChart.setHorizontalAlignment(SwingConstants.CENTER);
 		lbl_PlayerChart.setForeground(Color.WHITE);
 		lbl_PlayerChart.setFont(new Font("KBIZ한마음고딕 H", Font.PLAIN, 20));
 		lbl_PlayerChart.setBackground(Color.WHITE);
 		PlayerChart.add(lbl_PlayerChart);
-		
+
 		JPanel PlayerMemoPanel = new JPanel();
 		PlayerMemoPanel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		PlayerMemoPanel.setBackground(new Color(255, 255, 255,60));
+		PlayerMemoPanel.setBackground(new Color(255, 255, 255, 60));
 		PlayerMemoPanel.setBounds(790, 0, 220, 105);
 		PlayerButtonPanel.add(PlayerMemoPanel);
 		PlayerMemoPanel.setLayout(null);
-		
+
 		JLabel lbl_PlayerMemo = new JLabel("\uD3C9\uAC00\uBA54\uBAA8");
+		lbl_PlayerMemo.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				JPanel Stn1_Button4 = new Btn1_Button4(frame,dto);
+				frame.getContentPane().removeAll();
+				frame.getContentPane().add(Stn1_Button4);
+				frame.revalidate();
+				frame.repaint();
+			}
+		});
 		lbl_PlayerMemo.setBounds(0, 0, 220, 105);
 		PlayerMemoPanel.add(lbl_PlayerMemo);
 		lbl_PlayerMemo.setHorizontalAlignment(SwingConstants.CENTER);
 		lbl_PlayerMemo.setForeground(Color.WHITE);
 		lbl_PlayerMemo.setFont(new Font("KBIZ한마음고딕 H", Font.PLAIN, 20));
 		lbl_PlayerMemo.setBackground(Color.WHITE);
-		
+
 		JPanel panel = new JPanel();
 		panel.setBounds(0, 98, 220, 7);
 		PlayerMemoPanel.add(panel);
@@ -285,26 +373,26 @@ public class Btn1_Button4 extends JPanel {
 		StatViewPanel.setBounds(280, 104, 1320, 796);
 		Lobby_Panel.add(StatViewPanel);
 		StatViewPanel.setLayout(null);
-		
+
 		JPanel panel_2 = new JPanel();
 		panel_2.setBounds(52, 47, 100, 100);
 		StatViewPanel.add(panel_2);
 		panel_2.setLayout(new CardLayout(0, 0));
-		
+
 		JLabel lblNewLabel = new JLabel("\uC0AC\uC9C4");
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		panel_2.add(lblNewLabel, "name_5083844218100");
-		
+
 		JPanel panel_3 = new JPanel();
 		panel_3.setBounds(164, 47, 302, 100);
 		StatViewPanel.add(panel_3);
 		panel_3.setLayout(null);
-		
+
 		JLabel lblNewLabel_3 = new JLabel("\uAE40\uCE58\uD604");
 		lblNewLabel_3.setFont(new Font("서울남산체 M", Font.PLAIN, 18));
 		lblNewLabel_3.setBounds(28, 20, 60, 33);
 		panel_3.add(lblNewLabel_3);
-		
+
 		JPanel panel_4 = new JPanel();
 		panel_4.setBounds(1048, 10, 250, 250);
 		StatViewPanel.add(panel_4);
