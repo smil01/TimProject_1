@@ -20,11 +20,33 @@ import P4_DTO.loginDTO;
 
 import javax.swing.JScrollPane;
 import java.awt.Cursor;
+import javax.swing.border.EtchedBorder;
+import javax.swing.border.TitledBorder;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
 
 public class Btn1_Button5 extends JPanel {
 	private JTextField textField;
 	private JFrame frame;
 	private loginDTO dto;
+	private JTextField textField_1;
+	private JTextField textField_2;
+	private JTextField textField_3;
+	private JTextField textField_4;
+	private JTextField textField_5;
+	private JTextField textField_6;
+	private JTextField textField_7;
+	private JTextField textField_8;
+	private JTextField textField_9;
+	private JTextField textField_10;
+	private JTextField textField_11;
+	private JTextField textField_12;
+	private JTextField textField_13;
+	private JTextField textField_14;
+	private JTextField textField_15;
+	private JTextField textField_16;
+	private JTextField textField_17;
 
 	/**
 	 * Create the panel.
@@ -365,12 +387,6 @@ public class Btn1_Button5 extends JPanel {
 		lbl_PlayerMemo.setForeground(Color.WHITE);
 		lbl_PlayerMemo.setFont(new Font("KBIZ한마음고딕 H", Font.PLAIN, 20));
 		lbl_PlayerMemo.setBackground(Color.WHITE);
-
-		JPanel StatViewPanel = new JPanel();
-		StatViewPanel.setBackground(new Color(255, 255, 255));
-		StatViewPanel.setBounds(280, 104, 1320, 796);
-		Lobby_Panel.add(StatViewPanel);
-		StatViewPanel.setLayout(null);
 		
 		JPanel SetStatPanel = new JPanel();
 		SetStatPanel.setBackground(new Color(255, 255, 255, 60));
@@ -400,29 +416,402 @@ public class Btn1_Button5 extends JPanel {
 				JPanel panel = new JPanel();
 				panel.setBounds(0, 98, 220, 7);
 				SetStatPanel.add(panel);
-
-		JPanel panel_2 = new JPanel();
-		panel_2.setBounds(52, 47, 100, 100);
-		StatViewPanel.add(panel_2);
-		panel_2.setLayout(new CardLayout(0, 0));
-
-		JLabel lblNewLabel = new JLabel("\uC0AC\uC9C4");
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		panel_2.add(lblNewLabel, "name_5083844218100");
-
-		JPanel panel_3 = new JPanel();
-		panel_3.setBounds(164, 47, 302, 100);
-		StatViewPanel.add(panel_3);
-		panel_3.setLayout(null);
-
-		JLabel lblNewLabel_3 = new JLabel("\uAE40\uCE58\uD604");
-		lblNewLabel_3.setFont(new Font("서울남산체 M", Font.PLAIN, 18));
-		lblNewLabel_3.setBounds(28, 20, 60, 33);
-		panel_3.add(lblNewLabel_3);
-
-		JPanel panel_4 = new JPanel();
-		panel_4.setBounds(1048, 10, 250, 250);
-		StatViewPanel.add(panel_4);
+				
+				JPanel panel_2 = new JPanel();
+				panel_2.setLayout(null);
+				panel_2.setBackground(Color.WHITE);
+				panel_2.setBounds(280, 104, 1320, 796);
+				Lobby_Panel.add(panel_2);
+				
+				JPanel panel_3 = new JPanel();
+				panel_3.setBounds(90, 50, 180, 180);
+				panel_2.add(panel_3);
+				panel_3.setLayout(new CardLayout(0, 0));
+				
+				JLabel lblNewLabel = new JLabel("");
+				lblNewLabel.setIcon(new ImageIcon(Btn1_Button5.class.getResource("/P5_Img/sample.jpg")));
+				panel_3.add(lblNewLabel, "name_17042670660900");
+				
+				JPanel panel_5 = new JPanel();
+				panel_5.setLayout(null);
+				panel_5.setBackground(Color.WHITE);
+				panel_5.setBounds(345, 50, 468, 230);
+				panel_2.add(panel_5);
+				
+				JLabel label_2 = new JLabel("\uB098\uC774");
+				label_2.setForeground(new Color(153, 153, 153));
+				label_2.setFont(new Font("만화진흥원체", Font.PLAIN, 16));
+				label_2.setBounds(12, 10, 48, 32);
+				panel_5.add(label_2);
+				
+				JLabel label_4 = new JLabel("\uD0A4");
+				label_4.setForeground(new Color(153, 153, 153));
+				label_4.setFont(new Font("만화진흥원체", Font.PLAIN, 16));
+				label_4.setBounds(84, 10, 48, 32);
+				panel_5.add(label_4);
+				
+				JLabel label_6 = new JLabel("\uBAB8\uBB34\uAC8C");
+				label_6.setForeground(new Color(153, 153, 153));
+				label_6.setFont(new Font("만화진흥원체", Font.PLAIN, 16));
+				label_6.setBounds(250, 10, 48, 32);
+				panel_5.add(label_6);
+				
+				JLabel label_8 = new JLabel("\uC67C\uBC1C");
+				label_8.setForeground(new Color(153, 153, 153));
+				label_8.setFont(new Font("만화진흥원체", Font.PLAIN, 16));
+				label_8.setBounds(359, 10, 48, 32);
+				panel_5.add(label_8);
+				
+				JLabel label_9 = new JLabel("\uC624\uB978\uBC1C");
+				label_9.setForeground(new Color(153, 153, 153));
+				label_9.setFont(new Font("만화진흥원체", Font.PLAIN, 16));
+				label_9.setBounds(419, 10, 48, 32);
+				panel_5.add(label_9);
+				
+				JLabel label_12 = new JLabel("\uBD80\uC0C1\uAE30\uAC04");
+				label_12.setForeground(new Color(153, 153, 153));
+				label_12.setFont(new Font("만화진흥원체", Font.PLAIN, 16));
+				label_12.setBounds(12, 158, 60, 32);
+				panel_5.add(label_12);
+				
+				textField_1 = new JTextField();
+				textField_1.setForeground(new Color(189, 178, 137));
+				textField_1.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+				textField_1.setFont(new Font("KBIZ한마음고딕 M", Font.PLAIN, 35));
+				textField_1.setBounds(0, 52, 50, 50);
+				panel_5.add(textField_1);
+				textField_1.setColumns(10);
+				
+				textField_2 = new JTextField();
+				textField_2.setForeground(new Color(189, 178, 137));
+				textField_2.setFont(new Font("KBIZ한마음고딕 M", Font.PLAIN, 35));
+				textField_2.setColumns(10);
+				textField_2.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+				textField_2.setBounds(72, 52, 73, 50);
+				panel_5.add(textField_2);
+				
+				JLabel lblCm = new JLabel("CM");
+				lblCm.setForeground(new Color(189, 178, 137));
+				lblCm.setFont(new Font("만화진흥원체", Font.PLAIN, 35));
+				lblCm.setBounds(155, 64, 50, 32);
+				panel_5.add(lblCm);
+				
+				textField_3 = new JTextField();
+				textField_3.setForeground(new Color(189, 178, 137));
+				textField_3.setFont(new Font("KBIZ한마음고딕 M", Font.PLAIN, 35));
+				textField_3.setColumns(10);
+				textField_3.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+				textField_3.setBounds(248, 52, 50, 50);
+				panel_5.add(textField_3);
+				
+				JLabel lblKg = new JLabel("KG");
+				lblKg.setForeground(new Color(189, 178, 137));
+				lblKg.setFont(new Font("만화진흥원체", Font.PLAIN, 35));
+				lblKg.setBounds(300, 64, 50, 32);
+				panel_5.add(lblKg);
+				
+				textField_4 = new JTextField();
+				textField_4.setForeground(new Color(189, 178, 137));
+				textField_4.setFont(new Font("KBIZ한마음고딕 M", Font.PLAIN, 35));
+				textField_4.setColumns(10);
+				textField_4.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+				textField_4.setBounds(359, 52, 35, 50);
+				panel_5.add(textField_4);
+				
+				textField_5 = new JTextField();
+				textField_5.setForeground(new Color(189, 178, 137));
+				textField_5.setFont(new Font("KBIZ한마음고딕 M", Font.PLAIN, 35));
+				textField_5.setColumns(10);
+				textField_5.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+				textField_5.setBounds(419, 52, 35, 50);
+				panel_5.add(textField_5);
+				
+				textField_6 = new JTextField();
+				textField_6.setForeground(new Color(0, 0, 0));
+				textField_6.setFont(new Font("KBIZ한마음고딕 M", Font.PLAIN, 16));
+				textField_6.setColumns(10);
+				textField_6.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+				textField_6.setBounds(0, 200, 48, 19);
+				panel_5.add(textField_6);
+				
+				JLabel label_3 = new JLabel("\uC77C");
+				label_3.setForeground(new Color(0, 0, 0));
+				label_3.setFont(new Font("만화진흥원체", Font.PLAIN, 16));
+				label_3.setBounds(54, 200, 22, 19);
+				panel_5.add(label_3);
+				
+				textField_7 = new JTextField();
+				textField_7.setForeground(Color.BLACK);
+				textField_7.setFont(new Font("KBIZ한마음고딕 M", Font.PLAIN, 16));
+				textField_7.setColumns(10);
+				textField_7.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+				textField_7.setBounds(84, 201, 350, 19);
+				panel_5.add(textField_7);
+				
+				JButton button = new JButton("\uBCC0\uACBD");
+				button.setForeground(Color.WHITE);
+				button.setFont(new Font("KBIZ한마음고딕 B", Font.PLAIN, 16));
+				button.setBackground(new Color(71, 120, 197));
+				button.setBounds(367, 122, 89, 23);
+				panel_5.add(button);
+				
+				JLabel label_15 = new JLabel("\uC774\uAC15\uC778");
+				label_15.setForeground(Color.BLACK);
+				label_15.setFont(new Font("만화진흥원체", Font.PLAIN, 25));
+				label_15.setBounds(134, 240, 82, 45);
+				panel_2.add(label_15);
+				
+				JLabel label_16 = new JLabel("\uACF5\uACA9\uC218");
+				label_16.setForeground(Color.BLACK);
+				label_16.setFont(new Font("만화진흥원체", Font.PLAIN, 16));
+				label_16.setBounds(144, 287, 41, 19);
+				panel_2.add(label_16);
+				
+				JLabel label_17 = new JLabel("\uC120\uC218 \uC2A4\uD0EF");
+				label_17.setForeground(Color.BLACK);
+				label_17.setFont(new Font("만화진흥원체", Font.PLAIN, 35));
+				label_17.setBounds(90, 337, 139, 45);
+				panel_2.add(label_17);
+				
+				JSeparator separator_1 = new JSeparator();
+				separator_1.setForeground(new Color(229, 229, 229));
+				separator_1.setBounds(90, 447, 994, 10);
+				panel_2.add(separator_1);
+				
+				JLabel label_18 = new JLabel("\uCD95\uAD6C \uB2A5\uB825");
+				label_18.setForeground(Color.BLACK);
+				label_18.setFont(new Font("만화진흥원체", Font.PLAIN, 25));
+				label_18.setBounds(90, 392, 139, 45);
+				panel_2.add(label_18);
+				
+				JLabel lblm = new JLabel("30M \uB2EC\uB9AC\uAE30");
+				lblm.setForeground(new Color(153, 153, 153));
+				lblm.setFont(new Font("만화진흥원체", Font.PLAIN, 16));
+				lblm.setBounds(125, 522, 91, 32);
+				panel_2.add(lblm);
+				
+				JLabel lblm_1 = new JLabel("15M \uC29B");
+				lblm_1.setForeground(new Color(153, 153, 153));
+				lblm_1.setFont(new Font("만화진흥원체", Font.PLAIN, 16));
+				lblm_1.setBounds(317, 522, 60, 32);
+				panel_2.add(lblm_1);
+				
+				JLabel label_24 = new JLabel("\uD328\uC2A4");
+				label_24.setForeground(new Color(153, 153, 153));
+				label_24.setFont(new Font("만화진흥원체", Font.PLAIN, 16));
+				label_24.setBounds(520, 522, 48, 32);
+				panel_2.add(label_24);
+				
+				JLabel label_26 = new JLabel("\uC9C0\uADF8\uC7AC\uADF8\uB4DC\uB9AC\uBE14");
+				label_26.setForeground(new Color(153, 153, 153));
+				label_26.setFont(new Font("만화진흥원체", Font.PLAIN, 16));
+				label_26.setBounds(665, 522, 105, 32);
+				panel_2.add(label_26);
+				
+				JLabel label_28 = new JLabel("\uC218\uBE44");
+				label_28.setForeground(new Color(153, 153, 153));
+				label_28.setFont(new Font("만화진흥원체", Font.PLAIN, 16));
+				label_28.setBounds(879, 522, 48, 32);
+				panel_2.add(label_28);
+				
+				JLabel label_29 = new JLabel("\uB300\uD68C \uC131\uC801");
+				label_29.setForeground(Color.BLACK);
+				label_29.setFont(new Font("만화진흥원체", Font.PLAIN, 25));
+				label_29.setBounds(90, 581, 139, 45);
+				panel_2.add(label_29);
+				
+				JSeparator separator_2 = new JSeparator();
+				separator_2.setForeground(new Color(229, 229, 229));
+				separator_2.setBounds(90, 636, 994, 10);
+				panel_2.add(separator_2);
+				
+				JLabel label_31 = new JLabel("\uACE8");
+				label_31.setForeground(new Color(153, 153, 153));
+				label_31.setFont(new Font("만화진흥원체", Font.PLAIN, 16));
+				label_31.setBounds(147, 698, 48, 32);
+				panel_2.add(label_31);
+				
+				JLabel label_33 = new JLabel("\uC5B4\uC2DC\uC2A4\uD2B8");
+				label_33.setForeground(new Color(153, 153, 153));
+				label_33.setFont(new Font("만화진흥원체", Font.PLAIN, 16));
+				label_33.setBounds(317, 698, 60, 32);
+				panel_2.add(label_33);
+				
+				JLabel label_35 = new JLabel("\uC720\uD6A8\uC29B");
+				label_35.setForeground(new Color(153, 153, 153));
+				label_35.setFont(new Font("만화진흥원체", Font.PLAIN, 16));
+				label_35.setBounds(498, 698, 48, 32);
+				panel_2.add(label_35);
+				
+				JLabel label_37 = new JLabel("\uC29B");
+				label_37.setForeground(new Color(153, 153, 153));
+				label_37.setFont(new Font("만화진흥원체", Font.PLAIN, 16));
+				label_37.setBounds(687, 698, 48, 32);
+				panel_2.add(label_37);
+				
+				JLabel label_39 = new JLabel("\uD65C\uB3D9\uB7C9");
+				label_39.setForeground(new Color(153, 153, 153));
+				label_39.setFont(new Font("만화진흥원체", Font.PLAIN, 16));
+				label_39.setBounds(864, 698, 48, 32);
+				panel_2.add(label_39);
+				
+				JButton button_1 = new JButton("\uCD94\uAC00");
+				button_1.setForeground(Color.WHITE);
+				button_1.setFont(new Font("KBIZ한마음고딕 B", Font.PLAIN, 16));
+				button_1.setBackground(new Color(71, 120, 197));
+				button_1.setBounds(711, 283, 89, 23);
+				panel_2.add(button_1);
+				
+				JButton button_2 = new JButton("\uC785\uB825");
+				button_2.setForeground(Color.WHITE);
+				button_2.setFont(new Font("KBIZ한마음고딕 B", Font.PLAIN, 16));
+				button_2.setBackground(new Color(71, 120, 197));
+				button_2.setBounds(995, 527, 89, 23);
+				panel_2.add(button_2);
+				
+				JButton button_3 = new JButton("\uCD94\uAC00");
+				button_3.setForeground(Color.WHITE);
+				button_3.setFont(new Font("KBIZ한마음고딕 B", Font.PLAIN, 16));
+				button_3.setBackground(new Color(71, 120, 197));
+				button_3.setBounds(995, 703, 89, 23);
+				panel_2.add(button_3);
+				
+				textField_8 = new JTextField();
+				textField_8.setForeground(new Color(189, 178, 137));
+				textField_8.setFont(new Font("KBIZ한마음고딕 M", Font.PLAIN, 35));
+				textField_8.setColumns(10);
+				textField_8.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+				textField_8.setBounds(130, 650, 50, 50);
+				panel_2.add(textField_8);
+				
+				textField_9 = new JTextField();
+				textField_9.setForeground(new Color(189, 178, 137));
+				textField_9.setFont(new Font("KBIZ한마음고딕 M", Font.PLAIN, 35));
+				textField_9.setColumns(10);
+				textField_9.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+				textField_9.setBounds(317, 650, 50, 50);
+				panel_2.add(textField_9);
+				
+				textField_10 = new JTextField();
+				textField_10.setForeground(new Color(189, 178, 137));
+				textField_10.setFont(new Font("KBIZ한마음고딕 M", Font.PLAIN, 35));
+				textField_10.setColumns(10);
+				textField_10.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+				textField_10.setBounds(494, 650, 50, 50);
+				panel_2.add(textField_10);
+				
+				textField_11 = new JTextField();
+				textField_11.setForeground(new Color(189, 178, 137));
+				textField_11.setFont(new Font("KBIZ한마음고딕 M", Font.PLAIN, 35));
+				textField_11.setColumns(10);
+				textField_11.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+				textField_11.setBounds(669, 650, 50, 50);
+				panel_2.add(textField_11);
+				
+				textField_12 = new JTextField();
+				textField_12.setForeground(new Color(189, 178, 137));
+				textField_12.setFont(new Font("KBIZ한마음고딕 M", Font.PLAIN, 35));
+				textField_12.setColumns(10);
+				textField_12.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+				textField_12.setBounds(862, 650, 50, 50);
+				panel_2.add(textField_12);
+				
+				textField_13 = new JTextField();
+				textField_13.setForeground(new Color(189, 178, 137));
+				textField_13.setFont(new Font("KBIZ한마음고딕 M", Font.PLAIN, 35));
+				textField_13.setColumns(10);
+				textField_13.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+				textField_13.setBounds(135, 462, 50, 50);
+				panel_2.add(textField_13);
+				
+				JLabel label_5 = new JLabel("\uCD08");
+				label_5.setForeground(new Color(189, 178, 137));
+				label_5.setFont(new Font("만화진흥원체", Font.PLAIN, 35));
+				label_5.setBounds(197, 480, 50, 32);
+				panel_2.add(label_5);
+				
+				textField_14 = new JTextField();
+				textField_14.setForeground(new Color(189, 178, 137));
+				textField_14.setFont(new Font("KBIZ한마음고딕 M", Font.PLAIN, 35));
+				textField_14.setColumns(10);
+				textField_14.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+				textField_14.setBounds(317, 462, 50, 50);
+				panel_2.add(textField_14);
+				
+				JLabel label_7 = new JLabel("\uC810");
+				label_7.setForeground(new Color(189, 178, 137));
+				label_7.setFont(new Font("만화진흥원체", Font.PLAIN, 35));
+				label_7.setBounds(377, 476, 50, 35);
+				panel_2.add(label_7);
+				
+				textField_15 = new JTextField();
+				textField_15.setForeground(new Color(189, 178, 137));
+				textField_15.setFont(new Font("KBIZ한마음고딕 M", Font.PLAIN, 35));
+				textField_15.setColumns(10);
+				textField_15.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+				textField_15.setBounds(505, 462, 50, 50);
+				panel_2.add(textField_15);
+				
+				JLabel label_10 = new JLabel("\uC810");
+				label_10.setForeground(new Color(189, 178, 137));
+				label_10.setFont(new Font("만화진흥원체", Font.PLAIN, 35));
+				label_10.setBounds(565, 476, 50, 35);
+				panel_2.add(label_10);
+				
+				textField_16 = new JTextField();
+				textField_16.setForeground(new Color(189, 178, 137));
+				textField_16.setFont(new Font("KBIZ한마음고딕 M", Font.PLAIN, 35));
+				textField_16.setColumns(10);
+				textField_16.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+				textField_16.setBounds(665, 462, 50, 50);
+				panel_2.add(textField_16);
+				
+				JLabel label_11 = new JLabel("\uC810");
+				label_11.setForeground(new Color(189, 178, 137));
+				label_11.setFont(new Font("만화진흥원체", Font.PLAIN, 35));
+				label_11.setBounds(725, 476, 50, 35);
+				panel_2.add(label_11);
+				
+				textField_17 = new JTextField();
+				textField_17.setForeground(new Color(189, 178, 137));
+				textField_17.setFont(new Font("KBIZ한마음고딕 M", Font.PLAIN, 35));
+				textField_17.setColumns(10);
+				textField_17.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+				textField_17.setBounds(856, 462, 50, 50);
+				panel_2.add(textField_17);
+				
+				JLabel label_13 = new JLabel("\uC810");
+				label_13.setForeground(new Color(189, 178, 137));
+				label_13.setFont(new Font("만화진흥원체", Font.PLAIN, 35));
+				label_13.setBounds(916, 476, 50, 35);
+				panel_2.add(label_13);
+				
+				JComboBox comboBox = new JComboBox();
+				comboBox.setModel(new DefaultComboBoxModel(new String[] {"\uB300\uD68C\uBA85"}));
+				comboBox.setForeground(new Color(0, 0, 0));
+				comboBox.setFont(new Font("KBIZ한마음고딕 M", Font.PLAIN, 14));
+				comboBox.setBorder(null);
+				comboBox.setBackground(new Color(255, 255, 255));
+				comboBox.setBounds(232, 596, 211, 25);
+				panel_2.add(comboBox);
+				
+				JLabel label_14 = new JLabel("\uC774\uC801 \uBA85\uB2E8");
+				label_14.setForeground(Color.BLACK);
+				label_14.setFont(new Font("만화진흥원체", Font.PLAIN, 25));
+				label_14.setBounds(930, 50, 300, 45);
+				panel_2.add(label_14);
+				
+				JSeparator separator_3 = new JSeparator();
+				separator_3.setForeground(new Color(229, 229, 229));
+				separator_3.setBounds(930, 105, 300, 10);
+				panel_2.add(separator_3);
+				
+				JButton button_4 = new JButton("\uCD94\uAC00");
+				button_4.setForeground(Color.WHITE);
+				button_4.setFont(new Font("KBIZ한마음고딕 B", Font.PLAIN, 16));
+				button_4.setBackground(new Color(71, 120, 197));
+				button_4.setBounds(930, 125, 89, 23);
+				panel_2.add(button_4);
 
 	}
 }

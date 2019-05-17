@@ -20,6 +20,17 @@ import P4_DTO.loginDTO;
 
 import javax.swing.JScrollPane;
 import java.awt.Cursor;
+import javax.swing.JButton;
+import javax.swing.border.BevelBorder;
+import javax.swing.border.CompoundBorder;
+import javax.swing.border.EmptyBorder;
+import javax.swing.border.EtchedBorder;
+import javax.swing.border.LineBorder;
+import javax.swing.border.MatteBorder;
+import javax.swing.border.SoftBevelBorder;
+import javax.swing.border.TitledBorder;
+import javax.swing.JTextArea;
+import javax.swing.JTextPane;
 
 public class Btn1_Button4 extends JPanel {
 	private JTextField textField;
@@ -400,29 +411,51 @@ public class Btn1_Button4 extends JPanel {
 		lbl_SetStat.setFont(new Font("KBIZ한마음고딕 H", Font.PLAIN, 20));
 		lbl_SetStat.setBackground(Color.WHITE);
 		SetStatPanel.add(lbl_SetStat, "name_10588236113000");
-
+		
+		JLabel label_2 = new JLabel("\uC0AC\uC9C4");
+		label_2.setIcon(new ImageIcon(Btn1_Button4.class.getResource("/P5_Img/sample.jpg")));
+		label_2.setHorizontalAlignment(SwingConstants.CENTER);
+		label_2.setBounds(129, 84, 180, 180);
+		StatViewPanel.add(label_2);
+		
+		JLabel label_3 = new JLabel("\uC774\uAC15\uC778");
+		label_3.setForeground(Color.BLACK);
+		label_3.setFont(new Font("만화진흥원체", Font.PLAIN, 25));
+		label_3.setBounds(173, 274, 82, 45);
+		StatViewPanel.add(label_3);
+		
+		JLabel label_4 = new JLabel("\uACF5\uACA9\uC218");
+		label_4.setForeground(Color.BLACK);
+		label_4.setFont(new Font("만화진흥원체", Font.PLAIN, 16));
+		label_4.setBounds(183, 321, 41, 19);
+		StatViewPanel.add(label_4);
+		
 		JPanel panel_2 = new JPanel();
-		panel_2.setBounds(52, 47, 100, 100);
+		panel_2.setBounds(421, 81, 724, 349);
 		StatViewPanel.add(panel_2);
 		panel_2.setLayout(new CardLayout(0, 0));
-
-		JLabel lblNewLabel = new JLabel("\uC0AC\uC9C4");
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		panel_2.add(lblNewLabel, "name_5083844218100");
-
+		
+		JTextPane textPane = new JTextPane();
+		textPane.setFont(new Font("KBIZ한마음고딕 M", Font.PLAIN, 16));
+		panel_2.add(textPane, "name_16594864164300");
+		
 		JPanel panel_3 = new JPanel();
-		panel_3.setBounds(164, 47, 302, 100);
+		panel_3.setBounds(421, 447, 724, 180);
 		StatViewPanel.add(panel_3);
-		panel_3.setLayout(null);
-
-		JLabel lblNewLabel_3 = new JLabel("\uAE40\uCE58\uD604");
-		lblNewLabel_3.setFont(new Font("서울남산체 M", Font.PLAIN, 18));
-		lblNewLabel_3.setBounds(28, 20, 60, 33);
-		panel_3.add(lblNewLabel_3);
-
-		JPanel panel_4 = new JPanel();
-		panel_4.setBounds(1048, 10, 250, 250);
-		StatViewPanel.add(panel_4);
+		panel_3.setLayout(new CardLayout(0, 0));
+		
+		JTextArea textArea = new JTextArea();
+		textArea.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
+		textArea.setFont(new Font("KBIZ한마음고딕 M", Font.PLAIN, 16));
+		textArea.setToolTipText("\uBA54\uBAA8\uD560 \uB0B4\uC6A9\uC744 \uC785\uB825\uD558\uC138\uC694");
+		panel_3.add(textArea, "name_16506590487900");
+		
+		JButton button = new JButton("\uB4F1\uB85D");
+		button.setForeground(Color.WHITE);
+		button.setFont(new Font("KBIZ한마음고딕 B", Font.PLAIN, 12));
+		button.setBackground(new Color(71, 120, 197));
+		button.setBounds(1065, 659, 80, 35);
+		StatViewPanel.add(button);
 
 	}
 }
