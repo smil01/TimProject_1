@@ -278,35 +278,102 @@ public class Btn1_Button3 extends JPanel {
 		lbl_PlayerMemo.setForeground(Color.WHITE);
 		lbl_PlayerMemo.setFont(new Font("KBIZ한마음고딕 H", Font.PLAIN, 20));
 		lbl_PlayerMemo.setBackground(Color.WHITE);
-
-		JPanel StatViewPanel = new JPanel();
-		StatViewPanel.setBackground(new Color(255, 255, 255));
-		StatViewPanel.setBounds(280, 104, 1320, 796);
-		Lobby_Panel.add(StatViewPanel);
-		StatViewPanel.setLayout(null);
 		
 		JPanel panel_2 = new JPanel();
-		panel_2.setBounds(52, 47, 100, 100);
-		StatViewPanel.add(panel_2);
-		panel_2.setLayout(new CardLayout(0, 0));
-		
-		JLabel lblNewLabel = new JLabel("\uC0AC\uC9C4");
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		panel_2.add(lblNewLabel, "name_5083844218100");
+		panel_2.setLayout(null);
+		panel_2.setBackground(Color.WHITE);
+		panel_2.setBounds(280, 104, 1320, 796);
+		Lobby_Panel.add(panel_2);
 		
 		JPanel panel_3 = new JPanel();
-		panel_3.setBounds(164, 47, 302, 100);
-		StatViewPanel.add(panel_3);
-		panel_3.setLayout(null);
+		panel_3.setBounds(90, 50, 180, 180);
+		panel_2.add(panel_3);
+		panel_3.setLayout(new CardLayout(0, 0));
 		
-		JLabel lblNewLabel_3 = new JLabel("\uAE40\uCE58\uD604");
-		lblNewLabel_3.setFont(new Font("서울남산체 M", Font.PLAIN, 18));
-		lblNewLabel_3.setBounds(28, 20, 60, 33);
-		panel_3.add(lblNewLabel_3);
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setIcon(new ImageIcon(Btn1_Button3.class.getResource("/P5_Img/uefa.jpg")));
+		panel_3.add(lblNewLabel, "name_4633110137300");
 		
 		JPanel panel_4 = new JPanel();
-		panel_4.setBounds(1048, 10, 250, 250);
-		StatViewPanel.add(panel_4);
+		panel_4.setBackground(Color.WHITE);
+		panel_4.setBounds(886, 50, 230, 230);
+		panel_2.add(panel_4);
+		panel_4.setLayout(new CardLayout(0, 0));
+		
+		JLabel lblNewLabel_3 = new JLabel("");
+		lblNewLabel_3.setIcon(new ImageIcon(Btn1_Button3.class.getResource("/P5_Img/sample.jpg")));
+		panel_4.add(lblNewLabel_3, "name_4636462341300");
+		
+		JPanel panel_5 = new JPanel();
+		panel_5.setBackground(Color.WHITE);
+		panel_5.setBounds(346, 50, 468, 230);
+		panel_2.add(panel_5);
+		panel_5.setLayout(null);
+		
+		JLabel lblNewLabel_4 = new JLabel("");
+		lblNewLabel_4.setBounds(0, 0, 468, 230);
+		lblNewLabel_4.setIcon(new ImageIcon(Btn1_Button3.class.getResource("/P5_Img/1-Line-Chart.png")));
+		lblNewLabel_4.setHorizontalAlignment(SwingConstants.LEFT);
+		panel_5.add(lblNewLabel_4);
+		
+		JLabel label_15 = new JLabel("\uC774\uAC15\uC778");
+		label_15.setForeground(Color.BLACK);
+		label_15.setFont(new Font("만화진흥원체", Font.PLAIN, 25));
+		label_15.setBounds(134, 240, 82, 45);
+		panel_2.add(label_15);
+		
+		JLabel label_16 = new JLabel("\uACF5\uACA9\uC218");
+		label_16.setForeground(Color.BLACK);
+		label_16.setFont(new Font("만화진흥원체", Font.PLAIN, 16));
+		label_16.setBounds(144, 287, 41, 19);
+		panel_2.add(label_16);
+		
+		JLabel label_18 = new JLabel("\uCD95\uAD6C \uB2A5\uB825");
+		label_18.setForeground(Color.BLACK);
+		label_18.setFont(new Font("만화진흥원체", Font.PLAIN, 25));
+		label_18.setBounds(90, 327, 139, 45);
+		panel_2.add(label_18);
+		
+		JPanel panel_6 = new JPanel();
+		panel_6.setBackground(new Color(255, 255, 255));
+		panel_6.setBounds(90, 382, 486, 334);
+		panel_2.add(panel_6);
+		panel_6.setLayout(null);
+		
+		JLabel lblNewLabel_5 = new JLabel("");
+		lblNewLabel_5.setIcon(new ImageIcon(Btn1_Button3.class.getResource("/P5_Img/piechart1.png")));
+		lblNewLabel_5.setBounds(28, 47, 100, 100);
+		panel_6.add(lblNewLabel_5);
+		
+		JLabel label_2 = new JLabel("");
+		label_2.setIcon(new ImageIcon(Btn1_Button3.class.getResource("/P5_Img/piechart1.png")));
+		label_2.setBounds(174, 47, 100, 100);
+		panel_6.add(label_2);
+		
+		JLabel label_3 = new JLabel("");
+		label_3.setIcon(new ImageIcon(Btn1_Button3.class.getResource("/P5_Img/piechart1.png")));
+		label_3.setBounds(325, 47, 100, 100);
+		panel_6.add(label_3);
+		
+		JLabel label_4 = new JLabel("");
+		label_4.setIcon(new ImageIcon(Btn1_Button3.class.getResource("/P5_Img/piechart1.png")));
+		label_4.setBounds(89, 182, 100, 100);
+		panel_6.add(label_4);
+		
+		JLabel label_5 = new JLabel("");
+		label_5.setIcon(new ImageIcon(Btn1_Button3.class.getResource("/P5_Img/piechart1.png")));
+		label_5.setBounds(253, 182, 100, 100);
+		panel_6.add(label_5);
+		
+		JPanel panel_7 = new JPanel();
+		panel_7.setBackground(new Color(255, 255, 255));
+		panel_7.setBounds(655, 382, 486, 334);
+		panel_2.add(panel_7);
+		panel_7.setLayout(new CardLayout(0, 0));
+		
+		JLabel lblL = new JLabel("l");
+		lblL.setIcon(new ImageIcon(Btn1_Button3.class.getResource("/P5_Img/1-Line-Chart.png")));
+		panel_7.add(lblL, "name_5162401964500");
 
 	}
 }
