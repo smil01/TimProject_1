@@ -115,5 +115,15 @@ public class GroupsDTO {
 				+ ", Group_Img=" + Group_Img + ", Group_LocalCode=" + Group_LocalCode + ", Group_Address="
 				+ Group_Address + ", Group_HomePage=" + Group_HomePage + "]";
 	}
+	
+	public void setResult(GroupsDTO dto) {
+		setGroup_Code(dto.getGroup_Code());
+		setGroup_Name(dto.getGroup_Name());
+		setGroup_Tel(dto.getGroup_Tel());
+		setGroup_Img_Bytes(dto.getGroup_Img());
+		setGroup_LocalCode(dto.getGroup_LocalCode());
+		setGroup_Address(dto.getGroup_Address());
+		setGroup_HomePage(dto.getGroup_HomePage());
+	}
 
 }
