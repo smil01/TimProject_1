@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import P4_DTO.loginDTO;
 import P4_DTO.testDTO;
@@ -99,5 +100,35 @@ public class loginDAO {
 		return result_dto;
 	}
 	
+	
+	
+	public boolean update(loginDTO loginDTO) {
+		con();
+		try {
+			String sql="update member set member_nickname=?, member_pw=?, member_tel=?, member_localcode=?, member_address=?, member_img=? "
+					+ "where member_email=?";
+			pst=conn.prepareStatement(sql);
+			pst.setString(1,loginDTO.getMember_Nickname());
+			pst.setString(2,loginDTO.getMember_Pw());
+			pst.setString(3, loginDTO.getMember_Tel());
+			pst.setInt(4, loginDTO.getMember_LocalCode());
+			pst.setString(5,loginDTO.getMember_Address() );
+			pst.setBytes(6, loginDTO.getMember_Img());
+			pst.setString(7, loginDTO.getMember_Email());
+			
+			int cnt= pst.executeUpdate();
+			
+			if (cnt>0) {
+				return true;
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return false;
+		
+	}
 
 }

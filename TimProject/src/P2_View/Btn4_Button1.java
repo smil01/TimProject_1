@@ -22,6 +22,7 @@ import javax.swing.filechooser.FileSystemView;
 import javax.swing.table.DefaultTableModel;
 
 import P3_DAO.SignUpDAO;
+import P3_DAO.loginDAO;
 import P4_DTO.SignUpDTO;
 import P4_DTO.loginDTO;
 import P7_Util.AddressToLocalCode;
@@ -55,8 +56,7 @@ public class Btn4_Button1 extends JPanel implements FocusListener {
 	private JFrame frame;
 	private loginDTO dto;
 	public String jPath;
-	private SignUpDAO dao=new SignUpDAO();
-	
+	private loginDAO dao=new loginDAO();
 
 	/**
 	 * Create the panel.
@@ -534,8 +534,7 @@ public class Btn4_Button1 extends JPanel implements FocusListener {
 		button_1.setBounds(212, 177, 89, 23);
 		panel_3.add(button_1);
 		label_id_check.setText(dto.getMember_Email());
-		passwordField.setText(dto.getMember_Pw());
-		passwordField_1.setText(dto.getMember_Pw());
+		passwordField_1.setText("");
 		textname.setText(dto.getMember_Nickname());
 		textadress.setText(dto.getMember_Address());
 		texttel.setText(dto.getMember_Tel());
@@ -544,18 +543,8 @@ public class Btn4_Button1 extends JPanel implements FocusListener {
 
 		JButton button_2 = new JButton("\uBCC0\uACBD");
 		button_2.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		button_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-			boolean deletecheck=dao.delete(label_id_check.getText());
-				if (deletecheck) {
-					System.out.println("삭제성공");
-				}else {
-					System.out.println("삭제 실패");
-				}
-
+			
 
 				AddressToLocalCode L_Code = new AddressToLocalCode();
 				int member_LocalCode = L_Code.getLocalCode(textadress.getText());
@@ -564,19 +553,31 @@ public class Btn4_Button1 extends JPanel implements FocusListener {
 					int View_power=dto.getView_Power();
 					System.out.println("뷰포인트>>"+View_power);
 				
+						
+						dto.setMember_Pw(textpassword);
+						dto.setMember_Nickname(textname.getText());
+						dto.setMember_Tel(texttel.getText());
+						dto.setMember_Address(textadress.getText());
+						dto.setMember_LocalCode(member_LocalCode);
+						dto.setMember_Img(jPath);
+					
+					System.out.println("pw  "+dto.getMember_Pw());
+					System.out.println("nic  "+dto.getMember_Nickname());
+					System.out.println("tel  "+dto.getMember_Tel());
+					System.out.println("add  "+dto.getMember_Address());
+					System.out.println("local  "+dto.getMember_LocalCode());
+					System.out.println("img  "+dto.getMember_Img());
+					
+						
+						boolean chheck= dao.update(dto);
+						if (chheck) {
+							System.out.println("변경성공");
+						}else {
+							System.out.println("변경실패");
+						}
+
 				
-				SignUpDTO dto = new SignUpDTO(label_id_check.getText(), 9999, textname.getText(), textpassword,
-						texttel.getText(), member_LocalCode, textadress.getText(),jPath , View_power);
-				dao = new SignUpDAO();
-				int cnt = dao.join(dto);
-				if (cnt > 0) {
-					System.out.println("가입 성공");
-				} else {
-					System.out.println("가입 실패");
-				}
-			
-				
-				
+				JOptionPane.showMessageDialog(null, "정보 변경했습니다. 잘 기억해주세요", "성공", JOptionPane.PLAIN_MESSAGE);
 			}
 		});
 		button_2.setForeground(Color.WHITE);
