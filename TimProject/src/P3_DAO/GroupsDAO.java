@@ -11,11 +11,9 @@ import P4_DTO.GroupsDTO;
 
 public class GroupsDAO {
 	private String sql;
-	private String sql2;
 	private int cnt;
 	private Connection conn;
 	private PreparedStatement pst;
-	private PreparedStatement pst2;
 	private ResultSet rs;
 
 	private void con() {
