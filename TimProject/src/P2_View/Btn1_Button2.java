@@ -15,19 +15,27 @@ import javax.swing.JSeparator;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
+import P3_DAO.PlayerDAO;
+import P4_DTO.PlayerDTO;
 import P4_DTO.loginDTO;
 
 public class Btn1_Button2 extends JPanel {
 	private JTextField textField;
 	private loginDTO dto;
 	private JFrame frame;
+	private int PLAYER_CODE;
+	private PlayerDTO p_dto;
+	private PlayerDAO p_dao = new PlayerDAO();
 
 	/**
 	 * Create the panel.
 	 */
-	public Btn1_Button2(JFrame frame,loginDTO dto) {
+	public Btn1_Button2(JFrame frame, loginDTO dto, int PLAYER_CODE) {
 		this.frame = frame;
 		this.dto=dto;
+		this.PLAYER_CODE = PLAYER_CODE;
+		p_dto = p_dao.SelectPlayer(PLAYER_CODE);
+		
 		setLayout(new CardLayout(0, 0));
 
 		JPanel Lobby_Panel = new JPanel();
@@ -297,7 +305,7 @@ public class Btn1_Button2 extends JPanel {
 		lbl_PlayerStatButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				JPanel Stn1_Button2 = new Btn1_Button2(frame,dto);	
+				JPanel Stn1_Button2 = new Btn1_Button2(frame, dto, 0);	
 				frame.getContentPane().removeAll();	
 				frame.getContentPane().add(Stn1_Button2);
 				frame.revalidate();
@@ -398,7 +406,7 @@ public class Btn1_Button2 extends JPanel {
 		StatViewPanel.add(panel_2);
 		panel_2.setLayout(new CardLayout(0, 0));
 		
-		JLabel lblNewLabel = new JLabel("\uC0AC\uC9C4");
+		JLabel lblNewLabel = new JLabel(new ImageIcon(p_dto.getPlayer_ResizeImg(180, 180)));
 		lblNewLabel.setIcon(new ImageIcon(Btn1_Button2.class.getResource("/P5_Img/uefa.jpg")));
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		panel_2.add(lblNewLabel, "name_5083844218100");
@@ -498,7 +506,7 @@ public class Btn1_Button2 extends JPanel {
 		label_36.setBounds(87, 154, 367, 19);
 		panel_3.add(label_36);
 		
-		JLabel label_9 = new JLabel("\uC774\uAC15\uC778");
+		JLabel label_9 = new JLabel(p_dto.getPlayer_Name());
 		label_9.setForeground(new Color(0, 0, 0));
 		label_9.setFont(new Font("만화진흥원체", Font.PLAIN, 25));
 		label_9.setBounds(134, 240, 82, 45);

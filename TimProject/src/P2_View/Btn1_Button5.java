@@ -324,7 +324,7 @@ public class Btn1_Button5 extends JPanel {
 		lbl_PlayerStatButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				JPanel Stn1_Button2 = new Btn1_Button2(frame,dto);
+				JPanel Stn1_Button2 = new Btn1_Button2(frame, dto, 0);
 				frame.getContentPane().removeAll();
 				frame.getContentPane().add(Stn1_Button2);
 				frame.revalidate();

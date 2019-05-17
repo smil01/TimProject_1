@@ -2,28 +2,32 @@ package P2_View;
 
 import java.awt.CardLayout;
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.Font;
+import java.awt.Point;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JSeparator;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 
 import P3_DAO.PlayerDAO;
-import P4_DTO.PlayerDTO;
 import P4_DTO.listAllDTO;
 import P4_DTO.loginDTO;
-
-import javax.swing.JScrollPane;
-import java.awt.Cursor;
 
 public class Btn1_Button1 extends JPanel {
 	private JTextField textField;
@@ -170,6 +174,81 @@ public class Btn1_Button1 extends JPanel {
 		SearchIconPanel.setLayout(null);
 
 		JLabel label = new JLabel("");
+		label.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+			}
+		});
+
+		JButton button = new JButton("");
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ArrayList<listAllDTO> list = null;
+				if (dto.getView_Power() == 2) {
+					System.out.println("vip");
+					list = dao.VIPsearchGudanPlayerAbility(textField.getText());
+				} else {
+					list = dao.searchGudanPlayerAbility(dto.getGroup_Code(), textField.getText());
+				}
+
+				String column[] = { "선수번호", "이름", "스피드", "슛", "패스", "드리볼", "수비", "성별", "나이", "키", "몸무게", "왼발", "오른발" };
+				Object[][] content = new Object[list.size()][column.length];
+
+				for (int i = 0; i < content.length; i++) {
+					content[i][0] = list.get(i).getPlayer_Code();
+					content[i][1] = list.get(i).getPlayer_Name();
+					content[i][2] = list.get(i).getPlayer_Football_Speed();
+					content[i][3] = list.get(i).getPlayer_Football_Shoot();
+					content[i][4] = list.get(i).getPlayer_Football_Pass();
+					content[i][5] = list.get(i).getPlayer_Football_Dribol();
+					content[i][6] = list.get(i).getPlayer_Football_Defense();
+					content[i][7] = list.get(i).getPlayer_Physical_Sex();
+					content[i][8] = list.get(i).getPlayer_Physical_Age();
+					content[i][9] = list.get(i).getPlayer_Physical_Height();
+					content[i][10] = list.get(i).getPlayer_Physical_Weight();
+					content[i][11] = list.get(i).getPlayer_Physical_LeftFoot();
+					content[i][12] = list.get(i).getPlayer_Physical_RightFoot();
+				}
+
+				for (int i = 0; i < content.length - 1; i++) {
+					for (int j = i + 1; j < content.length; j++) {
+						int a = (int) content[i][2] + (int) content[i][3] + (int) content[i][4] + (int) content[i][5]
+								+ (int) content[i][6] - (int) content[i][8] + (int) content[i][9]
+								- (int) content[i][10];
+						int b = (int) content[j][2] + (int) content[j][3] + (int) content[j][4] + (int) content[j][5]
+								+ (int) content[j][6] - (int) content[j][8] + (int) content[j][9]
+								- (int) content[j][10];
+
+						if (a < b) {
+							Object[] temp = content[i];
+							content[i] = content[j];
+							content[j] = temp;
+						}
+					}
+				}
+
+				DefaultTableModel model = (DefaultTableModel) table.getModel();
+				model.setRowCount(0);
+
+				table.setModel(new DefaultTableModel(content, column) {
+					@Override
+					public Class<?> getColumnClass(int column) {
+						return column == 1 ? Integer.class : String.class;
+					}
+
+					@Override
+					public boolean isCellEditable(int row, int column) {
+						return false;
+					}
+				});
+			}
+		});
+		button.setBorderPainted(false);
+		button.setContentAreaFilled(false);
+		button.setFocusPainted(false);
+		button.setOpaque(false);
+		button.setBounds(0, 0, 59, 34);
+		SearchIconPanel.add(button);
 		label.setBounds(0, 0, 32, 32);
 		label.setHorizontalAlignment(SwingConstants.CENTER);
 		label.setIcon(new ImageIcon(Btn1_Button1.class.getResource("/P5_Img/icons8_search_32px.png")));
@@ -313,7 +392,7 @@ public class Btn1_Button1 extends JPanel {
 		lbl_PlayerStatButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				JPanel Stn1_Button2 = new Btn1_Button2(frame, dto);
+				JPanel Stn1_Button2 = new Btn1_Button2(frame, dto, 0);
 				frame.getContentPane().removeAll();
 				frame.getContentPane().add(Stn1_Button2);
 				frame.revalidate();
@@ -429,16 +508,63 @@ public class Btn1_Button1 extends JPanel {
 			content[i][12] = list.get(i).getPlayer_Physical_RightFoot();
 		}
 
+		for (int i = 0; i < content.length - 1; i++) {
+			for (int j = i + 1; j < content.length; j++) {
+				int a = (int) content[i][2] + (int) content[i][3] + (int) content[i][4] + (int) content[i][5]
+						+ (int) content[i][6] - (int) content[i][8] + (int) content[i][9] - (int) content[i][10];
+				int b = (int) content[j][2] + (int) content[j][3] + (int) content[j][4] + (int) content[j][5]
+						+ (int) content[j][6] - (int) content[j][8] + (int) content[j][9] - (int) content[j][10];
+
+				if (a < b) {
+					Object[] temp = content[i];
+					content[i] = content[j];
+					content[j] = temp;
+				}
+			}
+		}
+
 		table = new JTable();
 		table.setShowVerticalLines(false);
 		table.setBorder(null);
 		table.setRowHeight(40);
 		table.setGridColor(Color.BLACK);
-		table.setModel(new DefaultTableModel(content, column));
+		table.setModel(new DefaultTableModel(content, column) {
+			@Override
+			public Class<?> getColumnClass(int column) {
+				return column == 1 ? Integer.class : String.class;
+			}
+
+			@Override
+			public boolean isCellEditable(int row, int column) {
+				return false;
+			}
+		});
 		table.getTableHeader().setBackground(new Color(120, 168, 252));
 		table.getTableHeader().setForeground(new Color(255, 255, 255));
 		table.setSelectionBackground(new Color(232, 57, 95));
 		table.setBounds(35, 10, 1189, 738);
+		table.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				JTable t = (JTable) e.getSource();
+				if (e.getClickCount() == 2) {
+					TableModel m = t.getModel();
+					Point pt = e.getPoint();
+					int i = t.rowAtPoint(pt);
+					if (i >= 0) {
+						int row = t.convertRowIndexToModel(i);
+//                        String s = String.format("%s (%s)", m.getValueAt(row, 0), m.getValueAt(row, 1));
+//                        JOptionPane.showMessageDialog(t, s, "title", JOptionPane.INFORMATION_MESSAGE);
+
+						JPanel Stn1_Button2 = new Btn1_Button2(frame, dto, (int) m.getValueAt(row, 0));
+						frame.getContentPane().removeAll();
+						frame.getContentPane().add(Stn1_Button2);
+						frame.revalidate();
+						frame.repaint();
+					}
+				}
+			}
+		});
 
 		JScrollPane scrollPane = new JScrollPane(table);
 		scrollPane.setBounds(12, 10, 1296, 738);
