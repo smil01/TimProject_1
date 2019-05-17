@@ -28,6 +28,7 @@ import oracle.core.lmx.LmxRepConversion;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
+import javax.swing.JFrame;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -52,12 +53,15 @@ public class SignUpWindow extends JPanel implements FocusListener {
 	private JTextField textField_1;
 	public SignUpDAO dao = new SignUpDAO();
 	public JLabel lbl_id_check;
+	public JFrame frame;
 
 	/**
 	 * Create the panel.
 	 */
 
-	public SignUpWindow() {
+	public SignUpWindow(JFrame frame) {
+		this.frame = frame;
+		
 		setLayout(new CardLayout(0, 0));
 
 		JPanel panel = new JPanel();
