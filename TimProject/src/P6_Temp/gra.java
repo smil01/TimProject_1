@@ -16,6 +16,7 @@ public class gra {
 			public void run() {
 				try {
 					gra window = new gra();
+					window.frame.setUndecorated(true);
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
