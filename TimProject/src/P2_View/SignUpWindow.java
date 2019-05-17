@@ -32,6 +32,8 @@ import javax.swing.JFileChooser;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.SpringLayout;
+import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
 
 public class SignUpWindow extends JPanel implements FocusListener {
 	private JTextField txt_id;
@@ -71,7 +73,7 @@ public class SignUpWindow extends JPanel implements FocusListener {
 		textField = new JTextField();
 		textField.setText("");
 		textField.setForeground(Color.WHITE);
-		textField.setFont(new Font("³ª´®°íµñ", Font.PLAIN, 14));
+		textField.setFont(new Font("KBIZÇÑ¸¶À½°íµñ M", Font.PLAIN, 14));
 		textField.setColumns(10);
 		textField.setBorder(null);
 		textField.setBackground(new Color(23, 35, 51));
@@ -81,7 +83,7 @@ public class SignUpWindow extends JPanel implements FocusListener {
 		txt_id = new JTextField();
 		txt_id.setBorder(null);
 		txt_id.setText("\uC774\uBA54\uC77C\uC8FC\uC18C(\uC544\uC774\uB514)");
-		txt_id.setFont(new Font("³ª´®°íµñ", Font.PLAIN, 14));
+		txt_id.setFont(new Font("KBIZÇÑ¸¶À½°íµñ M", Font.PLAIN, 14));
 		txt_id.setForeground(new Color(255, 255, 255));
 		txt_id.setBackground(new Color(23, 35, 51));
 		txt_id.setBounds(77, 231, 316, 21);
@@ -95,18 +97,18 @@ public class SignUpWindow extends JPanel implements FocusListener {
 
 		lbl_id_check = new JLabel("\uD544\uC218 \uC785\uB825 \uC694\uC18C \uC785\uB2C8\uB2E4.");
 		lbl_id_check.setForeground(new Color(255, 0, 0));
-		lbl_id_check.setFont(new Font("³ª´®°íµñ", Font.PLAIN, 14));
+		lbl_id_check.setFont(new Font("KBIZÇÑ¸¶À½°íµñ M", Font.PLAIN, 14));
 		lbl_id_check.setBounds(77, 274, 265, 15);
 		panel_back_left.add(lbl_id_check);
 
 		lbl_pw = new JLabel("\uBE44\uBC00\uBC88\uD638");
 		lbl_pw.setForeground(Color.WHITE);
-		lbl_pw.setFont(new Font("³ª´®°íµñ", Font.PLAIN, 14));
+		lbl_pw.setFont(new Font("KBIZÇÑ¸¶À½°íµñ M", Font.PLAIN, 14));
 		lbl_pw.setBounds(77, 311, 75, 15);
 		panel_back_left.add(lbl_pw);
 
 		pwField = new JPasswordField();
-		pwField.setFont(new Font("³ª´®°íµñ", Font.PLAIN, 14));
+		pwField.setFont(new Font("KBIZÇÑ¸¶À½°íµñ M", Font.PLAIN, 14));
 		pwField.setBorder(null);
 		pwField.setForeground(Color.WHITE);
 		pwField.setBackground(new Color(23, 35, 51));
@@ -121,19 +123,19 @@ public class SignUpWindow extends JPanel implements FocusListener {
 		JLabel lbl_pw_check = new JLabel(
 				"\uBE44\uBC00\uBC88\uD638\uB294 8\uC790\uB9AC \uC774\uC0C1\uC774\uC5B4\uC57C\uD569\uB2C8\uB2E4.");
 		lbl_pw_check.setForeground(Color.RED);
-		lbl_pw_check.setFont(new Font("³ª´®°íµñ", Font.PLAIN, 14));
+		lbl_pw_check.setFont(new Font("KBIZÇÑ¸¶À½°íµñ M", Font.PLAIN, 14));
 		lbl_pw_check.setBounds(77, 350, 265, 15);
 		panel_back_left.add(lbl_pw_check);
 
 		lbl_pw_re = new JLabel("\uBE44\uBC00\uBC88\uD638 \uD655\uC778");
 		lbl_pw_re.setForeground(Color.WHITE);
-		lbl_pw_re.setFont(new Font("³ª´®°íµñ", Font.PLAIN, 14));
+		lbl_pw_re.setFont(new Font("KBIZÇÑ¸¶À½°íµñ M", Font.PLAIN, 14));
 		lbl_pw_re.setBounds(77, 389, 102, 15);
 		panel_back_left.add(lbl_pw_re);
 
 		pwField_re = new JPasswordField();
 		pwField_re.setForeground(Color.WHITE);
-		pwField_re.setFont(new Font("³ª´®°íµñ", Font.PLAIN, 14));
+		pwField_re.setFont(new Font("KBIZÇÑ¸¶À½°íµñ M", Font.PLAIN, 14));
 		pwField_re.setBorder(null);
 		pwField_re.setBackground(new Color(23, 35, 51));
 		pwField_re.setBounds(77, 385, 316, 21);
@@ -147,14 +149,14 @@ public class SignUpWindow extends JPanel implements FocusListener {
 		JLabel lbl_pw_re_check = new JLabel(
 				"\uBE44\uBC00\uBC88\uD638\uAC00 \uC77C\uCE58\uD558\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4");
 		lbl_pw_re_check.setForeground(Color.RED);
-		lbl_pw_re_check.setFont(new Font("³ª´®°íµñ", Font.PLAIN, 14));
+		lbl_pw_re_check.setFont(new Font("KBIZÇÑ¸¶À½°íµñ M", Font.PLAIN, 14));
 		lbl_pw_re_check.setBounds(77, 428, 265, 15);
 		panel_back_left.add(lbl_pw_re_check);
 
 		txt_nickname = new JTextField();
 		txt_nickname.setText("\uB2C9\uB124\uC784");
 		txt_nickname.setForeground(Color.WHITE);
-		txt_nickname.setFont(new Font("³ª´®°íµñ", Font.PLAIN, 14));
+		txt_nickname.setFont(new Font("KBIZÇÑ¸¶À½°íµñ M", Font.PLAIN, 14));
 		txt_nickname.setColumns(10);
 		txt_nickname.setBorder(null);
 		txt_nickname.setBackground(new Color(23, 35, 51));
@@ -169,7 +171,7 @@ public class SignUpWindow extends JPanel implements FocusListener {
 		JLabel lbl_nickname_check = new JLabel(
 				"\uC774\uBBF8 \uC874\uC7AC\uD558\uB294 \uB2C9\uB124\uC784\uC785\uB2C8\uB2E4");
 		lbl_nickname_check.setForeground(Color.RED);
-		lbl_nickname_check.setFont(new Font("³ª´®°íµñ", Font.PLAIN, 14));
+		lbl_nickname_check.setFont(new Font("KBIZÇÑ¸¶À½°íµñ M", Font.PLAIN, 14));
 		lbl_nickname_check.setBounds(77, 512, 265, 15);
 		panel_back_left.add(lbl_nickname_check);
 
@@ -177,7 +179,7 @@ public class SignUpWindow extends JPanel implements FocusListener {
 		txt_address = new JTextField();
 		txt_address.setText("\uC8FC\uC18C");
 		txt_address.setForeground(Color.WHITE);
-		txt_address.setFont(new Font("³ª´®°íµñ", Font.PLAIN, 14));
+		txt_address.setFont(new Font("KBIZÇÑ¸¶À½°íµñ M", Font.PLAIN, 14));
 		txt_address.setColumns(10);
 		txt_address.setBorder(null);
 		txt_address.setBackground(new Color(23, 35, 51));
@@ -209,17 +211,17 @@ public class SignUpWindow extends JPanel implements FocusListener {
 			}
 		});
 		lbl_X.setForeground(Color.WHITE);
-		lbl_X.setFont(new Font("³ª´®°íµñ", Font.PLAIN, 14));
+		lbl_X.setFont(new Font("KBIZÇÑ¸¶À½°íµñ M", Font.PLAIN, 14));
 
 		lbl_tel = new JLabel("\uC5F0\uB77D\uCC98");
 		lbl_tel.setForeground(Color.WHITE);
-		lbl_tel.setFont(new Font("³ª´®°íµñ", Font.PLAIN, 14));
+		lbl_tel.setFont(new Font("KBIZÇÑ¸¶À½°íµñ M", Font.PLAIN, 14));
 		lbl_tel.setBounds(77, 609, 75, 15);
 		panel_back_left.add(lbl_tel);
 
 		txt_tel = new JTextField();
 		txt_tel.setForeground(Color.WHITE);
-		txt_tel.setFont(new Font("³ª´®°íµñ", Font.PLAIN, 14));
+		txt_tel.setFont(new Font("KBIZÇÑ¸¶À½°íµñ M", Font.PLAIN, 14));
 		txt_tel.setColumns(10);
 		txt_tel.setBorder(null);
 		txt_tel.setBackground(new Color(23, 35, 51));
@@ -235,20 +237,20 @@ public class SignUpWindow extends JPanel implements FocusListener {
 		textField_1 = new JTextField();
 		textField_1.setText("\uAD6C\uB2E8");
 		textField_1.setForeground(Color.WHITE);
-		textField_1.setFont(new Font("³ª´®°íµñ", Font.PLAIN, 14));
+		textField_1.setFont(new Font("KBIZÇÑ¸¶À½°íµñ M", Font.PLAIN, 14));
 		textField_1.setColumns(10);
 		textField_1.setBorder(null);
 		textField_1.setBackground(new Color(23, 35, 51));
-		textField_1.setBounds(77, 678, 316, 21);
+		textField_1.setBounds(77, 661, 316, 21);
 		panel_back_left.add(textField_1);
 
 		JSeparator separator = new JSeparator();
-		separator.setBounds(77, 709, 316, 2);
+		separator.setBounds(77, 692, 316, 2);
 		panel_back_left.add(separator);
 
 		JButton btnNewButton = new JButton("\uAD6C\uB2E8\uCC3E\uAE30");
-		btnNewButton.setBounds(405, 676, 89, 23);
-		btnNewButton.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 12));
+		btnNewButton.setBounds(402, 661, 90, 25);
+		btnNewButton.setFont(new Font("KBIZÇÑ¸¶À½°íµñ M", Font.PLAIN, 12));
 		btnNewButton.setForeground(new Color(255, 255, 255));
 		btnNewButton.setBackground(new Color(71, 120, 197));
 		panel_back_left.add(btnNewButton);
@@ -308,8 +310,8 @@ public class SignUpWindow extends JPanel implements FocusListener {
 			}
 
 		});
-		btn_picutre.setBounds(206, 172, 89, 23);
-		btn_picutre.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 12));
+		btn_picutre.setBounds(200, 95, 90, 25);
+		btn_picutre.setFont(new Font("KBIZÇÑ¸¶À½°íµñ M", Font.PLAIN, 12));
 		btn_picutre.setForeground(new Color(255, 255, 255));
 		btn_picutre.setBackground(new Color(71, 120, 197));
 		panel_back_left.add(btn_picutre);
@@ -336,17 +338,33 @@ public class SignUpWindow extends JPanel implements FocusListener {
 		});
 
 		button.setForeground(Color.WHITE);
-		button.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 12));
+		button.setFont(new Font("KBIZÇÑ¸¶À½°íµñ M", Font.PLAIN, 12));
 		button.setBackground(new Color(71, 120, 197));
 		button.setBounds(77, 761, 80, 35);
 		panel_back_left.add(button);
 
 		JButton button_1 = new JButton("\uCDE8\uC18C");
 		button_1.setForeground(Color.WHITE);
-		button_1.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 12));
+		button_1.setFont(new Font("KBIZÇÑ¸¶À½°íµñ M", Font.PLAIN, 12));
 		button_1.setBackground(new Color(71, 120, 197));
 		button_1.setBounds(231, 761, 80, 35);
 		panel_back_left.add(button_1);
+		
+		JLabel label = new JLabel("\uD68C\uC6D0\uC720\uD615");
+		label.setForeground(Color.WHITE);
+		label.setFont(new Font("KBIZÇÑ¸¶À½°íµñ M", Font.PLAIN, 14));
+		label.setBounds(200, 146, 75, 15);
+		panel_back_left.add(label);
+		
+		JComboBox comboBox = new JComboBox();
+		comboBox.setForeground(new Color(255, 255, 255));
+		comboBox.setBackground(new Color(71, 120, 197));
+		
+		comboBox.setFont(new Font("KBIZÇÑ¸¶À½°íµñ M", Font.PLAIN, 14));
+		comboBox.setBorder(null);
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"\uAC10\uB3C5", "\uCF54\uCE58", "\uC2A4\uCE74\uC6B0\uD130", "\uAE30\uD0C0"}));
+		comboBox.setBounds(200, 171, 90, 25);
+		panel_back_left.add(comboBox);
 	}
 
 	@Override
