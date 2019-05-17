@@ -27,14 +27,6 @@ import javax.swing.JFrame;
 
 public class Btn3_Button1 extends JPanel implements FocusListener {
 	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JPasswordField passwordField;
-	private JPasswordField passwordField_1;
-	private JTextField textField_3;
-	private JTextField textField_4;
-	private JTextField textField_5;
-	private JTextField textField_6;
 	private JFrame frame;
 	private loginDTO dto;
 	
@@ -312,198 +304,29 @@ public class Btn3_Button1 extends JPanel implements FocusListener {
 		GudanName.add(lblNewLabel);
 		
 		JPanel panel_3 = new JPanel();
-		panel_3.setBounds(280, 104, 1320, 796);
+		panel_3.setBounds(280, 105, 1320, 796);
 		Lobby_Panel.add(panel_3);
 		panel_3.setLayout(null);
 		panel_3.setBackground(new Color(255, 255, 255));
 		
-		textField_1 = new JTextField();
-		textField_1.setText("");
-		textField_1.setForeground(Color.WHITE);
-		textField_1.setFont(new Font("³ª´®°íµñ", Font.PLAIN, 14));
-		textField_1.setColumns(10);
-		textField_1.setBorder(null);
-		textField_1.setBackground(new Color(23, 35, 51));
-		textField_1.setBounds(0, 0, 0, 0);
-		panel_3.add(textField_1);
-		
-		textField_2 = new JTextField();
-		textField_2.setText("\uAD6C\uB2E8\uBA85");
-		textField_2.setForeground(Color.WHITE);
-		textField_2.setFont(new Font("³ª´®°íµñ", Font.PLAIN, 14));
-		textField_2.setColumns(10);
-		textField_2.setBorder(null);
-		textField_2.setBackground(new Color(23, 35, 51));
-		textField_2.setBounds(77, 231, 316, 21);
-		textField_2.addFocusListener(this);
-		panel_3.add(textField_2);
-		
-		JSeparator separator_1 = new JSeparator();
-		separator_1.setBounds(77, 262, 316, 2);
-		panel_3.add(separator_1);
-		
-		JLabel label_2 = new JLabel("\uC774\uBBF8 \uC874\uC7AC\uD558\uB294 \uAD6C\uB2E8\uBA85\uC785\uB2C8\uB2E4.");
-		label_2.setForeground(Color.RED);
-		label_2.setFont(new Font("³ª´®°íµñ", Font.PLAIN, 14));
-		label_2.setBounds(77, 274, 265, 15);
-		panel_3.add(label_2);
-		
-		JLabel label_3 = new JLabel("\uBE44\uBC00\uBC88\uD638");
-		label_3.setForeground(Color.WHITE);
-		label_3.setFont(new Font("³ª´®°íµñ", Font.PLAIN, 14));
-		label_3.setBounds(77, 311, 75, 15);
-		panel_3.add(label_3);
-		
-		passwordField = new JPasswordField();
-		passwordField.setForeground(Color.WHITE);
-		passwordField.setFont(new Font("³ª´®°íµñ", Font.PLAIN, 14));
-		passwordField.setBorder(null);
-		passwordField.setBackground(new Color(23, 35, 51));
-		passwordField.setBounds(77, 307, 316, 21);
-		panel_3.add(passwordField);
-		
-		JSeparator separator_2 = new JSeparator();
-		separator_2.setBounds(77, 338, 316, 2);
-		panel_3.add(separator_2);
-		
-		JLabel label_4 = new JLabel("\uBE44\uBC00\uBC88\uD638\uB294 8\uC790\uB9AC \uC774\uC0C1\uC774\uC5B4\uC57C\uD569\uB2C8\uB2E4.");
-		label_4.setForeground(Color.RED);
-		label_4.setFont(new Font("³ª´®°íµñ", Font.PLAIN, 14));
-		label_4.setBounds(77, 350, 265, 15);
-		panel_3.add(label_4);
-		
-		JLabel label_5 = new JLabel("\uBE44\uBC00\uBC88\uD638 \uD655\uC778");
-		label_5.setForeground(Color.WHITE);
-		label_5.setFont(new Font("³ª´®°íµñ", Font.PLAIN, 14));
-		label_5.setBounds(77, 389, 102, 15);
-		panel_3.add(label_5);
-		
-		passwordField_1 = new JPasswordField();
-		passwordField_1.setForeground(Color.WHITE);
-		passwordField_1.setFont(new Font("³ª´®°íµñ", Font.PLAIN, 14));
-		passwordField_1.setBorder(null);
-		passwordField_1.setBackground(new Color(23, 35, 51));
-		passwordField_1.setBounds(77, 385, 316, 21);
-		panel_3.add(passwordField_1);
-		
-		JSeparator separator_3 = new JSeparator();
-		separator_3.setBounds(77, 416, 316, 2);
-		panel_3.add(separator_3);
-		
-		JLabel label_6 = new JLabel("\uBE44\uBC00\uBC88\uD638\uAC00 \uC77C\uCE58\uD558\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4");
-		label_6.setForeground(Color.RED);
-		label_6.setFont(new Font("³ª´®°íµñ", Font.PLAIN, 14));
-		label_6.setBounds(77, 428, 265, 15);
-		panel_3.add(label_6);
-		
-		textField_3 = new JTextField();
-		textField_3.setText("\uB2C9\uB124\uC784");
-		textField_3.setForeground(Color.WHITE);
-		textField_3.setFont(new Font("³ª´®°íµñ", Font.PLAIN, 14));
-		textField_3.setColumns(10);
-		textField_3.setBorder(null);
-		textField_3.setBackground(new Color(23, 35, 51));
-		textField_3.setBounds(77, 469, 316, 21);
-		panel_3.add(textField_3);
-		
-		JSeparator separator_4 = new JSeparator();
-		separator_4.setBounds(77, 500, 316, 2);
-		panel_3.add(separator_4);
-		
-		JLabel label_7 = new JLabel("\uC774\uBBF8 \uC874\uC7AC\uD558\uB294 \uB2C9\uB124\uC784\uC785\uB2C8\uB2E4");
-		label_7.setForeground(Color.RED);
-		label_7.setFont(new Font("³ª´®°íµñ", Font.PLAIN, 14));
-		label_7.setBounds(77, 512, 265, 15);
-		panel_3.add(label_7);
-		
-		textField_4 = new JTextField();
-		textField_4.setText("\uC8FC\uC18C");
-		textField_4.setForeground(Color.WHITE);
-		textField_4.setFont(new Font("³ª´®°íµñ", Font.PLAIN, 14));
-		textField_4.setColumns(10);
-		textField_4.setBorder(null);
-		textField_4.setBackground(new Color(23, 35, 51));
-		textField_4.setBounds(77, 549, 316, 21);
-		panel_3.add(textField_4);
-		
-		JSeparator separator_5 = new JSeparator();
-		separator_5.setBounds(77, 580, 316, 2);
-		panel_3.add(separator_5);
-		
-		JLabel label_8 = new JLabel("\uC5F0\uB77D\uCC98");
-		label_8.setForeground(Color.WHITE);
-		label_8.setFont(new Font("³ª´®°íµñ", Font.PLAIN, 14));
-		label_8.setBounds(77, 609, 75, 15);
-		panel_3.add(label_8);
-		
-		textField_5 = new JTextField();
-		textField_5.setForeground(Color.WHITE);
-		textField_5.setFont(new Font("³ª´®°íµñ", Font.PLAIN, 14));
-		textField_5.setColumns(10);
-		textField_5.setBorder(null);
-		textField_5.setBackground(new Color(23, 35, 51));
-		textField_5.setBounds(77, 605, 316, 21);
-		panel_3.add(textField_5);
-		
-		JSeparator separator_6 = new JSeparator();
-		separator_6.setBounds(77, 636, 316, 2);
-		panel_3.add(separator_6);
-		
-		textField_6 = new JTextField();
-		textField_6.setText("\uAD6C\uB2E8");
-		textField_6.setForeground(Color.WHITE);
-		textField_6.setFont(new Font("³ª´®°íµñ", Font.PLAIN, 14));
-		textField_6.setColumns(10);
-		textField_6.setBorder(null);
-		textField_6.setBackground(new Color(23, 35, 51));
-		textField_6.setBounds(77, 678, 316, 21);
-		panel_3.add(textField_6);
-		
-		JSeparator separator_7 = new JSeparator();
-		separator_7.setBounds(77, 709, 316, 2);
-		panel_3.add(separator_7);
-		
-		JButton button = new JButton("\uAD6C\uB2E8\uCC3E\uAE30");
-		button.setForeground(Color.WHITE);
-		button.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 12));
-		button.setBackground(new Color(71, 120, 197));
-		button.setBounds(405, 676, 89, 23);
-		panel_3.add(button);
+		JPanel panel = new JPanel();
+		panel.setBackground(new Color(230, 230, 250));
+		panel.setBounds(100, 100, 100, 100);
+		panel_3.add(panel);
 		
 		JPanel panel_4 = new JPanel();
-		panel_4.setBackground(new Color(240,240,240));
-		panel_4.setBounds(77, 66, 100, 100);
+		panel_4.setBounds(230, 100, 300, 100);
 		panel_3.add(panel_4);
+		panel_4.setLayout(new CardLayout(0, 0));
 		
-		JButton button_1 = new JButton("\uC0AC\uC9C4\uCC3E\uAE30");
-		button_1.setForeground(Color.WHITE);
-		button_1.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 12));
-		button_1.setBackground(new Color(71, 120, 197));
-		button_1.setBounds(189, 143, 89, 23);
-		panel_3.add(button_1);
-		
-		JButton button_2 = new JButton("\uD655\uC778");
-		button_2.setForeground(Color.WHITE);
-		button_2.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 12));
-		button_2.setBackground(new Color(71, 120, 197));
-		button_2.setBounds(77, 761, 80, 35);
-		panel_3.add(button_2);
-		
-		JButton button_3 = new JButton("\uCDE8\uC18C");
-		button_3.setForeground(Color.WHITE);
-		button_3.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 12));
-		button_3.setBackground(new Color(71, 120, 197));
-		button_3.setBounds(231, 761, 80, 35);
-		panel_3.add(button_3);
+		JLabel lblNewLabel_3 = new JLabel("");
+		panel_4.add(lblNewLabel_3, "name_15321846016200");
 		
 
 	}
 
 	@Override
 	public void focusGained(FocusEvent e) {
-		if (e.getSource()==textField_2) {
-			textField_2.setText("");
-		}
 	}
 
 	@Override
