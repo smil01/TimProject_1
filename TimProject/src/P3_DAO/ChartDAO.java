@@ -19,12 +19,21 @@ import org.jfree.chart.renderer.category.BarRenderer;
 import org.jfree.data.category.DefaultCategoryDataset;
 import org.jfree.ui.TextAnchor;
 
+import P4_DTO.Player_FootballDTO;
+
 public class ChartDAO {
 	String[] PlayerFootball = { "스피드", "슛", "패스", "드리블", "수비" };
-	
+	ArrayList<Player_FootballDTO> arr = new ArrayList<Player_FootballDTO>();
 
-	public JFreeChart getChart(int[] footballstat) {
+
+	public JFreeChart getChart_Football(ArrayList<Player_FootballDTO> arr) {
 		// 데이터 생성
+		int data[] = new int[5];
+		data[0] = arr.get(0).getPlayer_Football_Speed();
+		data[1] = arr.get(0).getPlayer_Football_Shoot();
+		data[2] = arr.get(0).getPlayer_Football_Pass();
+		data[3] = arr.get(0).getPlayer_Football_Dribol();
+		data[4] = arr.get(0).getPlayer_Football_Defense();
 
 		DefaultCategoryDataset dataset1 = new DefaultCategoryDataset(); // bar chart 1
 
@@ -34,9 +43,7 @@ public class ChartDAO {
 
 		// 바 그래프
 		for (int i = 0; i < PlayerFootball.length; i++) {
-			
-			dataset1.addValue(footballstat[i], "S1", PlayerFootball[i]);
-			
+			dataset1.addValue(data[i], "축구능력", PlayerFootball[i]);
 		}
 
 		// 라인그래프

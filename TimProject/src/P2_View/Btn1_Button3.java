@@ -2,9 +2,11 @@ package P2_View;
 
 import java.awt.CardLayout;
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -13,8 +15,15 @@ import javax.swing.JPanel;
 import javax.swing.JSeparator;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+
+import P3_DAO.ChartDAO;
+import P3_DAO.Player_FootballDAO;
+import P4_DTO.Player_FootballDTO;
 import P4_DTO.loginDTO;
-import java.awt.Cursor;
+import chart.PolylineBarChart;
 
 public class Btn1_Button3 extends JPanel {
 	private JTextField textField;
@@ -448,32 +457,26 @@ public class Btn1_Button3 extends JPanel {
 		panel_6.setBackground(new Color(255, 255, 255));
 		panel_6.setBounds(90, 382, 486, 334);
 		panel_2.add(panel_6);
-		panel_6.setLayout(null);
+		panel_6.setLayout(new CardLayout(0, 0));
 
+		ArrayList<Player_FootballDTO> array = new ArrayList<>();
+		Player_FootballDAO fdao = new Player_FootballDAO();
+		array = fdao.Player_Football(9999); // 풋볼코드를 안에 값으로 수정해야함!!!
+		PolylineBarChart demo = new PolylineBarChart();
+		ChartDAO cdao = new ChartDAO();
+		JFreeChart chart = cdao.getChart_Football(array);
+
+		ChartPanel CP = new ChartPanel(chart);
+		panel_6.add(CP);
+		panel_6.validate();
+		
 		JLabel lblNewLabel_5 = new JLabel("");
-		lblNewLabel_5.setIcon(new ImageIcon(Btn1_Button3.class.getResource("/P5_Img/piechart1.png")));
-		lblNewLabel_5.setBounds(28, 47, 100, 100);
-		panel_6.add(lblNewLabel_5);
+		panel_6.add(lblNewLabel_5, "name_33314269177200");
 
-		JLabel label_2 = new JLabel("");
-		label_2.setIcon(new ImageIcon(Btn1_Button3.class.getResource("/P5_Img/piechart1.png")));
-		label_2.setBounds(174, 47, 100, 100);
-		panel_6.add(label_2);
-
-		JLabel label_3 = new JLabel("");
-		label_3.setIcon(new ImageIcon(Btn1_Button3.class.getResource("/P5_Img/piechart1.png")));
-		label_3.setBounds(325, 47, 100, 100);
-		panel_6.add(label_3);
-
-		JLabel label_4 = new JLabel("");
-		label_4.setIcon(new ImageIcon(Btn1_Button3.class.getResource("/P5_Img/piechart1.png")));
-		label_4.setBounds(89, 182, 100, 100);
-		panel_6.add(label_4);
-
-		JLabel label_5 = new JLabel("");
-		label_5.setIcon(new ImageIcon(Btn1_Button3.class.getResource("/P5_Img/piechart1.png")));
-		label_5.setBounds(253, 182, 100, 100);
-		panel_6.add(label_5);
+		ChartPanel panel12 = new ChartPanel(chart);
+		panel12.setBounds(90, 382, 486, 334);
+		panel12.setSize(500, 800);
+		panel_6.add(panel12);
 
 		JPanel panel_7 = new JPanel();
 		panel_7.setBackground(new Color(255, 255, 255));
