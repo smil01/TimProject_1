@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import P4_DTO.SignUpDTO;
 
@@ -114,7 +115,26 @@ public class SignUpDAO {
 
 		return cnt;
 	}
-	
+
+	public boolean delete(String Email) {
+		con();
+		try {
+			
+			String sql="delete from Member where Member_Email=? ";
+			pst=conn.prepareStatement(sql);
+			pst.setString(1,Email);
+			int cnt = pst.executeUpdate();
+
+			if (cnt > 0) {
+				return true;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return false;
+	}
 
 	
 

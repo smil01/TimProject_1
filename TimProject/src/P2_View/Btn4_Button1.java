@@ -7,39 +7,56 @@ import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.File;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.filechooser.FileSystemView;
 import javax.swing.table.DefaultTableModel;
 
+import P3_DAO.SignUpDAO;
+import P4_DTO.SignUpDTO;
 import P4_DTO.loginDTO;
+import P7_Util.AddressToLocalCode;
+import P7_Util.Emailcheck;
+import P7_Util.fileExtension;
+import P7_Util.passwordCheck;
 
 import javax.swing.JScrollPane;
 import java.awt.Cursor;
 import javax.swing.JPasswordField;
 import javax.swing.JButton;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
+import javax.swing.SpringLayout;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Btn4_Button1 extends JPanel implements FocusListener {
 	private JTextField textField;
 	private JTextField textField_1;
-	private JTextField textField_2;
 	private JPasswordField passwordField;
 	private JPasswordField passwordField_1;
-	private JTextField textField_3;
-	private JTextField textField_4;
-	private JTextField textField_5;
-	private JTextField textField_6;
+	private JTextField textname;
+	private JTextField textadress;
+	private JTextField texttel;
+	private JTextField textGrop;
+	private JLabel label_id_check;
+	private JLabel label_pw_check;
+	private JLabel label_pw_re_check;
+	private JLabel label_name_check ;
 	private JFrame frame;
 	private loginDTO dto;
-	private JLabel label_3;
-	private JLabel label_5;
-	private JLabel label_8;
+	public String jPath;
+	private SignUpDAO dao=new SignUpDAO();
+	
 
 	/**
 	 * Create the panel.
@@ -88,6 +105,7 @@ public class Btn4_Button1 extends JPanel implements FocusListener {
 		JLabel lbl_profileImg = new JLabel("\uD504\uB85C\uD544\uC0AC\uC9C4");
 		lbl_profileImg.setHorizontalAlignment(SwingConstants.CENTER);
 		Profile_ImagePanel.add(lbl_profileImg, "name_54594167799700");
+		lbl_profileImg.setIcon(new ImageIcon(dto.getMember_ResizeImg(100, 100)));
 
 		JPanel Profile_Nickname = new JPanel();
 		Profile_Nickname.setBackground(new Color(84, 125, 206));
@@ -95,11 +113,12 @@ public class Btn4_Button1 extends JPanel implements FocusListener {
 		ProfilePanel.add(Profile_Nickname);
 		Profile_Nickname.setLayout(null);
 
-		JLabel label_1 = new JLabel("\uB2C9\uB124\uC784");
-		label_1.setForeground(Color.WHITE);
-		label_1.setFont(new Font("KBIZÇÑ¸¶À½°íµñ B", Font.PLAIN, 16));
-		label_1.setBounds(30, 38, 100, 25);
-		Profile_Nickname.add(label_1);
+		JLabel lbl_profile_Nickname = new JLabel("\uB2C9\uB124\uC784");
+		lbl_profile_Nickname.setForeground(Color.WHITE);
+		lbl_profile_Nickname.setFont(new Font("KBIZÇÑ¸¶À½°íµñ B", Font.PLAIN, 16));
+		lbl_profile_Nickname.setBounds(30, 38, 100, 25);
+		Profile_Nickname.add(lbl_profile_Nickname);
+		lbl_profile_Nickname.setText(dto.getMember_Nickname());
 
 		JPanel btn_1 = new JPanel();
 		btn_1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
@@ -330,33 +349,15 @@ public class Btn4_Button1 extends JPanel implements FocusListener {
 		textField_1.setBounds(0, 0, 0, 0);
 		panel_3.add(textField_1);
 
-		textField_2 = new JTextField();
-		textField_2.setText("\uC774\uBA54\uC77C\uC8FC\uC18C");
-		textField_2.setForeground(Color.WHITE);
-		textField_2.setFont(new Font("³ª´®°íµñ", Font.PLAIN, 14));
-		textField_2.setColumns(10);
-		textField_2.setBorder(null);
-		textField_2.setBackground(new Color(23, 35, 51));
-		textField_2.setBounds(100, 280, 316, 21);
-		textField_2.addFocusListener(this);
-		panel_3.add(textField_2);
-
 		JSeparator separator_1 = new JSeparator();
 		separator_1.setBounds(100, 311, 316, 2);
 		panel_3.add(separator_1);
 
-		JLabel label_2 = new JLabel("\uC774\uBBF8 \uC874\uC7AC\uD558\uB294 \uC774\uBA54\uC77C\uC785\uB2C8\uB2E4.");
-		label_2.setForeground(Color.RED);
-		label_2.setFont(new Font("³ª´®°íµñ", Font.PLAIN, 14));
-		label_2.setBounds(100, 323, 265, 15);
-		panel_3.add(label_2);
-
-		label_3 = new JLabel("\uBE44\uBC00\uBC88\uD638");
-		label_3.setForeground(Color.WHITE);
-		label_3.setFont(new Font("³ª´®°íµñ", Font.PLAIN, 14));
-		label_3.setBounds(100, 360, 75, 15);
-		label_3.addFocusListener(this);
-		panel_3.add(label_3);
+		label_id_check = new JLabel("\uC774\uBBF8 \uC874\uC7AC\uD558\uB294 \uC774\uBA54\uC77C\uC785\uB2C8\uB2E4.");
+		label_id_check.setForeground(Color.WHITE);
+		label_id_check.setFont(new Font("³ª´®°íµñ", Font.PLAIN, 14));
+		label_id_check.setBounds(100, 286, 265, 15);
+		panel_3.add(label_id_check);
 
 		passwordField = new JPasswordField();
 		passwordField.setForeground(Color.WHITE);
@@ -371,18 +372,11 @@ public class Btn4_Button1 extends JPanel implements FocusListener {
 		separator_2.setBounds(100, 387, 316, 2);
 		panel_3.add(separator_2);
 
-		JLabel label_4 = new JLabel(
-				"\uBE44\uBC00\uBC88\uD638\uB294 8\uC790\uB9AC \uC774\uC0C1\uC774\uC5B4\uC57C\uD569\uB2C8\uB2E4.");
-		label_4.setForeground(Color.RED);
-		label_4.setFont(new Font("³ª´®°íµñ", Font.PLAIN, 14));
-		label_4.setBounds(100, 399, 265, 15);
-		panel_3.add(label_4);
-
-		label_5 = new JLabel("\uBE44\uBC00\uBC88\uD638 \uD655\uC778");
-		label_5.setForeground(Color.WHITE);
-		label_5.setFont(new Font("³ª´®°íµñ", Font.PLAIN, 14));
-		label_5.setBounds(100, 438, 102, 15);
-		panel_3.add(label_5);
+		label_pw_check = new JLabel("\uBE44\uBC00\uBC88\uD638\uB294 8\uC790\uB9AC \uC774\uC0C1\uC774\uC5B4\uC57C\uD569\uB2C8\uB2E4.");
+		label_pw_check.setForeground(Color.RED);
+		label_pw_check.setFont(new Font("³ª´®°íµñ", Font.PLAIN, 14));
+		label_pw_check.setBounds(100, 399, 265, 15);
+		panel_3.add(label_pw_check);
 
 		passwordField_1 = new JPasswordField();
 		passwordField_1.setForeground(Color.WHITE);
@@ -397,81 +391,75 @@ public class Btn4_Button1 extends JPanel implements FocusListener {
 		separator_3.setBounds(100, 465, 316, 2);
 		panel_3.add(separator_3);
 
-		JLabel label_6 = new JLabel("\uBE44\uBC00\uBC88\uD638\uAC00 \uC77C\uCE58\uD558\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4");
-		label_6.setForeground(Color.RED);
-		label_6.setFont(new Font("³ª´®°íµñ", Font.PLAIN, 14));
-		label_6.setBounds(100, 477, 265, 15);
-		panel_3.add(label_6);
+		label_pw_re_check = new JLabel("\uBE44\uBC00\uBC88\uD638\uAC00 \uC77C\uCE58\uD558\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4");
+		label_pw_re_check.setForeground(Color.RED);
+		label_pw_re_check.setFont(new Font("³ª´®°íµñ", Font.PLAIN, 14));
+		label_pw_re_check.setBounds(100, 477, 265, 15);
+		panel_3.add(label_pw_re_check);
 
-		textField_3 = new JTextField();
-		textField_3.setText("\uB2C9\uB124\uC784");
-		textField_3.setForeground(Color.WHITE);
-		textField_3.setFont(new Font("³ª´®°íµñ", Font.PLAIN, 14));
-		textField_3.setColumns(10);
-		textField_3.setBorder(null);
-		textField_3.setBackground(new Color(23, 35, 51));
-		textField_3.setBounds(100, 518, 316, 21);
-		textField_3.addFocusListener(this);
-		panel_3.add(textField_3);
+		textname = new JTextField();
+		textname.setText("\uB2C9\uB124\uC784");
+		textname.setForeground(Color.WHITE);
+		textname.setFont(new Font("³ª´®°íµñ", Font.PLAIN, 14));
+		textname.setColumns(10);
+		textname.setBorder(null);
+		textname.setBackground(new Color(23, 35, 51));
+		textname.setBounds(100, 518, 316, 21);
+		textname.addFocusListener(this);
+		panel_3.add(textname);
 
 		JSeparator separator_4 = new JSeparator();
 		separator_4.setBounds(100, 549, 316, 2);
 		panel_3.add(separator_4);
 
-		JLabel label_7 = new JLabel("\uC774\uBBF8 \uC874\uC7AC\uD558\uB294 \uB2C9\uB124\uC784\uC785\uB2C8\uB2E4");
-		label_7.setForeground(Color.RED);
-		label_7.setFont(new Font("³ª´®°íµñ", Font.PLAIN, 14));
-		label_7.setBounds(100, 561, 265, 15);
-		panel_3.add(label_7);
+		label_name_check = new JLabel("\uD544\uC218\uC785\uB825\uC0AC\uD56D\uC785\uB2C8\uB2E4.\r\n");
+		label_name_check.setForeground(Color.RED);
+		label_name_check.setFont(new Font("³ª´®°íµñ", Font.PLAIN, 14));
+		label_name_check.setBounds(100, 561, 265, 15);
+		panel_3.add(label_name_check);
 
-		textField_4 = new JTextField();
-		textField_4.setText("\uC8FC\uC18C");
-		textField_4.setForeground(Color.WHITE);
-		textField_4.setFont(new Font("³ª´®°íµñ", Font.PLAIN, 14));
-		textField_4.setColumns(10);
-		textField_4.setBorder(null);
-		textField_4.setBackground(new Color(23, 35, 51));
-		textField_4.setBounds(463, 280, 316, 21);
-		textField_4.addFocusListener(this);
-		panel_3.add(textField_4);
+		textadress = new JTextField();
+		textadress.setText("\uC8FC\uC18C");
+		textadress.setForeground(Color.WHITE);
+		textadress.setFont(new Font("³ª´®°íµñ", Font.PLAIN, 14));
+		textadress.setColumns(10);
+		textadress.setBorder(null);
+		textadress.setBackground(new Color(23, 35, 51));
+		textadress.setBounds(463, 280, 316, 21);
+		textadress.addFocusListener(this);
+		panel_3.add(textadress);
 
 		JSeparator separator_5 = new JSeparator();
 		separator_5.setBounds(463, 311, 316, 2);
 		panel_3.add(separator_5);
 
-	    label_8 = new JLabel("\uC5F0\uB77D\uCC98");
-		label_8.setForeground(Color.WHITE);
-		label_8.setFont(new Font("³ª´®°íµñ", Font.PLAIN, 14));
-		label_8.setBounds(463, 340, 75, 15);
-		panel_3.add(label_8);
-
 		IntegerDocument id = new IntegerDocument();
 
-		textField_5 = new JTextField();
-		textField_5.setForeground(Color.WHITE);
-		textField_5.setFont(new Font("³ª´®°íµñ", Font.PLAIN, 14));
-		textField_5.setColumns(10);
-		textField_5.setBorder(null);
-		textField_5.setBackground(new Color(23, 35, 51));
-		textField_5.setBounds(463, 336, 316, 21);
-		textField_5.addFocusListener(this);
-		textField_5.setDocument(id);
-		panel_3.add(textField_5);
+		texttel = new JTextField();
+		texttel.setForeground(Color.WHITE);
+		texttel.setFont(new Font("³ª´®°íµñ", Font.PLAIN, 14));
+		texttel.setColumns(10);
+		texttel.setBorder(null);
+		texttel.setBackground(new Color(23, 35, 51));
+		texttel.setBounds(463, 336, 316, 21);
+		texttel.addFocusListener(this);
+		texttel.setDocument(id);
+		panel_3.add(texttel);
 
 		JSeparator separator_6 = new JSeparator();
 		separator_6.setBounds(463, 367, 316, 2);
 		panel_3.add(separator_6);
 
-		textField_6 = new JTextField();
-		textField_6.setText("\uAD6C\uB2E8");
-		textField_6.setForeground(Color.WHITE);
-		textField_6.setFont(new Font("³ª´®°íµñ", Font.PLAIN, 14));
-		textField_6.setColumns(10);
-		textField_6.setBorder(null);
-		textField_6.setBackground(new Color(23, 35, 51));
-		textField_6.setBounds(463, 409, 316, 21);
-		textField_6.addFocusListener(this);
-		panel_3.add(textField_6);
+		textGrop = new JTextField();
+		textGrop.setText("\uAD6C\uB2E8");
+		textGrop.setForeground(Color.WHITE);
+		textGrop.setFont(new Font("³ª´®°íµñ", Font.PLAIN, 14));
+		textGrop.setColumns(10);
+		textGrop.setBorder(null);
+		textGrop.setBackground(new Color(23, 35, 51));
+		textGrop.setBounds(463, 409, 316, 21);
+		textGrop.addFocusListener(this);
+		panel_3.add(textGrop);
 
 		JSeparator separator_7 = new JSeparator();
 		separator_7.setBounds(463, 440, 316, 2);
@@ -488,45 +476,123 @@ public class Btn4_Button1 extends JPanel implements FocusListener {
 		panel_4.setBackground(new Color(240, 240, 240));
 		panel_4.setBounds(100, 100, 100, 100);
 		panel_3.add(panel_4);
+		SpringLayout sl_panel_4 = new SpringLayout();
+		panel_4.setLayout(sl_panel_4);
+		
+		JLabel label_Image = new JLabel("New label");
+		sl_panel_4.putConstraint(SpringLayout.NORTH, label_Image, 0, SpringLayout.NORTH, panel_4);
+		sl_panel_4.putConstraint(SpringLayout.WEST, label_Image, 0, SpringLayout.WEST, panel_4);
+		sl_panel_4.putConstraint(SpringLayout.SOUTH, label_Image, 100, SpringLayout.NORTH, panel_4);
+		sl_panel_4.putConstraint(SpringLayout.EAST, label_Image, 100, SpringLayout.WEST, panel_4);
+		panel_4.add(label_Image);
+		label_Image.setIcon(new ImageIcon(dto.getMember_ResizeImg(100, 100)));
 
 		JButton button_1 = new JButton("\uC0AC\uC9C4\uCC3E\uAE30");
+		button_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+
+				JFileChooser jfc = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
+				FileNameExtensionFilter ExtenseFilter = new FileNameExtensionFilter("ÀÌ¹ÌÁöÆÄÀÏ ", "jpg", "gif", "png");
+
+				jfc.setFileFilter(ExtenseFilter);
+				int returnValue = jfc.showOpenDialog(null);
+				// int returnValue = jfc.showSaveDialog(null);
+
+				if (returnValue == JFileChooser.APPROVE_OPTION) {
+					File selectedFile = jfc.getSelectedFile();
+
+					boolean ExtensionOfFile = fileExtension.getfileExtension(selectedFile.getAbsolutePath());
+					System.out.println(ExtensionOfFile);
+					if (ExtensionOfFile) {
+
+						JOptionPane.showMessageDialog(null, "¾÷·Îµå¿Ï·á");
+						jPath = selectedFile.getAbsolutePath();
+
+						SignUpDTO dto = new SignUpDTO();
+
+						dto.setMember_Img(jPath);
+						dto.getMember_Img();
+
+						label_Image.setIcon(new ImageIcon(dto.getMember_ResizeImg(100, 100)));
+
+					} else {
+						JOptionPane.showMessageDialog(null, "ÀÌ¹ÌÁö È®ÀåÀÚ¸¦ ³Ö¾îÁÖ¼¼¿ä ");
+
+					}
+
+				} else {
+					JOptionPane.showMessageDialog(null, "ÆÄÀÏÀ» ¼±ÅÃÇÏÁö ¾Ê¾Ò½À´Ï´Ù", "°æ°í", JOptionPane.WARNING_MESSAGE);
+				}
+			
+				
+				
+			}
+		});
 		button_1.setForeground(Color.WHITE);
 		button_1.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 12));
 		button_1.setBackground(new Color(71, 120, 197));
 		button_1.setBounds(212, 177, 89, 23);
 		panel_3.add(button_1);
+		label_id_check.setText(dto.getMember_Email());
+		passwordField.setText(dto.getMember_Pw());
+		passwordField_1.setText(dto.getMember_Pw());
+		textname.setText(dto.getMember_Nickname());
+		textadress.setText(dto.getMember_Address());
+		texttel.setText(dto.getMember_Tel());
+		textGrop.setText(dto.getGroup_Code()+"");
+		
 
 		JButton button_2 = new JButton("\uBCC0\uACBD");
+		button_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		button_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			boolean deletecheck=dao.delete(label_id_check.getText());
+				if (deletecheck) {
+					System.out.println("»èÁ¦¼º°ø");
+				}else {
+					System.out.println("»èÁ¦ ½ÇÆÐ");
+				}
+
+
+				AddressToLocalCode L_Code = new AddressToLocalCode();
+				int member_LocalCode = L_Code.getLocalCode(textadress.getText());
+				String textpassword = String.valueOf(passwordField.getPassword());
+				System.out.println(textpassword);
+					int View_power=dto.getView_Power();
+					System.out.println("ºäÆ÷ÀÎÆ®>>"+View_power);
+				
+				
+				SignUpDTO dto = new SignUpDTO(label_id_check.getText(), 9999, textname.getText(), textpassword,
+						texttel.getText(), member_LocalCode, textadress.getText(),jPath , View_power);
+				dao = new SignUpDAO();
+				int cnt = dao.join(dto);
+				if (cnt > 0) {
+					System.out.println("°¡ÀÔ ¼º°ø");
+				} else {
+					System.out.println("°¡ÀÔ ½ÇÆÐ");
+				}
+			
+				
+				
+			}
+		});
 		button_2.setForeground(Color.WHITE);
 		button_2.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 12));
 		button_2.setBackground(new Color(71, 120, 197));
 		button_2.setBounds(574, 510, 80, 35);
 		panel_3.add(button_2);
-
+		
 	}
 
 	@Override
 	public void focusGained(FocusEvent e) {
-		if (e.getSource() == textField_2) {
-			textField_2.setText("");
-		} else if (e.getSource() == passwordField) {
-			label_3.setText("");
-		} else if (e.getSource() == passwordField_1) {
-			label_5.setText("");
-		} else if (e.getSource() == textField_3) {
-			textField_3.setText("");
-		} else if (e.getSource() == textField_4) {
-			textField_4.setText("");
-		}else if (e.getSource() == textField_5) {
-			label_8.setText("");
-		}else if (e.getSource() == textField_6) {
-			textField_6.setText("");
-		}
 	}
 
 	@Override
 	public void focusLost(FocusEvent e) {
-		// TODO Auto-generated method stub
-
+		
 	}
 }
