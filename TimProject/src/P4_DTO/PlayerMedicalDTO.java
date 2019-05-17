@@ -1,9 +1,9 @@
 package P4_DTO;
 
 public class PlayerMedicalDTO {
+	private int Player_Medical_Code;
 	private int Player_Code;
 	private int Group_Code;
-	private int Player_Medical_Code;
 	private int Player_Medical_Period;
 	private String Player_Medical_Title;
 	private String Player_Medical_Content;

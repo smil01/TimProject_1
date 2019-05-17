@@ -2,17 +2,19 @@ package P4_DTO;
 
 import java.util.Arrays;
 
+import P7_Util.ImgToByte;
+
 public class MemberDTO {
 	private String Member_Email;
 	private int Group_Code;
 	private String Member_Nickname;
 	private String Member_Pw;
 	private String Member_Tel;
-	private String Member_Address;
 	private int Member_LocalCode;
-	private int View_Power;
+	private String Member_Address;
 	private String Member_Img;
 	private byte[] Member_Img_bytes;
+	private int View_Power;
 
 	public MemberDTO(String member_Email, int group_Code, String member_Nickname, String member_Pw, String member_Tel,
 			String member_Address, int member_LocalCode, int view_Power, String member_Img, byte[] member_Img_bytes) {
@@ -27,6 +29,10 @@ public class MemberDTO {
 		View_Power = view_Power;
 		Member_Img = member_Img;
 		Member_Img_bytes = member_Img_bytes;
+	}
+
+	public MemberDTO() {
+		// TODO Auto-generated constructor stub
 	}
 
 	public String getMember_Email() {
@@ -93,8 +99,11 @@ public class MemberDTO {
 		View_Power = view_Power;
 	}
 
-	public String getMember_Img() {
-		return Member_Img;
+	public byte[] getMember_Img() {
+		if (Member_Img != null) {
+			Member_Img_bytes = ImgToByte.getByte(Member_Img);
+		}
+		return Member_Img_bytes ;
 	}
 
 	public void setMember_Img(String member_Img) {
