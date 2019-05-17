@@ -7,5 +7,11 @@
 	<classpathentry kind="lib" path="src/LIB/license.jar"/>
 	<classpathentry kind="lib" path="src/LIB/ojdbc6.jar"/>
 	<classpathentry kind="lib" path="src/LIB/player.jar"/>
+	<classpathentry kind="lib" path="src/P8_chart/jxbrowser-6.23.1.jar"/>
+	<classpathentry kind="lib" path="src/P8_chart/jxbrowser-win64-6.23.1.jar"/>
+	<classpathentry kind="lib" path="src/P8_chart/license.jar"/>
+	<classpathentry kind="lib" path="C:/Users/USER/Downloads/jfreechart-1.0.19/jfreechart-1.0.19/lib/jcommon-1.0.23.jar"/>
+	<classpathentry kind="lib" path="C:/Users/USER/Downloads/jfreechart-1.0.19/jfreechart-1.0.19/lib/jfreechart-1.0.19.jar"/>
+	<classpathentry kind="lib" path="C:/Users/USER/Downloads/jfreechart-1.0.19/jfreechart-1.0.19/lib/jfreechart-1.0.19-swt.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

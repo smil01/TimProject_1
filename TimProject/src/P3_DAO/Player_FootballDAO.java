@@ -80,10 +80,38 @@ public class Player_FootballDAO {
 		}
 		return -1;
 	}
-
 	
+	
+//	// 시퀀스 값 을 제외한 인설트 해오기 업데이트용
+//	public void joinPlayer_Football_noreturn(Player_FootballDTO Player_FootballDTO) { // DTO로 받으면 값을 넣지
+//	
+//		con();
+//
+//		sql = "INSERT INTO Player_Football(insert into player_football(player_football_code, PLAYER_CODE, GROUP_CODE,PLAYER_FOOTBALL_SPEED,PLAYER_FOOTBALL_SHOOT, PLAYER_FOOTBALL_PASS, PLAYER_FOOTBALL_DRIBOL, PLAYER_FOOTBALL_DEFENSE)"
+//				+" ?,?,?,?,?,?,?);";
+//		try {
+//			pst = conn.prepareStatement(sql);
+//
+//		
+//			pst.setInt(1, Player_FootballDTO.getPlayer_Code());
+//			pst.setInt(2, Player_FootballDTO.getGroup_Code());
+//			pst.setInt(3, Player_FootballDTO.getPlayer_Football_Speed());
+//			pst.setInt(4, Player_FootballDTO.getPlayer_Football_Shoot());
+//			pst.setInt(5, Player_FootballDTO.getPlayer_Football_Pass());
+//			pst.setInt(6, Player_FootballDTO.getPlayer_Football_Dribol());
+//			pst.setInt(7, Player_FootballDTO.getPlayer_Football_Defense());
+//			cnt = pst.executeUpdate();
+//
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//
+//		close();
+//
+//		
+//	}
 
-	public ArrayList<Player_FootballDTO> Player_Football(int Player_Football_Code) {
+	public ArrayList<Player_FootballDTO> SelectPlayer_Football(int Player_Football_Code) {
 		con();
 		sql = "select * from Player_Football where Player_Football_Code= ?";
 		ArrayList<Player_FootballDTO> plist = new ArrayList<>();
@@ -110,7 +138,7 @@ public class Player_FootballDAO {
 
 	public void deletePlayerFootball(Player_FootballDTO pdto) {
 		con();
-		sql = "delete from Groups where group_code = ? ";
+		sql = "delete from Player_Football where Player_Football_code = ? ";
 		try {
 			pst = conn.prepareStatement(sql);
 			pst.setInt(1, pdto.getPlayer_Football_Code());
@@ -127,5 +155,11 @@ public class Player_FootballDAO {
 		}
 
 	}
+
+//	public void updatePlayer_Football(Player_FootballDTO Player_FootballDTO) {
+//		deletePlayerFootball(Player_FootballDTO);
+//		joinPlayer_Football_noreturn(Player_FootballDTO);
+//
+//	}
 
 }
