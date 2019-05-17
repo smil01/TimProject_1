@@ -103,12 +103,12 @@ public class PlayerDAO {
 						rs.getString(6), rs.getInt(7), rs.getString(8)));
 
 			}
+			close();
 			return lplist;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
-		close();
 		return null;
 	}
 
@@ -131,12 +131,12 @@ public class PlayerDAO {
 						rs.getString(6), rs.getInt(7), rs.getString(8)));
 
 			}
+			close();
 			return plist;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
-		close();
 		return null;
 	}
 
@@ -154,12 +154,12 @@ public class PlayerDAO {
 				aplist.add(new PlayerDTO(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getBytes(5),
 						rs.getString(6), rs.getInt(7), rs.getString(8)));
 			}
+			close();
 			return aplist;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
-		close();
 		return null;
 	}
 
