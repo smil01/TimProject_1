@@ -16,7 +16,18 @@ public class GroupsDTO {
 	private String Group_Address;
 	private String Group_HomePage;
 
-	public GroupsDTO() {
+	
+
+	public GroupsDTO(int group_Code, String group_Name, String group_Tel, byte[] group_Img_bytes, int group_LocalCode,
+			String group_Address, String group_HomePage) {
+		super();
+		Group_Code = group_Code;
+		Group_Name = group_Name;
+		Group_Tel = group_Tel;
+		Group_Img_bytes = group_Img_bytes;
+		Group_LocalCode = group_LocalCode;
+		Group_Address = group_Address;
+		Group_HomePage = group_HomePage;
 	}
 
 	public GroupsDTO(int group_Code, String group_Name, String group_Tel, String group_Img, int group_LocalCode,
@@ -28,6 +39,10 @@ public class GroupsDTO {
 		Group_LocalCode = group_LocalCode;
 		Group_Address = group_Address;
 		Group_HomePage = group_HomePage;
+	}
+	
+	public GroupsDTO() {
+
 	}
 
 	public int getGroup_Code() {

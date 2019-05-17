@@ -120,6 +120,32 @@ public class GroupsDAO {
 		close();
 		return list;
 	}
+	
+	//코드로 찾기
+	public ArrayList<GroupsDTO> selectAllGroups_Groupcode(int Group_Code) {
+		con();
+
+		sql = "select * from Groups where GROUP_CODE = ?";
+
+		ArrayList<GroupsDTO> list = new ArrayList<GroupsDTO>();
+
+		try {
+			pst = conn.prepareStatement(sql);
+			pst.setInt(1, Group_Code);
+			rs = pst.executeQuery();
+
+			while (rs.next()) {
+  			    list.add(new GroupsDTO(rs.getInt(1), rs.getString(2),rs.getString(3), rs.getBytes(4) , rs.getInt(5), rs.getString(6), rs.getNString(7)));
+
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		close();
+		return list;
+	}
+	 
 
 //	GroupsDTO gdto = new GroupsDTO(group_Code, group_Name, group_Tel, group_Img, group_LocalCode, group_Address, group_HomePage)
 	public void deleteGroups(GroupsDTO gdto) {
@@ -177,6 +203,21 @@ public class GroupsDAO {
 		deleteGroups(gdto);
 		joinGroups(gdto);
 
+	}
+	public boolean update(GroupsDTO gdto) {
+		con();
+		sql="update set ";
+		try {
+			conn.prepareStatement(sql);
+			
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return false;
 	}
 
 }
