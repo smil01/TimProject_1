@@ -63,15 +63,17 @@ public class PlayerMedicalDTO {
 		Player_Medical_Content = player_Medical_Content;
 	}
 
-	public PlayerMedicalDTO(int player_Code, int group_Code, int player_Medical_Code, int player_Medical_Period,
+	public PlayerMedicalDTO(int player_Medical_Code, int player_Code, int group_Code, int player_Medical_Period,
 			String player_Medical_Title, String player_Medical_Content) {
 		super();
+		Player_Medical_Code = player_Medical_Code;
 		Player_Code = player_Code;
 		Group_Code = group_Code;
-		Player_Medical_Code = player_Medical_Code;
 		Player_Medical_Period = player_Medical_Period;
 		Player_Medical_Title = player_Medical_Title;
 		Player_Medical_Content = player_Medical_Content;
 	}
+
+	
 
 }

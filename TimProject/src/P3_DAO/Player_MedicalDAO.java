@@ -8,7 +8,6 @@ import java.util.ArrayList;
 
 import P4_DTO.PlayerMedicalDTO;
 
-
 public class Player_MedicalDAO {
 	private String sql;
 	private String sql2;
@@ -60,23 +59,21 @@ public class Player_MedicalDAO {
 
 	public int joinPlayer(PlayerMedicalDTO dto) { // DTO로 받으면 값을 넣지 않으면 null이기때문에 db에 자동으로 null이 들어감
 		con();
-		// 정말 끔직하지만 꼭 insert문을 할때는 원래는 생략하였던 컬럼며을 다 기업하여 줄것, 반드시 전체 컬럼의 값을 insert하는 경우는
-		// 드물기 때문이다.
-		sql = "INSERT INTO PLAYER_MEDICAL(Player_MEDICAL_Code,Player_Code,Group_Code,Player_Medical_Title,Player_Medical_Content)"
-				+ " VALUES(PLAYER_MEDICAL_SEQUENCE.nextval,?,?,?,?,?,?)";
+
+		sql = "INSERT INTO PLAYER_MEDICAL(PLAYER_MEDICAL_CODE, PLAYER_CODE, GROUP_CODE, PLAYER_MEDICAL_PERIOD, PLAYER_MEDICAL_TITLE, PLAYER_MEDICAL_CONTENT) VALUES(PLAYER_MEDICAL_SEQUENCE.nextval, ?, ?, ?, ?, ?)";
 
 		try {
 			pst = conn.prepareStatement(sql);
 
-			pst.setInt(1, dto.getPlayer_Medical_Code());
-			pst.setInt(2, dto.getPlayer_Code());
-			pst.setInt(3, dto.getGroup_Code());
-			pst.setInt(4, dto.getPlayer_Medical_Period());
-			pst.setString(5, dto.getPlayer_Medical_Title());
-			pst.setString(6, dto.getPlayer_Medical_Content());
+			pst.setInt(1, dto.getPlayer_Code());
+			pst.setInt(2, dto.getGroup_Code());
+			pst.setInt(3, dto.getPlayer_Medical_Period());
+			pst.setString(4, dto.getPlayer_Medical_Title());
+			pst.setString(5, dto.getPlayer_Medical_Content());
 
 			cnt = pst.executeUpdate();
 
+			System.out.println(cnt);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -101,7 +98,8 @@ public class Player_MedicalDAO {
 			rs = pst.executeQuery();
 
 			while (rs.next()) {
-				plist.add(new PlayerMedicalDTO(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getInt(4), rs.getString(5), rs.getString(6)));
+				plist.add(new PlayerMedicalDTO(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getInt(4), rs.getString(5),
+						rs.getString(6)));
 
 			}
 			close();
@@ -124,7 +122,8 @@ public class Player_MedicalDAO {
 			pst = conn.prepareStatement(sql);
 			rs = pst.executeQuery();
 			while (rs.next()) {
-				aplist.add(new PlayerMedicalDTO(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getInt(4), rs.getString(5), rs.getString(6)));
+				aplist.add(new PlayerMedicalDTO(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getInt(4), rs.getString(5),
+						rs.getString(6)));
 			}
 			close();
 			return aplist;

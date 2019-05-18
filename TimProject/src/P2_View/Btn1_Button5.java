@@ -25,9 +25,11 @@ import javax.swing.border.TitledBorder;
 import P3_DAO.PlayerDAO;
 import P3_DAO.Player_ContestDAO;
 import P3_DAO.Player_FootballDAO;
+import P3_DAO.Player_MedicalDAO;
 import P3_DAO.Player_PhysicalDAO;
 import P3_DAO.Player_PositionDAO;
 import P4_DTO.PlayerContestDTO;
+import P4_DTO.PlayerMedicalDTO;
 import P4_DTO.PlayerPhysicalDTO;
 import P4_DTO.loginDTO;
 
@@ -61,7 +63,8 @@ public class Btn1_Button5 extends JPanel {
 	public Player_PhysicalDAO py_dao = new Player_PhysicalDAO();
 	public Player_FootballDAO pf_dao = new Player_FootballDAO();
 	public Player_ContestDAO pc_dao = new Player_ContestDAO();
-	
+	public Player_MedicalDAO pm_dao = new Player_MedicalDAO();
+
 	/**
 	 * Create the panel.
 	 */
@@ -95,11 +98,11 @@ public class Btn1_Button5 extends JPanel {
 		lbl_program_name.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-					JPanel Stn0_Button0 = new Lobby(frame, dto);
-					frame.getContentPane().removeAll();
-					frame.getContentPane().add(Stn0_Button0);
-					frame.revalidate();
-					frame.repaint();
+				JPanel Stn0_Button0 = new Lobby(frame, dto);
+				frame.getContentPane().removeAll();
+				frame.getContentPane().add(Stn0_Button0);
+				frame.revalidate();
+				frame.repaint();
 			}
 		});
 
@@ -130,7 +133,8 @@ public class Btn1_Button5 extends JPanel {
 		ProfilePanel.add(Profile_Nickname);
 		Profile_Nickname.setLayout(null);
 
-		JLabel label_1 = new JLabel(dto.getMember_Nickname());		label_1.setForeground(Color.WHITE);
+		JLabel label_1 = new JLabel(dto.getMember_Nickname());
+		label_1.setForeground(Color.WHITE);
 		label_1.setFont(new Font("KBIZ한마음고딕 B", Font.PLAIN, 16));
 		label_1.setBounds(30, 38, 100, 25);
 		Profile_Nickname.add(label_1);
@@ -496,7 +500,7 @@ public class Btn1_Button5 extends JPanel {
 		JLabel label_12 = new JLabel("\uBD80\uC0C1\uAE30\uAC04");
 		label_12.setForeground(new Color(153, 153, 153));
 		label_12.setFont(new Font("만화진흥원체", Font.PLAIN, 16));
-		label_12.setBounds(12, 158, 60, 32);
+		label_12.setBounds(12, 158, 109, 32);
 		panel_5.add(label_12);
 
 		txt_Age = new JTextField();
@@ -586,12 +590,15 @@ public class Btn1_Button5 extends JPanel {
 		JButton btn_Physical = new JButton("\uCD94\uAC00");
 		btn_Physical.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				 int result = JOptionPane.showConfirmDialog(null, "확인을 누르면 선수 피지컬 지수가 입력됩니다.", "선수피지컬등록",
-                         JOptionPane.OK_CANCEL_OPTION);
-				 if(result == 0) {
-					 py_dao.joinPlayer(new PlayerPhysicalDTO(PLAYER_CODE, dto.getGroup_Code(), 0, 0, Integer.parseInt(txt_Age.getText()), Integer.parseInt(txt_Height.getText()), Integer.parseInt(txt_Weight.getText()), Integer.parseInt(txt_Leftfoot.getText()), Integer.parseInt(txt_RightFoot.getText())));
-					 reSet();
-				 }
+				int result = JOptionPane.showConfirmDialog(null, "확인을 누르면 선수 피지컬 지수가 입력됩니다.", "선수피지컬등록",
+						JOptionPane.OK_CANCEL_OPTION);
+				if (result == 0) {
+					py_dao.joinPlayer(new PlayerPhysicalDTO(PLAYER_CODE, dto.getGroup_Code(), 0, 0,
+							Integer.parseInt(txt_Age.getText()), Integer.parseInt(txt_Height.getText()),
+							Integer.parseInt(txt_Weight.getText()), Integer.parseInt(txt_Leftfoot.getText()),
+							Integer.parseInt(txt_RightFoot.getText())));
+					reSet();
+				}
 			}
 		});
 		btn_Physical.setForeground(Color.WHITE);
@@ -708,6 +715,20 @@ public class Btn1_Button5 extends JPanel {
 		panel_2.add(label_39);
 
 		JButton btn_Medical = new JButton("\uCD94\uAC00");
+		btn_Medical.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int result = JOptionPane.showConfirmDialog(null, "확인을 누르면 선수 부상이력이 입력됩니다.", "부상등록",
+						JOptionPane.OK_CANCEL_OPTION);
+				if (result == 0) {
+					pm_dao.joinPlayer(new PlayerMedicalDTO(0, PLAYER_CODE, dto.getGroup_Code(),
+							Integer.parseInt(txt_MedicalPeriod.getText()), txt_MedicalTitle.getText(),
+							txt_MedicalTitle.getText()));
+
+					reSet();
+				}
+
+			}
+		});
 		btn_Medical.setForeground(Color.WHITE);
 		btn_Medical.setFont(new Font("KBIZ한마음고딕 B", Font.PLAIN, 16));
 		btn_Medical.setBackground(new Color(71, 120, 197));
@@ -718,11 +739,11 @@ public class Btn1_Button5 extends JPanel {
 		btn_Football.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int result = JOptionPane.showConfirmDialog(null, "확인을 누르면 선수 축구능력 지수가 입력됩니다.", "선수축구능력등록",
-                        JOptionPane.OK_CANCEL_OPTION);
-				 if(result == 0) {
-					 
-					 reSet();
-				 }
+						JOptionPane.OK_CANCEL_OPTION);
+				if (result == 0) {
+
+					reSet();
+				}
 			}
 		});
 		btn_Football.setForeground(Color.WHITE);
@@ -734,13 +755,17 @@ public class Btn1_Button5 extends JPanel {
 		JButton btn_Contest = new JButton("\uCD94\uAC00");
 		btn_Contest.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				 int result = JOptionPane.showConfirmDialog(null, "확인을 누르면 선수 대회성적이 입력됩니다.", "대회성적입력",
-                         JOptionPane.OK_CANCEL_OPTION);
-				 if(result == 0) {
-					 pc_dao.joinPlayer(new PlayerContestDTO(0, PLAYER_CODE, dto.getGroup_Code(), comboBox.getSelectedItem().toString(), comboBox.getSelectedItem().toString(), comboBox.getSelectedItem().toString(), Integer.parseInt(txt_Shoot.getText()), Integer.parseInt(txt_EffectiveShoot.getText()), Integer.parseInt(txt_Goal.getText()), Integer.parseInt(txt_Assist.getText()), Integer.parseInt(txt_Running.getText())));
-					 reSet();
-				 }
-				
+				int result = JOptionPane.showConfirmDialog(null, "확인을 누르면 선수 대회성적이 입력됩니다.", "대회성적입력",
+						JOptionPane.OK_CANCEL_OPTION);
+				if (result == 0) {
+					pc_dao.joinPlayer(new PlayerContestDTO(0, PLAYER_CODE, dto.getGroup_Code(),
+							comboBox.getSelectedItem().toString(), comboBox.getSelectedItem().toString(),
+							comboBox.getSelectedItem().toString(), Integer.parseInt(txt_Shoot.getText()),
+							Integer.parseInt(txt_EffectiveShoot.getText()), Integer.parseInt(txt_Goal.getText()),
+							Integer.parseInt(txt_Assist.getText()), Integer.parseInt(txt_Running.getText())));
+					reSet();
+				}
+
 			}
 		});
 		btn_Contest.setForeground(Color.WHITE);
@@ -870,7 +895,8 @@ public class Btn1_Button5 extends JPanel {
 		panel_2.add(label_13);
 
 		comboBox = new JComboBox();
-		comboBox.setModel(new DefaultComboBoxModel(new String[] { "\uB300\uD68C\uBA85", "스마트미디어인재개발원배", "광주광역시 시장배", "전국체전", "소년체전", "협회장기", "전국 유소년 축구대회"}));
+		comboBox.setModel(new DefaultComboBoxModel(new String[] { "\uB300\uD68C\uBA85", "스마트미디어인재개발원배", "광주광역시 시장배",
+				"전국체전", "소년체전", "협회장기", "전국 유소년 축구대회" }));
 		comboBox.setForeground(new Color(0, 0, 0));
 		comboBox.setFont(new Font("KBIZ한마음고딕 M", Font.PLAIN, 14));
 		comboBox.setBorder(null);
@@ -924,7 +950,7 @@ public class Btn1_Button5 extends JPanel {
 		panel_2.add(btn_addNewPlayer);
 
 	}
-	
+
 	public void reSet() {
 		JPanel Btn1_Button5 = new Btn1_Button5(frame, dto, PLAYER_CODE);
 		frame.getContentPane().removeAll();
