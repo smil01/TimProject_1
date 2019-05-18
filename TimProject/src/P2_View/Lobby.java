@@ -49,7 +49,7 @@ public class Lobby extends JPanel {
 		ArrayList<GroupsDTO> arr_group = new ArrayList<>();
 		arr_group= gdao.selectAllGroups_Groupcode(dto.getGroup_Code());
 
-		arr_contest = condao.selectAllGroup(9995); // 풋볼코드를 안에 값으로 수정해야함!!!
+		arr_contest = condao.selectAllGroup(dto.getGroup_Code()); // 풋볼코드를 안에 값으로 수정해야함!!!
 		int data[][] = new int[arr_contest.size()][5];
 		for (int i = 0; i < data.length; i++) {
 			data[i][0] = arr_contest.get(i).getPlayer_Contest_Shot();
@@ -472,7 +472,7 @@ public class Lobby extends JPanel {
 		label_7.setFont(new Font("만화진흥원체", Font.PLAIN, 35));
 		label_7.setBounds(220, 52, 157, 40);
 		String local = arr_group.get(0).getGroup_Address();
-		local.substring(0, 6);
+//		local.substring(0, 3);
 		label_7.setText(local);
 		panel_4.add(label_7);
 	}
