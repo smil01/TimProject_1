@@ -7,6 +7,7 @@ import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -17,6 +18,11 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableModel;
 
+import P3_DAO.GroupsDAO;
+import P3_DAO.PlayerDAO;
+import P3_DAO.Player_FootballDAO;
+import P4_DTO.GroupsDTO;
+import P4_DTO.Player_FootballDTO;
 import P4_DTO.loginDTO;
 
 import javax.swing.JScrollPane;
@@ -29,6 +35,9 @@ public class Btn3_Button1 extends JPanel implements FocusListener {
 	private JTextField textField;
 	private JFrame frame;
 	private loginDTO dto;
+
+	
+	private GroupsDAO g_dao = new GroupsDAO();
 	
 
 	/**
@@ -37,6 +46,9 @@ public class Btn3_Button1 extends JPanel implements FocusListener {
 	public Btn3_Button1(JFrame frame, loginDTO dto) {
 		this.frame = frame;
 		this.dto = dto;
+		
+				
+		
 		setLayout(new CardLayout(0, 0));
 
 		JPanel Lobby_Panel = new JPanel();
@@ -325,20 +337,46 @@ public class Btn3_Button1 extends JPanel implements FocusListener {
 		panel.setBackground(new Color(230, 230, 250));
 		panel.setBounds(100, 100, 100, 100);
 		panel_3.add(panel);
+		panel.setLayout(new CardLayout(0, 0));
+		
+		
+		
+		ArrayList<GroupsDTO> group = new ArrayList<GroupsDTO>();
+		GroupsDAO gdao = new GroupsDAO();
+		//group = gdao.SearchGroups(Group_Name)
+		
+	
+		JLabel lblNewLabel_4 = new JLabel(new ImageIcon(g_dao.selectAllGroups().get(0).getGroup_ResizeImg(100, 100)));
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		panel.add(lblNewLabel_4, "name_198922903194058");
+		
+
+		
 		
 		JPanel panel_4 = new JPanel();
 		panel_4.setBounds(230, 100, 300, 100);
 		panel_3.add(panel_4);
 		panel_4.setLayout(new CardLayout(0, 0));
 		
-		JLabel lblNewLabel_3 = new JLabel("\uB9AC\uBC84\uD480");
+		
+		
+		
+		JLabel lblNewLabel_3 = new JLabel();
 		lblNewLabel_3.setFont(new Font("KBIZÇÑ¸¶À½°íµñ B", Font.PLAIN, 30));
+		lblNewLabel_3.setText(g_dao.selectAllGroups().get(0).getGroup_Name());
 		panel_4.add(lblNewLabel_3, "name_15321846016200");
+	
+		
+		
 		
 		JPanel panel_5 = new JPanel();
 		panel_5.setBackground(new Color(230, 230, 250));
 		panel_5.setBounds(100, 282, 100, 100);
 		panel_3.add(panel_5);
+		panel_5.setLayout(new CardLayout(0, 0));
+		
+		JLabel lblNewLabel_5 = new JLabel(new ImageIcon(g_dao.selectAllGroups().get(2).getGroup_ResizeImg(100, 100)));
+		panel_5.add(lblNewLabel_5, "name_198961159649177");
 		
 		JPanel panel_6 = new JPanel();
 		panel_6.setBounds(230, 282, 300, 100);
@@ -347,26 +385,36 @@ public class Btn3_Button1 extends JPanel implements FocusListener {
 		
 		JLabel label_2 = new JLabel("\uB9AC\uBC84\uD480");
 		label_2.setFont(new Font("KBIZÇÑ¸¶À½°íµñ B", Font.PLAIN, 30));
+		label_2.setText(g_dao.selectAllGroups().get(2).getGroup_Name());
 		panel_6.add(label_2, "name_15459494065600");
 		
 		JPanel panel_7 = new JPanel();
 		panel_7.setBackground(new Color(230, 230, 250));
 		panel_7.setBounds(100, 463, 100, 100);
 		panel_3.add(panel_7);
+		panel_7.setLayout(new CardLayout(0, 0));
+		
+		JLabel lblNewLabel_8 = new JLabel(new ImageIcon(g_dao.selectAllGroups().get(4).getGroup_ResizeImg(100, 100)));
+		panel_7.add(lblNewLabel_8, "name_198980439524340");
 		
 		JPanel panel_8 = new JPanel();
 		panel_8.setBounds(230, 463, 300, 100);
 		panel_3.add(panel_8);
 		panel_8.setLayout(new CardLayout(0, 0));
 		
-		JLabel label_3 = new JLabel("\uB9AC\uBC84\uD480");
+		JLabel label_3 = new JLabel();
 		label_3.setFont(new Font("KBIZÇÑ¸¶À½°íµñ B", Font.PLAIN, 30));
+		label_3.setText(g_dao.selectAllGroups().get(4).getGroup_Name());
 		panel_8.add(label_3, "name_15460350012500");
 		
 		JPanel panel_9 = new JPanel();
 		panel_9.setBackground(new Color(230, 230, 250));
 		panel_9.setBounds(100, 644, 100, 100);
 		panel_3.add(panel_9);
+		panel_9.setLayout(new CardLayout(0, 0));
+		
+		JLabel lblNewLabel_10 = new JLabel(new ImageIcon(g_dao.selectAllGroups().get(6).getGroup_ResizeImg(100, 100)));
+		panel_9.add(lblNewLabel_10, "name_198990007706746");
 		
 		JPanel panel_10 = new JPanel();
 		panel_10.setBounds(230, 644, 300, 100);
@@ -375,26 +423,36 @@ public class Btn3_Button1 extends JPanel implements FocusListener {
 		
 		JLabel label_4 = new JLabel("\uB9AC\uBC84\uD480");
 		label_4.setFont(new Font("KBIZÇÑ¸¶À½°íµñ B", Font.PLAIN, 30));
+		label_4.setText(g_dao.selectAllGroups().get(6).getGroup_Name());
 		panel_10.add(label_4, "name_15461086020500");
 		
 		JPanel panel_11 = new JPanel();
 		panel_11.setBackground(new Color(230, 230, 250));
 		panel_11.setBounds(684, 100, 100, 100);
 		panel_3.add(panel_11);
+		panel_11.setLayout(new CardLayout(0, 0));
+		
+		JLabel lblNewLabel_6 = new JLabel(new ImageIcon(g_dao.selectAllGroups().get(1).getGroup_ResizeImg(100, 100)));
+		panel_11.add(lblNewLabel_6, "name_198966831618368");
 		
 		JPanel panel_12 = new JPanel();
 		panel_12.setBounds(814, 100, 300, 100);
 		panel_3.add(panel_12);
 		panel_12.setLayout(new CardLayout(0, 0));
 		
-		JLabel label_8 = new JLabel("\uB9AC\uBC84\uD480");
+		JLabel label_8 = new JLabel();
 		label_8.setFont(new Font("KBIZÇÑ¸¶À½°íµñ B", Font.PLAIN, 30));
+		label_8.setText(g_dao.selectAllGroups().get(1).getGroup_Name());
 		panel_12.add(label_8, "name_15463829951800");
 		
 		JPanel panel_13 = new JPanel();
 		panel_13.setBackground(new Color(230, 230, 250));
 		panel_13.setBounds(684, 282, 100, 100);
 		panel_3.add(panel_13);
+		panel_13.setLayout(new CardLayout(0, 0));
+		
+		JLabel lblNewLabel_7 = new JLabel(new ImageIcon(g_dao.selectAllGroups().get(3).getGroup_ResizeImg(100, 100)));
+		panel_13.add(lblNewLabel_7, "name_198972239452148");
 		
 		JPanel panel_14 = new JPanel();
 		panel_14.setBounds(814, 282, 300, 100);
@@ -403,12 +461,17 @@ public class Btn3_Button1 extends JPanel implements FocusListener {
 		
 		JLabel label_7 = new JLabel("\uB9AC\uBC84\uD480");
 		label_7.setFont(new Font("KBIZÇÑ¸¶À½°íµñ B", Font.PLAIN, 30));
+		label_7.setText(g_dao.selectAllGroups().get(3).getGroup_Name());
 		panel_14.add(label_7, "name_15463119296900");
 		
 		JPanel panel_15 = new JPanel();
 		panel_15.setBackground(new Color(230, 230, 250));
 		panel_15.setBounds(684, 463, 100, 100);
 		panel_3.add(panel_15);
+		panel_15.setLayout(new CardLayout(0, 0));
+		
+		JLabel lblNewLabel_9 = new JLabel(new ImageIcon(g_dao.selectAllGroups().get(5).getGroup_ResizeImg(100, 100)));
+		panel_15.add(lblNewLabel_9, "name_198986631736185");
 		
 		JPanel panel_16 = new JPanel();
 		panel_16.setBounds(814, 463, 300, 100);
@@ -417,12 +480,17 @@ public class Btn3_Button1 extends JPanel implements FocusListener {
 		
 		JLabel label_6 = new JLabel("\uB9AC\uBC84\uD480");
 		label_6.setFont(new Font("KBIZÇÑ¸¶À½°íµñ B", Font.PLAIN, 30));
+		label_6.setText(g_dao.selectAllGroups().get(5).getGroup_Name());
 		panel_16.add(label_6, "name_15462460089200");
 		
 		JPanel panel_17 = new JPanel();
 		panel_17.setBackground(new Color(230, 230, 250));
 		panel_17.setBounds(684, 644, 100, 100);
 		panel_3.add(panel_17);
+		panel_17.setLayout(new CardLayout(0, 0));
+		
+		JLabel lblNewLabel_11 = new JLabel(new ImageIcon(g_dao.selectAllGroups().get(7).getGroup_ResizeImg(100, 100)));
+		panel_17.add(lblNewLabel_11, "name_198993887574627");
 		
 		JPanel panel_18 = new JPanel();
 		panel_18.setBounds(814, 644, 300, 100);
@@ -431,6 +499,7 @@ public class Btn3_Button1 extends JPanel implements FocusListener {
 		
 		JLabel label_5 = new JLabel("\uB9AC\uBC84\uD480");
 		label_5.setFont(new Font("KBIZÇÑ¸¶À½°íµñ B", Font.PLAIN, 30));
+		label_5.setText(g_dao.selectAllGroups().get(7).getGroup_Name());
 		panel_18.add(label_5, "name_15461774006600");
 		
 
