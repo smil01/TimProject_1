@@ -80,13 +80,13 @@ public class Player_TransferDAO {
 	}
 
 	// 수락
-	public int transferOk(int Player_Transfer_Code) {
+	public int transferOk(int Player_Code, int Group_Code) {
 		con();
 
 		try {
-			sql = "UPDATE PLAYER_TRANSFER SET Player_Transfer_State = 1 WHERE Player_Transfer_Code = ?";
+			sql = "update PLAYER_TRANSFER set PLAYER_TRANSFER_STATE = 1 where PLAYER_CODE = ?";
 			pst = conn.prepareStatement(sql);
-			pst.setInt(1, Player_Transfer_Code);
+			pst.setInt(1, Player_Code);
 			cnt = pst.executeUpdate();
 
 			if (cnt == 0) {
@@ -96,10 +96,29 @@ public class Player_TransferDAO {
 				con();
 			}
 
-			sql = "UPDATE PLAYER SET GROUP_CODE = (select TRANSFER_GROUP_CODE from PLAYER_TRANSFER where PLAYER_TRANSFER_CODE = ?) WHERE PLAYER_CODE = (select PLAYER_CODE from PLAYER_TRANSFER where PLAYER_TRANSFER_CODE = ?)";
+			sql = "UPDATE PLAYER SET GROUP_CODE = ? WHERE PLAYER_CODE = ?";
 			pst = conn.prepareStatement(sql);
-			pst.setInt(1, Player_Transfer_Code);
-			pst.setInt(2, Player_Transfer_Code);
+
+			pst.setInt(1, Group_Code);
+			pst.setInt(2, Player_Code);
+
+			cnt = pst.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		close();
+		return cnt;
+	}
+
+	// 거부
+	public int transferX(int Player_Code, int Group_Code) {
+		con();
+
+		try {
+			sql = "update PLAYER_TRANSFER set PLAYER_TRANSFER_STATE = 1 where PLAYER_CODE = ?";
+			pst = conn.prepareStatement(sql);
+			pst.setInt(1, Player_Code);
 			cnt = pst.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
