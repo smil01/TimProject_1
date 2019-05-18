@@ -40,14 +40,14 @@ public class Lobby extends JPanel {
 	PlayerContestDTO condto;
 	Player_ContestDAO condao = new Player_ContestDAO();
 	GroupsDTO gdto;
-	GroupsDAO gdao;
+	GroupsDAO gdao = new GroupsDAO();
 	public Lobby(JFrame frame, loginDTO dto) {
 		this.frame = frame;
 		this.dto = dto;
 		
 		ArrayList<PlayerContestDTO> arr_contest = new ArrayList<>();
-//		ArrayList<GroupsDTO> arr_group = new ArrayList<>();
-//		arr_group= gdao.selectAllGroups_Groupcode(dto.getGroup_Code());
+		ArrayList<GroupsDTO> arr_group = new ArrayList<>();
+		arr_group= gdao.selectAllGroups_Groupcode(dto.getGroup_Code());
 
 		arr_contest = condao.selectAllGroup(9995); // 풋볼코드를 안에 값으로 수정해야함!!!
 		int data[][] = new int[arr_contest.size()][5];
@@ -348,7 +348,7 @@ public class Lobby extends JPanel {
 		label_5.setForeground(new Color(189, 178, 137));
 		label_5.setFont(new Font("만화진흥원체", Font.PLAIN, 35));
 		label_5.setBounds(12, 52, 139, 40);
-//		label_5.setText(arr_group.get(0).getGroup_Name());
+		label_5.setText(arr_group.get(0).getGroup_Name());
 		panel_4.add(label_5);
 
 		JLabel label_6 = new JLabel("\uC9C0\uC5ED");
@@ -368,7 +368,7 @@ public class Lobby extends JPanel {
 		label_3.setForeground(Color.BLACK);
 		label_3.setFont(new Font("만화진흥원체", Font.PLAIN, 16));
 		label_3.setBounds(12, 183, 369, 19);
-//		label_3.setText(arr_group.get(0).getGroup_Address());
+		label_3.setText(arr_group.get(0).getGroup_Address());
 		panel_4.add(label_3);
 
 		JLabel label_17 = new JLabel("\uAD6C\uB2E8 \uC2A4\uD0EF");
@@ -471,9 +471,9 @@ public class Lobby extends JPanel {
 		label_7.setForeground(new Color(189, 178, 137));
 		label_7.setFont(new Font("만화진흥원체", Font.PLAIN, 35));
 		label_7.setBounds(220, 52, 157, 40);
-//		String local = arr_group.get(0).getGroup_Address();
-//		local.substring(0, 6);
-//		label_7.setText(local);
+		String local = arr_group.get(0).getGroup_Address();
+		local.substring(0, 6);
+		label_7.setText(local);
 		panel_4.add(label_7);
 	}
 }
