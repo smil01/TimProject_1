@@ -638,7 +638,7 @@ public class Btn2_Button1 extends JPanel implements FocusListener {
 		button.setForeground(Color.WHITE);
 		button.setFont(new Font("KBIZÇÑ¸¶À½°íµñ B", Font.PLAIN, 12));
 		button.setBackground(new Color(71, 120, 197));
-		button.setBounds(644, 475, 80, 35);
+		button.setBounds(640, 171, 80, 35);
 		panel_3.add(button);
 
 		JSeparator separator_3 = new JSeparator();

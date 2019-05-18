@@ -64,7 +64,6 @@ public class Btn1_Button5 extends JPanel {
 	public Player_PhysicalDAO py_dao = new Player_PhysicalDAO();
 	public Player_FootballDAO pf_dao = new Player_FootballDAO();
 	public Player_ContestDAO pc_dao = new Player_ContestDAO();
-
 	public Player_MedicalDAO pm_dao = new Player_MedicalDAO();
 
 	/**
@@ -741,12 +740,14 @@ public class Btn1_Button5 extends JPanel {
 		btn_Football.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int result = JOptionPane.showConfirmDialog(null, "확인을 누르면 선수 축구능력 지수가 입력됩니다.", "선수축구능력등록",
-                        JOptionPane.OK_CANCEL_OPTION);
-				 if(result == 0) {
-					 pf_dao.joinPlayer_Football(new Player_FootballDTO(0,PLAYER_CODE, dto.getGroup_Code(), Integer.parseInt(txt_Speed.getText()),
-								Integer.parseInt(txtShoot.getText()), Integer.parseInt(txt_Pass.getText()), Integer.parseInt(txt_Dribble.getText()), Integer.parseInt(txt_Defence.getText())));
-					 reSet();
-				 }
+						JOptionPane.OK_CANCEL_OPTION);
+				if (result == 0) {
+					pf_dao.joinPlayer_Football(new Player_FootballDTO(0, PLAYER_CODE, dto.getGroup_Code(),
+							Integer.parseInt(txt_Speed.getText()), Integer.parseInt(txtShoot.getText()),
+							Integer.parseInt(txt_Pass.getText()), Integer.parseInt(txt_Dribble.getText()),
+							Integer.parseInt(txt_Defence.getText())));
+					reSet();
+				}
 			}
 		});
 		btn_Football.setForeground(Color.WHITE);
@@ -890,8 +891,6 @@ public class Btn1_Button5 extends JPanel {
 		txt_Defence.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		txt_Defence.setBounds(856, 462, 50, 50);
 		panel_2.add(txt_Defence);
-		
-		
 
 		JLabel label_13 = new JLabel("\uC810");
 		label_13.setForeground(new Color(189, 178, 137));
@@ -923,6 +922,8 @@ public class Btn1_Button5 extends JPanel {
 		JButton btn_Transfer = new JButton("\uCD94\uAC00");
 		btn_Transfer.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				Gudan_SearchModify2 gudan = new Gudan_SearchModify2(frame, dto, PLAYER_CODE, dto.getGroup_Code());
+				gudan.setVisible(true);
 			}
 		});
 		btn_Transfer.setForeground(Color.WHITE);
