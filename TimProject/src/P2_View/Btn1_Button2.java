@@ -428,11 +428,14 @@ public class Btn1_Button2 extends JPanel {
 		StatViewPanel.add(panel_2);
 		panel_2.setLayout(new CardLayout(0, 0));
 
-		JLabel lblNewLabel = new JLabel(new ImageIcon(p_dto.getPlayer_ResizeImg(180, 180)));
-		lblNewLabel.setIcon(new ImageIcon(Btn1_Button2.class.getResource("/P5_Img/uefa.jpg")));
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		panel_2.add(lblNewLabel, "name_5083844218100");
-
+		JLabel lbl_image = new JLabel(new ImageIcon(p_dto.getPlayer_ResizeImg(180, 180)));
+		lbl_image.setIcon(new ImageIcon(p_dto.getPlayer_ResizeImg(180, 180)));
+		lbl_image.setHorizontalAlignment(SwingConstants.CENTER);
+		panel_2.add(lbl_image, "name_5083844218100");
+	
+		
+		
+		
 		JPanel panel_4 = new JPanel();
 		panel_4.setBackground(new Color(255, 255, 255));
 		panel_4.setBounds(886, 50, 230, 230);
@@ -722,6 +725,8 @@ public class Btn1_Button2 extends JPanel {
 		label_33.setFont(new Font("만화진흥원체", Font.PLAIN, 16));
 		label_33.setBounds(879, 698, 48, 32);
 		StatViewPanel.add(label_33);
+		
+		
 
 	}
 	
