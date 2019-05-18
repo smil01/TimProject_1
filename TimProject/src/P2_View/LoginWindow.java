@@ -19,6 +19,7 @@ import javax.swing.JTextField;
 import P3_DAO.loginDAO;
 import P4_DTO.loginDTO;
 import javazoom.jl.player.MP3Player;
+import java.awt.Cursor;
 
 public class LoginWindow extends JPanel {
 	private JTextField txt_id;
@@ -150,6 +151,7 @@ public class LoginWindow extends JPanel {
 		panel_back_right.add(lbl_X);
 
 		JLabel lblNewLabel = new JLabel("\uD68C\uC6D0\uAC00\uC785");
+		lblNewLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		lblNewLabel.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
