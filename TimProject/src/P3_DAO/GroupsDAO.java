@@ -120,8 +120,8 @@ public class GroupsDAO {
 		close();
 		return list;
 	}
-	
-	//코드로 찾기
+
+	// 코드로 찾기
 	public ArrayList<GroupsDTO> selectAllGroups_Groupcode(int Group_Code) {
 		con();
 
@@ -135,7 +135,8 @@ public class GroupsDAO {
 			rs = pst.executeQuery();
 
 			while (rs.next()) {
-  			    list.add(new GroupsDTO(rs.getInt(1), rs.getString(2),rs.getString(3), rs.getBytes(4) , rs.getInt(5), rs.getString(6), rs.getNString(7)));
+				list.add(new GroupsDTO(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getBytes(4), rs.getInt(5),
+						rs.getString(6), rs.getNString(7)));
 
 			}
 		} catch (Exception e) {
@@ -145,7 +146,6 @@ public class GroupsDAO {
 		close();
 		return list;
 	}
-	 
 
 //	GroupsDTO gdto = new GroupsDTO(group_Code, group_Name, group_Tel, group_Img, group_LocalCode, group_Address, group_HomePage)
 	public void deleteGroups(GroupsDTO gdto) {
@@ -204,19 +204,31 @@ public class GroupsDAO {
 		joinGroups(gdto);
 
 	}
+
 	public boolean update(GroupsDTO gdto) {
 		con();
-		sql="update set ";
+		sql = "update  groups set group_name = ? ,group_tel=?, group_img=? , group_localcode=?,group_address=?,group_homepage=?"
+				+ "where group_Code=?";
 		try {
-			conn.prepareStatement(sql);
-			
-			
-			
+			pst = conn.prepareStatement(sql);
+			pst.setString(1, gdto.getGroup_Name());
+			pst.setString(2, gdto.getGroup_Tel());
+			pst.setBytes(3, gdto.getGroup_Img());
+			pst.setInt(4, gdto.getGroup_LocalCode());
+			pst.setString(5, gdto.getGroup_Address());
+			pst.setString(6, gdto.getGroup_HomePage());
+			pst.setInt(7, gdto.getGroup_Code());
+			int cnt = pst.executeUpdate();
+
+			if (cnt > 0) {
+				return true;
+			}
+
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		return false;
 	}
 
