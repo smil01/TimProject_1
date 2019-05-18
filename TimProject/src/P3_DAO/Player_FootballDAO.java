@@ -138,7 +138,7 @@ public class Player_FootballDAO {
 	
 	public ArrayList<Player_FootballDTO> SelectPlayer_Football_Recent(int Player_Code) {
 		con();
-		sql = "select * from Player_Football where Player_Code= ? ORDER BY Player_Football_Code desc where ";
+		sql = "select * from Player_Football where Player_Code= ? ORDER BY Player_Football_Code desc where rownum <= 5 ";
 		ArrayList<Player_FootballDTO> plist = new ArrayList<>();
 
 		try {
