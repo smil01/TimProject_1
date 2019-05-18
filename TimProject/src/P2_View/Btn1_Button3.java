@@ -16,26 +16,40 @@ import javax.swing.JSeparator;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
+import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
+import org.jfree.data.xy.XYSeries;
+import org.jfree.data.xy.XYSeriesCollection;
 
 import P3_DAO.ChartDAO;
+import P3_DAO.PlayerDAO;
 import P3_DAO.Player_FootballDAO;
+import P4_DTO.PlayerDTO;
 import P4_DTO.Player_FootballDTO;
 import P4_DTO.loginDTO;
-import chart.PolylineBarChart;
 
 public class Btn1_Button3 extends JPanel {
 	private JTextField textField;
 	private loginDTO dto;
 	private JFrame frame;
+	private int PLAYER_CODE;
+	private PlayerDTO p_dto;
+	private PlayerDAO p_dao = new PlayerDAO();
+	private ChartPanel CP_overall_1;
 
 	/**
 	 * Create the panel.
 	 */
-	public Btn1_Button3(JFrame frame, loginDTO dto) {
+	public Btn1_Button3(JFrame frame, loginDTO dto, int PLAYER_CODE) {
 		this.frame = frame;
 		this.dto = dto;
+		this.PLAYER_CODE = PLAYER_CODE;
+		ArrayList<Player_FootballDTO> ArrFootball = new ArrayList<>();
+		Player_FootballDAO fdao = new Player_FootballDAO();
+
+		ChartDAO cdao = new ChartDAO();
+
 		setLayout(new CardLayout(0, 0));
 
 		JPanel Lobby_Panel = new JPanel();
@@ -305,7 +319,7 @@ public class Btn1_Button3 extends JPanel {
 		lbl_PlayerStatButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				JPanel Stn1_Button2 = new Btn1_Button2(frame, dto, 0);
+				JPanel Stn1_Button2 = new Btn1_Button2(frame, dto, PLAYER_CODE);
 				frame.getContentPane().removeAll();
 				frame.getContentPane().add(Stn1_Button2);
 				frame.revalidate();
@@ -330,7 +344,7 @@ public class Btn1_Button3 extends JPanel {
 		lbl_PlayerChart.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				JPanel Stn1_Button3 = new Btn1_Button3(frame, dto);
+				JPanel Stn1_Button3 = new Btn1_Button3(frame, dto, 0);
 				frame.getContentPane().removeAll();
 				frame.getContentPane().add(Stn1_Button3);
 				frame.revalidate();
@@ -413,27 +427,31 @@ public class Btn1_Button3 extends JPanel {
 		lblNewLabel.setIcon(new ImageIcon(Btn1_Button3.class.getResource("/P5_Img/uefa.jpg")));
 		panel_3.add(lblNewLabel, "name_4633110137300");
 
-		JPanel panel_4 = new JPanel();
-		panel_4.setBackground(Color.WHITE);
-		panel_4.setBounds(886, 50, 230, 230);
-		panel_2.add(panel_4);
-		panel_4.setLayout(new CardLayout(0, 0));
+		JPanel overallPane = new JPanel();
+		overallPane.setBackground(new Color(255, 255, 255));
+		overallPane.setBounds(356, 50, 468, 230);
+		panel_2.add(overallPane);
+		overallPane.setLayout(new CardLayout(0, 0));
 
-		JLabel lblNewLabel_3 = new JLabel("");
-		lblNewLabel_3.setIcon(new ImageIcon(Btn1_Button3.class.getResource("/P5_Img/sample.jpg")));
-		panel_4.add(lblNewLabel_3, "name_4636462341300");
+		JPanel footballPane = new JPanel();
+		footballPane.setBackground(new Color(255, 255, 255));
+		footballPane.setBounds(90, 362, 486, 334);
+		panel_2.add(footballPane);
+		footballPane.setLayout(new CardLayout(0, 0));
 
-		JPanel panel_5 = new JPanel();
-		panel_5.setBackground(Color.WHITE);
-		panel_5.setBounds(346, 50, 468, 230);
-		panel_2.add(panel_5);
-		panel_5.setLayout(null);
+		ArrFootball = fdao.SelectPlayer_Football(PLAYER_CODE); // 풋볼코드를 안에 값으로 수정해야함!!!
+		JFreeChart chart = cdao.getChart_Football(ArrFootball);
+		ChartPanel CP = new ChartPanel(chart);
+		CP.setBackground(new Color(255, 255, 255));
+		footballPane.add(CP);
+		footballPane.validate();
 
-		JLabel lblNewLabel_4 = new JLabel("");
-		lblNewLabel_4.setBounds(0, 0, 468, 230);
-		lblNewLabel_4.setIcon(new ImageIcon(Btn1_Button3.class.getResource("/P5_Img/1-Line-Chart.png")));
-		lblNewLabel_4.setHorizontalAlignment(SwingConstants.LEFT);
-		panel_5.add(lblNewLabel_4);
+		ArrFootball = fdao.SelectPlayer_Football_Recent(PLAYER_CODE); // 풋볼코드를 안에 값으로 수정해야함!!!
+		JFreeChart chart_overall = cdao.getChart_Overall(ArrFootball);
+		ChartPanel CP_overall = new ChartPanel(chart_overall);
+		CP_overall.setBackground(new Color(255, 255, 255));
+		overallPane.add(CP_overall);
+		overallPane.validate();
 
 		JLabel label_15 = new JLabel("\uC774\uAC15\uC778");
 		label_15.setForeground(Color.BLACK);
@@ -447,46 +465,31 @@ public class Btn1_Button3 extends JPanel {
 		label_16.setBounds(144, 287, 41, 19);
 		panel_2.add(label_16);
 
-		JLabel label_18 = new JLabel("\uCD95\uAD6C \uB2A5\uB825");
-		label_18.setForeground(Color.BLACK);
-		label_18.setFont(new Font("만화진흥원체", Font.PLAIN, 25));
-		label_18.setBounds(90, 327, 139, 45);
-		panel_2.add(label_18);
+		JPanel RecentPane = new JPanel();
+		RecentPane.setBackground(new Color(255, 255, 255));
+		RecentPane.setBounds(704, 362, 486, 334);
+		panel_2.add(RecentPane);
 
-		JPanel panel_6 = new JPanel();
-		panel_6.setBackground(new Color(255, 255, 255));
-		panel_6.setBounds(90, 382, 486, 334);
-		panel_2.add(panel_6);
-		panel_6.setLayout(new CardLayout(0, 0));
+		ArrFootball = fdao.SelectPlayer_Football_Recent(PLAYER_CODE);
+		JFreeChart chart_recent = cdao.getChart_Recent(ArrFootball);
+		RecentPane.setLayout(new CardLayout(0, 0));
+		ChartPanel CP_recent = new ChartPanel(chart_recent);
+		CP_recent.setBackground(new Color(255, 255, 255));
+		RecentPane.add(CP_recent, "name_91179911607000");
+		CP_recent.setLayout(new CardLayout(0, 0));
+		RecentPane.validate();
 
-		ArrayList<Player_FootballDTO> array = new ArrayList<>();
-		Player_FootballDAO fdao = new Player_FootballDAO();
-		array = fdao.SelectPlayer_Football(9999); // 풋볼코드를 안에 값으로 수정해야함!!!
-		PolylineBarChart demo = new PolylineBarChart();
-		ChartDAO cdao = new ChartDAO();
-		JFreeChart chart = cdao.getChart_Football(array);
-
-		ChartPanel CP = new ChartPanel(chart);
-		panel_6.add(CP);
-		panel_6.validate();
-		
-		JLabel lblNewLabel_5 = new JLabel("");
-		panel_6.add(lblNewLabel_5, "name_33314269177200");
-
-		ChartPanel panel12 = new ChartPanel(chart);
-		panel12.setBounds(90, 382, 486, 334);
-		panel12.setSize(500, 800);
-		panel_6.add(panel12);
-
-		JPanel panel_7 = new JPanel();
-		panel_7.setBackground(new Color(255, 255, 255));
-		panel_7.setBounds(655, 382, 486, 334);
-		panel_2.add(panel_7);
-		panel_7.setLayout(new CardLayout(0, 0));
-
-		JLabel lblL = new JLabel("l");
-		lblL.setIcon(new ImageIcon(Btn1_Button3.class.getResource("/P5_Img/1-Line-Chart.png")));
-		panel_7.add(lblL, "name_5162401964500");
-
+		JPanel rador_panel = new JPanel();
+		ArrFootball = fdao.SelectPlayer_Football(PLAYER_CODE); 
+		rador_panel.setBackground(Color.WHITE);
+		rador_panel.setBounds(886, 50, 300, 300);
+		panel_2.add(rador_panel);
+		rador_panel.setLayout(new CardLayout(0, 0));
+		ChartPanel CP_rador;
+		JFreeChart radorChart = cdao.getRadorChart(ArrFootball);
+		CP_rador = new ChartPanel(radorChart);
+		CP_rador.setMouseZoomable(false);
+		rador_panel.setBackground(new Color(255, 255, 255));
+		rador_panel.add(CP_rador);
 	}
 }
