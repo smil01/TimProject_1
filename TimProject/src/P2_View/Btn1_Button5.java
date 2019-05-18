@@ -350,7 +350,7 @@ public class Btn1_Button5 extends JPanel {
 		lbl_PlayerStatButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				JPanel Stn1_Button2 = new Btn1_Button2(frame, dto, 0);
+				JPanel Stn1_Button2 = new Btn1_Button2(frame, dto, PLAYER_CODE);
 				frame.getContentPane().removeAll();
 				frame.getContentPane().add(Stn1_Button2);
 				frame.revalidate();
@@ -375,7 +375,7 @@ public class Btn1_Button5 extends JPanel {
 		lbl_PlayerChart.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				JPanel Stn1_Button3 = new Btn1_Button3(frame, dto,PLAYER_CODE);
+				JPanel Stn1_Button3 = new Btn1_Button3(frame, dto, PLAYER_CODE);
 				frame.getContentPane().removeAll();
 				frame.getContentPane().add(Stn1_Button3);
 				frame.revalidate();
@@ -400,7 +400,7 @@ public class Btn1_Button5 extends JPanel {
 		lbl_PlayerMemo.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				JPanel Stn1_Button4 = new Btn1_Button4(frame, dto,PLAYER_CODE);
+				JPanel Stn1_Button4 = new Btn1_Button4(frame, dto, PLAYER_CODE);
 				frame.getContentPane().removeAll();
 				frame.getContentPane().add(Stn1_Button4);
 				frame.revalidate();
