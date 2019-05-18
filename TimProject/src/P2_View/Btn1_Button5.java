@@ -15,6 +15,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
 import javax.swing.JTextField;
@@ -22,9 +23,11 @@ import javax.swing.SwingConstants;
 import javax.swing.border.TitledBorder;
 
 import P3_DAO.PlayerDAO;
+import P3_DAO.Player_ContestDAO;
 import P3_DAO.Player_FootballDAO;
 import P3_DAO.Player_PhysicalDAO;
 import P3_DAO.Player_PositionDAO;
+import P4_DTO.PlayerContestDTO;
 import P4_DTO.PlayerPhysicalDTO;
 import P4_DTO.loginDTO;
 
@@ -51,12 +54,14 @@ public class Btn1_Button5 extends JPanel {
 	private JTextField txt_Defence;
 	private JLabel lbl_PlayerName;
 	private JLabel lbl_Position;
+	private JComboBox comboBox;
 	public int PLAYER_CODE;
 	public PlayerDAO p_dao = new PlayerDAO();
 	public Player_PositionDAO pp_dao = new Player_PositionDAO();
 	public Player_PhysicalDAO py_dao = new Player_PhysicalDAO();
 	public Player_FootballDAO pf_dao = new Player_FootballDAO();
-
+	public Player_ContestDAO pc_dao = new Player_ContestDAO();
+	
 	/**
 	 * Create the panel.
 	 */
@@ -581,7 +586,12 @@ public class Btn1_Button5 extends JPanel {
 		JButton btn_Physical = new JButton("\uCD94\uAC00");
 		btn_Physical.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				py_dao.joinPlayer(new PlayerPhysicalDTO(PLAYER_CODE, dto.getGroup_Code(), 0, 0, Integer.parseInt(txt_Age.getText()), Integer.parseInt(txt_Height.getText()), Integer.parseInt(txt_Weight.getText()), Integer.parseInt(txt_Leftfoot.getText()), Integer.parseInt(txt_RightFoot.getText())));
+				 int result = JOptionPane.showConfirmDialog(null, "확인을 누르면 선수 피지컬 지수가 입력됩니다.", "선수피지컬등록",
+                         JOptionPane.OK_CANCEL_OPTION);
+				 if(result == 0) {
+					 py_dao.joinPlayer(new PlayerPhysicalDTO(PLAYER_CODE, dto.getGroup_Code(), 0, 0, Integer.parseInt(txt_Age.getText()), Integer.parseInt(txt_Height.getText()), Integer.parseInt(txt_Weight.getText()), Integer.parseInt(txt_Leftfoot.getText()), Integer.parseInt(txt_RightFoot.getText())));
+					 reSet();
+				 }
 			}
 		});
 		btn_Physical.setForeground(Color.WHITE);
@@ -705,6 +715,16 @@ public class Btn1_Button5 extends JPanel {
 		panel_2.add(btn_Medical);
 
 		JButton btn_Football = new JButton("\uCD94\uAC00");
+		btn_Football.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int result = JOptionPane.showConfirmDialog(null, "확인을 누르면 선수 축구능력 지수가 입력됩니다.", "선수축구능력등록",
+                        JOptionPane.OK_CANCEL_OPTION);
+				 if(result == 0) {
+					 
+					 reSet();
+				 }
+			}
+		});
 		btn_Football.setForeground(Color.WHITE);
 		btn_Football.setFont(new Font("KBIZ한마음고딕 B", Font.PLAIN, 16));
 		btn_Football.setBackground(new Color(71, 120, 197));
@@ -712,6 +732,17 @@ public class Btn1_Button5 extends JPanel {
 		panel_2.add(btn_Football);
 
 		JButton btn_Contest = new JButton("\uCD94\uAC00");
+		btn_Contest.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				 int result = JOptionPane.showConfirmDialog(null, "확인을 누르면 선수 대회성적이 입력됩니다.", "대회성적입력",
+                         JOptionPane.OK_CANCEL_OPTION);
+				 if(result == 0) {
+					 pc_dao.joinPlayer(new PlayerContestDTO(0, PLAYER_CODE, dto.getGroup_Code(), comboBox.getSelectedItem().toString(), comboBox.getSelectedItem().toString(), comboBox.getSelectedItem().toString(), Integer.parseInt(txt_Shoot.getText()), Integer.parseInt(txt_EffectiveShoot.getText()), Integer.parseInt(txt_Goal.getText()), Integer.parseInt(txt_Assist.getText()), Integer.parseInt(txt_Running.getText())));
+					 reSet();
+				 }
+				
+			}
+		});
 		btn_Contest.setForeground(Color.WHITE);
 		btn_Contest.setFont(new Font("KBIZ한마음고딕 B", Font.PLAIN, 16));
 		btn_Contest.setBackground(new Color(71, 120, 197));
@@ -838,7 +869,7 @@ public class Btn1_Button5 extends JPanel {
 		label_13.setBounds(916, 476, 50, 35);
 		panel_2.add(label_13);
 
-		JComboBox comboBox = new JComboBox();
+		comboBox = new JComboBox();
 		comboBox.setModel(new DefaultComboBoxModel(new String[] { "\uB300\uD68C\uBA85", "스마트미디어인재개발원배", "광주광역시 시장배", "전국체전", "소년체전", "협회장기", "전국 유소년 축구대회"}));
 		comboBox.setForeground(new Color(0, 0, 0));
 		comboBox.setFont(new Font("KBIZ한마음고딕 M", Font.PLAIN, 14));
@@ -892,5 +923,13 @@ public class Btn1_Button5 extends JPanel {
 		btn_addNewPlayer.setBounds(930, 257, 89, 23);
 		panel_2.add(btn_addNewPlayer);
 
+	}
+	
+	public void reSet() {
+		JPanel Btn1_Button5 = new Btn1_Button5(frame, dto, PLAYER_CODE);
+		frame.getContentPane().removeAll();
+		frame.getContentPane().add(Btn1_Button5);
+		frame.revalidate();
+		frame.repaint();
 	}
 }

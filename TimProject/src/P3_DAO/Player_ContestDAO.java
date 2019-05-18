@@ -65,22 +65,21 @@ public class Player_ContestDAO {
 		sql = "INSERT INTO PLAYER_CONTEST(Player_CONTEST_Code,Player_Code,Group_Code,Player_Contest_TITLE,"
 				+ "Player_Contest_CONTENT,Player_Contest_RESULT,Player_Contest_SHOT,Player_Contest_EFFECTIVESHOT,"
 				+ "Player_Contest_GOAL,Player_Contest_ASSIST,Player_Contest_RUNNINGTIME)"
-				+ " VALUES(PLAYER_CONTEST_SEQUENCE.nextval,?,?,?,?,?,?,?,?,?,?,?)";
+				+ " VALUES(PLAYER_CONTEST_SEQUENCE.nextval,?,?,?,?,?,?,?,?,?,?)";
 
 		try {
 			pst = conn.prepareStatement(sql);
 
-			pst.setInt(1, dto.getPlayer_Contest_Code());
-			pst.setInt(2, dto.getPlayer_Code());
-			pst.setInt(3, dto.getGroup_Code());
-			pst.setString(4, dto.getPlayer_Contest_Title());
-			pst.setString(5, dto.getPlayer_Contest_Content());
-			pst.setString(6, dto.getPlayer_Contest_Result());
-			pst.setInt(7, dto.getPlayer_Contest_Shot());
-			pst.setInt(8, dto.getPlayer_Contest_EffectiveShot());
-			pst.setInt(9, dto.getPlayer_Contest_Goal());
-			pst.setInt(10, dto.getPlayer_Contest_Assist());
-			pst.setInt(11, dto.getPlayer_Contest_RunningTime());
+			pst.setInt(1, dto.getPlayer_Code());
+			pst.setInt(2, dto.getGroup_Code());
+			pst.setString(3, dto.getPlayer_Contest_Title());
+			pst.setString(4, dto.getPlayer_Contest_Content());
+			pst.setString(5, dto.getPlayer_Contest_Result());
+			pst.setInt(6, dto.getPlayer_Contest_Shot());
+			pst.setInt(7, dto.getPlayer_Contest_EffectiveShot());
+			pst.setInt(8, dto.getPlayer_Contest_Goal());
+			pst.setInt(9, dto.getPlayer_Contest_Assist());
+			pst.setInt(10, dto.getPlayer_Contest_RunningTime());
 			cnt = pst.executeUpdate();
 
 		} catch (Exception e) {

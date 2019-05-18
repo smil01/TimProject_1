@@ -93,7 +93,7 @@ public class Player_PhysicalDAO {
 	public ArrayList<PlayerPhysicalDTO> SelectPlayer(int player_code) {
 		con();
 
-		sql = "select * from Player_Physical where Player_Code= ?";
+		sql = "select * from Player_Physical where Player_Code= ? ORDER BY PLAYER_PHYSICAL_CODE desc";
 		ArrayList<PlayerPhysicalDTO> plist = new ArrayList<PlayerPhysicalDTO>();
 
 		try {

@@ -113,7 +113,7 @@ public class Player_FootballDAO {
 
 	public ArrayList<Player_FootballDTO> SelectPlayer_Football(int Player_Code) {
 		con();
-		sql = "select * from Player_Football where Player_Code= ?";
+		sql = "select * from Player_Football where Player_Code= ? ORDER BY PLAYER_FOOTBALL_CODE desc";
 		ArrayList<Player_FootballDTO> plist = new ArrayList<>();
 
 		try {
