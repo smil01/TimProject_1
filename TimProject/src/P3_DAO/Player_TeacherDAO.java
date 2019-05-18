@@ -57,21 +57,23 @@ public class Player_TeacherDAO {
 		}
 	}
 
-	public int joinPlayer(PlayerTeacherDTO dao) { // DTO로 받으면 값을 넣지 않으면 null이기때문에 db에 자동으로 null이 들어감
+	public int insertMemo(PlayerTeacherDTO dto,String memo) { // DTO로 받으면 값을 넣지 않으면 null이기때문에 db에 자동으로 null이 들어감
 		con();
 		// 정말 끔직하지만 꼭 insert문을 할때는 원래는 생략하였던 컬럼며을 다 기업하여 줄것, 반드시 전체 컬럼의 값을 insert하는 경우는
 		// 드물기 때문이다.
+		System.out.println(dto.getPlayer_Teacher_Code());
+		System.out.println(dto.getPlayer_Teacher_Title());
+		System.out.println(memo);
 		sql = "INSERT INTO PLAYER_Teacher(Player_Teacher_Code,Player_Code,Group_Code,Player_Teacher_Title,Player_Teacher_Content)"
-				+ " VALUES(PLAYER_Teacher_SEQUENCE.nextval,?,?,?,?,?)";
+				+ " VALUES(PLAYER_Teacher_SEQUENCE.nextval,?,?,?,?)";
 
 		try {
 			pst = conn.prepareStatement(sql);
 
-			pst.setInt(1, dao.getPlayer_Teacher_Code());
-			pst.setInt(2, dao.getPlayer_Code());
-			pst.setInt(3, dao.getGroup_Code());
-			pst.setString(4, dao.getPlayer_Teacher_Title());
-			pst.setString(5, dao.getPlayer_Teacher_Content());
+			pst.setInt(1, dto.getPlayer_Code());
+			pst.setInt(2, dto.getGroup_Code());
+			pst.setString(3, dto.getPlayer_Teacher_Title());
+			pst.setString(4, memo);
 
 			cnt = pst.executeUpdate();
 
