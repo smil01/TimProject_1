@@ -24,6 +24,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.filechooser.FileSystemView;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumnModel;
 
 import P3_DAO.GroupsDAO;
 import P3_DAO.Player_TransferDAO;
@@ -61,11 +62,12 @@ public class Btn2_Button1 extends JPanel implements FocusListener {
 	private JTable table_3;
 	private GroupsDAO gdao = new GroupsDAO();
 	private GroupsDTO gdto = new GroupsDTO();
-	private Player_TransferDAO transdao= new Player_TransferDAO();
-	private Player_TransferDTO transdto= new Player_TransferDTO();
+	private Player_TransferDAO transdao = new Player_TransferDAO();
+	private Player_TransferDTO transdto = new Player_TransferDTO();
 	private ArrayList<GroupsDTO> glist;
 	private JLabel lbl_image;
 	private DefaultTableModel model2;
+
 	/**
 	 * Create the panel.
 	 */
@@ -98,11 +100,11 @@ public class Btn2_Button1 extends JPanel implements FocusListener {
 		lbl_program_name.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-					JPanel Stn0_Button0 = new Lobby(frame, dto);
-					frame.getContentPane().removeAll();
-					frame.getContentPane().add(Stn0_Button0);
-					frame.revalidate();
-					frame.repaint();
+				JPanel Stn0_Button0 = new Lobby(frame, dto);
+				frame.getContentPane().removeAll();
+				frame.getContentPane().add(Stn0_Button0);
+				frame.revalidate();
+				frame.repaint();
 			}
 		});
 
@@ -133,7 +135,7 @@ public class Btn2_Button1 extends JPanel implements FocusListener {
 		Profile_Nickname.setBounds(100, 0, 180, 100);
 		ProfilePanel.add(Profile_Nickname);
 		Profile_Nickname.setLayout(null);
-		
+
 		JLabel lbl_profile_Nickname = new JLabel(dto.getMember_Nickname());
 		lbl_profile_Nickname.setForeground(Color.WHITE);
 		lbl_profile_Nickname.setFont(new Font("KBIZ한마음고딕 B", Font.PLAIN, 16));
@@ -158,7 +160,7 @@ public class Btn2_Button1 extends JPanel implements FocusListener {
 				frame.getContentPane().add(Stn1_Button1);
 				frame.revalidate();
 				frame.repaint();
-				
+
 			}
 		});
 		lbl_btn1.setBounds(87, 30, 87, 24);
@@ -518,49 +520,42 @@ public class Btn2_Button1 extends JPanel implements FocusListener {
 		panel.setFont(new Font("KBIZ한마음고딕 M", Font.PLAIN, 14));
 		panel.setBounds(116, 171, 500, 200);
 		panel_3.add(panel);
-		
-		ArrayList<PlayerDTO> translist1 = transdao.transferTo(9999);
-		
-	      String [] columnNames1 = {"선수코드","선수명","선수전번","선수이메일"};
-	      String[][] data1 = new String[translist1.size()][columnNames1.length];
-	      for (int i = 0; i < data1.length; i++) {
-	          for (int j = 0; j < data1[i].length; j++) {
-	             if(j==0) {
-	                data1[i][j] = String.valueOf(translist1.get(i).getPlayer_Code());
-	             } else if(j==1) {
-	                data1[i][j] = translist1.get(i).getPlayer_Name();
-	             }
-	           else if(j==2) {
-	        	  data1[i][j] = translist1.get(i).getPlayer_Tel();
-	          }
-	           else if(j==3) {
-	        	   data1[i][j] = translist1.get(i).getPlayer_Email();
-	           }
-	          }
-	       }
-	  
 
-		
-		
-		
-		
+		ArrayList<PlayerDTO> translist1 = transdao.transferTo(9999);
+
+		String[] columnNames1 = { "선수코드", "선수명", "선수전번", "선수이메일" };
+		String[][] data1 = new String[translist1.size()][columnNames1.length];
+		for (int i = 0; i < data1.length; i++) {
+			for (int j = 0; j < data1[i].length; j++) {
+				if (j == 0) {
+					data1[i][j] = String.valueOf(translist1.get(i).getPlayer_Code());
+				} else if (j == 1) {
+					data1[i][j] = translist1.get(i).getPlayer_Name();
+				} else if (j == 2) {
+					data1[i][j] = translist1.get(i).getPlayer_Tel();
+				} else if (j == 3) {
+					data1[i][j] = translist1.get(i).getPlayer_Email();
+				}
+			}
+		}
+
 		table = new JTable();
 		table.setFont(new Font("KBIZ한마음고딕 M", Font.PLAIN, 14));
 		table.setShowVerticalLines(false);
 		table.setBorder(null);
 		table.setRowHeight(40);
 		table.setGridColor(Color.BLACK);
-		table.setModel(new DefaultTableModel(data1, columnNames1){
-        @Override
-        public Class<?> getColumnClass(int column) {
-           return column == 1 ? Integer.class : String.class;
-        }
+		table.setModel(new DefaultTableModel(data1, columnNames1) {
+			@Override
+			public Class<?> getColumnClass(int column) {
+				return column == 1 ? Integer.class : String.class;
+			}
 
-        @Override
-        public boolean isCellEditable(int row, int column) {
-           return false;
-        }
-     });
+			@Override
+			public boolean isCellEditable(int row, int column) {
+				return false;
+			}
+		});
 		table.getColumnModel().getColumn(0).setPreferredWidth(122);
 		table.getColumnModel().getColumn(1).setPreferredWidth(194);
 		table.getTableHeader().setBackground(new Color(120, 168, 252));
@@ -568,6 +563,14 @@ public class Btn2_Button1 extends JPanel implements FocusListener {
 		table.setSelectionBackground(new Color(232, 57, 95));
 		panel.setLayout(new CardLayout(0, 0));
 		table.setBounds(12, 29, 500, 259);
+
+		DefaultTableCellRenderer tScheduleCellRenderer = new DefaultTableCellRenderer();
+		tScheduleCellRenderer.setHorizontalAlignment(SwingConstants.CENTER);
+		TableColumnModel tcmSchedule = table.getColumnModel();
+		for (int i = 0; i < tcmSchedule.getColumnCount(); i++) {
+			tcmSchedule.getColumn(i).setCellRenderer(tScheduleCellRenderer);
+		}
+
 		panel_3.add(table);
 
 		JScrollPane scrollPane_trans = new JScrollPane(table);
@@ -575,59 +578,57 @@ public class Btn2_Button1 extends JPanel implements FocusListener {
 		scrollPane_trans.setBounds(12, 10, 1296, 738);
 		panel.add(scrollPane_trans, "name_8186182004900");
 
-		
-		
 		ArrayList<PlayerDTO> translist2 = transdao.transferFrome(9999);
-		
-	      String [] columnNames2 = {"선수코드","선수명","선수전번","선수이메일"};
-	      String[][] data2 = new String[translist2.size()][columnNames2.length];
-	      for (int i = 0; i < data2.length; i++) {
-	          for (int j = 0; j < data2[i].length; j++) {
-	             if(j==0) {
-	                data2[i][j] = String.valueOf(translist2.get(i).getPlayer_Code());
-	             } else if(j==1) {
-	                data2[i][j] = translist2.get(i).getPlayer_Name();
-	             }else if(j==2) {
-		                data2[i][j] = translist2.get(i).getPlayer_Tel();
-		             }else if(j==3) {
-			                data2[i][j] = translist2.get(i).getPlayer_Email();
-		             }
-	          }
-	       }
-	     
 
-		
+		String[] columnNames2 = { "선수코드", "선수명", "선수전번", "선수이메일" };
+		String[][] data2 = new String[translist2.size()][columnNames2.length];
+		for (int i = 0; i < data2.length; i++) {
+			for (int j = 0; j < data2[i].length; j++) {
+				if (j == 0) {
+					data2[i][j] = String.valueOf(translist2.get(i).getPlayer_Code());
+				} else if (j == 1) {
+					data2[i][j] = translist2.get(i).getPlayer_Name();
+				} else if (j == 2) {
+					data2[i][j] = translist2.get(i).getPlayer_Tel();
+				} else if (j == 3) {
+					data2[i][j] = translist2.get(i).getPlayer_Email();
+				}
+			}
+		}
+
 		table_3 = new JTable();
 		table_3.setFont(new Font("KBIZ한마음고딕 M", Font.PLAIN, 14));
 		table_3.setShowVerticalLines(false);
 		table_3.setBorder(null);
 		table_3.setRowHeight(40);
 		table_3.setGridColor(Color.BLACK);
-		table_3.setModel(new DefaultTableModel(data2,columnNames2){
-	         @Override
-	         public Class<?> getColumnClass(int column) {
-	            return column == 1 ? Integer.class : String.class;
-	         }
+		table_3.setModel(new DefaultTableModel(data2, columnNames2) {
+			@Override
+			public Class<?> getColumnClass(int column) {
+				return column == 1 ? Integer.class : String.class;
+			}
 
-	         @Override
-	         public boolean isCellEditable(int row, int column) {
-	            return false;
-	         }
-	      });
+			@Override
+			public boolean isCellEditable(int row, int column) {
+				return false;
+			}
+		});
 		table_3.getColumnModel().getColumn(0).setPreferredWidth(149);
 		table_3.getColumnModel().getColumn(1).setPreferredWidth(194);
 		table_3.getTableHeader().setBackground(new Color(120, 168, 252));
 		table_3.getTableHeader().setForeground(new Color(255, 255, 255));
 		table_3.setSelectionBackground(new Color(232, 57, 95));
 		table_3.setBounds(45, 479, 480, 240);
+		
+		DefaultTableCellRenderer tScheduleCellRenderer2 = new DefaultTableCellRenderer();
+		tScheduleCellRenderer2.setHorizontalAlignment(SwingConstants.CENTER);
+		TableColumnModel tcmSchedule2 = table_3.getColumnModel();
+		for (int i = 0; i < tcmSchedule2.getColumnCount(); i++) {
+			tcmSchedule2.getColumn(i).setCellRenderer(tScheduleCellRenderer2);
+		}
+		
 		panel_3.add(table_3);
 //		Object tablevalue=table.getValueAt(table.getSelectedRow(), table.getSelectedColumn());
-
-
-
-
-		
-		
 
 		JScrollPane scrollPane_trans_waiting = new JScrollPane(table_3);
 		scrollPane_trans_waiting.setFont(new Font("KBIZ한마음고딕 M", Font.PLAIN, 14));
@@ -650,19 +651,13 @@ public class Btn2_Button1 extends JPanel implements FocusListener {
 		int Group_Code = dto.getGroup_Code();
 
 		gdao.selectAllGroups_Groupcode(Group_Code);
-		
-		
+
 //		System.out.println("====== 이적 수락 대기중인 선수 ======");
 //		
 //		for (int i = 0; i < translist2.size(); i++) {
 //			translist2.get(i);
 //		}
 //		
-		
-		
-
-		
-		
 
 		ArrayList<GroupsDTO> list = gdao.selectAllGroups_Groupcode(Group_Code);
 
@@ -679,14 +674,12 @@ public class Btn2_Button1 extends JPanel implements FocusListener {
 		texthomepage.setText(list.get(0).getGroup_HomePage());
 		texttel.setText(list.get(0).getGroup_Tel());
 		lbl_image.setIcon(new ImageIcon(image));
-		
-		
+
 		ArrayList<PlayerDTO> translist = new ArrayList<PlayerDTO>();
-				 translist=transdao.transferTo(Group_Code);
-				 for (int i = 0; i < translist.size(); i++) {
-					System.out.println(translist.get(i)+"234234");
-				}
-		
+		translist = transdao.transferTo(Group_Code);
+		for (int i = 0; i < translist.size(); i++) {
+			System.out.println(translist.get(i) + "234234");
+		}
 
 		button_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
