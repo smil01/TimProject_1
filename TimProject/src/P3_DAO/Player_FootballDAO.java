@@ -58,18 +58,17 @@ public class Player_FootballDAO {
 	public int joinPlayer_Football(Player_FootballDTO Player_FootballDTO) {
 		con();
 
-		sql = "INSERT INTO Player_Football(insert into player_football(player_football_code, PLAYER_CODE, GROUP_CODE,PLAYER_FOOTBALL_SPEED,PLAYER_FOOTBALL_SHOOT, PLAYER_FOOTBALL_PASS, PLAYER_FOOTBALL_DRIBOL, PLAYER_FOOTBALL_DEFENSE)"
-				+ "VALUES(PLAYER_FOOTBALL_SEQUENCE.nextval,?,?,?,?,?,?,?);";
+		sql = "INSERT INTO Player_Football(player_football_code, PLAYER_CODE, GROUP_CODE,PLAYER_FOOTBALL_SPEED,PLAYER_FOOTBALL_SHOOT, PLAYER_FOOTBALL_PASS, PLAYER_FOOTBALL_DRIBOL, PLAYER_FOOTBALL_DEFENSE) "
+				+ "VALUES(PLAYER_FOOTBALL_SEQUENCE.nextval,?,?,?,?,?,?,?)";
 		try {
 			pst = conn.prepareStatement(sql);
-			pst.setInt(1, Player_FootballDTO.getPlayer_Football_Code());
-			pst.setInt(2, Player_FootballDTO.getPlayer_Code());
-			pst.setInt(3, Player_FootballDTO.getGroup_Code());
-			pst.setInt(4, Player_FootballDTO.getPlayer_Football_Speed());
-			pst.setInt(5, Player_FootballDTO.getPlayer_Football_Shoot());
-			pst.setInt(6, Player_FootballDTO.getPlayer_Football_Pass());
-			pst.setInt(7, Player_FootballDTO.getPlayer_Football_Dribol());
-			pst.setInt(8, Player_FootballDTO.getPlayer_Football_Defense());
+			pst.setInt(1, Player_FootballDTO.getPlayer_Code());
+			pst.setInt(2, Player_FootballDTO.getGroup_Code());
+			pst.setInt(3, Player_FootballDTO.getPlayer_Football_Speed());
+			pst.setInt(4, Player_FootballDTO.getPlayer_Football_Shoot());
+			pst.setInt(5, Player_FootballDTO.getPlayer_Football_Pass());
+			pst.setInt(6, Player_FootballDTO.getPlayer_Football_Dribol());
+			pst.setInt(7, Player_FootballDTO.getPlayer_Football_Defense());
 			int cnt = pst.executeUpdate();
 			close();
 			return cnt;

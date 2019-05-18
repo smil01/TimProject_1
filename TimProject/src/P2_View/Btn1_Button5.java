@@ -31,6 +31,7 @@ import P3_DAO.Player_PositionDAO;
 import P4_DTO.PlayerContestDTO;
 import P4_DTO.PlayerMedicalDTO;
 import P4_DTO.PlayerPhysicalDTO;
+import P4_DTO.Player_FootballDTO;
 import P4_DTO.loginDTO;
 
 public class Btn1_Button5 extends JPanel {
@@ -50,7 +51,7 @@ public class Btn1_Button5 extends JPanel {
 	private JTextField txt_Shoot;
 	private JTextField txt_Running;
 	private JTextField txt_Speed;
-	private JTextField txt_shoot;
+	private JTextField txtShoot;
 	private JTextField txt_Pass;
 	private JTextField txt_Dribble;
 	private JTextField txt_Defence;
@@ -63,6 +64,7 @@ public class Btn1_Button5 extends JPanel {
 	public Player_PhysicalDAO py_dao = new Player_PhysicalDAO();
 	public Player_FootballDAO pf_dao = new Player_FootballDAO();
 	public Player_ContestDAO pc_dao = new Player_ContestDAO();
+
 	public Player_MedicalDAO pm_dao = new Player_MedicalDAO();
 
 	/**
@@ -739,11 +741,12 @@ public class Btn1_Button5 extends JPanel {
 		btn_Football.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int result = JOptionPane.showConfirmDialog(null, "확인을 누르면 선수 축구능력 지수가 입력됩니다.", "선수축구능력등록",
-						JOptionPane.OK_CANCEL_OPTION);
-				if (result == 0) {
-
-					reSet();
-				}
+                        JOptionPane.OK_CANCEL_OPTION);
+				 if(result == 0) {
+					 pf_dao.joinPlayer_Football(new Player_FootballDTO(0,PLAYER_CODE, dto.getGroup_Code(), Integer.parseInt(txt_Speed.getText()),
+								Integer.parseInt(txtShoot.getText()), Integer.parseInt(txt_Pass.getText()), Integer.parseInt(txt_Dribble.getText()), Integer.parseInt(txt_Defence.getText())));
+					 reSet();
+				 }
 			}
 		});
 		btn_Football.setForeground(Color.WHITE);
@@ -830,15 +833,15 @@ public class Btn1_Button5 extends JPanel {
 		label_5.setBounds(197, 480, 50, 32);
 		panel_2.add(label_5);
 
-		txt_shoot = new JTextField();
-		txt_shoot.setText(pf_dao.SelectPlayer_Football(PLAYER_CODE).get(0).getPlayer_Football_Shoot() + "");
-		txt_shoot.setHorizontalAlignment(SwingConstants.CENTER);
-		txt_shoot.setForeground(new Color(189, 178, 137));
-		txt_shoot.setFont(new Font("KBIZ한마음고딕 M", Font.PLAIN, 35));
-		txt_shoot.setColumns(10);
-		txt_shoot.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		txt_shoot.setBounds(317, 462, 50, 50);
-		panel_2.add(txt_shoot);
+		txtShoot = new JTextField();
+		txtShoot.setText(pf_dao.SelectPlayer_Football(PLAYER_CODE).get(0).getPlayer_Football_Shoot() + "");
+		txtShoot.setHorizontalAlignment(SwingConstants.CENTER);
+		txtShoot.setForeground(new Color(189, 178, 137));
+		txtShoot.setFont(new Font("KBIZ한마음고딕 M", Font.PLAIN, 35));
+		txtShoot.setColumns(10);
+		txtShoot.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		txtShoot.setBounds(317, 462, 50, 50);
+		panel_2.add(txtShoot);
 
 		JLabel label_7 = new JLabel("\uC810");
 		label_7.setForeground(new Color(189, 178, 137));
@@ -887,6 +890,8 @@ public class Btn1_Button5 extends JPanel {
 		txt_Defence.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		txt_Defence.setBounds(856, 462, 50, 50);
 		panel_2.add(txt_Defence);
+		
+		
 
 		JLabel label_13 = new JLabel("\uC810");
 		label_13.setForeground(new Color(189, 178, 137));
