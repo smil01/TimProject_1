@@ -115,7 +115,7 @@ public class Btn1_Button5 extends JPanel {
 		ProfilePanel.add(Profile_ImagePanel);
 		Profile_ImagePanel.setLayout(new CardLayout(0, 0));
 
-		JLabel lbl_profileImg = new JLabel("\uD504\uB85C\uD544\uC0AC\uC9C4");
+		JLabel lbl_profileImg = new JLabel(new ImageIcon(dto.getMember_ResizeImg(100, 100)));
 		lbl_profileImg.setHorizontalAlignment(SwingConstants.CENTER);
 		Profile_ImagePanel.add(lbl_profileImg, "name_54594167799700");
 
@@ -125,8 +125,7 @@ public class Btn1_Button5 extends JPanel {
 		ProfilePanel.add(Profile_Nickname);
 		Profile_Nickname.setLayout(null);
 
-		JLabel label_1 = new JLabel("\uB2C9\uB124\uC784");
-		label_1.setForeground(Color.WHITE);
+		JLabel label_1 = new JLabel(dto.getMember_Nickname());		label_1.setForeground(Color.WHITE);
 		label_1.setFont(new Font("KBIZÇÑ¸¶À½°íµñ B", Font.PLAIN, 16));
 		label_1.setBounds(30, 38, 100, 25);
 		Profile_Nickname.add(label_1);

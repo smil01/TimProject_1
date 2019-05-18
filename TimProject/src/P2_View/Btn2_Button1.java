@@ -123,7 +123,7 @@ public class Btn2_Button1 extends JPanel implements FocusListener {
 		ProfilePanel.add(Profile_ImagePanel);
 		Profile_ImagePanel.setLayout(new CardLayout(0, 0));
 
-		JLabel lbl_profileImg = new JLabel("\uD504\uB85C\uD544\uC0AC\uC9C4");
+		JLabel lbl_profileImg = new JLabel(new ImageIcon(dto.getMember_ResizeImg(100, 100)));
 		lbl_profileImg.setHorizontalAlignment(SwingConstants.CENTER);
 		Profile_ImagePanel.add(lbl_profileImg, "name_54594167799700");
 		lbl_profileImg.setIcon(new ImageIcon(dto.getMember_ResizeImg(100, 100)));
@@ -133,8 +133,8 @@ public class Btn2_Button1 extends JPanel implements FocusListener {
 		Profile_Nickname.setBounds(100, 0, 180, 100);
 		ProfilePanel.add(Profile_Nickname);
 		Profile_Nickname.setLayout(null);
-
-		JLabel lbl_profile_Nickname = new JLabel("\uB2C9\uB124\uC784");
+		
+		JLabel lbl_profile_Nickname = new JLabel(dto.getMember_Nickname());
 		lbl_profile_Nickname.setForeground(Color.WHITE);
 		lbl_profile_Nickname.setFont(new Font("KBIZÇÑ¸¶À½°íµñ B", Font.PLAIN, 16));
 		lbl_profile_Nickname.setBounds(30, 38, 100, 25);

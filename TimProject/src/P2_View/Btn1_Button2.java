@@ -67,6 +67,7 @@ public class Btn1_Button2 extends JPanel {
 				"\uC720\uC18C\uB144\uCD95\uAD6C \uC131\uC7A5\uAD00\uB9AC \uD504\uB85C\uADF8\uB7A8");
 		lbl_program_name.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 
+		
 		lbl_program_name.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -95,7 +96,7 @@ public class Btn1_Button2 extends JPanel {
 		ProfilePanel.add(Profile_ImagePanel);
 		Profile_ImagePanel.setLayout(new CardLayout(0, 0));
 
-		JLabel lbl_profileImg = new JLabel("\uD504\uB85C\uD544\uC0AC\uC9C4");
+		JLabel lbl_profileImg = new JLabel(new ImageIcon(dto.getMember_ResizeImg(100, 100)));
 		lbl_profileImg.setHorizontalAlignment(SwingConstants.CENTER);
 		Profile_ImagePanel.add(lbl_profileImg, "name_54594167799700");
 
@@ -105,7 +106,7 @@ public class Btn1_Button2 extends JPanel {
 		ProfilePanel.add(Profile_Nickname);
 		Profile_Nickname.setLayout(null);
 
-		JLabel label_1 = new JLabel("\uB2C9\uB124\uC784");
+		JLabel label_1 = new JLabel(dto.getMember_Nickname());
 		label_1.setForeground(Color.WHITE);
 		label_1.setFont(new Font("KBIZÇÑ¸¶À½°íµñ B", Font.PLAIN, 16));
 		label_1.setBounds(30, 38, 100, 25);
