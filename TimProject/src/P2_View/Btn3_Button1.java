@@ -364,6 +364,7 @@ public class Btn3_Button1 extends JPanel implements FocusListener {
 		
 		
 		JPanel panel_4 = new JPanel();
+		panel_4.setBackground(Color.WHITE);
 		panel_4.setBounds(230, 100, 300, 100);
 		panel_3.add(panel_4);
 		panel_4.setLayout(new CardLayout(0, 0));
@@ -389,6 +390,7 @@ public class Btn3_Button1 extends JPanel implements FocusListener {
 		panel_5.add(lblNewLabel_5, "name_198961159649177");
 		
 		JPanel panel_6 = new JPanel();
+		panel_6.setBackground(new Color(255, 255, 255));
 		panel_6.setBounds(230, 282, 300, 100);
 		panel_3.add(panel_6);
 		panel_6.setLayout(new CardLayout(0, 0));
@@ -408,6 +410,7 @@ public class Btn3_Button1 extends JPanel implements FocusListener {
 		panel_7.add(lblNewLabel_8, "name_198980439524340");
 		
 		JPanel panel_8 = new JPanel();
+		panel_8.setBackground(new Color(255, 255, 255));
 		panel_8.setBounds(230, 463, 300, 100);
 		panel_3.add(panel_8);
 		panel_8.setLayout(new CardLayout(0, 0));
@@ -427,6 +430,7 @@ public class Btn3_Button1 extends JPanel implements FocusListener {
 		panel_9.add(lblNewLabel_10, "name_198990007706746");
 		
 		JPanel panel_10 = new JPanel();
+		panel_10.setBackground(new Color(255, 255, 255));
 		panel_10.setBounds(230, 644, 300, 100);
 		panel_3.add(panel_10);
 		panel_10.setLayout(new CardLayout(0, 0));
@@ -446,6 +450,7 @@ public class Btn3_Button1 extends JPanel implements FocusListener {
 		panel_11.add(lblNewLabel_6, "name_198966831618368");
 		
 		JPanel panel_12 = new JPanel();
+		panel_12.setBackground(new Color(255, 255, 255));
 		panel_12.setBounds(814, 100, 300, 100);
 		panel_3.add(panel_12);
 		panel_12.setLayout(new CardLayout(0, 0));
@@ -465,6 +470,7 @@ public class Btn3_Button1 extends JPanel implements FocusListener {
 		panel_13.add(lblNewLabel_7, "name_198972239452148");
 		
 		JPanel panel_14 = new JPanel();
+		panel_14.setBackground(new Color(255, 255, 255));
 		panel_14.setBounds(814, 282, 300, 100);
 		panel_3.add(panel_14);
 		panel_14.setLayout(new CardLayout(0, 0));
@@ -484,6 +490,7 @@ public class Btn3_Button1 extends JPanel implements FocusListener {
 		panel_15.add(lblNewLabel_9, "name_198986631736185");
 		
 		JPanel panel_16 = new JPanel();
+		panel_16.setBackground(new Color(255, 255, 255));
 		panel_16.setBounds(814, 463, 300, 100);
 		panel_3.add(panel_16);
 		panel_16.setLayout(new CardLayout(0, 0));
@@ -503,6 +510,7 @@ public class Btn3_Button1 extends JPanel implements FocusListener {
 		panel_17.add(lblNewLabel_11, "name_198993887574627");
 		
 		JPanel panel_18 = new JPanel();
+		panel_18.setBackground(new Color(255, 255, 255));
 		panel_18.setBounds(814, 644, 300, 100);
 		panel_3.add(panel_18);
 		panel_18.setLayout(new CardLayout(0, 0));

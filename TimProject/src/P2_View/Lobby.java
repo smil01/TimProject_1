@@ -303,21 +303,17 @@ public class Lobby extends JPanel {
 		GudanPanel.add(LogoPanel);
 		LogoPanel.setLayout(new CardLayout(0, 0));
 
-		JLabel lbl_logo = new JLabel("");
-		lbl_logo.setIcon(new ImageIcon(Lobby.class.getResource("/P5_Img/icons8_uefa_euro_trophy_64px.png")));
-		lbl_logo.setHorizontalAlignment(SwingConstants.CENTER);
-		LogoPanel.add(lbl_logo, "name_60328911748400");
-
 		JPanel GudanName = new JPanel();
 		GudanName.setBackground(new Color(71, 120, 197));
-		GudanName.setBounds(153, 0, 118, 105);
+		GudanName.setBounds(153, 0, 651, 105);
 		GudanPanel.add(GudanName);
 		GudanName.setLayout(null);
 
 		JLabel lblNewLabel = new JLabel("\uC6CC\uB9AC\uC5B4\uC988");
-		lblNewLabel.setBounds(0, 31, 146, 34);
+		lblNewLabel.setBounds(0, 22, 420, 61);
 		lblNewLabel.setForeground(new Color(255, 255, 255));
-		lblNewLabel.setFont(new Font("KBIZ한마음고딕 H", Font.PLAIN, 25));
+		lblNewLabel.setFont(new Font("KBIZ한마음고딕 H", Font.PLAIN, 35));
+		lblNewLabel.setText(arr_group.get(0).getGroup_Name());
 		GudanName.add(lblNewLabel);
 
 		JPanel panel = new JPanel();
@@ -338,7 +334,7 @@ public class Lobby extends JPanel {
 		JPanel panel_4 = new JPanel();
 		panel_4.setLayout(null);
 		panel_4.setBackground(Color.WHITE);
-		panel_4.setBounds(411, 39, 398, 230);
+		panel_4.setBounds(411, 39, 572, 231);
 		panel.add(panel_4);
 
 		JLabel label_4 = new JLabel("\uAD6C\uB2E8\uC774\uB984");
@@ -351,14 +347,14 @@ public class Lobby extends JPanel {
 		
 		label_5.setForeground(new Color(189, 178, 137));
 		label_5.setFont(new Font("만화진흥원체", Font.PLAIN, 35));
-		label_5.setBounds(12, 52, 139, 40);
+		label_5.setBounds(12, 52, 312, 40);
 		label_5.setText(arr_group.get(0).getGroup_Name());
 		panel_4.add(label_5);
 
 		JLabel label_6 = new JLabel("\uC9C0\uC5ED");
 		label_6.setForeground(new Color(153, 153, 153));
 		label_6.setFont(new Font("만화진흥원체", Font.PLAIN, 16));
-		label_6.setBounds(220, 10, 48, 32);
+		label_6.setBounds(403, 10, 48, 32);
 		panel_4.add(label_6);
 
 		JLabel label_2 = new JLabel("\uC8FC\uC18C");
@@ -371,7 +367,7 @@ public class Lobby extends JPanel {
 				"\uAD11\uC8FC\uAD11\uC5ED\uC2DC \uB0A8\uAD6C \uC1A1\uC554\uB85C 60 \uAD11\uC8FC CGI \uC13C\uD130");
 		label_3.setForeground(Color.BLACK);
 		label_3.setFont(new Font("만화진흥원체", Font.PLAIN, 16));
-		label_3.setBounds(12, 183, 369, 19);
+		label_3.setBounds(12, 183, 548, 19);
 		label_3.setText(arr_group.get(0).getGroup_Address());
 		panel_4.add(label_3);
 
@@ -474,7 +470,7 @@ public class Lobby extends JPanel {
 		JLabel label_7 = new JLabel("\uAD11\uC8FC\uAD11\uC5ED\uC2DC");
 		label_7.setForeground(new Color(189, 178, 137));
 		label_7.setFont(new Font("만화진흥원체", Font.PLAIN, 35));
-		label_7.setBounds(220, 52, 157, 40);
+		label_7.setBounds(403, 52, 157, 40);
 		String local = arr_group.get(0).getGroup_Address();
 		label_7.setText(local.substring(0, 2));
 		panel_4.add(label_7);
