@@ -241,6 +241,10 @@ public class Btn1_Button1 extends JPanel {
 						return false;
 					}
 				});
+				
+				if (content.length > 1) {
+					table.setRowSelectionInterval(0, 0); // 시작과 동시 첫번째 행을 선택하게 하기
+				}
 			}
 		});
 		button.setBorderPainted(false);
@@ -367,7 +371,6 @@ public class Btn1_Button1 extends JPanel {
 				frame.getContentPane().add(Stn1_Button1);
 				frame.revalidate();
 				frame.repaint();
-
 			}
 		});
 		lbl_AllPlayerButton.setBounds(0, 0, 220, 105);
@@ -391,13 +394,12 @@ public class Btn1_Button1 extends JPanel {
 		JLabel lbl_PlayerStatButton = new JLabel("\uC120\uC218\uC2A4\uD0EF");
 		lbl_PlayerStatButton.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent e) {
-				JPanel Stn1_Button2 = new Btn1_Button2(frame, dto, 0);
+			public void mouseClicked(MouseEvent e) {			
+				JPanel Stn1_Button2 = new Btn1_Button2(frame, dto, select());
 				frame.getContentPane().removeAll();
 				frame.getContentPane().add(Stn1_Button2);
 				frame.revalidate();
 				frame.repaint();
-
 			}
 		});
 		lbl_PlayerStatButton.setHorizontalAlignment(SwingConstants.CENTER);
@@ -417,7 +419,7 @@ public class Btn1_Button1 extends JPanel {
 		lbl_PlayerChart.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				JPanel Stn1_Button3 = new Btn1_Button3(frame, dto);
+				JPanel Stn1_Button3 = new Btn1_Button3(frame, dto, select());
 				frame.getContentPane().removeAll();
 				frame.getContentPane().add(Stn1_Button3);
 				frame.revalidate();
@@ -442,7 +444,7 @@ public class Btn1_Button1 extends JPanel {
 		lbl_PlayerMemo.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				JPanel Stn1_Button4 = new Btn1_Button4(frame, dto);
+				JPanel Stn1_Button4 = new Btn1_Button4(frame, dto, select());
 				frame.getContentPane().removeAll();
 				frame.getContentPane().add(Stn1_Button4);
 				frame.revalidate();
@@ -543,6 +545,9 @@ public class Btn1_Button1 extends JPanel {
 		table.getTableHeader().setForeground(new Color(255, 255, 255));
 		table.setSelectionBackground(new Color(232, 57, 95));
 		table.setBounds(35, 10, 1189, 738);
+		if (content.length > 1) {
+			table.setRowSelectionInterval(0, 0); // 시작과 동시 첫번째 행을 선택하게 하기
+		}
 		table.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -556,6 +561,8 @@ public class Btn1_Button1 extends JPanel {
 //                        String s = String.format("%s (%s)", m.getValueAt(row, 0), m.getValueAt(row, 1));
 //                        JOptionPane.showMessageDialog(t, s, "title", JOptionPane.INFORMATION_MESSAGE);
 
+						System.out.println("=======================" + m.getValueAt(row, 0));
+						
 						JPanel Stn1_Button2 = new Btn1_Button2(frame, dto, (int) m.getValueAt(row, 0));
 						frame.getContentPane().removeAll();
 						frame.getContentPane().add(Stn1_Button2);
@@ -570,5 +577,9 @@ public class Btn1_Button1 extends JPanel {
 		scrollPane.setBounds(12, 10, 1296, 738);
 		panel.add(scrollPane);
 
+	}
+	
+	public int select() {
+		return (int) table.getValueAt(table.getSelectedRow(), 0);
 	}
 }

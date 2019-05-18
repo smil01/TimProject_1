@@ -122,12 +122,23 @@ public class Gudan_SearchModify extends JDialog implements FocusListener {
 		}
 
 		table = new JTable();
-		table.setModel(new DefaultTableModel(content, column));
+		table.setModel(new DefaultTableModel(content, column) {
+			@Override
+			public Class<?> getColumnClass(int column) {
+				return column == 1 ? Integer.class : String.class;
+			}
+
+			@Override
+			public boolean isCellEditable(int row, int column) {
+				return false;
+			}
+		});
 		table.setBounds(42, 117, 576, 214);
 		table.getTableHeader().setBackground(new Color(120, 168, 252));
 		table.getTableHeader().setForeground(new Color(255, 255, 255));
 		table.setSelectionBackground(new Color(232, 57, 95));
 		table.setRowHeight(20);
+		table.setRowSelectionInterval(0, 0); // 시작과 동시 첫번째 행을 선택하게 하기
 
 		JScrollPane scrollPane = new JScrollPane(table);
 		scrollPane.setBounds(81, 123, 500, 180);
