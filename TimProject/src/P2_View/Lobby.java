@@ -48,7 +48,7 @@ public class Lobby extends JPanel {
 		ArrayList<PlayerContestDTO> arr_contest = new ArrayList<>();
 		ArrayList<GroupsDTO> arr_group = new ArrayList<>();
 		arr_group= gdao.selectAllGroups_Groupcode(dto.getGroup_Code());
-
+		
 		arr_contest = condao.selectAllGroup(dto.getGroup_Code()); // 풋볼코드를 안에 값으로 수정해야함!!!
 		int data[][] = new int[arr_contest.size()][5];
 		for (int i = 0; i < data.length; i++) {
@@ -330,7 +330,11 @@ public class Lobby extends JPanel {
 		panel_2.setBounds(90, 50, 180, 180);
 		panel.add(panel_2);
 		panel_2.setLayout(new CardLayout(0, 0));
-
+		
+		JLabel lbl_image = new JLabel();
+		panel_2.add(lbl_image, "name_29978528592830");
+		lbl_image.setIcon(new ImageIcon(arr_group.get(0).getGroup_ResizeImg(180, 180)));
+		
 		JPanel panel_4 = new JPanel();
 		panel_4.setLayout(null);
 		panel_4.setBackground(Color.WHITE);
