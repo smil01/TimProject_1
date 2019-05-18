@@ -28,12 +28,14 @@ import org.jfree.data.xy.XYSeriesCollection;
 import org.jfree.ui.HorizontalAlignment;
 import org.jfree.ui.TextAnchor;
 
+import P4_DTO.PlayerContestDTO;
 import P4_DTO.Player_FootballDTO;
 
 public class ChartDAO {
 	String[] PlayerFootball = { "스피드", "슛", "패스", "드리블", "수비" };
 	ArrayList<Player_FootballDTO> arrFootball_Recent = new ArrayList<Player_FootballDTO>();
 	String[] num = { "4주전", "3주전", "2주전", "1주전", "이번주" };
+	
 
 	public JFreeChart getChart_Football(ArrayList<Player_FootballDTO> arr) {
 		// 데이터 생성
@@ -285,7 +287,6 @@ public class ChartDAO {
 		chart.addSubtitle(copyright); // 차트 서브 타이틀
 		chart.getLegend().setItemFont(new Font("KBIZ한마음고딕 H", Font.PLAIN, 14));
 
-
 		return chart;
 	}
 
@@ -304,9 +305,9 @@ public class ChartDAO {
 		}
 		SpiderWebPlot plot = new SpiderWebPlot(dataset);
 		plot.setOutlineVisible(false);
-		plot.setAxisLinePaint(new Color(220,220,220 ));
+		plot.setAxisLinePaint(new Color(220, 220, 220));
 		plot.setSeriesPaint(new Color(215, 46, 47));
-		plot.setSeriesOutlinePaint(0, new Color(255,255,255));
+		plot.setSeriesOutlinePaint(0, new Color(255, 255, 255));
 		plot.setSeriesOutlineStroke(0, new BasicStroke(2.0f, BasicStroke.JOIN_BEVEL, BasicStroke.JOIN_ROUND, 3.0f));
 		plot.setLabelFont(new Font("KBIZ한마음고딕 H", Font.PLAIN, 16));
 		JFreeChart chart = new JFreeChart(plot);
@@ -316,6 +317,69 @@ public class ChartDAO {
 		chart.setBackgroundPaint(Color.WHITE);
 		chart.getLegend().setItemFont(new Font("KBIZ한마음고딕 H", Font.PLAIN, 14));
 
+		return chart;
+	}
+
+	public JFreeChart getChart_Contest(ArrayList<PlayerContestDTO> arr) {
+		// 데이터 생성
+		int data[][] = new int[arr.size()][5];
+		for (int i = 0; i < data.length; i++) {
+			data[i][0] = arr.get(i).getPlayer_Contest_Shot();
+			data[i][1] = arr.get(i).getPlayer_Contest_EffectiveShot();
+			data[i][2] = arr.get(i).getPlayer_Contest_Goal();
+			data[i][3] = arr.get(i).getPlayer_Contest_Assist();
+			data[i][4] = arr.get(i).getPlayer_Contest_RunningTime();
+		}
+		
+		int[] sum = new int[5];
+		
+		for (int i = 0; i < sum.length; i++) {
+			for (int j = 0; j < arr.size(); j++) {
+				sum[i] += data[j][i];
+			}
+		}
+		String[] contest = {"슛","유효슛","골","어시스트","런닝타임"};
+		DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+		for (int i = 0; i < sum.length; i++) {
+			dataset.addValue(sum[i], "대회스탯", contest[i]);
+		}
+		
+		final BarRenderer renderer = new BarRenderer();
+		final CategoryItemLabelGenerator generator = new StandardCategoryItemLabelGenerator();
+		final ItemLabelPosition p_center = new ItemLabelPosition(ItemLabelAnchor.CENTER, TextAnchor.CENTER);
+		final ItemLabelPosition p_below = new ItemLabelPosition(ItemLabelAnchor.OUTSIDE6, TextAnchor.TOP_LEFT);
+		Font f = new Font("KBIZ한마음고딕 H", Font.BOLD, 14);
+		Font axisF = new Font("KBIZ한마음고딕 H", Font.PLAIN, 14);
+		renderer.setBaseItemLabelGenerator(generator);
+		renderer.setBaseItemLabelsVisible(true);
+		renderer.setBasePositiveItemLabelPosition(p_center);
+		renderer.setBaseItemLabelFont(f);
+		renderer.setSeriesPaint(0, new Color(0, 162, 255));
+		final CategoryPlot plot = new CategoryPlot();
+		plot.setDataset(dataset);
+		plot.setRenderer(renderer);
+		plot.setOrientation(PlotOrientation.VERTICAL); // 그래프 표시 방향
+		plot.setRangeGridlinesVisible(true); // X축 가이드 라인 표시여부
+		plot.setDomainGridlinesVisible(true); // Y축 가이드 라인 표시여부
+		plot.setDatasetRenderingOrder(DatasetRenderingOrder.FORWARD);
+		plot.setDomainAxis(new CategoryAxis()); // X축 종류 설정
+		plot.getDomainAxis().setTickLabelFont(axisF); // X축 눈금라벨 폰트 조정
+		plot.getDomainAxis().setCategoryLabelPositions(CategoryLabelPositions.STANDARD); // 카테고리 라벨 위치 조정
+		plot.setRangeAxis(new NumberAxis()); // Y축 종류 설정
+		plot.getRangeAxis().setTickLabelFont(axisF); // Y축 눈금라벨 폰트 조정
+		plot.getRangeAxis().setAutoRange(true);;
+		plot.setDomainGridlinesVisible(false);
+		plot.setDomainGridlinesVisible(false);
+		plot.setOutlineVisible(false);
+		plot.setRangeGridlinesVisible(false);
+		plot.clearRangeMarkers();
+		plot.clearAnnotations();
+		final JFreeChart chart = new JFreeChart(plot);
+		chart.setBackgroundPaint(Color.WHITE);
+		TextTitle copyright = new TextTitle("대회성적", new Font("KBIZ한마음고딕 B", Font.PLAIN, 25));
+		copyright.setHorizontalAlignment(HorizontalAlignment.RIGHT);
+		chart.addSubtitle(copyright); // 차트 서브 타이틀
+		chart.getLegend().setItemFont(new Font("KBIZ한마음고딕 H", Font.PLAIN, 14));
 		return chart;
 	}
 

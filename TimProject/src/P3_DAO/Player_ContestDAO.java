@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 
 import P4_DTO.PlayerContestDTO;
+import P4_DTO.Player_FootballDTO;
 
 public class Player_ContestDAO {
 	private String sql;
@@ -136,6 +137,33 @@ public class Player_ContestDAO {
 			}
 			close();
 			return aplist;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return null;
+	}
+
+	public ArrayList<PlayerContestDTO> selectAllGroup(int group_Code) {
+		con();
+
+		sql = "select * from Player_contest where group_Code= ?";
+		ArrayList<PlayerContestDTO> plist = new ArrayList<PlayerContestDTO>();
+
+		try {
+			pst = conn.prepareStatement(sql);
+
+			pst.setInt(1, group_Code);
+
+			rs = pst.executeQuery();
+			while (rs.next()) {
+				plist.add(new PlayerContestDTO(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getString(4),
+						rs.getString(5), rs.getString(6), rs.getInt(7), rs.getInt(8), rs.getInt(9), rs.getInt(10),
+						rs.getInt(11)));
+
+			}
+			close();
+			return plist;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

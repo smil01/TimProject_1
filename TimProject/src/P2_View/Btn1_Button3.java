@@ -47,7 +47,6 @@ public class Btn1_Button3 extends JPanel {
 		this.PLAYER_CODE = PLAYER_CODE;
 		ArrayList<Player_FootballDTO> ArrFootball = new ArrayList<>();
 		Player_FootballDAO fdao = new Player_FootballDAO();
-
 		ChartDAO cdao = new ChartDAO();
 
 		setLayout(new CardLayout(0, 0));
