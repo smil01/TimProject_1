@@ -251,7 +251,7 @@ public class Lobby extends JPanel {
 		btn_3.setBounds(0, 517, 300, 80);
 		LeftLobbyPanel.add(btn_3);
 
-		JLabel lbl_btn3 = new JLabel("\uC774\uC801\uAD00\uB9AC");
+		JLabel lbl_btn3 = new JLabel("\uAD6C\uB2E8\uBAA9\uB85D");
 		lbl_btn3.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
