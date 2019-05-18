@@ -69,6 +69,16 @@ public class Btn1_Button3 extends JPanel {
 
 		JLabel lbl_program_name = new JLabel(
 				"\uC720\uC18C\uB144\uCD95\uAD6C \uC131\uC7A5\uAD00\uB9AC \uD504\uB85C\uADF8\uB7A8");
+		lbl_program_name.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+					JPanel Stn0_Button0 = new Lobby(frame, dto);
+					frame.getContentPane().removeAll();
+					frame.getContentPane().add(Stn0_Button0);
+					frame.revalidate();
+					frame.repaint();
+			}
+		});
 
 		lbl_program_name.setHorizontalAlignment(SwingConstants.CENTER);
 		lbl_program_name.setFont(new Font("°í¾çÃ¼", Font.PLAIN, 20));
@@ -362,7 +372,7 @@ public class Btn1_Button3 extends JPanel {
 		lbl_SetStat.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				JPanel Stn1_Button5 = new Btn1_Button5(frame, dto);
+				JPanel Stn1_Button5 = new Btn1_Button5(frame, dto,PLAYER_CODE);
 				frame.getContentPane().removeAll();
 				frame.getContentPane().add(Stn1_Button5);
 				frame.revalidate();
@@ -398,7 +408,7 @@ public class Btn1_Button3 extends JPanel {
 		lbl_PlayerMemo.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				JPanel Stn1_Button4 = new Btn1_Button4(frame, dto);
+				JPanel Stn1_Button4 = new Btn1_Button4(frame, dto,PLAYER_CODE);
 				frame.getContentPane().removeAll();
 				frame.getContentPane().add(Stn1_Button4);
 				frame.revalidate();
