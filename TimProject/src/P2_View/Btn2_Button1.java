@@ -621,7 +621,7 @@ public class Btn2_Button1 extends JPanel implements FocusListener {
 		table_3.setSelectionBackground(new Color(232, 57, 95));
 		table_3.setBounds(45, 479, 480, 240);
 		panel_3.add(table_3);
-		Object tablevalue=table.getValueAt(table.getSelectedRow(), table.getSelectedColumn());
+//		Object tablevalue=table.getValueAt(table.getSelectedRow(), table.getSelectedColumn());
 
 
 
