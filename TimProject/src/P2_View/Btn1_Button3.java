@@ -45,6 +45,8 @@ public class Btn1_Button3 extends JPanel {
 		this.frame = frame;
 		this.dto = dto;
 		this.PLAYER_CODE = PLAYER_CODE;
+		p_dto = p_dao.SelectPlayer(PLAYER_CODE);
+		
 		ArrayList<Player_FootballDTO> ArrFootball = new ArrayList<>();
 		Player_FootballDAO fdao = new Player_FootballDAO();
 		ChartDAO cdao = new ChartDAO();
@@ -435,7 +437,7 @@ public class Btn1_Button3 extends JPanel {
 		panel_3.setLayout(new CardLayout(0, 0));
 
 		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon(Btn1_Button3.class.getResource("/P5_Img/uefa.jpg")));
+		lblNewLabel.setIcon(new ImageIcon(p_dto.getPlayer_ResizeImg(180, 180)));
 		panel_3.add(lblNewLabel, "name_4633110137300");
 
 		JPanel overallPane = new JPanel();
