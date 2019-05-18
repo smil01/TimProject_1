@@ -472,8 +472,7 @@ public class Lobby extends JPanel {
 		label_7.setFont(new Font("만화진흥원체", Font.PLAIN, 35));
 		label_7.setBounds(220, 52, 157, 40);
 		String local = arr_group.get(0).getGroup_Address();
-//		local.substring(0, 3);
-		label_7.setText(local);
+		label_7.setText(local.substring(0, 2));
 		panel_4.add(label_7);
 	}
 }
