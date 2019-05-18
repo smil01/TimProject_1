@@ -293,6 +293,16 @@ public class Btn3_Button1 extends JPanel implements FocusListener {
 		LeftLobbyPanel.add(btn4);
 		
 		JLabel lbl_btn4 = new JLabel("\uAC1C\uC778\uC124\uC815");
+		lbl_btn4.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				JPanel Stn4_Button1 = new Btn4_Button1(frame,dto);	
+				frame.getContentPane().removeAll();	
+				frame.getContentPane().add(Stn4_Button1);
+				frame.revalidate();
+				frame.repaint();	
+			}
+		});
 		lbl_btn4.setForeground(Color.WHITE);
 		lbl_btn4.setFont(new Font("KBIZÇÑ¸¶À½°íµñ H", Font.PLAIN, 20));
 		lbl_btn4.setBounds(87, 30, 87, 24);
