@@ -111,15 +111,40 @@ public class Player_FootballDAO {
 //		
 //	}
 
-	public ArrayList<Player_FootballDTO> SelectPlayer_Football(int Player_Football_Code) {
+	public ArrayList<Player_FootballDTO> SelectPlayer_Football(int Player_Code) {
 		con();
-		sql = "select * from Player_Football where Player_Football_Code= ?";
+		sql = "select * from Player_Football where Player_Code= ?";
 		ArrayList<Player_FootballDTO> plist = new ArrayList<>();
 
 		try {
 			pst = conn.prepareStatement(sql);
 
-			pst.setInt(1, Player_Football_Code);
+			pst.setInt(1, Player_Code);
+
+			rs = pst.executeQuery();
+
+			while (rs.next()) {
+				plist.add(new Player_FootballDTO(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getInt(4), rs.getInt(5),
+						rs.getInt(6), rs.getInt(7), rs.getInt(8)));
+			}
+			close();
+			return plist;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return null;
+	}
+	
+	public ArrayList<Player_FootballDTO> SelectPlayer_Football_Recent(int Player_Code) {
+		con();
+		sql = "select * from Player_Football where Player_Code= ? ORDER BY Player_Football_Code desc where ";
+		ArrayList<Player_FootballDTO> plist = new ArrayList<>();
+
+		try {
+			pst = conn.prepareStatement(sql);
+
+			pst.setInt(1, Player_Code);
 
 			rs = pst.executeQuery();
 
@@ -138,10 +163,10 @@ public class Player_FootballDAO {
 
 	public void deletePlayerFootball(Player_FootballDTO pdto) {
 		con();
-		sql = "delete from Player_Football where Player_Football_code = ? ";
+		sql = "delete from Player_Football where Player_code = ? ";
 		try {
 			pst = conn.prepareStatement(sql);
-			pst.setInt(1, pdto.getPlayer_Football_Code());
+			pst.setInt(1, pdto.getPlayer_Code());
 			int cnt = pst.executeUpdate();
 			if (cnt > 0) {
 				System.out.println("delete ¼º°ø");
