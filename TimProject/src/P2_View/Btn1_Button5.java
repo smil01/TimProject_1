@@ -25,28 +25,34 @@ import javax.swing.border.TitledBorder;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Btn1_Button5 extends JPanel {
 	private JTextField textField;
 	private JFrame frame;
 	private loginDTO dto;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
-	private JTextField textField_4;
-	private JTextField textField_5;
-	private JTextField textField_6;
-	private JTextField textField_7;
-	private JTextField textField_8;
-	private JTextField textField_9;
-	private JTextField textField_10;
-	private JTextField textField_11;
-	private JTextField textField_12;
-	private JTextField textField_13;
-	private JTextField textField_14;
-	private JTextField textField_15;
-	private JTextField textField_16;
-	private JTextField textField_17;
+	private JTextField txt_Age;
+	private JTextField txt_Height;
+	private JTextField txt_Weight;
+	private JTextField txt_Leftfoot;
+	private JTextField txt_RightFoot;
+	private JTextField txt_MedicalPeriod;
+	private JTextField txt_MedicalTitle;
+	private JTextField txt_Goal;
+	private JTextField txt_Assist;
+	private JTextField txt_EffectiveShoot;
+	private JTextField txt_Shoot;
+	private JTextField txt_Running;
+	private JTextField txt_Speed;
+	private JTextField txt_shoot;
+	private JTextField txt_Pass;
+	private JTextField txt_Dribble;
+	private JTextField txt_Defence;
+	private JTextField txt_PlayerName;
+	private JLabel lbl_PlayerName;
+	private JTextField txt_Position;
+	private JLabel lbl_Position;
 
 	/**
 	 * Create the panel.
@@ -349,7 +355,7 @@ public class Btn1_Button5 extends JPanel {
 		lbl_PlayerChart.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				JPanel Stn1_Button3 = new Btn1_Button3(frame,dto);
+				JPanel Stn1_Button3 = new Btn1_Button3(frame,dto,0);
 				frame.getContentPane().removeAll();
 				frame.getContentPane().add(Stn1_Button3);
 				frame.revalidate();
@@ -474,21 +480,21 @@ public class Btn1_Button5 extends JPanel {
 				label_12.setBounds(12, 158, 60, 32);
 				panel_5.add(label_12);
 				
-				textField_1 = new JTextField();
-				textField_1.setForeground(new Color(189, 178, 137));
-				textField_1.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-				textField_1.setFont(new Font("KBIZÇÑ¸¶À½°íµñ M", Font.PLAIN, 35));
-				textField_1.setBounds(0, 52, 50, 50);
-				panel_5.add(textField_1);
-				textField_1.setColumns(10);
+				txt_Age = new JTextField();
+				txt_Age.setForeground(new Color(189, 178, 137));
+				txt_Age.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+				txt_Age.setFont(new Font("KBIZÇÑ¸¶À½°íµñ M", Font.PLAIN, 35));
+				txt_Age.setBounds(0, 52, 50, 50);
+				panel_5.add(txt_Age);
+				txt_Age.setColumns(10);
 				
-				textField_2 = new JTextField();
-				textField_2.setForeground(new Color(189, 178, 137));
-				textField_2.setFont(new Font("KBIZÇÑ¸¶À½°íµñ M", Font.PLAIN, 35));
-				textField_2.setColumns(10);
-				textField_2.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-				textField_2.setBounds(72, 52, 73, 50);
-				panel_5.add(textField_2);
+				txt_Height = new JTextField();
+				txt_Height.setForeground(new Color(189, 178, 137));
+				txt_Height.setFont(new Font("KBIZÇÑ¸¶À½°íµñ M", Font.PLAIN, 35));
+				txt_Height.setColumns(10);
+				txt_Height.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+				txt_Height.setBounds(72, 52, 73, 50);
+				panel_5.add(txt_Height);
 				
 				JLabel lblCm = new JLabel("CM");
 				lblCm.setForeground(new Color(189, 178, 137));
@@ -496,13 +502,13 @@ public class Btn1_Button5 extends JPanel {
 				lblCm.setBounds(155, 64, 50, 32);
 				panel_5.add(lblCm);
 				
-				textField_3 = new JTextField();
-				textField_3.setForeground(new Color(189, 178, 137));
-				textField_3.setFont(new Font("KBIZÇÑ¸¶À½°íµñ M", Font.PLAIN, 35));
-				textField_3.setColumns(10);
-				textField_3.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-				textField_3.setBounds(248, 52, 50, 50);
-				panel_5.add(textField_3);
+				txt_Weight = new JTextField();
+				txt_Weight.setForeground(new Color(189, 178, 137));
+				txt_Weight.setFont(new Font("KBIZÇÑ¸¶À½°íµñ M", Font.PLAIN, 35));
+				txt_Weight.setColumns(10);
+				txt_Weight.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+				txt_Weight.setBounds(248, 52, 50, 50);
+				panel_5.add(txt_Weight);
 				
 				JLabel lblKg = new JLabel("KG");
 				lblKg.setForeground(new Color(189, 178, 137));
@@ -510,29 +516,29 @@ public class Btn1_Button5 extends JPanel {
 				lblKg.setBounds(300, 64, 50, 32);
 				panel_5.add(lblKg);
 				
-				textField_4 = new JTextField();
-				textField_4.setForeground(new Color(189, 178, 137));
-				textField_4.setFont(new Font("KBIZÇÑ¸¶À½°íµñ M", Font.PLAIN, 35));
-				textField_4.setColumns(10);
-				textField_4.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-				textField_4.setBounds(359, 52, 35, 50);
-				panel_5.add(textField_4);
+				txt_Leftfoot = new JTextField();
+				txt_Leftfoot.setForeground(new Color(189, 178, 137));
+				txt_Leftfoot.setFont(new Font("KBIZÇÑ¸¶À½°íµñ M", Font.PLAIN, 35));
+				txt_Leftfoot.setColumns(10);
+				txt_Leftfoot.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+				txt_Leftfoot.setBounds(359, 52, 35, 50);
+				panel_5.add(txt_Leftfoot);
 				
-				textField_5 = new JTextField();
-				textField_5.setForeground(new Color(189, 178, 137));
-				textField_5.setFont(new Font("KBIZÇÑ¸¶À½°íµñ M", Font.PLAIN, 35));
-				textField_5.setColumns(10);
-				textField_5.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-				textField_5.setBounds(419, 52, 35, 50);
-				panel_5.add(textField_5);
+				txt_RightFoot = new JTextField();
+				txt_RightFoot.setForeground(new Color(189, 178, 137));
+				txt_RightFoot.setFont(new Font("KBIZÇÑ¸¶À½°íµñ M", Font.PLAIN, 35));
+				txt_RightFoot.setColumns(10);
+				txt_RightFoot.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+				txt_RightFoot.setBounds(419, 52, 35, 50);
+				panel_5.add(txt_RightFoot);
 				
-				textField_6 = new JTextField();
-				textField_6.setForeground(new Color(0, 0, 0));
-				textField_6.setFont(new Font("KBIZÇÑ¸¶À½°íµñ M", Font.PLAIN, 16));
-				textField_6.setColumns(10);
-				textField_6.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-				textField_6.setBounds(0, 200, 48, 19);
-				panel_5.add(textField_6);
+				txt_MedicalPeriod = new JTextField();
+				txt_MedicalPeriod.setForeground(new Color(0, 0, 0));
+				txt_MedicalPeriod.setFont(new Font("KBIZÇÑ¸¶À½°íµñ M", Font.PLAIN, 16));
+				txt_MedicalPeriod.setColumns(10);
+				txt_MedicalPeriod.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+				txt_MedicalPeriod.setBounds(0, 200, 48, 19);
+				panel_5.add(txt_MedicalPeriod);
 				
 				JLabel label_3 = new JLabel("\uC77C");
 				label_3.setForeground(new Color(0, 0, 0));
@@ -540,32 +546,32 @@ public class Btn1_Button5 extends JPanel {
 				label_3.setBounds(54, 200, 22, 19);
 				panel_5.add(label_3);
 				
-				textField_7 = new JTextField();
-				textField_7.setForeground(Color.BLACK);
-				textField_7.setFont(new Font("KBIZÇÑ¸¶À½°íµñ M", Font.PLAIN, 16));
-				textField_7.setColumns(10);
-				textField_7.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-				textField_7.setBounds(84, 201, 350, 19);
-				panel_5.add(textField_7);
+				txt_MedicalTitle = new JTextField();
+				txt_MedicalTitle.setForeground(Color.BLACK);
+				txt_MedicalTitle.setFont(new Font("KBIZÇÑ¸¶À½°íµñ M", Font.PLAIN, 16));
+				txt_MedicalTitle.setColumns(10);
+				txt_MedicalTitle.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+				txt_MedicalTitle.setBounds(84, 201, 350, 19);
+				panel_5.add(txt_MedicalTitle);
 				
-				JButton button = new JButton("\uBCC0\uACBD");
-				button.setForeground(Color.WHITE);
-				button.setFont(new Font("KBIZÇÑ¸¶À½°íµñ B", Font.PLAIN, 16));
-				button.setBackground(new Color(71, 120, 197));
-				button.setBounds(367, 122, 89, 23);
-				panel_5.add(button);
+				JButton btn_Physical = new JButton("\uBCC0\uACBD");
+				btn_Physical.setForeground(Color.WHITE);
+				btn_Physical.setFont(new Font("KBIZÇÑ¸¶À½°íµñ B", Font.PLAIN, 16));
+				btn_Physical.setBackground(new Color(71, 120, 197));
+				btn_Physical.setBounds(367, 122, 89, 23);
+				panel_5.add(btn_Physical);
 				
-				JLabel label_15 = new JLabel("\uC774\uAC15\uC778");
-				label_15.setForeground(Color.BLACK);
-				label_15.setFont(new Font("¸¸È­ÁøÈï¿øÃ¼", Font.PLAIN, 25));
-				label_15.setBounds(134, 240, 82, 45);
-				panel_2.add(label_15);
+				lbl_PlayerName = new JLabel("\uC774\uAC15\uC778");
+				lbl_PlayerName.setForeground(Color.BLACK);
+				lbl_PlayerName.setFont(new Font("¸¸È­ÁøÈï¿øÃ¼", Font.PLAIN, 25));
+				lbl_PlayerName.setBounds(134, 240, 82, 45);
+				panel_2.add(lbl_PlayerName);
 				
-				JLabel label_16 = new JLabel("\uACF5\uACA9\uC218");
-				label_16.setForeground(Color.BLACK);
-				label_16.setFont(new Font("¸¸È­ÁøÈï¿øÃ¼", Font.PLAIN, 16));
-				label_16.setBounds(144, 287, 41, 19);
-				panel_2.add(label_16);
+				lbl_Position = new JLabel("\uACF5\uACA9\uC218");
+				lbl_Position.setForeground(Color.BLACK);
+				lbl_Position.setFont(new Font("¸¸È­ÁøÈï¿øÃ¼", Font.PLAIN, 16));
+				lbl_Position.setBounds(144, 287, 41, 19);
+				panel_2.add(lbl_Position);
 				
 				JLabel label_17 = new JLabel("\uC120\uC218 \uC2A4\uD0EF");
 				label_17.setForeground(Color.BLACK);
@@ -655,74 +661,74 @@ public class Btn1_Button5 extends JPanel {
 				label_39.setBounds(864, 698, 48, 32);
 				panel_2.add(label_39);
 				
-				JButton button_1 = new JButton("\uCD94\uAC00");
-				button_1.setForeground(Color.WHITE);
-				button_1.setFont(new Font("KBIZÇÑ¸¶À½°íµñ B", Font.PLAIN, 16));
-				button_1.setBackground(new Color(71, 120, 197));
-				button_1.setBounds(711, 283, 89, 23);
-				panel_2.add(button_1);
+				JButton btn_Medical = new JButton("\uCD94\uAC00");
+				btn_Medical.setForeground(Color.WHITE);
+				btn_Medical.setFont(new Font("KBIZÇÑ¸¶À½°íµñ B", Font.PLAIN, 16));
+				btn_Medical.setBackground(new Color(71, 120, 197));
+				btn_Medical.setBounds(711, 283, 89, 23);
+				panel_2.add(btn_Medical);
 				
-				JButton button_2 = new JButton("\uC785\uB825");
-				button_2.setForeground(Color.WHITE);
-				button_2.setFont(new Font("KBIZÇÑ¸¶À½°íµñ B", Font.PLAIN, 16));
-				button_2.setBackground(new Color(71, 120, 197));
-				button_2.setBounds(995, 527, 89, 23);
-				panel_2.add(button_2);
+				JButton btn_Football = new JButton("\uC785\uB825");
+				btn_Football.setForeground(Color.WHITE);
+				btn_Football.setFont(new Font("KBIZÇÑ¸¶À½°íµñ B", Font.PLAIN, 16));
+				btn_Football.setBackground(new Color(71, 120, 197));
+				btn_Football.setBounds(995, 527, 89, 23);
+				panel_2.add(btn_Football);
 				
-				JButton button_3 = new JButton("\uCD94\uAC00");
-				button_3.setForeground(Color.WHITE);
-				button_3.setFont(new Font("KBIZÇÑ¸¶À½°íµñ B", Font.PLAIN, 16));
-				button_3.setBackground(new Color(71, 120, 197));
-				button_3.setBounds(995, 703, 89, 23);
-				panel_2.add(button_3);
+				JButton btn_Contest = new JButton("\uCD94\uAC00");
+				btn_Contest.setForeground(Color.WHITE);
+				btn_Contest.setFont(new Font("KBIZÇÑ¸¶À½°íµñ B", Font.PLAIN, 16));
+				btn_Contest.setBackground(new Color(71, 120, 197));
+				btn_Contest.setBounds(995, 703, 89, 23);
+				panel_2.add(btn_Contest);
 				
-				textField_8 = new JTextField();
-				textField_8.setForeground(new Color(189, 178, 137));
-				textField_8.setFont(new Font("KBIZÇÑ¸¶À½°íµñ M", Font.PLAIN, 35));
-				textField_8.setColumns(10);
-				textField_8.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-				textField_8.setBounds(130, 650, 50, 50);
-				panel_2.add(textField_8);
+				txt_Goal = new JTextField();
+				txt_Goal.setForeground(new Color(189, 178, 137));
+				txt_Goal.setFont(new Font("KBIZÇÑ¸¶À½°íµñ M", Font.PLAIN, 35));
+				txt_Goal.setColumns(10);
+				txt_Goal.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+				txt_Goal.setBounds(130, 650, 50, 50);
+				panel_2.add(txt_Goal);
 				
-				textField_9 = new JTextField();
-				textField_9.setForeground(new Color(189, 178, 137));
-				textField_9.setFont(new Font("KBIZÇÑ¸¶À½°íµñ M", Font.PLAIN, 35));
-				textField_9.setColumns(10);
-				textField_9.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-				textField_9.setBounds(317, 650, 50, 50);
-				panel_2.add(textField_9);
+				txt_Assist = new JTextField();
+				txt_Assist.setForeground(new Color(189, 178, 137));
+				txt_Assist.setFont(new Font("KBIZÇÑ¸¶À½°íµñ M", Font.PLAIN, 35));
+				txt_Assist.setColumns(10);
+				txt_Assist.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+				txt_Assist.setBounds(317, 650, 50, 50);
+				panel_2.add(txt_Assist);
 				
-				textField_10 = new JTextField();
-				textField_10.setForeground(new Color(189, 178, 137));
-				textField_10.setFont(new Font("KBIZÇÑ¸¶À½°íµñ M", Font.PLAIN, 35));
-				textField_10.setColumns(10);
-				textField_10.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-				textField_10.setBounds(494, 650, 50, 50);
-				panel_2.add(textField_10);
+				txt_EffectiveShoot = new JTextField();
+				txt_EffectiveShoot.setForeground(new Color(189, 178, 137));
+				txt_EffectiveShoot.setFont(new Font("KBIZÇÑ¸¶À½°íµñ M", Font.PLAIN, 35));
+				txt_EffectiveShoot.setColumns(10);
+				txt_EffectiveShoot.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+				txt_EffectiveShoot.setBounds(494, 650, 50, 50);
+				panel_2.add(txt_EffectiveShoot);
 				
-				textField_11 = new JTextField();
-				textField_11.setForeground(new Color(189, 178, 137));
-				textField_11.setFont(new Font("KBIZÇÑ¸¶À½°íµñ M", Font.PLAIN, 35));
-				textField_11.setColumns(10);
-				textField_11.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-				textField_11.setBounds(669, 650, 50, 50);
-				panel_2.add(textField_11);
+				txt_Shoot = new JTextField();
+				txt_Shoot.setForeground(new Color(189, 178, 137));
+				txt_Shoot.setFont(new Font("KBIZÇÑ¸¶À½°íµñ M", Font.PLAIN, 35));
+				txt_Shoot.setColumns(10);
+				txt_Shoot.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+				txt_Shoot.setBounds(669, 650, 50, 50);
+				panel_2.add(txt_Shoot);
 				
-				textField_12 = new JTextField();
-				textField_12.setForeground(new Color(189, 178, 137));
-				textField_12.setFont(new Font("KBIZÇÑ¸¶À½°íµñ M", Font.PLAIN, 35));
-				textField_12.setColumns(10);
-				textField_12.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-				textField_12.setBounds(862, 650, 50, 50);
-				panel_2.add(textField_12);
+				txt_Running = new JTextField();
+				txt_Running.setForeground(new Color(189, 178, 137));
+				txt_Running.setFont(new Font("KBIZÇÑ¸¶À½°íµñ M", Font.PLAIN, 35));
+				txt_Running.setColumns(10);
+				txt_Running.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+				txt_Running.setBounds(862, 650, 50, 50);
+				panel_2.add(txt_Running);
 				
-				textField_13 = new JTextField();
-				textField_13.setForeground(new Color(189, 178, 137));
-				textField_13.setFont(new Font("KBIZÇÑ¸¶À½°íµñ M", Font.PLAIN, 35));
-				textField_13.setColumns(10);
-				textField_13.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-				textField_13.setBounds(135, 462, 50, 50);
-				panel_2.add(textField_13);
+				txt_Speed = new JTextField();
+				txt_Speed.setForeground(new Color(189, 178, 137));
+				txt_Speed.setFont(new Font("KBIZÇÑ¸¶À½°íµñ M", Font.PLAIN, 35));
+				txt_Speed.setColumns(10);
+				txt_Speed.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+				txt_Speed.setBounds(135, 462, 50, 50);
+				panel_2.add(txt_Speed);
 				
 				JLabel label_5 = new JLabel("\uCD08");
 				label_5.setForeground(new Color(189, 178, 137));
@@ -730,13 +736,13 @@ public class Btn1_Button5 extends JPanel {
 				label_5.setBounds(197, 480, 50, 32);
 				panel_2.add(label_5);
 				
-				textField_14 = new JTextField();
-				textField_14.setForeground(new Color(189, 178, 137));
-				textField_14.setFont(new Font("KBIZÇÑ¸¶À½°íµñ M", Font.PLAIN, 35));
-				textField_14.setColumns(10);
-				textField_14.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-				textField_14.setBounds(317, 462, 50, 50);
-				panel_2.add(textField_14);
+				txt_shoot = new JTextField();
+				txt_shoot.setForeground(new Color(189, 178, 137));
+				txt_shoot.setFont(new Font("KBIZÇÑ¸¶À½°íµñ M", Font.PLAIN, 35));
+				txt_shoot.setColumns(10);
+				txt_shoot.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+				txt_shoot.setBounds(317, 462, 50, 50);
+				panel_2.add(txt_shoot);
 				
 				JLabel label_7 = new JLabel("\uC810");
 				label_7.setForeground(new Color(189, 178, 137));
@@ -744,13 +750,13 @@ public class Btn1_Button5 extends JPanel {
 				label_7.setBounds(377, 476, 50, 35);
 				panel_2.add(label_7);
 				
-				textField_15 = new JTextField();
-				textField_15.setForeground(new Color(189, 178, 137));
-				textField_15.setFont(new Font("KBIZÇÑ¸¶À½°íµñ M", Font.PLAIN, 35));
-				textField_15.setColumns(10);
-				textField_15.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-				textField_15.setBounds(505, 462, 50, 50);
-				panel_2.add(textField_15);
+				txt_Pass = new JTextField();
+				txt_Pass.setForeground(new Color(189, 178, 137));
+				txt_Pass.setFont(new Font("KBIZÇÑ¸¶À½°íµñ M", Font.PLAIN, 35));
+				txt_Pass.setColumns(10);
+				txt_Pass.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+				txt_Pass.setBounds(505, 462, 50, 50);
+				panel_2.add(txt_Pass);
 				
 				JLabel label_10 = new JLabel("\uC810");
 				label_10.setForeground(new Color(189, 178, 137));
@@ -758,13 +764,13 @@ public class Btn1_Button5 extends JPanel {
 				label_10.setBounds(565, 476, 50, 35);
 				panel_2.add(label_10);
 				
-				textField_16 = new JTextField();
-				textField_16.setForeground(new Color(189, 178, 137));
-				textField_16.setFont(new Font("KBIZÇÑ¸¶À½°íµñ M", Font.PLAIN, 35));
-				textField_16.setColumns(10);
-				textField_16.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-				textField_16.setBounds(665, 462, 50, 50);
-				panel_2.add(textField_16);
+				txt_Dribble = new JTextField();
+				txt_Dribble.setForeground(new Color(189, 178, 137));
+				txt_Dribble.setFont(new Font("KBIZÇÑ¸¶À½°íµñ M", Font.PLAIN, 35));
+				txt_Dribble.setColumns(10);
+				txt_Dribble.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+				txt_Dribble.setBounds(665, 462, 50, 50);
+				panel_2.add(txt_Dribble);
 				
 				JLabel label_11 = new JLabel("\uC810");
 				label_11.setForeground(new Color(189, 178, 137));
@@ -772,13 +778,13 @@ public class Btn1_Button5 extends JPanel {
 				label_11.setBounds(725, 476, 50, 35);
 				panel_2.add(label_11);
 				
-				textField_17 = new JTextField();
-				textField_17.setForeground(new Color(189, 178, 137));
-				textField_17.setFont(new Font("KBIZÇÑ¸¶À½°íµñ M", Font.PLAIN, 35));
-				textField_17.setColumns(10);
-				textField_17.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-				textField_17.setBounds(856, 462, 50, 50);
-				panel_2.add(textField_17);
+				txt_Defence = new JTextField();
+				txt_Defence.setForeground(new Color(189, 178, 137));
+				txt_Defence.setFont(new Font("KBIZÇÑ¸¶À½°íµñ M", Font.PLAIN, 35));
+				txt_Defence.setColumns(10);
+				txt_Defence.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+				txt_Defence.setBounds(856, 462, 50, 50);
+				panel_2.add(txt_Defence);
 				
 				JLabel label_13 = new JLabel("\uC810");
 				label_13.setForeground(new Color(189, 178, 137));
@@ -795,7 +801,7 @@ public class Btn1_Button5 extends JPanel {
 				comboBox.setBounds(232, 596, 211, 25);
 				panel_2.add(comboBox);
 				
-				JLabel label_14 = new JLabel("\uC774\uC801 \uBA85\uB2E8");
+				JLabel label_14 = new JLabel("\uC774\uC801 \uBA85\uB2E8\uC5D0 \uCD94\uAC00\uD558\uAE30");
 				label_14.setForeground(Color.BLACK);
 				label_14.setFont(new Font("¸¸È­ÁøÈï¿øÃ¼", Font.PLAIN, 25));
 				label_14.setBounds(930, 50, 300, 45);
@@ -806,12 +812,57 @@ public class Btn1_Button5 extends JPanel {
 				separator_3.setBounds(930, 105, 300, 10);
 				panel_2.add(separator_3);
 				
-				JButton button_4 = new JButton("\uCD94\uAC00");
-				button_4.setForeground(Color.WHITE);
-				button_4.setFont(new Font("KBIZÇÑ¸¶À½°íµñ B", Font.PLAIN, 16));
-				button_4.setBackground(new Color(71, 120, 197));
-				button_4.setBounds(930, 125, 89, 23);
-				panel_2.add(button_4);
+				JButton btn_Transfer = new JButton("\uCD94\uAC00");
+				btn_Transfer.setForeground(Color.WHITE);
+				btn_Transfer.setFont(new Font("KBIZÇÑ¸¶À½°íµñ B", Font.PLAIN, 16));
+				btn_Transfer.setBackground(new Color(71, 120, 197));
+				btn_Transfer.setBounds(930, 125, 89, 23);
+				panel_2.add(btn_Transfer);
+				
+				txt_PlayerName = new JTextField();
+				txt_PlayerName.setForeground(new Color(0, 0, 0));
+				txt_PlayerName.setFont(new Font("¸¸È­ÁøÈï¿øÃ¼", Font.PLAIN, 25));
+				txt_PlayerName.setColumns(10);
+				txt_PlayerName.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+				txt_PlayerName.setBounds(130, 240, 75, 45);
+				txt_PlayerName.setVisible(false);
+				panel_2.add(txt_PlayerName);
+				
+				JLabel label_19 = new JLabel("\uC0C8\uB85C\uC6B4 \uC120\uC218 \uB4F1\uB85D");
+				label_19.setForeground(Color.BLACK);
+				label_19.setFont(new Font("¸¸È­ÁøÈï¿øÃ¼", Font.PLAIN, 25));
+				label_19.setBounds(930, 182, 300, 45);
+				panel_2.add(label_19);
+				
+				JSeparator separator_4 = new JSeparator();
+				separator_4.setForeground(new Color(229, 229, 229));
+				separator_4.setBounds(930, 237, 300, 10);
+				panel_2.add(separator_4);
+				
+				txt_Position = new JTextField();
+				txt_Position.setForeground(new Color(0, 0, 0));
+				txt_Position.setFont(new Font("¸¸È­ÁøÈï¿øÃ¼", Font.PLAIN, 16));
+				txt_Position.setColumns(10);
+				txt_Position.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+				txt_Position.setBounds(140, 293, 50, 30);
+				txt_Position.setVisible(false);
+				panel_2.add(txt_Position);
+				
+				JButton btn_addNewPlayer = new JButton("\uD655\uC778");
+				btn_addNewPlayer.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						lbl_PlayerName.setVisible(false);
+						txt_PlayerName.setVisible(true);
+						lbl_Position.setVisible(false);
+						txt_Position.setVisible(true);
+						
+					}
+				});
+				btn_addNewPlayer.setForeground(Color.WHITE);
+				btn_addNewPlayer.setFont(new Font("KBIZÇÑ¸¶À½°íµñ B", Font.PLAIN, 16));
+				btn_addNewPlayer.setBackground(new Color(71, 120, 197));
+				btn_addNewPlayer.setBounds(930, 257, 89, 23);
+				panel_2.add(btn_addNewPlayer);
 
 	}
 }
