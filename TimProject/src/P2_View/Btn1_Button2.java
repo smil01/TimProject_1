@@ -17,8 +17,14 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 import P3_DAO.PlayerDAO;
+import P3_DAO.Player_ContestDAO;
 import P3_DAO.Player_FootballDAO;
+import P3_DAO.Player_MedicalDAO;
+import P3_DAO.Player_PhysicalDAO;
+import P4_DTO.PlayerContestDTO;
 import P4_DTO.PlayerDTO;
+import P4_DTO.PlayerMedicalDTO;
+import P4_DTO.PlayerPhysicalDTO;
 import P4_DTO.Player_FootballDTO;
 import P4_DTO.loginDTO;
 
@@ -29,6 +35,7 @@ public class Btn1_Button2 extends JPanel {
 	private int PLAYER_CODE;
 	private PlayerDTO p_dto;
 	private PlayerDAO p_dao = new PlayerDAO();
+	
 
 	/**
 	 * Create the panel.
@@ -36,7 +43,7 @@ public class Btn1_Button2 extends JPanel {
 	public Btn1_Button2(JFrame frame, loginDTO dto, int PLAYER_CODE) {
 		this.frame = frame;
 		this.dto=dto;
-		this.PLAYER_CODE = 95;
+		this.PLAYER_CODE = PLAYER_CODE;
 		p_dto = p_dao.SelectPlayer(PLAYER_CODE);
 
 		setLayout(new CardLayout(0, 0));
@@ -431,9 +438,31 @@ public class Btn1_Button2 extends JPanel {
 		StatViewPanel.add(panel_3);
 		panel_3.setLayout(null);
 		
-		ArrayList<Player_FootballDTO> ArrFootball = new ArrayList<Player_FootballDTO>();
+		
+		
+
+		ArrayList<Player_FootballDTO> ArrFootball_stat = new ArrayList<Player_FootballDTO>();
 		Player_FootballDAO fdao = new Player_FootballDAO();
-		ArrFootball = fdao.SelectPlayer_Football(PLAYER_CODE);
+		ArrFootball_stat = fdao.SelectPlayer_Football(PLAYER_CODE);
+		
+		
+		ArrayList<PlayerContestDTO> ArrFootball_conte = new ArrayList<PlayerContestDTO>();
+		Player_ContestDAO cdao = new Player_ContestDAO();
+		ArrFootball_conte = cdao.SelectPlayer(PLAYER_CODE);
+		
+		
+		ArrayList<PlayerPhysicalDTO> ArrFootball_phy = new ArrayList<PlayerPhysicalDTO>();
+		Player_PhysicalDAO pdao = new Player_PhysicalDAO();
+		ArrFootball_phy = pdao.SelectPlayer(PLAYER_CODE);
+		
+		
+		ArrayList<PlayerMedicalDTO> ArrFootball_med = new ArrayList<PlayerMedicalDTO>();
+		Player_MedicalDAO mdao = new Player_MedicalDAO();
+		ArrFootball_med = mdao.SelectPlayer(PLAYER_CODE);
+		
+		
+		
+		
 		
 		
 		JLabel lblNewLabel_3 = new JLabel("\uB098\uC774");
@@ -442,11 +471,12 @@ public class Btn1_Button2 extends JPanel {
 		lblNewLabel_3.setBounds(12, 10, 48, 32);
 		panel_3.add(lblNewLabel_3);
 		
-		JLabel label_2 = new JLabel("25");
-		label_2.setForeground(new Color(189, 178, 137));
-		label_2.setFont(new Font("만화진흥원체", Font.PLAIN, 35));
-		label_2.setBounds(12, 52, 48, 32);
-		panel_3.add(label_2);
+		JLabel lblAge = new JLabel();
+		lblAge.setForeground(new Color(189, 178, 137));
+		lblAge.setFont(new Font("만화진흥원체", Font.PLAIN, 35));
+		lblAge.setBounds(12, 52, 48, 32);
+		lblAge.setText(ArrFootball_phy.get(0).getPlayer_Physical_Age()+"");
+		panel_3.add(lblAge);
 		
 		JLabel label_3 = new JLabel("\uD0A4");
 		label_3.setForeground(new Color(153, 153, 153));
@@ -454,10 +484,11 @@ public class Btn1_Button2 extends JPanel {
 		label_3.setBounds(84, 10, 48, 32);
 		panel_3.add(label_3);
 		
-		JLabel lblCm = new JLabel("188.0CM");
+		JLabel lblCm = new JLabel();
 		lblCm.setForeground(new Color(189, 178, 137));
 		lblCm.setFont(new Font("만화진흥원체", Font.PLAIN, 35));
 		lblCm.setBounds(84, 52, 139, 32);
+		lblCm.setText(ArrFootball_phy.get(0).getPlayer_Physical_Height()+"");
 		panel_3.add(lblCm);
 		
 		JLabel label_4 = new JLabel("\uBAB8\uBB34\uAC8C");
@@ -466,10 +497,11 @@ public class Btn1_Button2 extends JPanel {
 		label_4.setBounds(250, 10, 48, 32);
 		panel_3.add(label_4);
 		
-		JLabel lblkg = new JLabel("80KG");
+		JLabel lblkg = new JLabel();
 		lblkg.setForeground(new Color(189, 178, 137));
 		lblkg.setFont(new Font("만화진흥원체", Font.PLAIN, 35));
 		lblkg.setBounds(250, 52, 97, 32);
+		lblkg.setText(ArrFootball_phy.get(0).getPlayer_Physical_Weight()+"");
 		panel_3.add(lblkg);
 		
 		JLabel label_5 = new JLabel("\uC67C\uBC1C");
@@ -484,17 +516,19 @@ public class Btn1_Button2 extends JPanel {
 		label_6.setBounds(419, 10, 48, 32);
 		panel_3.add(label_6);
 		
-		JLabel label_7 = new JLabel("3");
-		label_7.setForeground(new Color(189, 178, 137));
-		label_7.setFont(new Font("만화진흥원체", Font.PLAIN, 35));
-		label_7.setBounds(359, 52, 48, 32);
-		panel_3.add(label_7);
+		JLabel lblLeft = new JLabel();
+		lblLeft.setForeground(new Color(189, 178, 137));
+		lblLeft.setFont(new Font("만화진흥원체", Font.PLAIN, 35));
+		lblLeft.setBounds(359, 52, 48, 32);
+		lblLeft.setText(ArrFootball_phy.get(0).getPlayer_Physical_LeftFoot()+"");
+		panel_3.add(lblLeft);
 		
-		JLabel label_8 = new JLabel("5");
-		label_8.setForeground(new Color(189, 178, 137));
-		label_8.setFont(new Font("만화진흥원체", Font.PLAIN, 35));
-		label_8.setBounds(419, 52, 48, 32);
-		panel_3.add(label_8);
+		JLabel lblRight = new JLabel();
+		lblRight.setForeground(new Color(189, 178, 137));
+		lblRight.setFont(new Font("만화진흥원체", Font.PLAIN, 35));
+		lblRight.setBounds(419, 52, 48, 32);
+		lblRight.setText(ArrFootball_phy.get(0).getPlayer_Physical_RightFoot()+"");
+		panel_3.add(lblRight);
 		
 		JLabel label_34 = new JLabel("\uBD80\uC0C1\uAE30\uAC04");
 		label_34.setForeground(new Color(153, 153, 153));
@@ -502,17 +536,25 @@ public class Btn1_Button2 extends JPanel {
 		label_34.setBounds(12, 112, 60, 32);
 		panel_3.add(label_34);
 		
-		JLabel label_35 = new JLabel("20\uC77C");
-		label_35.setForeground(Color.BLACK);
-		label_35.setFont(new Font("만화진흥원체", Font.PLAIN, 16));
-		label_35.setBounds(12, 154, 48, 19);
-		panel_3.add(label_35);
 		
-		JLabel label_36 = new JLabel("\uBC1C\uBAA9 \uACE8\uC808");
-		label_36.setForeground(Color.BLACK);
-		label_36.setFont(new Font("만화진흥원체", Font.PLAIN, 16));
-		label_36.setBounds(87, 154, 367, 19);
-		panel_3.add(label_36);
+		
+		JLabel lbl_Period = new JLabel();
+		lbl_Period.setForeground(Color.BLACK);
+		lbl_Period.setFont(new Font("만화진흥원체", Font.PLAIN, 16));
+		lbl_Period.setBounds(12, 154, 48, 19);
+		lbl_Period.setText(ArrFootball_med.get(0).getPlayer_Medical_Period()+"");
+		panel_3.add(lbl_Period);
+		
+		
+		
+		JLabel lbl_Title = new JLabel();
+		lbl_Title.setForeground(Color.BLACK);
+		lbl_Title.setFont(new Font("만화진흥원체", Font.PLAIN, 16));
+		lbl_Title.setBounds(87, 154, 367, 19);
+		lbl_Title.setText(ArrFootball_med.get(0).getPlayer_Medical_Title());
+		panel_3.add(lbl_Title);
+		
+		
 		
 		JLabel label_9 = new JLabel(p_dto.getPlayer_Name());
 		label_9.setHorizontalAlignment(SwingConstants.CENTER);
@@ -555,14 +597,15 @@ public class Btn1_Button2 extends JPanel {
 		lbl_speed.setForeground(new Color(189, 178, 137));
 		lbl_speed.setFont(new Font("만화진흥원체", Font.PLAIN, 35));
 		lbl_speed.setBounds(125, 480, 48, 32);
-		lbl_speed.setText(ArrFootball.get(0).getPlayer_Football_Speed()+"");
+		lbl_speed.setText(ArrFootball_stat.get(0).getPlayer_Football_Speed()+"");
 		StatViewPanel.add(lbl_speed);
 		
-		JLabel label_15 = new JLabel("25");
-		label_15.setForeground(new Color(189, 178, 137));
-		label_15.setFont(new Font("만화진흥원체", Font.PLAIN, 35));
-		label_15.setBounds(288, 480, 48, 32);
-		StatViewPanel.add(label_15);
+		JLabel lbl_shoot = new JLabel();
+		lbl_shoot.setForeground(new Color(189, 178, 137));
+		lbl_shoot.setFont(new Font("만화진흥원체", Font.PLAIN, 35));
+		lbl_shoot.setBounds(288, 480, 48, 32);
+		lbl_shoot.setText(ArrFootball_stat.get(0).getPlayer_Football_Shoot()+"");
+		StatViewPanel.add(lbl_shoot);
 		
 		JLabel label_16 = new JLabel("\uC29B");
 		label_16.setForeground(new Color(153, 153, 153));
@@ -570,11 +613,12 @@ public class Btn1_Button2 extends JPanel {
 		label_16.setBounds(288, 522, 48, 32);
 		StatViewPanel.add(label_16);
 		
-		JLabel label_17 = new JLabel("25");
-		label_17.setForeground(new Color(189, 178, 137));
-		label_17.setFont(new Font("만화진흥원체", Font.PLAIN, 35));
-		label_17.setBounds(471, 480, 48, 32);
-		StatViewPanel.add(label_17);
+		JLabel lbl_pass = new JLabel();
+		lbl_pass.setForeground(new Color(189, 178, 137));
+		lbl_pass.setFont(new Font("만화진흥원체", Font.PLAIN, 35));
+		lbl_pass.setBounds(471, 480, 48, 32);
+		lbl_pass.setText(ArrFootball_stat.get(0).getPlayer_Football_Pass()+"");
+		StatViewPanel.add(lbl_pass);
 		
 		JLabel label_18 = new JLabel("\uD328\uC2A4");
 		label_18.setForeground(new Color(153, 153, 153));
@@ -582,11 +626,12 @@ public class Btn1_Button2 extends JPanel {
 		label_18.setBounds(471, 522, 48, 32);
 		StatViewPanel.add(label_18);
 		
-		JLabel label_19 = new JLabel("25");
-		label_19.setForeground(new Color(189, 178, 137));
-		label_19.setFont(new Font("만화진흥원체", Font.PLAIN, 35));
-		label_19.setBounds(677, 480, 48, 32);
-		StatViewPanel.add(label_19);
+		JLabel lbl_dribol = new JLabel();
+		lbl_dribol.setForeground(new Color(189, 178, 137));
+		lbl_dribol.setFont(new Font("만화진흥원체", Font.PLAIN, 35));
+		lbl_dribol.setBounds(677, 480, 48, 32);
+		lbl_dribol.setText(ArrFootball_stat.get(0).getPlayer_Football_Dribol()+"");
+		StatViewPanel.add(lbl_dribol);
 		
 		JLabel label_20 = new JLabel("\uB4DC\uB9AC\uBE14");
 		label_20.setForeground(new Color(153, 153, 153));
@@ -594,11 +639,12 @@ public class Btn1_Button2 extends JPanel {
 		label_20.setBounds(677, 522, 48, 32);
 		StatViewPanel.add(label_20);
 		
-		JLabel label_21 = new JLabel("25");
-		label_21.setForeground(new Color(189, 178, 137));
-		label_21.setFont(new Font("만화진흥원체", Font.PLAIN, 35));
-		label_21.setBounds(879, 480, 48, 32);
-		StatViewPanel.add(label_21);
+		JLabel lbl_defense = new JLabel();
+		lbl_defense.setForeground(new Color(189, 178, 137));
+		lbl_defense.setFont(new Font("만화진흥원체", Font.PLAIN, 35));
+		lbl_defense.setBounds(879, 480, 48, 32);
+		lbl_defense.setText(ArrFootball_stat.get(0).getPlayer_Football_Defense()+"");
+		StatViewPanel.add(lbl_defense);
 		
 		JLabel label_22 = new JLabel("\uC218\uBE44");
 		label_22.setForeground(new Color(153, 153, 153));
@@ -617,11 +663,12 @@ public class Btn1_Button2 extends JPanel {
 		separator_2.setBounds(90, 636, 994, 10);
 		StatViewPanel.add(separator_2);
 		
-		JLabel label_24 = new JLabel("25");
-		label_24.setForeground(new Color(189, 178, 137));
-		label_24.setFont(new Font("만화진흥원체", Font.PLAIN, 35));
-		label_24.setBounds(125, 656, 48, 32);
-		StatViewPanel.add(label_24);
+		JLabel lbl_goal = new JLabel();
+		lbl_goal.setForeground(new Color(189, 178, 137));
+		lbl_goal.setFont(new Font("만화진흥원체", Font.PLAIN, 35));
+		lbl_goal.setBounds(125, 656, 48, 32);
+		lbl_goal.setText(ArrFootball_conte.get(0).getPlayer_Contest_Goal()+"");
+		StatViewPanel.add(lbl_goal);
 		
 		JLabel label_25 = new JLabel("\uACE8");
 		label_25.setForeground(new Color(153, 153, 153));
@@ -629,11 +676,12 @@ public class Btn1_Button2 extends JPanel {
 		label_25.setBounds(125, 698, 48, 32);
 		StatViewPanel.add(label_25);
 		
-		JLabel label_26 = new JLabel("25");
-		label_26.setForeground(new Color(189, 178, 137));
-		label_26.setFont(new Font("만화진흥원체", Font.PLAIN, 35));
-		label_26.setBounds(288, 656, 48, 32);
-		StatViewPanel.add(label_26);
+		JLabel lbl_assist = new JLabel();
+		lbl_assist.setForeground(new Color(189, 178, 137));
+		lbl_assist.setFont(new Font("만화진흥원체", Font.PLAIN, 35));
+		lbl_assist.setText(ArrFootball_conte.get(0).getPlayer_Contest_Assist()+"");
+		lbl_assist.setBounds(288, 656, 48, 32);
+		StatViewPanel.add(lbl_assist);
 		
 		JLabel label_27 = new JLabel("\uC5B4\uC2DC\uC2A4\uD2B8");
 		label_27.setForeground(new Color(153, 153, 153));
@@ -641,11 +689,12 @@ public class Btn1_Button2 extends JPanel {
 		label_27.setBounds(288, 698, 60, 32);
 		StatViewPanel.add(label_27);
 		
-		JLabel label_28 = new JLabel("25");
-		label_28.setForeground(new Color(189, 178, 137));
-		label_28.setFont(new Font("만화진흥원체", Font.PLAIN, 35));
-		label_28.setBounds(471, 656, 48, 32);
-		StatViewPanel.add(label_28);
+		JLabel lbl_effective = new JLabel();
+		lbl_effective.setForeground(new Color(189, 178, 137));
+		lbl_effective.setFont(new Font("만화진흥원체", Font.PLAIN, 35));
+		lbl_effective.setBounds(471, 656, 48, 32);
+		lbl_effective.setText(ArrFootball_conte.get(0).getPlayer_Contest_EffectiveShot()+"");
+		StatViewPanel.add(lbl_effective);
 		
 		JLabel label_29 = new JLabel("\uC720\uD6A8\uC29B");
 		label_29.setForeground(new Color(153, 153, 153));
@@ -653,11 +702,12 @@ public class Btn1_Button2 extends JPanel {
 		label_29.setBounds(471, 698, 48, 32);
 		StatViewPanel.add(label_29);
 		
-		JLabel label_30 = new JLabel("25");
-		label_30.setForeground(new Color(189, 178, 137));
-		label_30.setFont(new Font("만화진흥원체", Font.PLAIN, 35));
-		label_30.setBounds(677, 656, 48, 32);
-		StatViewPanel.add(label_30);
+		JLabel lbl_shot = new JLabel();
+		lbl_shot.setForeground(new Color(189, 178, 137));
+		lbl_shot.setFont(new Font("만화진흥원체", Font.PLAIN, 35));
+		lbl_shot.setBounds(677, 656, 48, 32);
+		lbl_shot.setText(ArrFootball_conte.get(0).getPlayer_Contest_Shot()+"");
+		StatViewPanel.add(lbl_shot);
 		
 		JLabel label_31 = new JLabel("\uC29B");
 		label_31.setForeground(new Color(153, 153, 153));
@@ -665,11 +715,13 @@ public class Btn1_Button2 extends JPanel {
 		label_31.setBounds(677, 698, 48, 32);
 		StatViewPanel.add(label_31);
 		
-		JLabel label_32 = new JLabel("25");
-		label_32.setForeground(new Color(189, 178, 137));
-		label_32.setFont(new Font("만화진흥원체", Font.PLAIN, 35));
-		label_32.setBounds(879, 656, 48, 32);
-		StatViewPanel.add(label_32);
+		JLabel lbl_RunningTime = new JLabel("25");
+		lbl_RunningTime.setForeground(new Color(189, 178, 137));
+		lbl_RunningTime.setFont(new Font("만화진흥원체", Font.PLAIN, 35));
+		lbl_RunningTime.setBounds(879, 656, 48, 32);
+		lbl_RunningTime.setText(ArrFootball_conte.get(0).getPlayer_Contest_RunningTime()+"");
+		StatViewPanel.add(lbl_RunningTime);
+		
 		
 		JLabel label_33 = new JLabel("\uD65C\uB3D9\uB7C9");
 		label_33.setForeground(new Color(153, 153, 153));
