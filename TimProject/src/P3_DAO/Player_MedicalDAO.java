@@ -73,7 +73,6 @@ public class Player_MedicalDAO {
 
 			cnt = pst.executeUpdate();
 
-			System.out.println(cnt);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
