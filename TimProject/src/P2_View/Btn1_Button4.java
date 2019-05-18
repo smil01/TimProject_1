@@ -16,6 +16,8 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableModel;
 
+import P3_DAO.PlayerDAO;
+import P4_DTO.PlayerDTO;
 import P4_DTO.loginDTO;
 
 import javax.swing.JScrollPane;
@@ -37,6 +39,8 @@ public class Btn1_Button4 extends JPanel {
 	private JFrame frame;
 	private loginDTO dto;
 	private int PLAYER_CODE;
+	private PlayerDTO p_dto;
+	private PlayerDAO p_dao = new PlayerDAO();
 	/**
 	 * Create the panel.
 	 */
@@ -44,6 +48,7 @@ public class Btn1_Button4 extends JPanel {
 		this.frame = frame;
 		this.dto = dto;
 		this.PLAYER_CODE = PLAYER_CODE;
+		p_dto = p_dao.SelectPlayer(PLAYER_CODE);
 		setLayout(new CardLayout(0, 0));
 
 		JPanel Lobby_Panel = new JPanel();
@@ -424,13 +429,13 @@ public class Btn1_Button4 extends JPanel {
 		lbl_SetStat.setBackground(Color.WHITE);
 		SetStatPanel.add(lbl_SetStat, "name_10588236113000");
 		
-		JLabel label_2 = new JLabel("\uC0AC\uC9C4");
-		label_2.setIcon(new ImageIcon(Btn1_Button4.class.getResource("/P5_Img/sample.jpg")));
+		JLabel label_2 = new JLabel("");
+		label_2.setIcon(new ImageIcon(p_dto.getPlayer_ResizeImg(180, 180)));
 		label_2.setHorizontalAlignment(SwingConstants.CENTER);
 		label_2.setBounds(129, 84, 180, 180);
 		StatViewPanel.add(label_2);
 		
-		JLabel label_3 = new JLabel("\uC774\uAC15\uC778");
+		JLabel label_3 = new JLabel(p_dto.getPlayer_Name());
 		label_3.setForeground(Color.BLACK);
 		label_3.setFont(new Font("만화진흥원체", Font.PLAIN, 25));
 		label_3.setBounds(173, 274, 82, 45);

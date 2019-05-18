@@ -466,7 +466,7 @@ public class Btn1_Button3 extends JPanel {
 		overallPane.add(CP_overall);
 		overallPane.validate();
 
-		JLabel label_15 = new JLabel("\uC774\uAC15\uC778");
+		JLabel label_15 = new JLabel(p_dto.getPlayer_Name());
 		label_15.setForeground(Color.BLACK);
 		label_15.setFont(new Font("만화진흥원체", Font.PLAIN, 25));
 		label_15.setBounds(134, 240, 82, 45);
