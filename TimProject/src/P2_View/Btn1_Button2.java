@@ -6,6 +6,7 @@ import java.awt.Cursor;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -16,7 +17,9 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 import P3_DAO.PlayerDAO;
+import P3_DAO.Player_FootballDAO;
 import P4_DTO.PlayerDTO;
+import P4_DTO.Player_FootballDTO;
 import P4_DTO.loginDTO;
 
 public class Btn1_Button2 extends JPanel {
@@ -33,9 +36,9 @@ public class Btn1_Button2 extends JPanel {
 	public Btn1_Button2(JFrame frame, loginDTO dto, int PLAYER_CODE) {
 		this.frame = frame;
 		this.dto=dto;
-		this.PLAYER_CODE = PLAYER_CODE;
+		this.PLAYER_CODE = 95;
 		p_dto = p_dao.SelectPlayer(PLAYER_CODE);
-		
+
 		setLayout(new CardLayout(0, 0));
 
 		JPanel Lobby_Panel = new JPanel();
@@ -428,6 +431,11 @@ public class Btn1_Button2 extends JPanel {
 		StatViewPanel.add(panel_3);
 		panel_3.setLayout(null);
 		
+		ArrayList<Player_FootballDTO> ArrFootball = new ArrayList<Player_FootballDTO>();
+		Player_FootballDAO fdao = new Player_FootballDAO();
+		ArrFootball = fdao.SelectPlayer_Football(PLAYER_CODE);
+		
+		
 		JLabel lblNewLabel_3 = new JLabel("\uB098\uC774");
 		lblNewLabel_3.setForeground(new Color(153, 153, 153));
 		lblNewLabel_3.setFont(new Font("만화진흥원체", Font.PLAIN, 16));
@@ -507,21 +515,23 @@ public class Btn1_Button2 extends JPanel {
 		panel_3.add(label_36);
 		
 		JLabel label_9 = new JLabel(p_dto.getPlayer_Name());
+		label_9.setHorizontalAlignment(SwingConstants.CENTER);
 		label_9.setForeground(new Color(0, 0, 0));
-		label_9.setFont(new Font("만화진흥원체", Font.PLAIN, 25));
-		label_9.setBounds(134, 240, 82, 45);
+		label_9.setFont(new Font("Dialog", Font.PLAIN, 24));
+		label_9.setBounds(88, 240, 182, 45);
 		StatViewPanel.add(label_9);
 		
 		JLabel label_11 = new JLabel("\uACF5\uACA9\uC218");
+		label_11.setHorizontalAlignment(SwingConstants.CENTER);
 		label_11.setForeground(Color.BLACK);
 		label_11.setFont(new Font("만화진흥원체", Font.PLAIN, 16));
-		label_11.setBounds(144, 287, 41, 19);
+		label_11.setBounds(90, 287, 175, 23);
 		StatViewPanel.add(label_11);
 		
 		JLabel label_10 = new JLabel("\uC120\uC218 \uC2A4\uD0EF");
 		label_10.setForeground(new Color(0, 0, 0));
 		label_10.setFont(new Font("만화진흥원체", Font.PLAIN, 35));
-		label_10.setBounds(90, 337, 139, 45);
+		label_10.setBounds(90, 337, 160, 45);
 		StatViewPanel.add(label_10);
 		
 		JSeparator separator_1 = new JSeparator();
@@ -541,11 +551,12 @@ public class Btn1_Button2 extends JPanel {
 		label_13.setBounds(125, 522, 48, 32);
 		StatViewPanel.add(label_13);
 		
-		JLabel label_14 = new JLabel("25");
-		label_14.setForeground(new Color(189, 178, 137));
-		label_14.setFont(new Font("만화진흥원체", Font.PLAIN, 35));
-		label_14.setBounds(125, 480, 48, 32);
-		StatViewPanel.add(label_14);
+		JLabel lbl_speed = new JLabel();
+		lbl_speed.setForeground(new Color(189, 178, 137));
+		lbl_speed.setFont(new Font("만화진흥원체", Font.PLAIN, 35));
+		lbl_speed.setBounds(125, 480, 48, 32);
+		lbl_speed.setText(ArrFootball.get(0).getPlayer_Football_Speed()+"");
+		StatViewPanel.add(lbl_speed);
 		
 		JLabel label_15 = new JLabel("25");
 		label_15.setForeground(new Color(189, 178, 137));
