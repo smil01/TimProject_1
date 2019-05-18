@@ -946,7 +946,9 @@ public class Btn1_Button5 extends JPanel {
 		JButton btn_addNewPlayer = new JButton("\uCD94\uAC00");
 		btn_addNewPlayer.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
+				addNewPlayerDialog newPlayer = new addNewPlayerDialog(dto);
+				newPlayer.setUndecorated(true);
+				newPlayer.setVisible(true);
 			}
 		});
 		btn_addNewPlayer.setForeground(Color.WHITE);
