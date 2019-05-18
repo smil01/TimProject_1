@@ -16,6 +16,10 @@ import javax.swing.JSeparator;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+
+import P3_DAO.ChartDAO;
 import P3_DAO.PlayerDAO;
 import P3_DAO.Player_ContestDAO;
 import P3_DAO.Player_FootballDAO;
@@ -44,6 +48,9 @@ public class Btn1_Button2 extends JPanel {
 		this.dto = dto;
 		this.PLAYER_CODE = PLAYER_CODE;
 		p_dto = p_dao.SelectPlayer(PLAYER_CODE);
+		ArrayList<Player_FootballDTO> ArrFootball = new ArrayList<>();
+		Player_FootballDAO fdao = new Player_FootballDAO();
+		ChartDAO cdao = new ChartDAO();
 
 		setLayout(new CardLayout(0, 0));
 
@@ -432,20 +439,6 @@ public class Btn1_Button2 extends JPanel {
 		lbl_image.setIcon(new ImageIcon(p_dto.getPlayer_ResizeImg(180, 180)));
 		lbl_image.setHorizontalAlignment(SwingConstants.CENTER);
 		panel_2.add(lbl_image, "name_5083844218100");
-	
-		
-		
-		
-		JPanel panel_4 = new JPanel();
-		panel_4.setBackground(new Color(255, 255, 255));
-		panel_4.setBounds(886, 50, 230, 230);
-		StatViewPanel.add(panel_4);
-		panel_4.setLayout(new CardLayout(0, 0));
-
-		JLabel lblNewLabel_4 = new JLabel("\uC721\uAC01\uD615\uADF8\uB798\uD504");
-		lblNewLabel_4.setIcon(new ImageIcon(Btn1_Button2.class.getResource("/P5_Img/sample.jpg")));
-		lblNewLabel_4.setHorizontalAlignment(SwingConstants.CENTER);
-		panel_4.add(lblNewLabel_4, "name_2066955652100");
 
 		JPanel panel_3 = new JPanel();
 		panel_3.setBackground(new Color(255, 255, 255));
@@ -454,12 +447,11 @@ public class Btn1_Button2 extends JPanel {
 		panel_3.setLayout(null);
 
 		ArrayList<Player_FootballDTO> ArrFootball_stat = new ArrayList<Player_FootballDTO>();
-		Player_FootballDAO fdao = new Player_FootballDAO();
 		ArrFootball_stat = fdao.SelectPlayer_Football(PLAYER_CODE);
 
 		ArrayList<PlayerContestDTO> ArrFootball_conte = new ArrayList<PlayerContestDTO>();
-		Player_ContestDAO cdao = new Player_ContestDAO();
-		ArrFootball_conte = cdao.SelectPlayer(PLAYER_CODE);
+		Player_ContestDAO contest_dao = new Player_ContestDAO();
+		ArrFootball_conte = contest_dao.SelectPlayer(PLAYER_CODE);
 
 		ArrayList<PlayerPhysicalDTO> ArrFootball_phy = new ArrayList<PlayerPhysicalDTO>();
 		Player_PhysicalDAO pdao = new Player_PhysicalDAO();
@@ -726,6 +718,19 @@ public class Btn1_Button2 extends JPanel {
 		label_33.setBounds(879, 698, 48, 32);
 		StatViewPanel.add(label_33);
 		
+		JPanel rador_panel = new JPanel();
+		ArrFootball = fdao.SelectPlayer_Football(PLAYER_CODE); 
+		rador_panel.setBackground(Color.WHITE);
+		rador_panel.setBounds(886, 50, 300, 300);
+		StatViewPanel.add(rador_panel);
+		rador_panel.setLayout(new CardLayout(0, 0));
+		
+		ChartPanel CP_rador;
+		JFreeChart radorChart = cdao.getRadorChart(ArrFootball);
+		CP_rador = new ChartPanel(radorChart);
+		CP_rador.setMouseZoomable(false);
+		rador_panel.setBackground(new Color(255, 255, 255));
+		rador_panel.add(CP_rador);
 		
 
 	}
