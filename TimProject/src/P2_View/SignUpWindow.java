@@ -264,6 +264,7 @@ public class SignUpWindow extends JPanel implements FocusListener {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				Gudan_SearchModify gudan = new Gudan_SearchModify(textField_1, result);
+				gudan.setUndecorated(true);
 				gudan.setVisible(true);
 			}
 		});

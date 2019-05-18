@@ -1,39 +1,47 @@
 package P2_View;
 
 import java.awt.BorderLayout;
+import java.awt.CardLayout;
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.Point;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
+import java.io.File;
 import java.util.ArrayList;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JDialog;
+import javax.swing.JFileChooser;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import java.awt.Color;
-import javax.swing.JTextField;
-import java.awt.Font;
 import javax.swing.JSeparator;
-import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel;
+import javax.swing.JTextField;
+import javax.swing.border.EmptyBorder;
+import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.filechooser.FileSystemView;
 
 import P3_DAO.GroupsDAO;
+import P3_DAO.PlayerDAO;
 import P4_DTO.GroupsDTO;
-
-import javax.swing.JScrollPane;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import javax.swing.SpringLayout;
-import javax.swing.JLabel;
+import P4_DTO.PlayerDTO;
+import P4_DTO.SignUpDTO;
+import P4_DTO.loginDTO;
+import P7_Util.AddressToLocalCode;
+import P7_Util.fileExtension;
 
 public class addNewPlayerDialog extends JDialog implements FocusListener {
 
 	private final JPanel contentPanel = new JPanel();
-	private static JDialog dialog;
+	private static JDialog dialog = new JDialog();
 	private static Point point = new Point();
 	private JTextField txtDummy;
 	private GroupsDAO dao = new GroupsDAO();
@@ -44,13 +52,20 @@ public class addNewPlayerDialog extends JDialog implements FocusListener {
 	private JTextField txt_Email;
 	private JTextField txt_address;
 	private JLabel Phone_label;
+	private PlayerDTO pdto;
+	private PlayerDAO pdao = new PlayerDAO(); 
+	public String jPath;
+	private static Point point1 = new Point();
+
 
 	/**
 	 * Create the dialog.
 	 * 
 	 * @param result
 	 */
-	public addNewPlayerDialog(JTextField textField_1, GroupsDTO result) {
+	public addNewPlayerDialog(loginDTO dto) {
+		initialize();
+
 		IntegerDocument id = new IntegerDocument();
 
 		setBounds(100, 100, 678, 466);
@@ -69,6 +84,18 @@ public class addNewPlayerDialog extends JDialog implements FocusListener {
 		}
 
 		JButton btn_accept = new JButton("확인");
+		btn_accept.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				AddressToLocalCode L_Code = new AddressToLocalCode();
+				int LocalCode = L_Code.getLocalCode(txt_address.getText());
+				int cnt = pdao.joinPlayer(new PlayerDTO(0, dto.getGroup_Code() , txt_Name.getText(), txt_Phone.getText(), dto.getMember_Img(), txt_Email.getText(), LocalCode, txt_address.getText()));
+				if (cnt > 0) {
+					JOptionPane.showMessageDialog(null, "선수를 성공적으로 추가했습니다.", "선수추가 성공", JOptionPane.PLAIN_MESSAGE);
+				} else {
+					JOptionPane.showMessageDialog(null, "입력된 정보를 확인해 주세요", "선수추가 실패", JOptionPane.ERROR_MESSAGE);
+				}
+			}
+		});
 		btn_accept.setForeground(Color.WHITE);
 		btn_accept.setBackground(new Color(71, 120, 197));
 		btn_accept.setFont(new Font("BM_DOHYEON", Font.BOLD, 12));
@@ -158,14 +185,57 @@ public class addNewPlayerDialog extends JDialog implements FocusListener {
 		picturePanel.setBackground(Color.WHITE);
 		picturePanel.setBounds(124, 56, 100, 100);
 		contentPanel.add(picturePanel);
-		picturePanel.setLayout(new SpringLayout());
+		picturePanel.setLayout(new CardLayout(0, 0));
+		
+		JLabel lbl_icon = new JLabel("");
+		picturePanel.add(lbl_icon, "name_115422094258500");
 
 		JButton btn_findPicture = new JButton("\uC0AC\uC9C4\uCC3E\uAE30");
+		btn_findPicture.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+
+				JFileChooser jfc = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
+				FileNameExtensionFilter ExtenseFilter = new FileNameExtensionFilter("이미지파일 ", "jpg", "gif", "png");
+
+				jfc.setFileFilter(ExtenseFilter);
+				int returnValue = jfc.showOpenDialog(null);
+				// int returnValue = jfc.showSaveDialog(null);
+
+				if (returnValue == JFileChooser.APPROVE_OPTION) {
+					File selectedFile = jfc.getSelectedFile();
+
+					boolean ExtensionOfFile = fileExtension.getfileExtension(selectedFile.getAbsolutePath());
+					System.out.println(ExtensionOfFile);
+					if (ExtensionOfFile) {
+
+						JOptionPane.showMessageDialog(null, "업로드완료");
+						jPath = selectedFile.getAbsolutePath();
+
+						SignUpDTO dto = new SignUpDTO();
+
+						dto.setMember_Img(jPath);
+						dto.getMember_Img();
+
+						lbl_icon.setIcon(new ImageIcon(dto.getMember_ResizeImg(100, 100)));
+
+					} else {
+						JOptionPane.showMessageDialog(null, "이미지 확장자를 넣어주세요 ");
+
+					}
+
+				} else {
+					JOptionPane.showMessageDialog(null, "파일을 선택하지 않았습니다", "경고", JOptionPane.WARNING_MESSAGE);
+				}
+			}
+
+		});
 		btn_findPicture.setForeground(Color.WHITE);
 		btn_findPicture.setFont(new Font("KBIZ한마음고딕 M", Font.PLAIN, 12));
 		btn_findPicture.setBackground(new Color(71, 120, 197));
 		btn_findPicture.setBounds(236, 131, 90, 25);
 		contentPanel.add(btn_findPicture);
+		
+		
 
 	}
 
@@ -186,4 +256,23 @@ public class addNewPlayerDialog extends JDialog implements FocusListener {
 	public void focusLost(FocusEvent e) {
 
 	}
+	
+	private void initialize() {
+		dialog.addMouseListener(new MouseAdapter() {
+            public void mousePressed(MouseEvent e) {
+                point1.x = e.getX();
+                point1.y = e.getY();
+            }
+        });
+        dialog.addMouseMotionListener(new MouseMotionAdapter() {
+            public void mouseDragged(MouseEvent e) {
+                Point p = dialog.getLocation();
+                dialog.setLocation(p.x + e.getX() - point.x, p.y + e.getY() - point.y);
+            }
+        });
+		
+//		JPanel panel = new LoginWindow(dialog);
+//		frame.getContentPane().add(panel, "name_846404528803000");
+	}
+	
 }
