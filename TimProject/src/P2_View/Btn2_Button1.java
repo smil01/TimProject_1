@@ -93,6 +93,8 @@ public class Btn2_Button1 extends JPanel implements FocusListener {
 
 		JLabel lbl_program_name = new JLabel(
 				"\uC720\uC18C\uB144\uCD95\uAD6C \uC131\uC7A5\uAD00\uB9AC \uD504\uB85C\uADF8\uB7A8");
+		lbl_program_name.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+
 		lbl_program_name.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
