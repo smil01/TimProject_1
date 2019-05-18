@@ -62,27 +62,28 @@ public class Player_PhysicalDAO {
 		// 정말 끔직하지만 꼭 insert문을 할때는 원래는 생략하였던 컬럼며을 다 기업하여 줄것, 반드시 전체 컬럼의 값을 insert하는 경우는
 		// 드물기 때문이다.
 		sql = "INSERT INTO PLAYER_PHYSICAL(Player_Physical_Code,Player_Code,Group_Code,Player_Physical_Sex,Player_Physical_Age,Player_Physical_Height,Player_Physical_Weight,Player_Physical_LeftFoot,Player_Physical_RightFoot)"
-				+ " VALUES(PLAYER_PHYSICAL_SEQUENCE.nextval,?,?,?,?,?,?,?,?,?)";
+				+ " VALUES(PLAYER_PHYSICAL_SEQUENCE.nextval,?,?,?,?,?,?,?,?)";
 
 		try {
 			pst = conn.prepareStatement(sql);
 
-			pst.setInt(1, PlayerPhysicalDTO.getPlayer_Physical_Code());
-			pst.setInt(2, PlayerPhysicalDTO.getPlayer_Code());
-			pst.setInt(3, PlayerPhysicalDTO.getGroup_Code());
-			pst.setInt(4, PlayerPhysicalDTO.getPlayer_Physical_Sex());
-			pst.setInt(5, PlayerPhysicalDTO.getPlayer_Physical_Age());
-			pst.setInt(6, PlayerPhysicalDTO.getPlayer_Physical_Height());
-			pst.setInt(7, PlayerPhysicalDTO.getPlayer_Physical_Weight());
-			pst.setInt(8, PlayerPhysicalDTO.getPlayer_Physical_LeftFoot());
-			pst.setInt(9, PlayerPhysicalDTO.getPlayer_Physical_RightFoot());
+			pst.setInt(1, PlayerPhysicalDTO.getPlayer_Code());
+			pst.setInt(2, PlayerPhysicalDTO.getGroup_Code());
+			pst.setInt(3, PlayerPhysicalDTO.getPlayer_Physical_Sex());
+			pst.setInt(4, PlayerPhysicalDTO.getPlayer_Physical_Age());
+			pst.setInt(5, PlayerPhysicalDTO.getPlayer_Physical_Height());
+			pst.setInt(6, PlayerPhysicalDTO.getPlayer_Physical_Weight());
+			pst.setInt(7, PlayerPhysicalDTO.getPlayer_Physical_LeftFoot());
+			pst.setInt(8, PlayerPhysicalDTO.getPlayer_Physical_RightFoot());
 
 			cnt = pst.executeUpdate();
+			System.out.println(cnt);
 
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
+		
 		close();
 
 		return cnt;

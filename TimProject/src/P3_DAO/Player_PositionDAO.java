@@ -104,15 +104,15 @@ public class Player_PositionDAO {
 //	
 //	
 	
-	public ArrayList<PlayerPositionDTO> selectPlayer_Football(int Player_Position_Code) {
+	public ArrayList<PlayerPositionDTO> selectPlayer_Football(int PLAYER_CODE) {
 		con();
-		sql = "select * from Player_Position where Player_Position_Code= ?";
+		sql = "select * from Player_Position where PLAYER_CODE = ?";
 		ArrayList<PlayerPositionDTO> plist = new ArrayList<>();
 
 		try {
 			pst = conn.prepareStatement(sql);
 
-			pst.setInt(1, Player_Position_Code);
+			pst.setInt(1, PLAYER_CODE);
 
 			rs = pst.executeQuery();
 

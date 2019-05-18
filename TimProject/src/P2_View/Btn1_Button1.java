@@ -241,7 +241,7 @@ public class Btn1_Button1 extends JPanel {
 						return false;
 					}
 				});
-				
+
 				if (content.length > 1) {
 					table.setRowSelectionInterval(0, 0); // 시작과 동시 첫번째 행을 선택하게 하기
 				}
@@ -394,12 +394,14 @@ public class Btn1_Button1 extends JPanel {
 		JLabel lbl_PlayerStatButton = new JLabel("\uC120\uC218\uC2A4\uD0EF");
 		lbl_PlayerStatButton.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent e) {			
-				JPanel Stn1_Button2 = new Btn1_Button2(frame, dto, select());
-				frame.getContentPane().removeAll();
-				frame.getContentPane().add(Stn1_Button2);
-				frame.revalidate();
-				frame.repaint();
+			public void mouseClicked(MouseEvent e) {
+				if (select() > 0) {
+					JPanel Stn1_Button2 = new Btn1_Button2(frame, dto, select());
+					frame.getContentPane().removeAll();
+					frame.getContentPane().add(Stn1_Button2);
+					frame.revalidate();
+					frame.repaint();
+				}
 			}
 		});
 		lbl_PlayerStatButton.setHorizontalAlignment(SwingConstants.CENTER);
@@ -419,12 +421,13 @@ public class Btn1_Button1 extends JPanel {
 		lbl_PlayerChart.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				JPanel Stn1_Button3 = new Btn1_Button3(frame, dto, select());
-				frame.getContentPane().removeAll();
-				frame.getContentPane().add(Stn1_Button3);
-				frame.revalidate();
-				frame.repaint();
-
+				if (select() > 0) {
+					JPanel Stn1_Button3 = new Btn1_Button3(frame, dto, select());
+					frame.getContentPane().removeAll();
+					frame.getContentPane().add(Stn1_Button3);
+					frame.revalidate();
+					frame.repaint();
+				}
 			}
 		});
 		lbl_PlayerChart.setHorizontalAlignment(SwingConstants.CENTER);
@@ -444,12 +447,13 @@ public class Btn1_Button1 extends JPanel {
 		lbl_PlayerMemo.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				JPanel Stn1_Button4 = new Btn1_Button4(frame, dto, select());
-				frame.getContentPane().removeAll();
-				frame.getContentPane().add(Stn1_Button4);
-				frame.revalidate();
-				frame.repaint();
-
+				if (select() > 0) {
+					JPanel Stn1_Button4 = new Btn1_Button4(frame, dto, select());
+					frame.getContentPane().removeAll();
+					frame.getContentPane().add(Stn1_Button4);
+					frame.revalidate();
+					frame.repaint();
+				}
 			}
 		});
 		PlayerMemoPanel.add(lbl_PlayerMemo, "name_3775184187700");
@@ -469,12 +473,11 @@ public class Btn1_Button1 extends JPanel {
 		lbl_SetStat.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				JPanel Stn1_Button5 = new Btn1_Button5(frame, dto);
+				JPanel Stn1_Button5 = new Btn1_Button5(frame, dto, select());
 				frame.getContentPane().removeAll();
 				frame.getContentPane().add(Stn1_Button5);
 				frame.revalidate();
 				frame.repaint();
-
 			}
 		});
 		lbl_SetStat.setHorizontalAlignment(SwingConstants.CENTER);
@@ -562,7 +565,7 @@ public class Btn1_Button1 extends JPanel {
 //                        JOptionPane.showMessageDialog(t, s, "title", JOptionPane.INFORMATION_MESSAGE);
 
 						System.out.println("=======================" + m.getValueAt(row, 0));
-						
+
 						JPanel Stn1_Button2 = new Btn1_Button2(frame, dto, (int) m.getValueAt(row, 0));
 						frame.getContentPane().removeAll();
 						frame.getContentPane().add(Stn1_Button2);
@@ -578,8 +581,12 @@ public class Btn1_Button1 extends JPanel {
 		panel.add(scrollPane);
 
 	}
-	
+
 	public int select() {
-		return (int) table.getValueAt(table.getSelectedRow(), 0);
+		System.out.println(table.getRowCount());
+		if (table.getRowCount() > 0) {
+			return (int) table.getValueAt(table.getSelectedRow(), 0);
+		}
+		return 0;
 	}
 }
