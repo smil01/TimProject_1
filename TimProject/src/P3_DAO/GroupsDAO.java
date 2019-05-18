@@ -93,7 +93,7 @@ public class GroupsDAO {
 	public ArrayList<GroupsDTO> selectAllGroups() {
 		con();
 
-		sql = "select * from Groups";
+		sql = "select * from Groups ORDER BY Group_Code DESC";
 
 		ArrayList<GroupsDTO> list = new ArrayList<GroupsDTO>();
 
