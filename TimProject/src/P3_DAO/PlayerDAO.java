@@ -236,12 +236,14 @@ public class PlayerDAO {
 
 	public ArrayList<PlayerDTO> searchGudanPlayera(String name) {
 		con();
-		sql = "select * from Player where player_name LIKE '%' || ? || '%' ORDER BY PLAYER_CODE DESC";
+		sql = "select * from Player where player_name LIKE '%' || ? || '%' or PLAYER_CODE LIKE '%' || ? || '%' or GROUP_CODE = (select GROUP_CODE from GROUPS where GROUP_NAME LIKE '%' || ? || '%' and 1 = ROWNUM) ORDER BY PLAYER_CODE DESC";
 		ArrayList<PlayerDTO> aplist = new ArrayList<PlayerDTO>();
 
 		try {
 			pst = conn.prepareStatement(sql);
 			pst.setString(1, name);
+			pst.setString(2, name);
+			pst.setString(3, name);
 
 			rs = pst.executeQuery();
 			while (rs.next()) {

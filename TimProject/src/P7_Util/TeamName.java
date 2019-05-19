@@ -76,5 +76,55 @@ public class TeamName {
 		
 		return result;
 	}
+	
+	public static String getTransferTeamName(int playerCode) {
+		con();
+		
+		String result = "";
+		
+		try {
+			sql = "select GROUP_NAME from GROUPS where GROUP_CODE = (select TRANSFER_GROUP_CODE from PLAYER_TRANSFER where PLAYER_CODE = ? and PLAYER_TRANSFER_STATE = 0)";
+			
+			pst = conn.prepareStatement(sql);
+			pst.setInt(1, playerCode);
+			
+			rs = pst.executeQuery();
+			
+			while (rs.next()) {
+				result = rs.getString(1);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		close();
+		
+		return result;
+	}
+	
+	public static String getNowTeamName(int playerCode) {
+		con();
+		
+		String result = "";
+		
+		try {
+			sql = "select GROUP_NAME from GROUPS where GROUP_CODE = (select NOW_GROUP_CODE from PLAYER_TRANSFER where PLAYER_CODE = ? and PLAYER_TRANSFER_STATE = 0)";
+			
+			pst = conn.prepareStatement(sql);
+			pst.setInt(1, playerCode);
+			
+			rs = pst.executeQuery();
+			
+			while (rs.next()) {
+				result = rs.getString(1);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		close();
+		
+		return result;
+	}
 
 }
