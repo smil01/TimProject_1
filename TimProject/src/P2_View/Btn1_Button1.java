@@ -30,6 +30,7 @@ import javax.swing.table.TableModel;
 import P3_DAO.PlayerDAO;
 import P4_DTO.listAllDTO;
 import P4_DTO.loginDTO;
+import P7_Util.TeamName;
 
 public class Btn1_Button1 extends JPanel {
 	private JTextField textField;
@@ -206,7 +207,8 @@ public class Btn1_Button1 extends JPanel {
 					list = dao.searchGudanPlayerAbility(dto.getGroup_Code(), textField.getText());
 				}
 
-				String column[] = { "선수번호", "이름", "스피드", "슛", "패스", "드리볼", "수비", "성별", "나이", "키", "몸무게", "왼발", "오른발" };
+				String column[] = { "선수번호", "이름", "스피드", "슛", "패스", "드리볼", "수비", "성별", "나이", "키", "몸무게", "왼발", "오른발",
+						"팀명" };
 				Object[][] content = new Object[list.size()][column.length];
 
 				for (int i = 0; i < content.length; i++) {
@@ -223,10 +225,11 @@ public class Btn1_Button1 extends JPanel {
 					content[i][10] = list.get(i).getPlayer_Physical_Weight();
 					content[i][11] = list.get(i).getPlayer_Physical_LeftFoot();
 					content[i][12] = list.get(i).getPlayer_Physical_RightFoot();
+					content[i][13] = TeamName.getTeamName(list.get(i).getPlayer_Code());
 				}
 
-				for (int i = 0; i < content.length - 1; i++) {
-					for (int j = i + 1; j < content.length; j++) {
+				for (int i = 0; i < content.length - 2; i++) {
+					for (int j = i + 1; j < content.length - 1; j++) {
 						int a = (int) content[i][2] + (int) content[i][3] + (int) content[i][4] + (int) content[i][5]
 								+ (int) content[i][6] - (int) content[i][8] + (int) content[i][9]
 								- (int) content[i][10];
@@ -507,9 +510,16 @@ public class Btn1_Button1 extends JPanel {
 		Lobby_Panel.add(panel);
 		panel.setLayout(null);
 
-		ArrayList<listAllDTO> list = dao.selectGudanPlayerAbility(dto.getGroup_Code());
+		ArrayList<listAllDTO> list;
 
-		String column[] = { "선수번호", "이름", "스피드", "슛", "패스", "드리볼", "수비", "성별", "나이", "키", "몸무게", "왼발", "오른발" };
+		if (dto.getView_Power() == 2) {
+			System.out.println("vip");
+			list = dao.VIPsearchGudanPlayerAbility(textField.getText());
+		} else {
+			list = dao.searchGudanPlayerAbility(dto.getGroup_Code(), textField.getText());
+		}
+
+		String column[] = { "선수번호", "이름", "스피드", "슛", "패스", "드리볼", "수비", "성별", "나이", "키", "몸무게", "왼발", "오른발", "팀명" };
 		Object[][] content = new Object[list.size()][column.length];
 
 		for (int i = 0; i < content.length; i++) {
@@ -526,10 +536,11 @@ public class Btn1_Button1 extends JPanel {
 			content[i][10] = list.get(i).getPlayer_Physical_Weight();
 			content[i][11] = list.get(i).getPlayer_Physical_LeftFoot();
 			content[i][12] = list.get(i).getPlayer_Physical_RightFoot();
+			content[i][13] = TeamName.getTeamName(list.get(i).getPlayer_Code());
 		}
 
-		for (int i = 0; i < content.length - 1; i++) {
-			for (int j = i + 1; j < content.length; j++) {
+		for (int i = 0; i < content.length - 2; i++) {
+			for (int j = i + 1; j < content.length - 1; j++) {
 				int a = (int) content[i][2] + (int) content[i][3] + (int) content[i][4] + (int) content[i][5]
 						+ (int) content[i][6] - (int) content[i][8] + (int) content[i][9] - (int) content[i][10];
 				int b = (int) content[j][2] + (int) content[j][3] + (int) content[j][4] + (int) content[j][5]
@@ -597,7 +608,7 @@ public class Btn1_Button1 extends JPanel {
 		for (int i = 0; i < tcmSchedule.getColumnCount(); i++) {
 			tcmSchedule.getColumn(i).setCellRenderer(tScheduleCellRenderer);
 		}
-		
+
 		JScrollPane scrollPane = new JScrollPane(table);
 		scrollPane.setBounds(12, 10, 1296, 738);
 		panel.add(scrollPane);
