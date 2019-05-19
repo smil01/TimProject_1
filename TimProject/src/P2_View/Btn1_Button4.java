@@ -449,16 +449,17 @@ public class Btn1_Button4 extends JPanel {
 		StatViewPanel.add(label_2);
 
 		JLabel label_3 = new JLabel(p_dto.getPlayer_Name());
+		label_3.setHorizontalAlignment(SwingConstants.CENTER);
 		label_3.setForeground(Color.BLACK);
 		label_3.setFont(new Font("만화진흥원체", Font.PLAIN, 25));
-		label_3.setBounds(173, 274, 82, 45);
+		label_3.setBounds(89, 274, 251, 45);
 		StatViewPanel.add(label_3);
 
 		JLabel label_4 = new JLabel(new Player_PositionDAO().selectPlayer_Football(PLAYER_CODE).get(0).getPlayer_Position_Name());
 		label_4.setHorizontalAlignment(SwingConstants.CENTER);
 		label_4.setForeground(Color.BLACK);
 		label_4.setFont(new Font("만화진흥원체", Font.PLAIN, 16));
-		label_4.setBounds(142, 321, 124, 19);
+		label_4.setBounds(99, 321, 210, 19);
 		StatViewPanel.add(label_4);
 
 		JPanel panel_2 = new JPanel();

@@ -347,14 +347,14 @@ public class Lobby extends JPanel {
 		
 		label_5.setForeground(new Color(189, 178, 137));
 		label_5.setFont(new Font("만화진흥원체", Font.PLAIN, 35));
-		label_5.setBounds(12, 52, 312, 40);
+		label_5.setBounds(12, 52, 410, 40);
 		label_5.setText(arr_group.get(0).getGroup_Name());
 		panel_4.add(label_5);
 
 		JLabel label_6 = new JLabel("\uC9C0\uC5ED");
 		label_6.setForeground(new Color(153, 153, 153));
 		label_6.setFont(new Font("만화진흥원체", Font.PLAIN, 16));
-		label_6.setBounds(403, 10, 48, 32);
+		label_6.setBounds(436, 10, 48, 32);
 		panel_4.add(label_6);
 
 		JLabel label_2 = new JLabel("\uC8FC\uC18C");
@@ -411,7 +411,7 @@ public class Lobby extends JPanel {
 		JLabel label_33 = new JLabel("\uC5B4\uC2DC\uC2A4\uD2B8");
 		label_33.setForeground(new Color(153, 153, 153));
 		label_33.setFont(new Font("만화진흥원체", Font.PLAIN, 16));
-		label_33.setBounds(316, 517, 60, 32);
+		label_33.setBounds(316, 517, 104, 32);
 		panel.add(label_33);
 
 		JLabel label_34 = new JLabel("");
@@ -470,7 +470,7 @@ public class Lobby extends JPanel {
 		JLabel label_7 = new JLabel("\uAD11\uC8FC\uAD11\uC5ED\uC2DC");
 		label_7.setForeground(new Color(189, 178, 137));
 		label_7.setFont(new Font("만화진흥원체", Font.PLAIN, 35));
-		label_7.setBounds(403, 52, 157, 40);
+		label_7.setBounds(434, 52, 157, 40);
 		String local = arr_group.get(0).getGroup_Address();
 		label_7.setText(local.substring(0, 2));
 		panel_4.add(label_7);

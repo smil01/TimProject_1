@@ -696,7 +696,7 @@ public class Btn1_Button5 extends JPanel {
 		JLabel label_33 = new JLabel("\uC5B4\uC2DC\uC2A4\uD2B8");
 		label_33.setForeground(new Color(153, 153, 153));
 		label_33.setFont(new Font("만화진흥원체", Font.PLAIN, 16));
-		label_33.setBounds(317, 698, 60, 32);
+		label_33.setBounds(317, 698, 110, 32);
 		panel_2.add(label_33);
 
 		JLabel label_35 = new JLabel("\uC720\uD6A8\uC29B");

@@ -53,7 +53,7 @@ public class Gudan_SearchModify2 extends JDialog implements FocusListener {
 	public Gudan_SearchModify2(JFrame frame, loginDTO dto, int PLAYER_CODE, int now_Group_Code) {
 		this.frame = frame;
 		this.dto = dto;
-		setBounds(100, 100, 678, 466);
+		setBounds(100, 100, 800, 450);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBackground(new Color(23, 35, 51));
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));

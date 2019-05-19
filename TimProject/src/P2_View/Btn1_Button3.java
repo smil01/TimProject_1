@@ -468,9 +468,10 @@ public class Btn1_Button3 extends JPanel {
 		overallPane.validate();
 
 		JLabel label_15 = new JLabel(p_dto.getPlayer_Name());
+		label_15.setHorizontalAlignment(SwingConstants.CENTER);
 		label_15.setForeground(Color.BLACK);
 		label_15.setFont(new Font("만화진흥원체", Font.PLAIN, 25));
-		label_15.setBounds(134, 240, 82, 45);
+		label_15.setBounds(90, 240, 180, 45);
 		panel_2.add(label_15);
 
 		JLabel label_16 = new JLabel(new Player_PositionDAO().selectPlayer_Football(PLAYER_CODE).get(0).getPlayer_Position_Name());
