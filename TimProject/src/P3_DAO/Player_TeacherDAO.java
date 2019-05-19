@@ -116,7 +116,7 @@ public class Player_TeacherDAO {
 	public ArrayList<PlayerTeacherDTO> selectallPlayer() {
 		con();
 
-		sql = "select * from Player_Teacher";
+		sql = "select * from Player_Teacher ORDER BY PLAYER_TEACHER_CODE desc";
 		ArrayList<PlayerTeacherDTO> aplist = new ArrayList<PlayerTeacherDTO>();
 
 		try {

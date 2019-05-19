@@ -99,7 +99,7 @@ public class PlayerDAO {
 	public ArrayList<PlayerDTO> SearchPlayer(String player_name) {
 		con();
 
-		sql = "select * from player where player_name like  '%' || ? || '%'";
+		sql = "select * from player where player_name like  '%' || ? || '%' ORDER BY PLAYER_CODE desc";
 		ArrayList<PlayerDTO> lplist = new ArrayList<PlayerDTO>();
 
 		try {
@@ -127,7 +127,7 @@ public class PlayerDAO {
 	public PlayerDTO SelectPlayer(int player_code) {
 		con();
 
-		sql = "select * from Player where Player_Code= ?";
+		sql = "select * from Player where Player_Code= ? ORDER BY PLAYER_CODE desc";
 		PlayerDTO result = null;
 
 		try {
@@ -155,7 +155,7 @@ public class PlayerDAO {
 	public ArrayList<PlayerDTO> selectallPlayer() {
 		con();
 
-		sql = "select * from Player";
+		sql = "select * from Player ORDER BY PLAYER_CODE desc";
 		ArrayList<PlayerDTO> aplist = new ArrayList<PlayerDTO>();
 
 		try {

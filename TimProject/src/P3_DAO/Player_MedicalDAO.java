@@ -114,7 +114,7 @@ public class Player_MedicalDAO {
 	public ArrayList<PlayerMedicalDTO> selectallPlayer() {
 		con();
 
-		sql = "select * from Player_Medical";
+		sql = "select * from Player_Medical ORDER BY PLAYER_MEDICAL_CODE desc";
 		ArrayList<PlayerMedicalDTO> aplist = new ArrayList<PlayerMedicalDTO>();
 
 		try {
