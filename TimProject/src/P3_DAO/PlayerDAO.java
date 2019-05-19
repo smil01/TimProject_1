@@ -86,7 +86,6 @@ public class PlayerDAO {
 			pst.setInt(12, PlayerDTO.getGroup_Code());
 
 			cnt = pst.executeUpdate();
-
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
