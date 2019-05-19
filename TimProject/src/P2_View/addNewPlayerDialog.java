@@ -53,22 +53,26 @@ public class addNewPlayerDialog extends JDialog implements FocusListener {
 	private JTextField txt_address;
 	private JLabel Phone_label;
 	private PlayerDTO pdto;
-	private PlayerDAO pdao = new PlayerDAO(); 
+	private PlayerDAO pdao = new PlayerDAO();
 	public String jPath;
 	private static Point point1 = new Point();
-
+	public JFrame frame;
+	public loginDTO dto;
+	public SignUpDTO s_dto;
 
 	/**
 	 * Create the dialog.
 	 * 
 	 * @param result
 	 */
-	public addNewPlayerDialog(loginDTO dto) {
+	public addNewPlayerDialog(loginDTO dto, JFrame frame) {
+		this.frame = frame;
+		this.dto = dto;
 		initialize();
 
 		IntegerDocument id = new IntegerDocument();
 
-		setBounds(100, 100, 678, 466);
+		setBounds(100, 100, 800, 450);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBackground(new Color(23, 35, 51));
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -87,10 +91,15 @@ public class addNewPlayerDialog extends JDialog implements FocusListener {
 		btn_accept.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				AddressToLocalCode L_Code = new AddressToLocalCode();
+
 				int LocalCode = L_Code.getLocalCode(txt_address.getText());
-				int cnt = pdao.joinPlayer(new PlayerDTO(0, dto.getGroup_Code() , txt_Name.getText(), txt_Phone.getText(), dto.getMember_Img(), txt_Email.getText(), LocalCode, txt_address.getText()));
+				int cnt = pdao.joinPlayer(new PlayerDTO(0, dto.getGroup_Code(), txt_Name.getText(), txt_Phone.getText(),
+						s_dto.getMember_Img(), txt_Email.getText(), LocalCode, txt_address.getText()));
+
 				if (cnt > 0) {
 					JOptionPane.showMessageDialog(null, "선수를 성공적으로 추가했습니다.", "선수추가 성공", JOptionPane.PLAIN_MESSAGE);
+					reSet();
+					setVisible(false);
 				} else {
 					JOptionPane.showMessageDialog(null, "입력된 정보를 확인해 주세요", "선수추가 실패", JOptionPane.ERROR_MESSAGE);
 				}
@@ -186,7 +195,7 @@ public class addNewPlayerDialog extends JDialog implements FocusListener {
 		picturePanel.setBounds(124, 56, 100, 100);
 		contentPanel.add(picturePanel);
 		picturePanel.setLayout(new CardLayout(0, 0));
-		
+
 		JLabel lbl_icon = new JLabel("");
 		picturePanel.add(lbl_icon, "name_115422094258500");
 
@@ -211,12 +220,12 @@ public class addNewPlayerDialog extends JDialog implements FocusListener {
 						JOptionPane.showMessageDialog(null, "업로드완료");
 						jPath = selectedFile.getAbsolutePath();
 
-						SignUpDTO dto = new SignUpDTO();
+						s_dto = new SignUpDTO();
 
-						dto.setMember_Img(jPath);
-						dto.getMember_Img();
+						s_dto.setMember_Img(jPath);
+						s_dto.getMember_Img();
 
-						lbl_icon.setIcon(new ImageIcon(dto.getMember_ResizeImg(100, 100)));
+						lbl_icon.setIcon(new ImageIcon(s_dto.getMember_ResizeImg(100, 100)));
 
 					} else {
 						JOptionPane.showMessageDialog(null, "이미지 확장자를 넣어주세요 ");
@@ -234,8 +243,6 @@ public class addNewPlayerDialog extends JDialog implements FocusListener {
 		btn_findPicture.setBackground(new Color(71, 120, 197));
 		btn_findPicture.setBounds(236, 131, 90, 25);
 		contentPanel.add(btn_findPicture);
-		
-		
 
 	}
 
@@ -256,23 +263,35 @@ public class addNewPlayerDialog extends JDialog implements FocusListener {
 	public void focusLost(FocusEvent e) {
 
 	}
-	
+
 	private void initialize() {
 		dialog.addMouseListener(new MouseAdapter() {
-            public void mousePressed(MouseEvent e) {
-                point1.x = e.getX();
-                point1.y = e.getY();
-            }
-        });
-        dialog.addMouseMotionListener(new MouseMotionAdapter() {
-            public void mouseDragged(MouseEvent e) {
-                Point p = dialog.getLocation();
-                dialog.setLocation(p.x + e.getX() - point.x, p.y + e.getY() - point.y);
-            }
-        });
-		
+			public void mousePressed(MouseEvent e) {
+				point1.x = e.getX();
+				point1.y = e.getY();
+			}
+		});
+		dialog.addMouseMotionListener(new MouseMotionAdapter() {
+			public void mouseDragged(MouseEvent e) {
+				Point p = dialog.getLocation();
+				dialog.setLocation(p.x + e.getX() - point.x, p.y + e.getY() - point.y);
+			}
+		});
+
 //		JPanel panel = new LoginWindow(dialog);
 //		frame.getContentPane().add(panel, "name_846404528803000");
 	}
 	
+	public void reSet() {
+		JPanel Btn1_Button5 = new Btn1_Button5(frame, dto, new PlayerDAO().getStatusPlayerCode());
+		System.out.println(frame);
+		System.out.println(dto);
+		System.out.println(new PlayerDAO().getStatusPlayerCode());
+		System.out.println(Btn1_Button5);
+		frame.getContentPane().removeAll();
+		frame.getContentPane().add(Btn1_Button5);
+		frame.revalidate();
+		frame.repaint();
+	}
+
 }

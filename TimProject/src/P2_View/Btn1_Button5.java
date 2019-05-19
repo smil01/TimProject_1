@@ -615,6 +615,8 @@ public class Btn1_Button5 extends JPanel {
 		lbl_PlayerName.setBounds(90, 240, 180, 45);
 		panel_2.add(lbl_PlayerName);
 
+		
+		System.out.println("===================" + PLAYER_CODE);
 		lbl_Position = new JLabel(pp_dao.selectPlayer_Football(PLAYER_CODE).get(0).getPlayer_Position_Name());
 		lbl_Position.setHorizontalAlignment(SwingConstants.CENTER);
 		lbl_Position.setForeground(Color.BLACK);
@@ -935,18 +937,18 @@ public class Btn1_Button5 extends JPanel {
 		JLabel label_19 = new JLabel("\uC0C8\uB85C\uC6B4 \uC120\uC218 \uB4F1\uB85D");
 		label_19.setForeground(Color.BLACK);
 		label_19.setFont(new Font("만화진흥원체", Font.PLAIN, 25));
-		label_19.setBounds(930, 182, 300, 45);
+		label_19.setBounds(930, 158, 300, 45);
 		panel_2.add(label_19);
 
 		JSeparator separator_4 = new JSeparator();
 		separator_4.setForeground(new Color(229, 229, 229));
-		separator_4.setBounds(930, 237, 300, 10);
+		separator_4.setBounds(930, 213, 300, 10);
 		panel_2.add(separator_4);
 
 		JButton btn_addNewPlayer = new JButton("\uCD94\uAC00");
 		btn_addNewPlayer.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				addNewPlayerDialog newPlayer = new addNewPlayerDialog(dto);
+				addNewPlayerDialog newPlayer = new addNewPlayerDialog(dto, frame);
 				newPlayer.setUndecorated(true);
 				newPlayer.setVisible(true);
 			}
@@ -954,8 +956,33 @@ public class Btn1_Button5 extends JPanel {
 		btn_addNewPlayer.setForeground(Color.WHITE);
 		btn_addNewPlayer.setFont(new Font("KBIZ한마음고딕 B", Font.PLAIN, 16));
 		btn_addNewPlayer.setBackground(new Color(71, 120, 197));
-		btn_addNewPlayer.setBounds(930, 257, 89, 23);
+		btn_addNewPlayer.setBounds(930, 232, 89, 23);
 		panel_2.add(btn_addNewPlayer);
+		
+		JLabel label_15 = new JLabel("\uD3EC\uC9C0\uC158 \uBCC0\uACBD");
+		label_15.setForeground(Color.BLACK);
+		label_15.setFont(new Font("Dialog", Font.PLAIN, 25));
+		label_15.setBounds(930, 280, 300, 45);
+		panel_2.add(label_15);
+		
+		JSeparator separator_5 = new JSeparator();
+		separator_5.setForeground(new Color(229, 229, 229));
+		separator_5.setBounds(930, 319, 300, 10);
+		panel_2.add(separator_5);
+		
+		JButton button = new JButton("\uBCC0\uACBD");
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				ModifyPosiDialog newPlayer = new ModifyPosiDialog(dto, frame, PLAYER_CODE);
+				newPlayer.setUndecorated(true);
+				newPlayer.setVisible(true);
+			}
+		});
+		button.setForeground(Color.WHITE);
+		button.setFont(new Font("KBIZ한마음고딕 B", Font.PLAIN, 16));
+		button.setBackground(new Color(71, 120, 197));
+		button.setBounds(930, 337, 89, 23);
+		panel_2.add(button);
 
 	}
 

@@ -60,8 +60,14 @@ public class PlayerDAO {
 		con();
 		// 정말 끔직하지만 꼭 insert문을 할때는 원래는 생략하였던 컬럼며을 다 기업하여 줄것, 반드시 전체 컬럼의 값을 insert하는 경우는
 		// 드물기 때문이다.
-		sql = "INSERT INTO player(player_code, Group_code, player_name, player_tel, player_img, player_Email, player_localCode, player_address)"
-				+ " VALUES(PLAYER_SEQUENCE.nextval,?,?,?,?,?,?,?)";
+		sql = "INSERT ALL "
+				+ "INTO player(player_code, Group_code, player_name, player_tel, player_img, player_Email, player_localCode, player_address) VALUES(PLAYER_SEQUENCE.nextval, ?, ?, ?, ?, ?, ?, ?) "
+				+ "INTO PLAYER_POSITION(PLAYER_POSITION_CODE, PLAYER_CODE, GROUP_CODE, PLAYER_POSITION_NAME) VALUES(PLAYER_POSITION_SEQUENCE.nextval, PLAYER_SEQUENCE.currval, ?, 0) "
+				+ "INTO Player_Football(Player_Football_Code, Player_Code, Group_Code, Player_Football_Speed, Player_Football_Shoot, Player_Football_Pass, Player_Football_Dribol, Player_Football_Defense) VALUES(PLAYER_FOOTBALL_SEQUENCE.nextval, PLAYER_SEQUENCE.currval, ?, 0, 0, 0, 0, 0) "
+				+ "INTO PLAYER_PHYSICAL(PLAYER_PHYSICAL_CODE, PLAYER_CODE, GROUP_CODE, PLAYER_PHYSICAL_SEX, PLAYER_PHYSICAL_AGE, PLAYER_PHYSICAL_HEIGHT, PLAYER_PHYSICAL_WEIGHT, PLAYER_PHYSICAL_LEFTFOOT, PLAYER_PHYSICAL_RIGHTFOOT) VALUES(PLAYER_PHYSICAL_SEQUENCE.nextval, PLAYER_SEQUENCE.currval, ?, 0, 0, 0, 0, 0, 0) "
+				+ "INTO PLAYER_MEDICAL(PLAYER_MEDICAL_CODE, PLAYER_CODE, GROUP_CODE, PLAYER_MEDICAL_PERIOD, PLAYER_MEDICAL_TITLE, PLAYER_MEDICAL_CONTENT) VALUES(PLAYER_MEDICAL_SEQUENCE.nextval, PLAYER_SEQUENCE.currval, ?, 0, ' ', ' ') "
+				+ "INTO PLAYER_CONTEST(PLAYER_CONTEST_CODE, PLAYER_CODE, GROUP_CODE, PLAYER_CONTEST_TITLE, PLAYER_CONTEST_CONTENT, PLAYER_CONTEST_RESULT, PLAYER_CONTEST_SHOT, PLAYER_CONTEST_EFFECTIVESHOT, PLAYER_CONTEST_GOAL, PLAYER_CONTEST_ASSIST, PLAYER_CONTEST_RUNNINGTIME) VALUES(PLAYER_CONTEST_SEQUENCE.nextval, PLAYER_SEQUENCE.currval, ?, ' ', ' ', ' ', 0, 0, 0, 0, 0) "
+				+ "SELECT * FROM DUAL";
 
 		try {
 			pst = conn.prepareStatement(sql);
@@ -73,6 +79,11 @@ public class PlayerDAO {
 			pst.setString(5, PlayerDTO.getPlayer_Email());
 			pst.setInt(6, PlayerDTO.getPlayer_LocalCode());
 			pst.setString(7, PlayerDTO.getPlayer_Address());
+			pst.setInt(8, PlayerDTO.getGroup_Code());
+			pst.setInt(9, PlayerDTO.getGroup_Code());
+			pst.setInt(10, PlayerDTO.getGroup_Code());
+			pst.setInt(11, PlayerDTO.getGroup_Code());
+			pst.setInt(12, PlayerDTO.getGroup_Code());
 
 			cnt = pst.executeUpdate();
 
@@ -223,7 +234,7 @@ public class PlayerDAO {
 
 		return result;
 	}
-	
+
 	public ArrayList<PlayerDTO> searchGudanPlayera(String name) {
 		con();
 		sql = "select * from Player where player_name LIKE '%' || ? || '%' ORDER BY PLAYER_CODE DESC";
@@ -246,7 +257,7 @@ public class PlayerDAO {
 
 		return null;
 	}
-	
+
 	public ArrayList<listAllDTO> searchGudanPlayerAbility(int Group_Code, String name) {
 		ArrayList<PlayerDTO> list = searchGudanPlayera(name);
 
@@ -285,7 +296,7 @@ public class PlayerDAO {
 
 		return result;
 	}
-	
+
 	public ArrayList<listAllDTO> VIPsearchGudanPlayerAbility(String name) {
 		ArrayList<PlayerDTO> list = searchGudanPlayera(name);
 
@@ -320,6 +331,30 @@ public class PlayerDAO {
 			close();
 		}
 
+		return result;
+	}
+
+	public int getStatusPlayerCode() {
+		con();
+
+		int result = 0;
+
+		try {
+			sql = "select PLAYER_CODE from PLAYER where 1 = ROWNUM ORDER BY PLAYER_CODE desc";
+
+			pst = conn.prepareStatement(sql);
+
+			rs = pst.executeQuery();
+
+			while (rs.next()) {
+				result = rs.getInt(1);
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		close();
 		return result;
 	}
 

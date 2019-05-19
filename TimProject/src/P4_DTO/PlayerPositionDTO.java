@@ -39,11 +39,18 @@ public class PlayerPositionDTO {
 	}
 
 	public String getPlayer_Position_Name() {
+		if (Player_Position_Name.equals("0")) {
+			return "포지션 없음";
+		}
 		return Player_Position_Name;
 	}
 
 	public void setPlayer_Position_Name(String player_Position_Name) {
-		Player_Position_Name = player_Position_Name;
+		if (player_Position_Name.equals("0")) {
+			Player_Position_Name = "포지션 없음";
+		} else {
+			Player_Position_Name = player_Position_Name;
+		}
 	}
 
 	@Override

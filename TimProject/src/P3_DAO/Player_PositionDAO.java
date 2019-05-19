@@ -61,8 +61,8 @@ public class Player_PositionDAO {
 	public int joinPlayer_Position(PlayerPositionDTO PlayerPositionDTO) {
 		con();
 
-		sql = "INSERT INTO Player_Position(insert into player_football(Player_Position_Code, Player_Code, Group_Code, Player_Position_Name)"
-				+ "VALUES(PLAYER_FOOTBALL_SEQUENCE.nextval,?,?,?);";
+		sql = "INSERT INTO Player_Position(Player_Position_Code, Player_Code, Group_Code, Player_Position_Name) "
+				+ "VALUES(PLAYER_POSITION_SEQUENCE.nextval, ?, ?, ?)";
 		try {
 			pst = conn.prepareStatement(sql);
 			pst.setInt(1, PlayerPositionDTO.getPlayer_Code());
@@ -106,7 +106,7 @@ public class Player_PositionDAO {
 	
 	public ArrayList<PlayerPositionDTO> selectPlayer_Football(int PLAYER_CODE) {
 		con();
-		sql = "select * from Player_Position where PLAYER_CODE = ?";
+		sql = "select * from Player_Position where PLAYER_CODE = ? ORDER by PLAYER_POSITION_CODE desc";
 		ArrayList<PlayerPositionDTO> plist = new ArrayList<>();
 
 		try {

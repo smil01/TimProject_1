@@ -43,7 +43,7 @@ import java.awt.event.ActionEvent;
 public class Btn1_Button4 extends JPanel {
 	private JTextField textField;
 	private JFrame frame;
-	private loginDTO dto;
+	public loginDTO dto;
 	private int PLAYER_CODE;
 	private PlayerDTO p_dto;
 	private PlayerDAO p_dao = new PlayerDAO();
@@ -341,7 +341,7 @@ public class Btn1_Button4 extends JPanel {
 		lbl_PlayerStatButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				JPanel Stn1_Button2 = new Btn1_Button2(frame, dto, 0);
+				JPanel Stn1_Button2 = new Btn1_Button2(frame, dto, PLAYER_CODE);
 				frame.getContentPane().removeAll();
 				frame.getContentPane().add(Stn1_Button2);
 				frame.revalidate();
@@ -467,14 +467,12 @@ public class Btn1_Button4 extends JPanel {
 		JTextPane textPane = new JTextPane();
 		textPane.setFont(new Font("KBIZÇÑ¸¶À½°íµñ M", Font.PLAIN, 16));
 		String[] arrMemo = new String[arr.size()];
-		for (int i = 0; i < arr.size(); i++) {
-			arrMemo[i]=arr.get(i).getPlayer_Teacher_Content();	
-		}
-		String setMemo= "";
+
+		String setMemo = "";
 		for (int i = 0; i < arrMemo.length; i++) {
-			setMemo+="\n"+"¡Ø"+arrMemo[i];
+			setMemo += "\n" + "¡Ø" + arr.get(i).getPlayer_Teacher_Title()+ "´ÔÀÇ ¸Þ¸ð : " + arr.get(i).getPlayer_Teacher_Content();
 		}
-		
+
 		textPane.setText(setMemo);
 		panel_2.add(textPane, "name_16594864164300");
 
@@ -492,7 +490,14 @@ public class Btn1_Button4 extends JPanel {
 		JButton button = new JButton("\uB4F1\uB85D");
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				tdao.insertMemo(arr.get(0),textArea.getText());
+				tdao.insertMemo(dto, PLAYER_CODE, textArea.getText());
+				
+				
+				JPanel Btn1_Button4 = new Btn1_Button4(frame, dto, PLAYER_CODE);
+				frame.getContentPane().removeAll();
+				frame.getContentPane().add(Btn1_Button4);
+				frame.revalidate();
+				frame.repaint();
 			}
 		});
 		button.setForeground(Color.WHITE);
