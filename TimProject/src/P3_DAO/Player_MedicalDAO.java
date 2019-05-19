@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
+import P0_»ç¿ë¹ý.OracleURL;
 import P4_DTO.PlayerMedicalDTO;
 
 public class Player_MedicalDAO {
@@ -21,9 +22,10 @@ public class Player_MedicalDAO {
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 
-			String url = "jdbc:oracle:thin:@192.168.0.23:1521:xe";
-			String user = "hr";
-			String password = "hr";
+			String url = OracleURL.url;
+			String user = OracleURL.id;
+			String password = OracleURL.pw;
+
 
 			this.conn = DriverManager.getConnection(url, user, password);
 
