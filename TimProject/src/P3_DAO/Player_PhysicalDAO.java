@@ -121,7 +121,7 @@ public class Player_PhysicalDAO {
 	public ArrayList<PlayerPhysicalDTO> selectallPlayer() {
 		con();
 
-		sql = "select * from Player_Physical";
+		sql = "select * from Player_Physical ORDER BY PLAYER_PHYSICAL_CODE desc";
 		ArrayList<PlayerPhysicalDTO> aplist = new ArrayList<PlayerPhysicalDTO>();
 
 		try {
