@@ -93,8 +93,16 @@ public class ChartDAO {
 	public JFreeChart getChart_Overall(ArrayList<Player_FootballDTO> arr) {
 		// 单捞磐 积己
 		int data[][] = new int[5][5];
+		
+		int size = 0;
+		
+		if(arr.size() < 5) {
+			size = arr.size();
+		} else {
+			size = 5;
+		}
 
-		for (int i = 0; i < 5; i++) {
+		for (int i = 0; i < size; i++) {
 			data[i][0] = arr.get(i).getPlayer_Football_Speed();
 			data[i][1] = arr.get(i).getPlayer_Football_Shoot();
 			data[i][2] = arr.get(i).getPlayer_Football_Pass();
@@ -163,8 +171,16 @@ public class ChartDAO {
 	public JFreeChart getChart_Recent(ArrayList<Player_FootballDTO> arrFootball_Recent) {
 		// 单捞磐 积己
 		int data[][] = new int[5][5];
+		
+		int size = 0;
+		
+		if(arrFootball_Recent.size() < 5) {
+			size = arrFootball_Recent.size();
+		} else {
+			size = 5;
+		}
 
-		for (int i = 0; i < 5; i++) {
+		for (int i = 0; i < size; i++) {
 			data[i][0] = arrFootball_Recent.get(i).getPlayer_Football_Speed();
 			data[i][1] = arrFootball_Recent.get(i).getPlayer_Football_Shoot();
 			data[i][2] = arrFootball_Recent.get(i).getPlayer_Football_Pass();

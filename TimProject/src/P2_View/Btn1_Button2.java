@@ -25,6 +25,7 @@ import P3_DAO.Player_ContestDAO;
 import P3_DAO.Player_FootballDAO;
 import P3_DAO.Player_MedicalDAO;
 import P3_DAO.Player_PhysicalDAO;
+import P3_DAO.Player_PositionDAO;
 import P4_DTO.PlayerContestDTO;
 import P4_DTO.PlayerDTO;
 import P4_DTO.PlayerMedicalDTO;
@@ -529,7 +530,7 @@ public class Btn1_Button2 extends JPanel {
 		JLabel label_34 = new JLabel("\uBD80\uC0C1\uAE30\uAC04");
 		label_34.setForeground(new Color(153, 153, 153));
 		label_34.setFont(new Font("만화진흥원체", Font.PLAIN, 16));
-		label_34.setBounds(12, 112, 60, 32);
+		label_34.setBounds(12, 112, 107, 32);
 		panel_3.add(label_34);
 
 		JLabel lbl_Period = new JLabel();
@@ -553,11 +554,11 @@ public class Btn1_Button2 extends JPanel {
 		label_9.setBounds(88, 240, 182, 45);
 		StatViewPanel.add(label_9);
 
-		JLabel label_11 = new JLabel("\uACF5\uACA9\uC218");
+		JLabel label_11 = new JLabel(new Player_PositionDAO().selectPlayer_Football(PLAYER_CODE).get(0).getPlayer_Position_Name());
 		label_11.setHorizontalAlignment(SwingConstants.CENTER);
 		label_11.setForeground(Color.BLACK);
 		label_11.setFont(new Font("만화진흥원체", Font.PLAIN, 16));
-		label_11.setBounds(90, 287, 175, 23);
+		label_11.setBounds(98, 287, 167, 23);
 		StatViewPanel.add(label_11);
 
 		JLabel label_10 = new JLabel("\uC120\uC218 \uC2A4\uD0EF");
@@ -676,7 +677,7 @@ public class Btn1_Button2 extends JPanel {
 		JLabel label_27 = new JLabel("\uC5B4\uC2DC\uC2A4\uD2B8");
 		label_27.setForeground(new Color(153, 153, 153));
 		label_27.setFont(new Font("만화진흥원체", Font.PLAIN, 16));
-		label_27.setBounds(288, 698, 60, 32);
+		label_27.setBounds(288, 698, 98, 32);
 		StatViewPanel.add(label_27);
 
 		JLabel lbl_effective = new JLabel();

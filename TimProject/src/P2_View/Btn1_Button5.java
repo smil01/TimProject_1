@@ -830,7 +830,7 @@ public class Btn1_Button5 extends JPanel {
 		txt_Speed.setBounds(135, 462, 50, 50);
 		panel_2.add(txt_Speed);
 
-		JLabel label_5 = new JLabel("\uCD08");
+		JLabel label_5 = new JLabel("\uC810");
 		label_5.setForeground(new Color(189, 178, 137));
 		label_5.setFont(new Font("만화진흥원체", Font.PLAIN, 35));
 		label_5.setBounds(197, 480, 50, 32);

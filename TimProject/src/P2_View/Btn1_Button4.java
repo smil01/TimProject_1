@@ -19,6 +19,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.text.StyledEditorKit.ForegroundAction;
 
 import P3_DAO.PlayerDAO;
+import P3_DAO.Player_PositionDAO;
 import P3_DAO.Player_TeacherDAO;
 import P4_DTO.PlayerDTO;
 import P4_DTO.PlayerTeacherDTO;
@@ -453,10 +454,11 @@ public class Btn1_Button4 extends JPanel {
 		label_3.setBounds(173, 274, 82, 45);
 		StatViewPanel.add(label_3);
 
-		JLabel label_4 = new JLabel("\uACF5\uACA9\uC218");
+		JLabel label_4 = new JLabel(new Player_PositionDAO().selectPlayer_Football(PLAYER_CODE).get(0).getPlayer_Position_Name());
+		label_4.setHorizontalAlignment(SwingConstants.CENTER);
 		label_4.setForeground(Color.BLACK);
 		label_4.setFont(new Font("만화진흥원체", Font.PLAIN, 16));
-		label_4.setBounds(183, 321, 41, 19);
+		label_4.setBounds(142, 321, 124, 19);
 		StatViewPanel.add(label_4);
 
 		JPanel panel_2 = new JPanel();

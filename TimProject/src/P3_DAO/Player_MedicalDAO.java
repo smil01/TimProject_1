@@ -86,7 +86,7 @@ public class Player_MedicalDAO {
 	public ArrayList<PlayerMedicalDTO> SelectPlayer(int player_code) {
 		con();
 
-		sql = "select * from Player_Medical where Player_Code= ?";
+		sql = "select * from Player_Medical where Player_Code= ? ORDER BY PLAYER_MEDICAL_CODE desc";
 		ArrayList<PlayerMedicalDTO> plist = new ArrayList<PlayerMedicalDTO>();
 
 		try {

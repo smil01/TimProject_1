@@ -374,7 +374,7 @@ public class Lobby extends JPanel {
 		JLabel label_17 = new JLabel("\uAD6C\uB2E8 \uC2A4\uD0EF");
 		label_17.setForeground(Color.BLACK);
 		label_17.setFont(new Font("만화진흥원체", Font.PLAIN, 35));
-		label_17.setBounds(90, 317, 139, 45);
+		label_17.setBounds(90, 317, 192, 45);
 		panel.add(label_17);
 
 		JLabel label_29 = new JLabel("\uB300\uD68C \uC131\uC801");
@@ -391,7 +391,7 @@ public class Lobby extends JPanel {
 		JLabel label_30 = new JLabel("");
 		label_30.setForeground(new Color(189, 178, 137));
 		label_30.setFont(new Font("만화진흥원체", Font.PLAIN, 35));
-		label_30.setBounds(153, 475, 48, 32);
+		label_30.setBounds(153, 475, 92, 32);
 		label_30.setText(sum[2]+"");
 		panel.add(label_30);
 
@@ -404,7 +404,7 @@ public class Lobby extends JPanel {
 		JLabel label_32 = new JLabel("");
 		label_32.setForeground(new Color(189, 178, 137));
 		label_32.setFont(new Font("만화진흥원체", Font.PLAIN, 35));
-		label_32.setBounds(316, 475, 48, 32);
+		label_32.setBounds(316, 475, 78, 32);
 		label_32.setText(sum[3]+"");
 		panel.add(label_32);
 
@@ -417,7 +417,7 @@ public class Lobby extends JPanel {
 		JLabel label_34 = new JLabel("");
 		label_34.setForeground(new Color(189, 178, 137));
 		label_34.setFont(new Font("만화진흥원체", Font.PLAIN, 35));
-		label_34.setBounds(316, 594, 48, 32);
+		label_34.setBounds(316, 594, 92, 32);
 		label_34.setText(sum[1]+"");
 		panel.add(label_34);
 
@@ -430,7 +430,7 @@ public class Lobby extends JPanel {
 		JLabel label_36 = new JLabel("");
 		label_36.setForeground(new Color(189, 178, 137));
 		label_36.setFont(new Font("만화진흥원체", Font.PLAIN, 35));
-		label_36.setBounds(153, 594, 48, 32);
+		label_36.setBounds(153, 594, 104, 32);
 		label_36.setText(sum[0]+"");
 		panel.add(label_36);
 
@@ -443,7 +443,7 @@ public class Lobby extends JPanel {
 		JLabel label_38 = new JLabel("");
 		label_38.setForeground(new Color(189, 178, 137));
 		label_38.setFont(new Font("만화진흥원체", Font.PLAIN, 35));
-		label_38.setBounds(460, 479, 48, 32);
+		label_38.setBounds(460, 479, 92, 32);
 		label_38.setText(sum[4]+"");
 		panel.add(label_38);
 

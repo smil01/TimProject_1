@@ -95,7 +95,7 @@ public class Player_ContestDAO {
 	public ArrayList<PlayerContestDTO> SelectPlayer(int player_code) {
 		con();
 
-		sql = "select * from Player_contest where Player_Code= ?";
+		sql = "select * from Player_contest where Player_Code= ? ORDER BY PLAYER_CONTEST_CODE desc";
 		ArrayList<PlayerContestDTO> plist = new ArrayList<PlayerContestDTO>();
 
 		try {

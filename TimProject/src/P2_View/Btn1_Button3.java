@@ -25,6 +25,7 @@ import org.jfree.data.xy.XYSeriesCollection;
 import P3_DAO.ChartDAO;
 import P3_DAO.PlayerDAO;
 import P3_DAO.Player_FootballDAO;
+import P3_DAO.Player_PositionDAO;
 import P4_DTO.PlayerDTO;
 import P4_DTO.Player_FootballDTO;
 import P4_DTO.loginDTO;
@@ -472,10 +473,11 @@ public class Btn1_Button3 extends JPanel {
 		label_15.setBounds(134, 240, 82, 45);
 		panel_2.add(label_15);
 
-		JLabel label_16 = new JLabel("\uACF5\uACA9\uC218");
+		JLabel label_16 = new JLabel(new Player_PositionDAO().selectPlayer_Football(PLAYER_CODE).get(0).getPlayer_Position_Name());
+		label_16.setHorizontalAlignment(SwingConstants.CENTER);
 		label_16.setForeground(Color.BLACK);
 		label_16.setFont(new Font("만화진흥원체", Font.PLAIN, 16));
-		label_16.setBounds(144, 287, 41, 19);
+		label_16.setBounds(90, 287, 180, 19);
 		panel_2.add(label_16);
 
 		JPanel RecentPane = new JPanel();
