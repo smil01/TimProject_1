@@ -59,7 +59,7 @@ public class MemberDAO {
 	public ArrayList<MemberDTO> selectAllMember() {
 		con();
 
-		sql = "select * from MEMBER";
+		sql = "select * from MEMBER ORDER BY GROUP_CODE DESC";
 
 		ArrayList<MemberDTO> list = new ArrayList<MemberDTO>();
 

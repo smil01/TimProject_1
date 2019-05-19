@@ -59,7 +59,7 @@ public class GroupsDAO {
 	public ArrayList<GroupsDTO> SearchGroups(String Group_Name) {
 		con();
 
-		sql = "select * from Groups where Group_Name like '%'||?||'%' ";
+		sql = "select * from Groups where Group_Name like '%'||?||'%' ORDER BY GROUP_CODE desc";
 
 		ArrayList<GroupsDTO> list = new ArrayList<GroupsDTO>();
 
@@ -93,7 +93,7 @@ public class GroupsDAO {
 	public ArrayList<GroupsDTO> selectAllGroups() {
 		con();
 
-		sql = "select * from Groups ORDER BY Group_Code DESC";
+		sql = "select * from Groups ORDER BY Group_Code DESC ";
 
 		ArrayList<GroupsDTO> list = new ArrayList<GroupsDTO>();
 
@@ -125,7 +125,7 @@ public class GroupsDAO {
 	public ArrayList<GroupsDTO> selectAllGroups_Groupcode(int Group_Code) {
 		con();
 
-		sql = "select * from Groups where GROUP_CODE = ?";
+		sql = "select * from Groups where GROUP_CODE = ? ORDER BY Group_Code DESC ";
 
 		ArrayList<GroupsDTO> list = new ArrayList<GroupsDTO>();
 
