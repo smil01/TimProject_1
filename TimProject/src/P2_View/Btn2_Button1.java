@@ -389,7 +389,7 @@ public class Btn2_Button1 extends JPanel implements FocusListener {
 		separator_1.setBounds(885, 332, 316, 2);
 		panel_3.add(separator_1);
 
-		JLabel label_2 = new JLabel("\uC774\uBBF8 \uC874\uC7AC\uD558\uB294 \uAD6C\uB2E8\uBA85\uC785\uB2C8\uB2E4.");
+		JLabel label_2 = new JLabel("");
 		label_2.setForeground(Color.RED);
 		label_2.setFont(new Font("KBIZÇÑ¸¶À½°íµñ B", Font.PLAIN, 14));
 		label_2.setBounds(885, 344, 265, 15);

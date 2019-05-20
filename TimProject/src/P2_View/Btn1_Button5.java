@@ -455,11 +455,13 @@ public class Btn1_Button5 extends JPanel {
 		Lobby_Panel.add(panel_2);
 
 		JPanel panel_3 = new JPanel();
+		panel_3.setBackground(Color.WHITE);
 		panel_3.setBounds(90, 50, 180, 180);
 		panel_2.add(panel_3);
 		panel_3.setLayout(new CardLayout(0, 0));
 
-		JLabel lblNewLabel = new JLabel(new ImageIcon(p_dao.SelectPlayer(PLAYER_CODE).getPlayer_ResizeImg(240, 240)));
+		JLabel lblNewLabel = new JLabel(new ImageIcon(p_dao.SelectPlayer(PLAYER_CODE).getPlayer_ResizeImg(180, 180)));
+		lblNewLabel.setBackground(Color.WHITE);
 		panel_3.add(lblNewLabel, "name_17042670660900");
 
 		JPanel panel_5 = new JPanel();
@@ -621,7 +623,7 @@ public class Btn1_Button5 extends JPanel {
 		lbl_Position.setHorizontalAlignment(SwingConstants.CENTER);
 		lbl_Position.setForeground(Color.BLACK);
 		lbl_Position.setFont(new Font("만화진흥원체", Font.PLAIN, 16));
-		lbl_Position.setBounds(90, 295, 180, 19);
+		lbl_Position.setBounds(90, 287, 180, 19);
 		panel_2.add(lbl_Position);
 
 		JLabel label_17 = new JLabel("\uC120\uC218 \uC2A4\uD0EF");

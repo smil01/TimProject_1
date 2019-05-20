@@ -384,7 +384,7 @@ public class Btn4_Button1 extends JPanel implements FocusListener {
 		separator_2.setBounds(100, 387, 316, 2);
 		panel_3.add(separator_2);
 
-		label_pw_check = new JLabel("\uBE44\uBC00\uBC88\uD638\uB294 8\uC790\uB9AC \uC774\uC0C1\uC774\uC5B4\uC57C\uD569\uB2C8\uB2E4.");
+		label_pw_check = new JLabel("");
 		label_pw_check.setForeground(Color.RED);
 		label_pw_check.setFont(new Font("³ª´®°íµñ", Font.PLAIN, 14));
 		label_pw_check.setBounds(100, 399, 265, 15);
@@ -403,7 +403,7 @@ public class Btn4_Button1 extends JPanel implements FocusListener {
 		separator_3.setBounds(100, 465, 316, 2);
 		panel_3.add(separator_3);
 
-		label_pw_re_check = new JLabel("\uBE44\uBC00\uBC88\uD638\uAC00 \uC77C\uCE58\uD558\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4");
+		label_pw_re_check = new JLabel("");
 		label_pw_re_check.setForeground(Color.RED);
 		label_pw_re_check.setFont(new Font("³ª´®°íµñ", Font.PLAIN, 14));
 		label_pw_re_check.setBounds(100, 477, 265, 15);
@@ -424,7 +424,7 @@ public class Btn4_Button1 extends JPanel implements FocusListener {
 		separator_4.setBounds(100, 549, 316, 2);
 		panel_3.add(separator_4);
 
-		label_name_check = new JLabel("\uD544\uC218\uC785\uB825\uC0AC\uD56D\uC785\uB2C8\uB2E4.\r\n");
+		label_name_check = new JLabel("");
 		label_name_check.setForeground(Color.RED);
 		label_name_check.setFont(new Font("³ª´®°íµñ", Font.PLAIN, 14));
 		label_name_check.setBounds(100, 561, 265, 15);

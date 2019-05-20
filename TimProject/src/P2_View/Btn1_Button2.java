@@ -432,18 +432,20 @@ public class Btn1_Button2 extends JPanel {
 		StatViewPanel.setLayout(null);
 
 		JPanel panel_2 = new JPanel();
+		panel_2.setBackground(Color.WHITE);
 		panel_2.setBounds(90, 50, 180, 180);
 		StatViewPanel.add(panel_2);
 		panel_2.setLayout(new CardLayout(0, 0));
 
 		JLabel lbl_image = new JLabel(new ImageIcon(p_dto.getPlayer_ResizeImg(180, 180)));
+		lbl_image.setBackground(Color.WHITE);
 		lbl_image.setIcon(new ImageIcon(p_dto.getPlayer_ResizeImg(180, 180)));
 		lbl_image.setHorizontalAlignment(SwingConstants.CENTER);
 		panel_2.add(lbl_image, "name_5083844218100");
 
 		JPanel panel_3 = new JPanel();
 		panel_3.setBackground(new Color(255, 255, 255));
-		panel_3.setBounds(345, 50, 468, 230);
+		panel_3.setBounds(338, 76, 468, 230);
 		StatViewPanel.add(panel_3);
 		panel_3.setLayout(null);
 
@@ -484,7 +486,7 @@ public class Btn1_Button2 extends JPanel {
 		JLabel lblCm = new JLabel();
 		lblCm.setForeground(new Color(189, 178, 137));
 		lblCm.setFont(new Font("만화진흥원체", Font.PLAIN, 35));
-		lblCm.setBounds(84, 52, 139, 32);
+		lblCm.setBounds(84, 52, 73, 32);
 		lblCm.setText(ArrFootball_phy.get(0).getPlayer_Physical_Height() + "");
 		panel_3.add(lblCm);
 
@@ -546,19 +548,30 @@ public class Btn1_Button2 extends JPanel {
 		lbl_Title.setBounds(87, 154, 367, 19);
 		lbl_Title.setText(ArrFootball_med.get(0).getPlayer_Medical_Title());
 		panel_3.add(lbl_Title);
+		
+		JLabel label_2 = new JLabel("CM");
+		label_2.setForeground(new Color(189, 178, 137));
+		label_2.setFont(new Font("만화진흥원체", Font.PLAIN, 35));
+		label_2.setBounds(153, 52, 53, 32);
+		panel_3.add(label_2);
+		
+		JLabel lblKg = new JLabel("KG");
+		lblKg.setForeground(new Color(189, 178, 137));
+		lblKg.setFont(new Font("만화진흥원체", Font.PLAIN, 35));
+		lblKg.setBounds(294, 52, 53, 32);
+		panel_3.add(lblKg);
 
 		JLabel label_9 = new JLabel(p_dto.getPlayer_Name());
 		label_9.setHorizontalAlignment(SwingConstants.CENTER);
-		label_9.setForeground(new Color(0, 0, 0));
-		label_9.setFont(new Font("Dialog", Font.PLAIN, 24));
-		label_9.setBounds(88, 240, 182, 45);
+		label_9.setFont(new Font("만화진흥원체", Font.PLAIN, 25));
+		label_9.setBounds(90, 240, 180, 45);
 		StatViewPanel.add(label_9);
 
 		JLabel label_11 = new JLabel(new Player_PositionDAO().selectPlayer_Football(PLAYER_CODE).get(0).getPlayer_Position_Name());
 		label_11.setHorizontalAlignment(SwingConstants.CENTER);
 		label_11.setForeground(Color.BLACK);
 		label_11.setFont(new Font("만화진흥원체", Font.PLAIN, 16));
-		label_11.setBounds(98, 287, 167, 23);
+		label_11.setBounds(90, 287, 180, 19);
 		StatViewPanel.add(label_11);
 
 		JLabel label_10 = new JLabel("\uC120\uC218 \uC2A4\uD0EF");

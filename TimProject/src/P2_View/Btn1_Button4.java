@@ -445,29 +445,31 @@ public class Btn1_Button4 extends JPanel {
 		JLabel label_2 = new JLabel("");
 		label_2.setIcon(new ImageIcon(p_dto.getPlayer_ResizeImg(180, 180)));
 		label_2.setHorizontalAlignment(SwingConstants.CENTER);
-		label_2.setBounds(129, 84, 180, 180);
+		label_2.setBounds(90, 50, 180, 180);
 		StatViewPanel.add(label_2);
 
 		JLabel label_3 = new JLabel(p_dto.getPlayer_Name());
 		label_3.setHorizontalAlignment(SwingConstants.CENTER);
 		label_3.setForeground(Color.BLACK);
 		label_3.setFont(new Font("만화진흥원체", Font.PLAIN, 25));
-		label_3.setBounds(89, 274, 251, 45);
+		label_3.setBounds(90, 240, 180, 45);
 		StatViewPanel.add(label_3);
 
 		JLabel label_4 = new JLabel(new Player_PositionDAO().selectPlayer_Football(PLAYER_CODE).get(0).getPlayer_Position_Name());
 		label_4.setHorizontalAlignment(SwingConstants.CENTER);
 		label_4.setForeground(Color.BLACK);
 		label_4.setFont(new Font("만화진흥원체", Font.PLAIN, 16));
-		label_4.setBounds(99, 321, 210, 19);
+		label_4.setBounds(90, 287, 180, 19);
 		StatViewPanel.add(label_4);
 
 		JPanel panel_2 = new JPanel();
-		panel_2.setBounds(421, 81, 724, 349);
+		panel_2.setBounds(419, 104, 724, 349);
 		StatViewPanel.add(panel_2);
 		panel_2.setLayout(new CardLayout(0, 0));
 
 		JTextPane textPane = new JTextPane();
+		textPane.setEditable(false);
+		textPane.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(189, 178, 137)));
 		textPane.setFont(new Font("KBIZ한마음고딕 M", Font.PLAIN, 16));
 		String[] arrMemo = new String[arr.size()];
 
@@ -480,7 +482,7 @@ public class Btn1_Button4 extends JPanel {
 		panel_2.add(textPane, "name_16594864164300");
 
 		JPanel panel_3 = new JPanel();
-		panel_3.setBounds(421, 447, 724, 180);
+		panel_3.setBounds(419, 536, 724, 90);
 		StatViewPanel.add(panel_3);
 		panel_3.setLayout(new CardLayout(0, 0));
 
@@ -506,8 +508,20 @@ public class Btn1_Button4 extends JPanel {
 		button.setForeground(Color.WHITE);
 		button.setFont(new Font("KBIZ한마음고딕 B", Font.PLAIN, 12));
 		button.setBackground(new Color(71, 120, 197));
-		button.setBounds(1065, 659, 80, 35);
+		button.setBounds(1063, 663, 80, 35);
 		StatViewPanel.add(button);
+		
+		JLabel label_5 = new JLabel("\uD3C9\uAC00\uC774\uB825");
+		label_5.setForeground(new Color(189, 178, 137));
+		label_5.setFont(new Font("KBIZ한마음고딕 B", Font.PLAIN, 25));
+		label_5.setBounds(419, 50, 217, 40);
+		StatViewPanel.add(label_5);
+		
+		JLabel label_6 = new JLabel("\uBA54\uBAA8\uC785\uB825");
+		label_6.setForeground(new Color(189, 178, 137));
+		label_6.setFont(new Font("KBIZ한마음고딕 B", Font.PLAIN, 25));
+		label_6.setBounds(419, 482, 217, 40);
+		StatViewPanel.add(label_6);
 
 	}
 }

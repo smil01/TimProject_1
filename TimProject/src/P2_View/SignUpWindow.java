@@ -46,22 +46,21 @@ public class SignUpWindow extends JPanel implements FocusListener {
 	private JTextField txt_nickname;
 	private JTextField textField;
 	public JPanel picture_panel;
-	JLabel lbl_pw;
-	JLabel lbl_pw_re;
 	private JTextField txt_address;
 	private JTextField txt_tel;
 	public String jPath;
-	JLabel lbl_tel;
 	private JLabel lbl_icon;
 	private JTextField textField_1;
 	public SignUpDAO dao = new SignUpDAO();
 	public JLabel lbl_id_check;
 	public JFrame frame;
 	public JLabel lbl_pw_check;
-	public JLabel lbl_pw_re_check ;
+	public JLabel lbl_pw_re_check;
 	public int MembershipType_index;
-	public JLabel lbl_nickname_check ;
+	public JLabel lbl_nickname_check;
 	public GroupsDTO result = new GroupsDTO();
+	IntegerDocument id = new IntegerDocument();
+
 
 	/**
 	 * Create the panel.
@@ -69,7 +68,7 @@ public class SignUpWindow extends JPanel implements FocusListener {
 
 	public SignUpWindow(JFrame frame) {
 		this.frame = frame;
-		
+
 		setLayout(new CardLayout(0, 0));
 
 		JPanel panel = new JPanel();
@@ -113,18 +112,14 @@ public class SignUpWindow extends JPanel implements FocusListener {
 		lbl_id_check.setBounds(77, 274, 265, 15);
 		panel_back_left.add(lbl_id_check);
 
-		lbl_pw = new JLabel("\uBE44\uBC00\uBC88\uD638");
-		lbl_pw.setForeground(Color.WHITE);
-		lbl_pw.setFont(new Font("KBIZ한마음고딕 M", Font.PLAIN, 14));
-		lbl_pw.setBounds(77, 311, 75, 15);
-		panel_back_left.add(lbl_pw);
-
 		pwField = new JPasswordField();
 		pwField.setFont(new Font("KBIZ한마음고딕 M", Font.PLAIN, 14));
 		pwField.setBorder(null);
 		pwField.setForeground(Color.WHITE);
 		pwField.setBackground(new Color(23, 35, 51));
 		pwField.setBounds(77, 307, 316, 21);
+		pwField.setEchoChar((char)0); 
+		pwField.setText("비밀번호");
 		pwField.addFocusListener(this);
 		panel_back_left.add(pwField);
 
@@ -132,18 +127,12 @@ public class SignUpWindow extends JPanel implements FocusListener {
 		pw_separator.setBounds(77, 338, 316, 2);
 		panel_back_left.add(pw_separator);
 
-		 lbl_pw_check = new JLabel(
+		lbl_pw_check = new JLabel(
 				"\uBE44\uBC00\uBC88\uD638\uB294 8\uC790\uB9AC \uC774\uC0C1\uC774\uC5B4\uC57C\uD569\uB2C8\uB2E4.");
 		lbl_pw_check.setForeground(Color.RED);
 		lbl_pw_check.setFont(new Font("KBIZ한마음고딕 M", Font.PLAIN, 14));
 		lbl_pw_check.setBounds(77, 350, 265, 15);
 		panel_back_left.add(lbl_pw_check);
-
-		lbl_pw_re = new JLabel("\uBE44\uBC00\uBC88\uD638 \uD655\uC778");
-		lbl_pw_re.setForeground(Color.WHITE);
-		lbl_pw_re.setFont(new Font("KBIZ한마음고딕 M", Font.PLAIN, 14));
-		lbl_pw_re.setBounds(77, 389, 102, 15);
-		panel_back_left.add(lbl_pw_re);
 
 		pwField_re = new JPasswordField();
 		pwField_re.setForeground(Color.WHITE);
@@ -151,6 +140,8 @@ public class SignUpWindow extends JPanel implements FocusListener {
 		pwField_re.setBorder(null);
 		pwField_re.setBackground(new Color(23, 35, 51));
 		pwField_re.setBounds(77, 385, 316, 21);
+		pwField_re.setEchoChar((char)0); 
+		pwField_re.setText("비밀번호 재확인");
 		pwField_re.addFocusListener(this);
 		panel_back_left.add(pwField_re);
 
@@ -158,8 +149,7 @@ public class SignUpWindow extends JPanel implements FocusListener {
 		pw_re_separator.setBounds(77, 416, 316, 2);
 		panel_back_left.add(pw_re_separator);
 
-		lbl_pw_re_check = new JLabel(
-				"\uBE44\uBC00\uBC88\uD638\uAC00 \uC77C\uCE58\uD558\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4");
+		lbl_pw_re_check = new JLabel("\uD544\uC218 \uC785\uB825 \uC694\uC18C \uC785\uB2C8\uB2E4.");
 		lbl_pw_re_check.setForeground(Color.RED);
 		lbl_pw_re_check.setFont(new Font("KBIZ한마음고딕 M", Font.PLAIN, 14));
 		lbl_pw_re_check.setBounds(77, 428, 265, 15);
@@ -180,14 +170,12 @@ public class SignUpWindow extends JPanel implements FocusListener {
 		nickname_separator.setBounds(77, 500, 316, 2);
 		panel_back_left.add(nickname_separator);
 
-		lbl_nickname_check = new JLabel(
-				"\uD544\uC218 \uC785\uB825 \uC694\uC18C \uC785\uB2C8\uB2E4.");
+		lbl_nickname_check = new JLabel("\uD544\uC218 \uC785\uB825 \uC694\uC18C \uC785\uB2C8\uB2E4.");
 		lbl_nickname_check.setForeground(Color.RED);
 		lbl_nickname_check.setFont(new Font("KBIZ한마음고딕 M", Font.PLAIN, 14));
 		lbl_nickname_check.setBounds(77, 512, 265, 15);
 		panel_back_left.add(lbl_nickname_check);
 
-		IntegerDocument id = new IntegerDocument();
 		txt_address = new JTextField();
 		txt_address.setText("\uC8FC\uC18C");
 		txt_address.setForeground(Color.WHITE);
@@ -219,17 +207,11 @@ public class SignUpWindow extends JPanel implements FocusListener {
 		});
 		lbl_X.setForeground(Color.WHITE);
 		lbl_X.setFont(new Font("KBIZ한마음고딕 M", Font.PLAIN, 14));
-		
+
 		JLabel lblNewLabel = new JLabel("New label");
 		lblNewLabel.setIcon(new ImageIcon(SignUpWindow.class.getResource("/P5_Img/SignImg.jpg")));
 		lblNewLabel.setBounds(0, 0, 1052, 900);
 		panel_back_right.add(lblNewLabel);
-
-		lbl_tel = new JLabel("\uC5F0\uB77D\uCC98");
-		lbl_tel.setForeground(Color.WHITE);
-		lbl_tel.setFont(new Font("KBIZ한마음고딕 M", Font.PLAIN, 14));
-		lbl_tel.setBounds(77, 609, 75, 15);
-		panel_back_left.add(lbl_tel);
 
 		txt_tel = new JTextField();
 		txt_tel.setForeground(Color.WHITE);
@@ -238,7 +220,7 @@ public class SignUpWindow extends JPanel implements FocusListener {
 		txt_tel.setBorder(null);
 		txt_tel.setBackground(new Color(23, 35, 51));
 		txt_tel.setBounds(77, 605, 316, 21);
-		txt_tel.setDocument(id);
+		txt_tel.setText("연락처");
 		txt_tel.addFocusListener(this);
 		panel_back_left.add(txt_tel);
 
@@ -268,7 +250,7 @@ public class SignUpWindow extends JPanel implements FocusListener {
 				gudan.setVisible(true);
 			}
 		});
-		
+
 		btnNewButton.setBounds(402, 661, 90, 25);
 		btnNewButton.setFont(new Font("KBIZ한마음고딕 M", Font.PLAIN, 12));
 		btnNewButton.setForeground(new Color(255, 255, 255));
@@ -344,20 +326,21 @@ public class SignUpWindow extends JPanel implements FocusListener {
 				String textpassword = String.valueOf(pwField.getPassword());
 				System.out.println(textpassword);
 
-				SignUpDTO dto = new SignUpDTO(txt_id.getText(), result.getGroup_Code(), txt_nickname.getText(), textpassword,
-						txt_tel.getText(), member_LocalCode, txt_address.getText(), jPath, MembershipType_index);
+				SignUpDTO dto = new SignUpDTO(txt_id.getText(), result.getGroup_Code(), txt_nickname.getText(),
+						textpassword, txt_tel.getText(), member_LocalCode, txt_address.getText(), jPath,
+						MembershipType_index);
 				System.out.println(dto);
 				dao = new SignUpDAO();
 				int cnt = dao.join(dto);
 				if (cnt > 0) {
-					JOptionPane.showMessageDialog(null, "회원가입에 성공하셨습니다.\n 로그인창으로 돌아갑니다.", "회원가입 성공", JOptionPane.PLAIN_MESSAGE);
+					JOptionPane.showMessageDialog(null, "회원가입에 성공하셨습니다.\n 로그인창으로 돌아갑니다.", "회원가입 성공",
+							JOptionPane.PLAIN_MESSAGE);
 					JPanel LoginWindow = new LoginWindow(frame);
 					frame.getContentPane().removeAll();
 					frame.getContentPane().add(LoginWindow);
 					frame.revalidate();
 					frame.repaint();
-					
-					
+
 				} else {
 					JOptionPane.showMessageDialog(null, "입력된 정보를 확인해 주세요", "회원가입 실패", JOptionPane.ERROR_MESSAGE);
 				}
@@ -377,35 +360,36 @@ public class SignUpWindow extends JPanel implements FocusListener {
 				frame.getContentPane().removeAll();
 				frame.getContentPane().add(LoginWindow);
 				frame.revalidate();
-				frame.repaint();			
+				frame.repaint();
 			}
 		});
-		
+
 		button_1.setForeground(Color.WHITE);
 		button_1.setFont(new Font("KBIZ한마음고딕 M", Font.PLAIN, 12));
 		button_1.setBackground(new Color(71, 120, 197));
 		button_1.setBounds(231, 761, 80, 35);
 		panel_back_left.add(button_1);
-		
+
 		JLabel label = new JLabel("\uD68C\uC6D0\uC720\uD615");
 		label.setForeground(Color.WHITE);
 		label.setFont(new Font("KBIZ한마음고딕 M", Font.PLAIN, 14));
 		label.setBounds(200, 146, 75, 15);
 		panel_back_left.add(label);
-		
+
 		JComboBox comboBox = new JComboBox();
 		comboBox.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				 MembershipType_index=comboBox.getSelectedIndex();
-				
+				MembershipType_index = comboBox.getSelectedIndex();
+
 			}
 		});
 		comboBox.setForeground(new Color(255, 255, 255));
 		comboBox.setBackground(new Color(71, 120, 197));
-		
+
 		comboBox.setFont(new Font("KBIZ한마음고딕 M", Font.PLAIN, 14));
 		comboBox.setBorder(null);
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"\uAC10\uB3C5", "\uCF54\uCE58", "\uC2A4\uCE74\uC6B0\uD130", "\uAE30\uD0C0"}));
+		comboBox.setModel(new DefaultComboBoxModel(
+				new String[] { "\uAC10\uB3C5", "\uCF54\uCE58", "\uC2A4\uCE74\uC6B0\uD130", "\uAE30\uD0C0" }));
 		comboBox.setBounds(200, 171, 90, 25);
 		panel_back_left.add(comboBox);
 	}
@@ -415,15 +399,20 @@ public class SignUpWindow extends JPanel implements FocusListener {
 		if (e.getSource() == txt_id) {
 			txt_id.setText("");
 		} else if (e.getSource() == txt_nickname) {
-			
+			txt_nickname.setText("");
 		} else if (e.getSource() == pwField) {
-			lbl_pw.setText("");
+			pwField.setText("");
+			pwField.setEchoChar('*'); 
 		} else if (e.getSource() == pwField_re) {
-			lbl_pw_re.setText("");
+			pwField_re.setText("");
+			pwField_re.setEchoChar('*'); 
 		} else if (e.getSource() == txt_tel) {
-			lbl_tel.setText("");
+			txt_tel.setDocument(id);
+			txt_tel.setText("");
 		} else if (e.getSource() == txt_address) {
 			txt_address.setText("");
+		} else if (e.getSource() == textField_1) {
+			textField_1.setText("");
 		}
 
 	}
@@ -431,7 +420,7 @@ public class SignUpWindow extends JPanel implements FocusListener {
 	@Override
 	public void focusLost(FocusEvent e) {
 		// TODO Auto-generated method stub
-		Emailcheck echeck= new Emailcheck();
+		Emailcheck echeck = new Emailcheck();
 		if (e.getSource() == txt_id) {
 			System.out.println(txt_id.getText());
 			System.out.println(dao.isEmailJoin(txt_id.getText()));
@@ -442,50 +431,45 @@ public class SignUpWindow extends JPanel implements FocusListener {
 
 				lbl_id_check.setText("이미 사용중인 아이디입니다. ");
 
-			} 
-			else if (echeck.Emailcheck(txt_id.getText())) {
+			} else if (echeck.Emailcheck(txt_id.getText())) {
 				lbl_id_check.setForeground(Color.red);
 				lbl_id_check.setText("이메일 형태로 작성바랍니다. ");
-			}
-			else if (!dao.isEmailJoin(txt_id.getText())&&!echeck.Emailcheck(txt_id.getText())) {
+			} else if (!dao.isEmailJoin(txt_id.getText()) && !echeck.Emailcheck(txt_id.getText())) {
 				lbl_id_check.setForeground(Color.green);
-				lbl_id_check.setText("멋진아이디네요!!");
+				lbl_id_check.setText("사용 가능한 이메일입니다.");
 			}
 		}
 		String textpassword = String.valueOf(pwField.getPassword());
 		if (e.getSource() == pwField) {
-			passwordCheck pcheck=new passwordCheck();
+			passwordCheck pcheck = new passwordCheck();
 			if (pcheck.checkPw(textpassword)) {
 				lbl_pw_check.setForeground(Color.red);
 				lbl_pw_check.setText("8자이상16이하 으로 입력해주세요");
-			}else if(!pcheck.checkPw(textpassword)){
-				lbl_pw_check.setText("잘했어요");
+			} else if (!pcheck.checkPw(textpassword)) {
+				lbl_pw_check.setText("적합한 비밀번호입니다.");
 				lbl_pw_check.setForeground(Color.GREEN);
 			}
-			System.out.println("패스워드>>"+textpassword);
 		}
-		if (e.getSource()==pwField_re) {
-			
+		if (e.getSource() == pwField_re) {
+
 			String textpassword_re = String.valueOf(pwField_re.getPassword());
 			if (!textpassword.equals(textpassword_re)) {
 				lbl_pw_re_check.setForeground(Color.red);
 				lbl_pw_re_check.setText("비밀번호 를 동일하게 입력해주세요 ");
+			} else if (textpassword_re.equals(textpassword)) {
+
+				lbl_pw_re_check.setForeground(Color.GREEN);
+				lbl_pw_re_check.setText("비밀번호가 일치합니다.");
 			}
-		else if (textpassword_re.equals(textpassword)) {
-			
-			lbl_pw_re_check.setForeground(Color.GREEN);
-			lbl_pw_re_check.setText("잘했어요");
 		}
-			System.out.println("패스워드re>>"+textpassword_re);
-	}
-		if (e.getSource()==txt_nickname) {
+		if (e.getSource() == txt_nickname) {
 			if (!txt_nickname.getText().equals(null)) {
 				lbl_nickname_check.setForeground(Color.GREEN);
-				lbl_nickname_check.setText("잘했어요");
-			}else {
+				lbl_nickname_check.setText("사용가능한 닉네임입니다.");
+			} else {
 				lbl_nickname_check.setForeground(Color.red);
 				lbl_nickname_check.setText("필수 입력 요소 입니다.");
 			}
 		}
-}
+	}
 }

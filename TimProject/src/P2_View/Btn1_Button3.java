@@ -433,11 +433,13 @@ public class Btn1_Button3 extends JPanel {
 		Lobby_Panel.add(panel_2);
 
 		JPanel panel_3 = new JPanel();
+		panel_3.setBackground(Color.WHITE);
 		panel_3.setBounds(90, 50, 180, 180);
 		panel_2.add(panel_3);
 		panel_3.setLayout(new CardLayout(0, 0));
 
 		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setBackground(Color.WHITE);
 		lblNewLabel.setIcon(new ImageIcon(p_dto.getPlayer_ResizeImg(180, 180)));
 		panel_3.add(lblNewLabel, "name_4633110137300");
 
