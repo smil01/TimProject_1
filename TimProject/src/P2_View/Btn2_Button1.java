@@ -381,18 +381,18 @@ public class Btn2_Button1 extends JPanel implements FocusListener {
 		textname.setColumns(10);
 		textname.setBorder(null);
 		textname.setBackground(new Color(23, 35, 51));
-		textname.setBounds(885, 301, 316, 21);
+		textname.setBounds(885, 341, 316, 21);
 		textname.addFocusListener(this);
 		panel_3.add(textname);
 
 		JSeparator separator_1 = new JSeparator();
-		separator_1.setBounds(885, 332, 316, 2);
+		separator_1.setBounds(885, 372, 316, 2);
 		panel_3.add(separator_1);
 
 		JLabel label_2 = new JLabel("");
 		label_2.setForeground(Color.RED);
 		label_2.setFont(new Font("KBIZ한마음고딕 B", Font.PLAIN, 14));
-		label_2.setBounds(885, 344, 265, 15);
+		label_2.setBounds(885, 384, 265, 15);
 		panel_3.add(label_2);
 
 		textaddress = new JTextField();
@@ -402,11 +402,11 @@ public class Btn2_Button1 extends JPanel implements FocusListener {
 		textaddress.setColumns(10);
 		textaddress.setBorder(null);
 		textaddress.setBackground(new Color(23, 35, 51));
-		textaddress.setBounds(885, 369, 316, 21);
+		textaddress.setBounds(885, 409, 316, 21);
 		panel_3.add(textaddress);
 
 		JSeparator separator_4 = new JSeparator();
-		separator_4.setBounds(885, 400, 316, 2);
+		separator_4.setBounds(885, 440, 316, 2);
 		panel_3.add(separator_4);
 
 		texthomepage = new JTextField();
@@ -416,17 +416,17 @@ public class Btn2_Button1 extends JPanel implements FocusListener {
 		texthomepage.setColumns(10);
 		texthomepage.setBorder(null);
 		texthomepage.setBackground(new Color(23, 35, 51));
-		texthomepage.setBounds(885, 420, 316, 21);
+		texthomepage.setBounds(885, 460, 316, 21);
 		panel_3.add(texthomepage);
 
 		JSeparator separator_5 = new JSeparator();
-		separator_5.setBounds(885, 451, 316, 2);
+		separator_5.setBounds(885, 491, 316, 2);
 		panel_3.add(separator_5);
 
-		JLabel label_8 = new JLabel("\uBCC0\uACBD\uD560 \uAD6C\uB2E8 \uC5F0\uB77D\uCC98");
+		JLabel label_8 = new JLabel("\uAD6C\uB2E8 \uC815\uBCF4\uBCC0\uACBD");
 		label_8.setForeground(Color.WHITE);
-		label_8.setFont(new Font("KBIZ한마음고딕 B", Font.PLAIN, 14));
-		label_8.setBounds(885, 515, 292, 15);
+		label_8.setFont(new Font("만화진흥원체", Font.PLAIN, 25));
+		label_8.setBounds(885, 96, 139, 45);
 		panel_3.add(label_8);
 
 		texttel = new JTextField();
@@ -436,16 +436,16 @@ public class Btn2_Button1 extends JPanel implements FocusListener {
 		texttel.setColumns(10);
 		texttel.setBorder(null);
 		texttel.setBackground(new Color(23, 35, 51));
-		texttel.setBounds(885, 476, 316, 21);
+		texttel.setBounds(885, 516, 316, 21);
 		panel_3.add(texttel);
 
 		JSeparator separator_6 = new JSeparator();
-		separator_6.setBounds(885, 507, 316, 2);
+		separator_6.setBounds(885, 547, 316, 2);
 		panel_3.add(separator_6);
 
 		JPanel panel_4 = new JPanel();
 		panel_4.setBackground(new Color(240, 240, 240));
-		panel_4.setBounds(885, 136, 100, 100);
+		panel_4.setBounds(885, 176, 100, 100);
 		panel_3.add(panel_4);
 		SpringLayout sl_panel_4 = new SpringLayout();
 		panel_4.setLayout(sl_panel_4);
@@ -497,7 +497,7 @@ public class Btn2_Button1 extends JPanel implements FocusListener {
 		button_1.setForeground(Color.WHITE);
 		button_1.setFont(new Font("KBIZ한마음고딕 B", Font.PLAIN, 12));
 		button_1.setBackground(new Color(71, 120, 197));
-		button_1.setBounds(997, 213, 89, 23);
+		button_1.setBounds(997, 253, 89, 23);
 		panel_3.add(button_1);
 
 		JButton button_2 = new JButton("\uBCC0\uACBD");
@@ -656,7 +656,7 @@ public class Btn2_Button1 extends JPanel implements FocusListener {
 		JSeparator separator_3 = new JSeparator();
 		separator_3.setOrientation(SwingConstants.VERTICAL);
 		separator_3.setForeground(new Color(255, 255, 255));
-		separator_3.setBounds(786, 56, 12, 697);
+		separator_3.setBounds(795, 96, 2, 625);
 		panel_3.add(separator_3);
 
 		int Group_Code = dto.getGroup_Code();
@@ -712,14 +712,19 @@ public class Btn2_Button1 extends JPanel implements FocusListener {
 
 		JLabel label_1 = new JLabel("\uC601\uC785 \uB9AC\uC2A4\uD2B8");
 		label_1.setForeground(Color.WHITE);
-		label_1.setFont(new Font("Dialog", Font.PLAIN, 25));
-		label_1.setBounds(116, 408, 139, 45);
+		label_1.setFont(new Font("만화진흥원체", Font.PLAIN, 25));
+		label_1.setBounds(116, 397, 139, 45);
 		panel_3.add(label_1);
 
 		JSeparator separator_7 = new JSeparator();
 		separator_7.setForeground(new Color(229, 229, 229));
 		separator_7.setBounds(116, 453, 500, 10);
 		panel_3.add(separator_7);
+		
+		JSeparator separator_8 = new JSeparator();
+		separator_8.setForeground(new Color(229, 229, 229));
+		separator_8.setBounds(885, 152, 316, 10);
+		panel_3.add(separator_8);
 
 		ArrayList<PlayerDTO> translist = new ArrayList<PlayerDTO>();
 		translist = transdao.transferTo(Group_Code);

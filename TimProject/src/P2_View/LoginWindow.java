@@ -62,7 +62,7 @@ public class LoginWindow extends JPanel {
 		panel_back_right.setLayout(null);
 
 		JLabel lbl_id = new JLabel("\uC544\uC774\uB514");
-		lbl_id.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 16));
+		lbl_id.setFont(new Font("KBIZÇÑ¸¶À½°íµñ B", Font.PLAIN, 16));
 		lbl_id.setForeground(new Color(255, 255, 255));
 		lbl_id.setBounds(116, 227, 57, 15);
 		panel_back_right.add(lbl_id);
@@ -70,7 +70,7 @@ public class LoginWindow extends JPanel {
 		txt_id = new JTextField();
 		txt_id.setBorder(null);
 		txt_id.setText("");
-		txt_id.setFont(new Font("±¼¸²", Font.PLAIN, 14));
+		txt_id.setFont(new Font("KBIZÇÑ¸¶À½°íµñ M", Font.PLAIN, 16));
 		txt_id.setForeground(new Color(255, 255, 255));
 		txt_id.setBackground(new Color(23, 35, 51));
 		txt_id.setBounds(116, 261, 316, 21);
@@ -87,7 +87,7 @@ public class LoginWindow extends JPanel {
 
 		JLabel lbl_pw = new JLabel("\uD328\uC2A4\uC6CC\uB4DC");
 		lbl_pw.setForeground(Color.WHITE);
-		lbl_pw.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 16));
+		lbl_pw.setFont(new Font("KBIZÇÑ¸¶À½°íµñ B", Font.PLAIN, 16));
 		lbl_pw.setBounds(116, 357, 75, 15);
 		panel_back_right.add(lbl_pw);
 
@@ -100,7 +100,7 @@ public class LoginWindow extends JPanel {
 		panel_back_right.add(pwField);
 
 		Button btn_sign_in = new Button("\uB85C\uADF8\uC778");
-		btn_sign_in.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 15));
+		btn_sign_in.setFont(new Font("KBIZÇÑ¸¶À½°íµñ B", Font.BOLD, 16));
 		btn_sign_in.setForeground(new Color(255, 255, 255));
 		btn_sign_in.setBackground(new Color(71, 120, 197));
 		btn_sign_in.addMouseListener(new MouseAdapter() {
@@ -135,7 +135,7 @@ public class LoginWindow extends JPanel {
 
 		JLabel lbl_sign_up_intro = new JLabel("\uC544\uC9C1 \uD68C\uC6D0\uC774 \uC544\uB2C8\uC2E0\uAC00\uC694?");
 		lbl_sign_up_intro.setForeground(Color.WHITE);
-		lbl_sign_up_intro.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 12));
+		lbl_sign_up_intro.setFont(new Font("KBIZÇÑ¸¶À½°íµñ M", Font.PLAIN, 14));
 		lbl_sign_up_intro.setBounds(116, 581, 143, 15);
 		panel_back_right.add(lbl_sign_up_intro);
 
@@ -151,6 +151,7 @@ public class LoginWindow extends JPanel {
 		panel_back_right.add(lbl_X);
 
 		JLabel lblNewLabel = new JLabel("\uD68C\uC6D0\uAC00\uC785");
+		lblNewLabel.setFont(new Font("KBIZÇÑ¸¶À½°íµñ B", Font.PLAIN, 14));
 		lblNewLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		lblNewLabel.addMouseListener(new MouseAdapter() {
 			@Override
