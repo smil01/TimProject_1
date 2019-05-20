@@ -189,6 +189,7 @@ public class Lobby extends JPanel {
 		SearchPanel.setLayout(null);
 
 		JPanel SearchIconPanel = new JPanel();
+		SearchIconPanel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		SearchIconPanel.setBounds(12, 10, 32, 32);
 		SearchIconPanel.setBackground(new Color(41, 57, 80));
 		SearchPanel.add(SearchIconPanel);

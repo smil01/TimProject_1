@@ -560,6 +560,13 @@ public class Btn1_Button2 extends JPanel {
 		lblKg.setFont(new Font("만화진흥원체", Font.PLAIN, 35));
 		lblKg.setBounds(294, 52, 53, 32);
 		panel_3.add(lblKg);
+		
+		JLabel label_7 = new JLabel();
+		label_7.setText("\uC77C");
+		label_7.setForeground(Color.BLACK);
+		label_7.setFont(new Font("만화진흥원체", Font.PLAIN, 16));
+		label_7.setBounds(38, 154, 22, 19);
+		panel_3.add(label_7);
 
 		JLabel label_9 = new JLabel(p_dto.getPlayer_Name());
 		label_9.setHorizontalAlignment(SwingConstants.CENTER);
