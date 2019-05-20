@@ -81,7 +81,7 @@ public class Transfer_Thread extends Thread {
 
 		con();
 		try {
-			sql = "select count(NOW_GROUP_CODE) t1, count(TRANSFER_GROUP_CODE)t2 from PLAYER_TRANSFER where NOW_GROUP_CODE = ? or TRANSFER_GROUP_CODE = ?";
+			sql = "select count(NOW_GROUP_CODE) t1, count(TRANSFER_GROUP_CODE) t2 from PLAYER_TRANSFER where (NOW_GROUP_CODE = ? or TRANSFER_GROUP_CODE = ?) and PLAYER_TRANSFER_STATE = 0";
 
 			pst = conn.prepareStatement(sql);
 			pst.setInt(1, Group_Code);

@@ -78,6 +78,8 @@ public class Btn2_Button1 extends JPanel implements FocusListener {
 	public Btn2_Button1(JFrame frame, loginDTO dto) {
 		this.frame = frame;
 		this.dto = dto;
+		ArrayList<GroupsDTO> arr_group = new ArrayList<>();
+		arr_group = gdao.selectAllGroups_Groupcode(dto.getGroup_Code());
 
 		setLayout(new CardLayout(0, 0));
 
@@ -207,7 +209,7 @@ public class Btn2_Button1 extends JPanel implements FocusListener {
 
 		JPanel panel_1 = new JPanel();
 		panel_1.setBackground(new Color(41, 57, 80));
-		panel_1.setBounds(62, 0, 226, 80);
+		panel_1.setBounds(74, 0, 226, 80);
 		ExitPanel.add(panel_1);
 		panel_1.setLayout(null);
 
@@ -346,37 +348,8 @@ public class Btn2_Button1 extends JPanel implements FocusListener {
 		lbl_btn4.setBounds(87, 30, 87, 24);
 		btn4.add(lbl_btn4);
 
-		JPanel GudanPanel = new JPanel();
-		GudanPanel.setBackground(new Color(71, 120, 197));
-		GudanPanel.setBounds(280, 0, 1320, 105);
-		Lobby_Panel.add(GudanPanel);
-		GudanPanel.setLayout(null);
-
-		JPanel LogoPanel = new JPanel();
-		LogoPanel.setBackground(new Color(71, 120, 197));
-		LogoPanel.setBounds(42, 0, 111, 105);
-		GudanPanel.add(LogoPanel);
-		LogoPanel.setLayout(new CardLayout(0, 0));
-
-		JLabel lbl_logo = new JLabel("");
-		lbl_logo.setIcon(new ImageIcon(Btn2_Button1.class.getResource("/P5_Img/icons8_uefa_euro_trophy_64px.png")));
-		lbl_logo.setHorizontalAlignment(SwingConstants.CENTER);
-		LogoPanel.add(lbl_logo, "name_60328911748400");
-
-		JPanel GudanName = new JPanel();
-		GudanName.setBackground(new Color(71, 120, 197));
-		GudanName.setBounds(153, 0, 118, 105);
-		GudanPanel.add(GudanName);
-		GudanName.setLayout(null);
-
-		JLabel lblNewLabel = new JLabel("\uC6CC\uB9AC\uC5B4\uC988");
-		lblNewLabel.setBounds(0, 31, 146, 34);
-		lblNewLabel.setForeground(new Color(255, 255, 255));
-		lblNewLabel.setFont(new Font("KBIZÇÑ¸¶À½°íµñ H", Font.PLAIN, 25));
-		GudanName.add(lblNewLabel);
-
 		JPanel panel_3 = new JPanel();
-		panel_3.setBounds(292, 79, 1320, 796);
+		panel_3.setBounds(280, 103, 1320, 796);
 		Lobby_Panel.add(panel_3);
 		panel_3.setLayout(null);
 		panel_3.setBackground(new Color(23, 35, 51));
@@ -692,12 +665,6 @@ public class Btn2_Button1 extends JPanel implements FocusListener {
 
 		ArrayList<GroupsDTO> list = gdao.selectAllGroups_Groupcode(Group_Code);
 
-		System.out.println(list.get(0).getGroup_Name());
-		System.out.println(list.get(0).getGroup_Address());
-		System.out.println(list.get(0).getGroup_HomePage());
-		System.out.println(list.get(0).getGroup_Tel());
-
-		System.out.println(list.get(0).getGroup_Img_Bytes());
 		BufferedImage image = list.get(0).getGroup_ResizeImg(100, 100);
 
 		textname.setText(list.get(0).getGroup_Name());
@@ -747,6 +714,37 @@ public class Btn2_Button1 extends JPanel implements FocusListener {
 		separator_8.setForeground(new Color(229, 229, 229));
 		separator_8.setBounds(885, 152, 316, 10);
 		panel_3.add(separator_8);
+		
+		JPanel panel_5 = new JPanel();
+		panel_5.setLayout(null);
+		panel_5.setBackground(new Color(71, 120, 197));
+		panel_5.setBounds(280, 0, 1320, 105);
+		Lobby_Panel.add(panel_5);
+		
+		JPanel panel_6 = new JPanel();
+		panel_6.setLayout(null);
+		panel_6.setBackground(new Color(71, 120, 197));
+		panel_6.setBounds(0, 0, 1320, 105);
+		panel_5.add(panel_6);
+		
+		JPanel panel_7 = new JPanel();
+		panel_7.setBackground(new Color(71, 120, 197));
+		panel_7.setBounds(42, 0, 111, 105);
+		panel_6.add(panel_7);
+		panel_7.setLayout(new CardLayout(0, 0));
+		
+		JPanel panel_8 = new JPanel();
+		panel_8.setLayout(null);
+		panel_8.setBackground(new Color(71, 120, 197));
+		panel_8.setBounds(153, 0, 651, 105);
+		panel_6.add(panel_8);
+		
+		JLabel label_4 = new JLabel((String) null);
+		label_4.setForeground(Color.WHITE);
+		label_4.setFont(new Font("KBIZÇÑ¸¶À½°íµñ H", Font.PLAIN, 35));
+		label_4.setBounds(0, 22, 420, 61);
+		label_4.setText(arr_group.get(0).getGroup_Name());
+		panel_8.add(label_4);
 
 		ArrayList<PlayerDTO> translist = new ArrayList<PlayerDTO>();
 		translist = transdao.transferTo(Group_Code);
@@ -804,4 +802,6 @@ public class Btn2_Button1 extends JPanel implements FocusListener {
 	public Object select() {
 		return table_3.getValueAt(table_3.getSelectedRow(), 0);
 	}
+	
+	
 }
