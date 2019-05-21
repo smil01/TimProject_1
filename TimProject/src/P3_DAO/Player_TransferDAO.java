@@ -105,6 +105,62 @@ public class Player_TransferDAO {
 			pst.setInt(2, Player_Code);
 
 			cnt = pst.executeUpdate();
+			
+			sql = "UPDATE PLAYER_CONTEST SET GROUP_CODE = ? WHERE PLAYER_CODE = ?";
+			pst = conn.prepareStatement(sql);
+
+			pst.setInt(1, Group_Code);
+			pst.setInt(2, Player_Code);
+
+			cnt = pst.executeUpdate();
+			
+			sql = "UPDATE PLAYER_FOOTBALL SET GROUP_CODE = ? WHERE PLAYER_CODE = ?";
+			pst = conn.prepareStatement(sql);
+
+			pst.setInt(1, Group_Code);
+			pst.setInt(2, Player_Code);
+
+			cnt = pst.executeUpdate();
+			
+			sql = "UPDATE PLAYER_MEDICAL SET GROUP_CODE = ? WHERE PLAYER_CODE = ?";
+			pst = conn.prepareStatement(sql);
+
+			pst.setInt(1, Group_Code);
+			pst.setInt(2, Player_Code);
+
+			cnt = pst.executeUpdate();
+			
+			sql = "UPDATE PLAYER_PHYSICAL SET GROUP_CODE = ? WHERE PLAYER_CODE = ?";
+			pst = conn.prepareStatement(sql);
+
+			pst.setInt(1, Group_Code);
+			pst.setInt(2, Player_Code);
+
+			cnt = pst.executeUpdate();
+			
+			sql = "UPDATE PLAYER_POSITION SET GROUP_CODE = ? WHERE PLAYER_CODE = ?";
+			pst = conn.prepareStatement(sql);
+
+			pst.setInt(1, Group_Code);
+			pst.setInt(2, Player_Code);
+
+			cnt = pst.executeUpdate();
+			
+			sql = "UPDATE PLAYER_TEACHER SET GROUP_CODE = ? WHERE PLAYER_CODE = ?";
+			pst = conn.prepareStatement(sql);
+
+			pst.setInt(1, Group_Code);
+			pst.setInt(2, Player_Code);
+
+			cnt = pst.executeUpdate();
+			
+			sql = "UPDATE PLAYER_TRANSFER SET GROUP_CODE = ? WHERE PLAYER_CODE = ?";
+			pst = conn.prepareStatement(sql);
+
+			pst.setInt(1, Group_Code);
+			pst.setInt(2, Player_Code);
+
+			cnt = pst.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

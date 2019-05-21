@@ -70,7 +70,7 @@ public class Btn2_Button1 extends JPanel implements FocusListener {
 	private ArrayList<GroupsDTO> glist;
 	private JLabel lbl_image;
 	private DefaultTableModel model2;
-//	private Transfer_Thread thread;
+	private Transfer_Thread thread;
 
 	/**
 	 * Create the panel.
@@ -106,8 +106,8 @@ public class Btn2_Button1 extends JPanel implements FocusListener {
 		lbl_program_name.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-//				thread.close();
-//				thread.interrupt();
+				thread.close();
+				thread.interrupt();
 
 				JPanel Stn0_Button0 = new Lobby(frame, dto);
 				frame.getContentPane().removeAll();
@@ -164,8 +164,8 @@ public class Btn2_Button1 extends JPanel implements FocusListener {
 
 			@Override
 			public void mouseClicked(MouseEvent e) {
-//				thread.close();
-//				thread.interrupt();
+				thread.close();
+				thread.interrupt();
 
 				JPanel Stn1_Button1 = new Btn1_Button1(frame, dto);
 				frame.getContentPane().removeAll();
@@ -185,8 +185,8 @@ public class Btn2_Button1 extends JPanel implements FocusListener {
 		ExitPanel.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-//				thread.close();
-//				thread.interrupt();
+				thread.close();
+				thread.interrupt();
 
 				System.exit(0);
 			}
@@ -304,8 +304,8 @@ public class Btn2_Button1 extends JPanel implements FocusListener {
 
 			@Override
 			public void mouseClicked(MouseEvent e) {
-//				thread.close();
-//				thread.interrupt();
+				thread.close();
+				thread.interrupt();
 
 				JPanel Stn3_Button1 = new Btn3_Button1(frame, dto);
 				frame.getContentPane().removeAll();
@@ -333,8 +333,8 @@ public class Btn2_Button1 extends JPanel implements FocusListener {
 		lbl_btn4.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-//				thread.close();
-//				thread.interrupt();
+				thread.close();
+				thread.interrupt();
 
 				JPanel Stn4_Button1 = new Btn4_Button1(frame, dto);
 				frame.getContentPane().removeAll();
@@ -626,8 +626,8 @@ public class Btn2_Button1 extends JPanel implements FocusListener {
 				int result = JOptionPane.showConfirmDialog(null, "확인을 누르면 선수를 영입됩니다.", "선수영입",
 						JOptionPane.OK_CANCEL_OPTION);
 				if (result == 0) {
-//					thread.close();
-//					thread.interrupt();
+					thread.close();
+					thread.interrupt();
 
 					int a = Integer.valueOf((String) select());
 					new Player_TransferDAO().transferOk(a, dto.getGroup_Code());
@@ -676,8 +676,8 @@ public class Btn2_Button1 extends JPanel implements FocusListener {
 		JButton button_3 = new JButton("\uC774\uC801 \uAC70\uBD80");
 		button_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-//				thread.close();
-//				thread.interrupt();
+				thread.close();
+				thread.interrupt();
 
 				int result = JOptionPane.showConfirmDialog(null, "확인을 누르면 선수를 영입이 거부됩니다.", "선수영입 거부",
 						JOptionPane.OK_CANCEL_OPTION);
@@ -754,8 +754,8 @@ public class Btn2_Button1 extends JPanel implements FocusListener {
 
 		button_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-//				thread.close();
-//				thread.interrupt();
+				thread.close();
+				thread.interrupt();
 
 				AddressToLocalCode L_Code = new AddressToLocalCode();
 				int g_LocalCode = L_Code.getLocalCode(textaddress.getText());
@@ -782,8 +782,8 @@ public class Btn2_Button1 extends JPanel implements FocusListener {
 			}
 		});
 
-//		thread = new Transfer_Thread(this.frame, this.dto);
-//		thread.start();
+		thread = new Transfer_Thread(this.frame, this.dto);
+		thread.start();
 	}
 
 	@Override

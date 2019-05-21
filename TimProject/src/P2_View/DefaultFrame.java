@@ -58,6 +58,10 @@ public class DefaultFrame {
                 Point p = frame.getLocation();
                 frame.setLocation(p.x + e.getX() - point.x, p.y + e.getY() - point.y);
             }
+            
+            
+            
+            
         });
 		
 		JPanel panel = new LoginWindow(frame);
